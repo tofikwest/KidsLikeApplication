@@ -135,3 +135,15 @@ body {
   width: 1px !important;
   overflow: hidden;
 }
+
+.react-switch-bg > div + div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.react-switch-bg > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

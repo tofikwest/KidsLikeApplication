@@ -1,8 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+
 const NavigationListItems = ({ name, path, exact }) => {
   return (
-    <li>
+    <li className="navItems">
       <NavLink
         className="navLink"
         activeClassName="activeNavLink"
