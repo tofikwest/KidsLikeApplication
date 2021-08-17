@@ -20,6 +20,8 @@ const NavigationStyled = styled.nav`
   }
 
   @media screen and (min-width: 768px) {
+    .navItems {
+    }
     .navLink {
       text-decoration: none;
       color: ${({ colors }) => colors.primaryTextColor};

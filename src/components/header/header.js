@@ -18,21 +18,26 @@ const initialState = {
 const Header = () => {
   const [state, setState] = useState(initialState);
 
-  // const location = useLocation();
+  const location = useLocation();
 
   // console.log(location);
 
   useEffect(() => {
     window.addEventListener("resize", handleResizeWindow);
-    // setOpenModal();
+    location && closeModalOnLocation();
     return () => {
       window.removeEventListener("resize", handleResizeWindow);
     };
-  });
+  }, [location]);
+
+  const closeModalOnLocation = () => {
+    setState((prev) => ({ ...prev, isModalOpen: false }));
+  };
 
   const handleResizeWindow = () => {
     setState((prev) => ({ ...prev, width: window.innerWidth }));
   };
+
   const setOpenModal = () => {
     setState((prev) => ({ ...prev, isModalOpen: !prev.isModalOpen }));
   };

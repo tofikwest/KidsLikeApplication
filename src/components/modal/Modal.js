@@ -7,12 +7,12 @@ import ModalStyled from "./ModalStyled";
 const Modal = ({ children, handleCloseModal }) => {
   useEffect(() => {
     window.addEventListener("keydown", handleEsc);
-    const body = document.querySelector("body");
-    body.style.overflow = "hidden";
+    // const body = document.querySelector("body");
+    // body.style.overflow = "hidden";
     return () => {
       window.removeEventListener("keydown", handleEsc);
-      const body = document.querySelector("body");
-      body.style.overflow = "auto";
+      //   const body = document.querySelector("body");
+      //   body.style.overflow = "auto";
     };
   });
 
