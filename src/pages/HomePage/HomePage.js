@@ -1,5 +1,7 @@
 import { HomePageStyled } from "./HomePageStyled";
 import planer from "../../images/planer.png";
+// import CardList from "../../components/cardList/CardList"; внизу тестил карточки :)
+import Footer from "../../components/footer/Footer";
 
 const HomePage = () => {
   return (
@@ -40,6 +42,9 @@ const HomePage = () => {
           Запланировать задачи
         </button>
         <img src={planer} alt="children" />
+        {/*  <CardList />  Сорри Таня, пока нету главной страницы я тут чекал карточки */}
+        <Footer />
+        {/* пока футер только для десктопа, подожду адаптивку от Тани  :) */}
       </section>
     </HomePageStyled>
   );
