@@ -8,6 +8,8 @@ const HeaderStyled = styled.header`
   .menuNavImg {
     width: 20px;
     height: 20px;
+    fill: red;
+    /* background-color: red;  */
   }
 `;
 

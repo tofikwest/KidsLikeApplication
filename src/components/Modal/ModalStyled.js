@@ -9,8 +9,6 @@ const ModalStyled = styled.div`
   display: flex;
   justify-content: flex-end;
   background-color: ${({ colors }) => colors.modalBackdropBackground};
-  z-index: 1200;
-  overflow: auto;
   .modal {
     width: 274px;
     background-color: ${({ colors }) => colors.primaryBgColor};

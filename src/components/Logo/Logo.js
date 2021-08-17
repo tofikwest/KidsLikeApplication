@@ -1,11 +1,13 @@
 import React from "react";
-import logoImg from "../../images/logo.svg";
+import sprite from "../../images/sprite.svg";
 import LogoStyled from "./LogoStyled";
 const Logo = () => {
   return (
     <LogoStyled>
       <h3 className="logoTitle">KidsLike</h3>
-      <img className="logoImg" src={logoImg} alt="" />
+      <svg className="logoImg">
+        <use href={sprite + "#icon-logo"} />
+      </svg>
     </LogoStyled>
   );
 };

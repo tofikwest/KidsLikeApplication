@@ -6,7 +6,9 @@ import BalanceCounter from "../BalanceCounter/BalanceCounter";
 
 import { colors } from "../../general/styles/colors";
 import HeaderStyled from "./HeaderStyled";
+// import sprite from "../../images/sprite.svg";
 import menuSvg from "../../images/menu-2.svg";
+
 import { useLocation } from "react-router";
 
 const initialState = {
@@ -17,7 +19,6 @@ const initialState = {
 
 const Header = () => {
   const [state, setState] = useState(initialState);
-
   const location = useLocation();
 
   // console.log(location);
@@ -51,6 +52,9 @@ const Header = () => {
           <Navigation />
         ) : (
           <img className="menuNavImg" onClick={setOpenModal} src={menuSvg} />
+          // <svg className="menuNavImg" onClick={setOpenModal}>
+          //   <use href={sprite + "#icon-logo"} />
+          // </svg>
         )}
       </HeaderStyled>
       {state.isModalOpen && (

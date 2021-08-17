@@ -6,8 +6,11 @@ const LogoStyled = styled.div`
   .logoTitle {
     margin-right: 8px;
   }
-  /* .logoImg {
-  } */
+  .logoImg {
+    width: 18px;
+    height: 18px;
+    fill: orange;
+  }
 `;
 
 export default LogoStyled;
