@@ -109,11 +109,20 @@ body {
   padding-top: 80px;
   font-family: "Montserrat", sans-serif;
 }
-.container {
+.Section {
   max-width: 100%;
   margin: 0 auto;
   padding-left: 20px;
   padding-right: 20px;
+
+  min-width: 280px;
+
+  @media screen and (min-width: 768px) {
+    width: 768px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 1280px;
+  }
 }
 
 .visually-hidden {
@@ -125,4 +134,16 @@ body {
   height: 1px !important;
   width: 1px !important;
   overflow: hidden;
+}
+
+.react-switch-bg > div + div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.react-switch-bg > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
