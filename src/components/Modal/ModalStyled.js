@@ -9,7 +9,7 @@ const ModalStyled = styled.div`
   display: flex;
   justify-content: ${({ modalName }) =>
     modalName === "header" ? "flex-end" : "center"};
-  z-index: 10000;
+  /* z-index: 10000; */
   /* overflow: auto; */
 
   background-color: ${({ colors }) => colors.modalBackdropBackground};
@@ -18,27 +18,24 @@ const ModalStyled = styled.div`
     position: relative;
     width: ${({ modalName }) => (modalName === "header" ? "274px" : "auto")};
     background-color: ${({ colors }) => colors.primaryBgColor};
+    box-shadow: -15px 0px 20px ${({ colors }) => colors.modalBoxShadowColor};
   }
 
-  .btnModalClose {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+  /* .btnModalClose {
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: transparent;
     border: none;
-  }
+  } */
   .btnModalCloseSvg {
+    position: absolute;
+    top: 20px;
+    right: 20px;
     width: 20px;
     height: 20px;
     fill: #ffffff;
   }
-  /* .header {
-    width: 274px;
-    background-color: ${({ colors }) => colors.modalBackdropBackground};
-  } */
 `;
 
 export default ModalStyled;
