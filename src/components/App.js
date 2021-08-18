@@ -7,8 +7,8 @@ import Section from "../general/Section/Section";
 const App = () => {
   return (
     <>
+      <Header />
       <Section>
-        <Header />
         <Main />
       </Section>
     </>
