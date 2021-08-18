@@ -26,10 +26,9 @@ const idToken = {
 };
 
 export const register = (user) => async (dispatch) => {
-  console.log("register operation");
   dispatch(registerUserRequest());
   try {
-    const response = await axios.post("/users/signup", user);
+    const response = await axios.post("/auth/register", user);
     idToken.set(response.data.idToken);
     dispatch(registerUserSuccess(response.data));
   } catch (error) {
@@ -40,7 +39,7 @@ export const register = (user) => async (dispatch) => {
 export const login = (user) => async (dispatch) => {
   dispatch(loginUserRequest());
   try {
-    const response = await axios.post("/users/login", user);
+    const response = await axios.post("/auth/login", user);
     idToken.set(response.data.idToken);
     dispatch(loginUserSuccess(response.data));
   } catch (error) {
@@ -48,10 +47,31 @@ export const login = (user) => async (dispatch) => {
   }
 };
 
+export const googleLogin = () => async (dispatch, getState) => {
+  //   const {
+  //     tokens: { idToken: persistedToken },
+  //   } = getState();
+
+  //   if (!persistedToken) {
+  //     return;
+  //   }
+  //   idToken.set(persistedToken);
+  dispatch(loginUserRequest());
+  try {
+    const response = await axios.get("/auth/google");
+    console.log(`response`, response);
+
+    dispatch(loginUserSuccess(response.data));
+  } catch (error) {
+    dispatch(loginUserError(error.message));
+    console.log(`error`, error);
+  }
+};
+
 export const logOut = () => async (dispatch) => {
   dispatch(signOutRequest());
   try {
-    await axios.post("/users/logout");
+    await axios.post("/auth/logout");
     idToken.unset();
     dispatch(signOutSuccess());
   } catch (error) {
@@ -61,7 +81,9 @@ export const logOut = () => async (dispatch) => {
 
 export const getCurrentUser = () => async (dispatch, getState) => {
   const {
-    auth: { idToken: persistedToken },
+    auth: {
+      tokens: { idToken: persistedToken },
+    },
   } = getState();
 
   if (!persistedToken) {
@@ -71,7 +93,7 @@ export const getCurrentUser = () => async (dispatch, getState) => {
   idToken.set(persistedToken);
   dispatch(getCurrentUserRequest());
   try {
-    const response = await axios.get("/users/current");
+    const response = await axios.get("/user/info");
     dispatch(getCurrentUserSuccess(response.data));
   } catch (error) {
     dispatch(getCurrentUserError(error.message));
