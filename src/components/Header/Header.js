@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Navigations from "../Navigations/Navigation";
+import Navigation from "../Navigations/Navigation";
 import Modal from "../Modal/Modal";
 import Logo from "../Logo/Logo";
 import BalanceCounter from "../BalanceCounter/BalanceCounter";
