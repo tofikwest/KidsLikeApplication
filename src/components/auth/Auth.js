@@ -6,7 +6,9 @@ import sprite from "../../images/sprite.svg";
 const Auth = () => (
   <AuthContainer>
     <h1 className="authTitle">Выполняй задания, получи классные призы!</h1>
-    <p className="authText">Вы можете авторизоваться с помощью Google Account:</p>
+    <p className="authText">
+      Вы можете авторизоваться с помощью Google Account:
+    </p>
     <form action="/auth/google" method="post">
       <button type="submit" className="googleBtn">
         <svg className="icon-user">
@@ -15,7 +17,9 @@ const Auth = () => (
         Google
       </button>
     </form>
-    <p>Или зайти с помощью e-mail и пароля, предварительно зарегистрировавшись:</p>
+    <p>
+      Или зайти с помощью e-mail и пароля, предварительно зарегистрировавшись:
+    </p>
     <Formik
       initialValues={{ email: "", password: "" }}
       validate={(values) => {
@@ -23,7 +27,9 @@ const Auth = () => (
         if (!values.email) {
           // className="accent-red"
           errors.email = "Это обязательное поле";
-        } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+        } else if (
+          !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+        ) {
           errors.email = "Invalid email address";
         }
         return errors;
@@ -75,10 +81,18 @@ const Auth = () => (
           />
           {errors.password && touched.password && errors.password}
           <div className="auth-btn-wrap">
-            <button className="user-button" type="submit" disabled={isSubmitting}>
+            <button
+              className="user-button"
+              type="submit"
+              disabled={isSubmitting}
+            >
               Войти
             </button>
-            <button className="user-button" type="submit" disabled={isSubmitting}>
+            <button
+              className="user-button"
+              type="submit"
+              disabled={isSubmitting}
+            >
               Зарегистрироваться
             </button>
           </div>
