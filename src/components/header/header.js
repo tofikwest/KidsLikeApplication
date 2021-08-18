@@ -8,9 +8,8 @@ import { colors } from "../../general/styles/colors";
 import HeaderStyled from "./HeaderStyled";
 // import sprite from "../../images/sprite.svg";
 import menuSvg from "../../images/menu-2.svg";
-
 import { useLocation } from "react-router";
-
+//change header name
 const initialState = {
   width: window.innerWidth,
   breakPoint: 768,
