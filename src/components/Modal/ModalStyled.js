@@ -7,14 +7,19 @@ const ModalStyled = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;
-  justify-content: flex-end;
+  justify-content: ${({ modalName }) =>
+    modalName === "header" ? "flex-end" : "center"};
+  z-index: 10000;
+  /* overflow: auto; */
+
   background-color: ${({ colors }) => colors.modalBackdropBackground};
   .modal {
     padding-top: 80px;
     position: relative;
-    width: 274px;
+    width: ${({ modalName }) => (modalName === "header" ? "274px" : "auto")};
     background-color: ${({ colors }) => colors.primaryBgColor};
   }
+
   .btnModalClose {
     position: absolute;
     top: 20px;

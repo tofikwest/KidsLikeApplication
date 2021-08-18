@@ -4,18 +4,17 @@ import sprite from "../../images/sprite.svg";
 import { colors } from "../../general/styles/colors";
 import ModalStyled from "./ModalStyled";
 
-const Modal = ({ children, handleCloseModal }) => {
+const Modal = ({ children, handleCloseModal, modalName }) => {
   useEffect(() => {
     window.addEventListener("keydown", handleEsc);
-    // const body = document.querySelector("body");
-    // body.style.overflow = "hidden";
+    const body = document.querySelector("body");
+    body.style.overflow = "hidden";
     return () => {
       window.removeEventListener("keydown", handleEsc);
-      //   const body = document.querySelector("body");
-      //   body.style.overflow = "auto";
+      const body = document.querySelector("body");
+      body.style.overflow = "auto";
     };
   });
-  // console.log(modalName)
 
   const handleEsc = (e) => e.code === "Escape" && handleCloseModal();
 
@@ -24,7 +23,7 @@ const Modal = ({ children, handleCloseModal }) => {
   const onBtnClose = () => handleCloseModal();
 
   return (
-    <ModalStyled onClick={handleClick} colors={colors}>
+    <ModalStyled onClick={handleClick} colors={colors} modalName={modalName}>
       <div className="modal">
         <button className="btnModalClose" onClick={onBtnClose}>
           <svg className="btnModalCloseSvg">
