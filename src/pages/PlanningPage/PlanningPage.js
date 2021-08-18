@@ -1,5 +1,14 @@
+import CardList from "../../components/cardList/CardList";
+import TaskAddIcon from "../../components/taskAddIcon/TaskAddIcon";
+
 const PlanningPage = () => {
-  return <h3>PlanningPage</h3>;
+  return (
+    <>
+      <CardList>
+        <TaskAddIcon />
+      </CardList>
+    </>
+  );
 };
 
 export default PlanningPage;

@@ -1,5 +1,13 @@
+import CardList from "../../components/cardList/CardList";
+import TaskToggle from "../../components/taskToggle/TaskToggle";
+// Временно обычные карточки пока, т.к. еще не настроен ответ от бека (по нему отрисовка карточек будет)
+
 const AwardsPage = () => {
-  return <h3>AwardsPage</h3>;
+  return (
+    <CardList>
+      <TaskToggle />
+    </CardList>
+  );
 };
 
 export default AwardsPage;

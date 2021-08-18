@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { DayListStyled } from "./DayListStyled";
 import { week } from "./DayListData";
+import checkedIcon from "../../images/checkbox-true.svg";
+import uncheckedIcon from "../../images/checkbox-false.svg";
 
 const DayList = () => {
   const [state, setState] = useState(week);
@@ -16,8 +18,7 @@ const DayList = () => {
   return (
     <DayListStyled>
       {state.map((day) => (
-        <li key={day.id}>
-          {day.value}
+        <li className="dayListItem" key={day.id}>
           <input
             name={day.name}
             type="checkbox"
@@ -25,6 +26,13 @@ const DayList = () => {
             checked={day.checked}
             onChange={onHandleChange}
           />
+          {day.checked ? (
+            <img src={checkedIcon} alt={day.value} />
+          ) : (
+            <img src={uncheckedIcon} alt={day.value} />
+          )}
+
+          <span className="dayListValue">{day.value}</span>
         </li>
       ))}
     </DayListStyled>
