@@ -1,6 +1,7 @@
 import React from "react";
-import planer from "../../images/planer.png";
+import planer from "../../../images/planer.png";
 import { WeekTabContentStyled } from "./WeekTabContentStyled";
+// import CardList from "../../components/cardList/CardList";
 
 const WeekTabContent = ({ currentTasks }) => {
   return (
@@ -11,11 +12,11 @@ const WeekTabContent = ({ currentTasks }) => {
           <button type="button" className="home-button">
             Запланировать задачи
           </button>
-          <img src={planer} alt="children" />
+          <img src={planer} alt="children" className="children-img" />
         </>
       ) : (
         <p>CardList</p>
-        // (<CardList />)
+        // <CardList />
       )}
     </WeekTabContentStyled>
   );

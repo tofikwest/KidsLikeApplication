@@ -1,14 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { WeekTabsStyled } from "./WeekTabsStyled";
+import { useLocation } from "react-router";
 
 const initialState = {
   search: "",
+  width: window.innerWidth,
+  breakPoint: 1280,
 };
 
 const WeekTabs = () => {
-  const [state, setState] = useState();
-  console.log(initialState);
+  const [state, setState] = useState(initialState);
+  const location = useLocation();
+  console.log(location);
   console.log(state);
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResizeWindow);
+    return () => {
+      window.removeEventListener("resize", handleResizeWindow);
+    };
+  }, [location]);
+
+  const handleResizeWindow = () => {
+    setState((prev) => ({ ...prev, width: window.innerWidth }));
+  };
 
   const handleClick = (e) => {
     setState((prev) => ({ ...prev, search: e.target.value }));
@@ -34,23 +49,24 @@ const WeekTabs = () => {
   // };
 
   return (
-    <WeekTabsStyled>
-      <ul className="weekDays-list">
-        <button
-          type="button"
-          value="monday"
-          onClick={handleClick}
-          className="weekDays-listItem"
-        >
-          Понедельник
-        </button>
+    <>
+      <WeekTabsStyled>
         <button
           type="button"
           value="tuesday"
           onClick={handleClick}
           className="weekDays-listItem"
         >
-          Вторник
+          {state.width > state.breakPoint ? "Понедельник" : "ПН"}
+        </button>
+
+        <button
+          type="button"
+          value="tuesday"
+          onClick={handleClick}
+          className="weekDays-listItem"
+        >
+          {state.width > state.breakPoint ? "Вторник" : "ВТ"}
         </button>
         <button
           type="button"
@@ -58,7 +74,7 @@ const WeekTabs = () => {
           onClick={handleClick}
           className="weekDays-listItem"
         >
-          Среда
+          {state.width > state.breakPoint ? "Среда" : "СР"}
         </button>
         <button
           type="button"
@@ -66,7 +82,7 @@ const WeekTabs = () => {
           onClick={handleClick}
           className="weekDays-listItem"
         >
-          Четверг
+          {state.width > state.breakPoint ? "Четверг" : "ЧТ"}
         </button>
         <button
           type="button"
@@ -74,7 +90,7 @@ const WeekTabs = () => {
           onClick={handleClick}
           className="weekDays-listItem weekDays-active"
         >
-          Пятница
+          {state.width > state.breakPoint ? "Пятница" : "ПТ"}
         </button>
         <button
           type="button"
@@ -82,7 +98,7 @@ const WeekTabs = () => {
           onClick={handleClick}
           className="weekDays-listItem"
         >
-          Суббота
+          {state.width > state.breakPoint ? "Суббота" : "СБ"}
         </button>
         <button
           type="button"
@@ -90,10 +106,10 @@ const WeekTabs = () => {
           onClick={handleClick}
           className="weekDays-listItem"
         >
-          Воскресенье
+          {state.width > state.breakPoint ? "Воскресенье" : "ВС"}
         </button>
-      </ul>
-    </WeekTabsStyled>
+      </WeekTabsStyled>
+    </>
   );
 };
 
