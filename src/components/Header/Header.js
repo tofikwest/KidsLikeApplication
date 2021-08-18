@@ -4,6 +4,7 @@ import Navigation from "../Navigations/Navigation";
 import Modal from "../Modal/Modal";
 import Logo from "../Logo/Logo";
 import BalanceCounter from "../BalanceCounter/BalanceCounter";
+import UserMenu from "../userMenu/UserMenu";
 
 import HeaderStyled from "./HeaderStyled";
 import { colors } from "../../general/styles/colors";
@@ -11,7 +12,8 @@ import sprite from "../../images/sprite.svg";
 
 const initialState = {
   width: window.innerWidth,
-  breakPoint: 1280,
+  breakPointNavigation: 1279,
+  breakPointUserMenu: 767,
   isModalOpen: false,
   modalName: "header",
 };
@@ -45,16 +47,18 @@ const Header = () => {
       <HeaderStyled colors={colors}>
         <Logo />
         <BalanceCounter />
-        {state.width > state.breakPoint ? (
+        {state.width > state.breakPointNavigation ? (
           <Navigation />
         ) : (
           <svg className="menuNavImg" onClick={setOpenModal}>
             <use href={sprite + "#icon-menu"} />
           </svg>
         )}
+        {state.width > state.breakPointUserMenu && <UserMenu />}
       </HeaderStyled>
       {state.isModalOpen && (
         <Modal handleCloseModal={setOpenModal} modalName={state.modalName}>
+          {state.width < state.breakPointUserMenu && <UserMenu />}
           <Navigation />
         </Modal>
       )}
