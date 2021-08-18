@@ -6,15 +6,16 @@ import BalanceCounter from "../BalanceCounter/BalanceCounter";
 
 import { colors } from "../../general/styles/colors";
 import HeaderStyled from "./HeaderStyled";
-// import sprite from "../../images/sprite.svg";
-import menuSvg from "../../images/menu-2.svg";
+import sprite from "../../images/sprite.svg";
+// import menuSvg from "../../images/menu-2.svg";
 
 import { useLocation } from "react-router";
 
 const initialState = {
   width: window.innerWidth,
-  breakPoint: 768,
+  breakPoint: 1280,
   isModalOpen: false,
+  // modalName: "header",
 };
 
 const Header = () => {
@@ -51,10 +52,9 @@ const Header = () => {
         {state.width > state.breakPoint ? (
           <Navigation />
         ) : (
-          <img className="menuNavImg" onClick={setOpenModal} src={menuSvg} />
-          // <svg className="menuNavImg" onClick={setOpenModal}>
-          //   <use href={sprite + "#icon-logo"} />
-          // </svg>
+          <svg className="menuNavImg" onClick={setOpenModal}>
+            <use href={sprite + "#icon-menu"} />
+          </svg>
         )}
       </HeaderStyled>
       {state.isModalOpen && (

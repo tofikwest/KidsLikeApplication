@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
-
+import sprite from "../../images/sprite.svg";
 import { colors } from "../../general/styles/colors";
 import ModalStyled from "./ModalStyled";
 
@@ -15,14 +15,24 @@ const Modal = ({ children, handleCloseModal }) => {
       //   body.style.overflow = "auto";
     };
   });
+  // console.log(modalName)
 
   const handleEsc = (e) => e.code === "Escape" && handleCloseModal();
 
   const handleClick = (e) => e.target === e.currentTarget && handleCloseModal();
 
+  const onBtnClose = () => handleCloseModal();
+
   return (
     <ModalStyled onClick={handleClick} colors={colors}>
-      <div className="modal">{children}</div>
+      <div className="modal">
+        <button className="btnModalClose" onClick={onBtnClose}>
+          <svg className="btnModalCloseSvg">
+            <use href={sprite + "#icon-close"} />
+          </svg>
+        </button>
+        {children}
+      </div>
     </ModalStyled>
   );
 };
