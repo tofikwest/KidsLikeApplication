@@ -10,6 +10,9 @@ import HeaderStyled from "./HeaderStyled";
 import { colors } from "../../general/styles/colors";
 import sprite from "../../images/sprite.svg";
 
+// import useHeaderModal from "../../hooks/useHeaderModal";
+// const [state, setOpenModal] = useHeaderModal();
+
 const initialState = {
   width: window.innerWidth,
   breakPointNavigation: 1279,
