@@ -1,4 +1,6 @@
 import { combineReducers, createReducer } from "@reduxjs/toolkit";
+import persistReducer from "redux-persist/es/persistReducer";
+import storage from "redux-persist/lib/storage";
 
 import {
   registerUserRequest,
@@ -11,6 +13,12 @@ import {
   signOutSuccess,
   signOutError,
 } from "./authActions";
+
+const authReducerPersistConfig = {
+  key: "auth",
+  storage: storage,
+  whitelist: ["idToken"],
+};
 
 const tokensReducer = createReducer(
   {
@@ -57,7 +65,7 @@ const error = createReducer(null, {
 });
 
 const authReducer = combineReducers({
-  tokens: tokensReducer,
+  tokens: persistReducer(authReducerPersistConfig, tokensReducer),
   loading,
   error,
 });

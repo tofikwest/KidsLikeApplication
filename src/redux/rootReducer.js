@@ -1,9 +1,10 @@
 import { combineReducers } from "redux";
 import authReducer from "./auth/authReducer";
+import tasksReducer from "./tasks/tasksReducer";
 
 const rootReducer = combineReducers({
   auth: authReducer,
-  tasks: "",
+  tasks: tasksReducer,
   gift: "",
   user: "",
 });
