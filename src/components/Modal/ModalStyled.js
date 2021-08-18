@@ -9,7 +9,7 @@ const ModalStyled = styled.div`
   display: flex;
   justify-content: ${({ modalName }) =>
     modalName === "header" ? "flex-end" : "center"};
-  z-index: 10000;
+  /* z-index: 10000; */
   /* overflow: auto; */
 
   background-color: ${({ colors }) => colors.modalBackdropBackground};
@@ -36,10 +36,6 @@ const ModalStyled = styled.div`
     height: 20px;
     fill: #ffffff;
   }
-  /* .header {
-    width: 274px;
-    background-color: ${({ colors }) => colors.modalBackdropBackground};
-  } */
 `;
 
 export default ModalStyled;

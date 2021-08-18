@@ -10,40 +10,40 @@ import HeaderStyled from "./HeaderStyled";
 import { colors } from "../../general/styles/colors";
 import sprite from "../../images/sprite.svg";
 
-// import useHeaderModal from "../../hooks/useHeaderModal";
-// const [state, setOpenModal] = useHeaderModal();
+import useHeaderModal from "../../hooks/useModal";
 
-const initialState = {
-  width: window.innerWidth,
-  breakPointNavigation: 1279,
-  breakPointUserMenu: 767,
-  isModalOpen: false,
-  modalName: "header",
-};
+// const initialState = {
+//   width: window.innerWidth,
+//   breakPointNavigation: 1279,
+//   breakPointUserMenu: 767,
+//   isModalOpen: false,
+//   modalName: "header",
+// };
 
 const Header = () => {
-  const [state, setState] = useState(initialState);
-  const location = useLocation();
+  const [state, setOpenModal] = useHeaderModal();
+  // const [state, setState] = useState(initialState);
+  // const location = useLocation();
 
-  useEffect(() => {
-    window.addEventListener("resize", handleResizeWindow);
-    location && closeModalOnLocation();
-    return () => {
-      window.removeEventListener("resize", handleResizeWindow);
-    };
-  }, [location]);
+  // useEffect(() => {
+  //   window.addEventListener("resize", handleResizeWindow);
+  //   location && closeModalOnLocation();
+  //   return () => {
+  //     window.removeEventListener("resize", handleResizeWindow);
+  //   };
+  // }, [location]);
 
-  const closeModalOnLocation = () => {
-    setState((prev) => ({ ...prev, isModalOpen: false }));
-  };
+  // const closeModalOnLocation = () => {
+  //   setState((prev) => ({ ...prev, isModalOpen: false }));
+  // };
 
-  const handleResizeWindow = () => {
-    setState((prev) => ({ ...prev, width: window.innerWidth }));
-  };
+  // const handleResizeWindow = () => {
+  //   setState((prev) => ({ ...prev, width: window.innerWidth }));
+  // };
 
-  const setOpenModal = () => {
-    setState((prev) => ({ ...prev, isModalOpen: !prev.isModalOpen }));
-  };
+  // const setOpenModal = () => {
+  //   setState((prev) => ({ ...prev, isModalOpen: !prev.isModalOpen }));
+  // };
 
   return (
     <>
