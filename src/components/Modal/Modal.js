@@ -25,11 +25,11 @@ const Modal = ({ children, handleCloseModal, modalName }) => {
   return (
     <ModalStyled onClick={handleClick} colors={colors} modalName={modalName}>
       <div className="modal">
-        <button className="btnModalClose" onClick={onBtnClose}>
-          <svg className="btnModalCloseSvg">
-            <use href={sprite + "#icon-close"} />
-          </svg>
-        </button>
+        {/* <button className="btnModalClose"> */}
+        <svg className="btnModalCloseSvg" onClick={onBtnClose}>
+          <use href={sprite + "#icon-close"} />
+        </svg>
+        {/* </button> */}
         {children}
       </div>
     </ModalStyled>

@@ -14,8 +14,8 @@ const UserMenuStyled = styled.div`
     margin-right: 10px;
     width: 26px;
     height: 24px;
-    color: #fff;
-    background-color: blue;
+    color: ${({ colors }) => colors.modalTextColor};
+    background-color: ${({ colors }) => colors.userLogoBgColor};
     border-radius: 50%;
   }
   .userName {
@@ -24,23 +24,23 @@ const UserMenuStyled = styled.div`
     letter-spacing: 0.04em;
     padding-right: 15px;
     margin-right: 15px;
-    color: #fff;
-    border-right: 1px solid #fff;
+    color: ${({ colors }) => colors.modalTextColor};
+    border-right: 1px solid ${({ colors }) => colors.modalTextColor};
   }
   .iconLogOut {
     width: 18px;
     height: 18px;
-    fill: #fff;
+    fill: ${({ colors }) => colors.modalTextColor};
   }
   @media screen and (min-width: 768px) {
-    position: relative;
+    position: static;
 
     .userName {
-      color: black;
-      border-color: black;
+      color: ${({ colors }) => colors.secondaryTextColor};
+      border-color: ${({ colors }) => colors.secondaryTextColor};
     }
     .iconLogOut {
-      fill: black;
+      fill: ${({ colors }) => colors.secondaryTextColor};
     }
   }
 `;
