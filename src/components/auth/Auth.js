@@ -2,7 +2,7 @@ import React from "react";
 import { Formik } from "formik";
 import { AuthContainer } from "./AuthStyled";
 import sprite from "../../images/sprite.svg";
-import { googleLogin, login, register } from "../../redux/contacts/auth/authOperations";
+import { googleLogin, login, register } from "../../redux/auth/authOperations";
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 
