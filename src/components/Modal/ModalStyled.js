@@ -9,32 +9,34 @@ const ModalStyled = styled.div`
   display: flex;
   justify-content: ${({ modalName }) =>
     modalName === "header" ? "flex-end" : "center"};
-  /* z-index: 10000; */
-  /* overflow: auto; */
-
+  align-items: ${({ modalName }) => modalName !== "header" && "center"};
   background-color: ${({ colors }) => colors.modalBackdropBackground};
+
+  z-index: 10000;
+
   .modal {
-    padding-top: 80px;
     position: relative;
+    padding-top: ${({ modalName }) => modalName === "header" && "80px"};
     width: ${({ modalName }) => (modalName === "header" ? "274px" : "auto")};
-    background-color: ${({ colors }) => colors.primaryBgColor};
-    box-shadow: -15px 0px 20px ${({ colors }) => colors.modalBoxShadowColor};
+    background-color: ${({ modalName, colors }) =>
+      modalName === "header" ? colors.primaryBgColor : colors.modalTextColor};
+    box-shadow: ${({ modalName, colors }) =>
+      modalName === "header"
+        ? `-15px 0px 20px ${colors.modalBoxShadowColor}`
+        : `15px 15px 20px ${colors.modalBoxShadowColor}`};
+    border-radius: ${({ modalName }) => modalName !== "header" && "6px"};
   }
 
-  /* .btnModalClose {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: transparent;
-    border: none;
-  } */
   .btnModalCloseSvg {
     position: absolute;
     top: 20px;
     right: 20px;
     width: 20px;
     height: 20px;
-    fill: #ffffff;
+    /* fill: ${({ modalName, colors }) =>
+      modalName === "header"
+        ? colors.modalTextColor
+        : colors.primaryTextColor}; */
   }
 `;
 
