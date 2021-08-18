@@ -11,7 +11,9 @@ const NavigationStyled = styled.nav`
   }
   .navLink {
     font-size: 12px;
+    line-height: 1.25;
     font-weight: 500;
+    letter-spacing: 0.04em;
     text-decoration: none;
     color: ${({ colors }) => colors.modalTextColor};
   }
@@ -19,7 +21,9 @@ const NavigationStyled = styled.nav`
     color: ${({ colors }) => colors.primaryTextColor};
   }
 
-  @media screen and (min-width: 768px) {
+  /* @media screen and (min-width: 768px) {
+    .NavList {
+    }
     .navItems {
     }
     .navLink {
@@ -28,6 +32,31 @@ const NavigationStyled = styled.nav`
     }
     .activeNavLink {
       color: ${({ colors }) => colors.secondaryTextColor};
+    }
+  } */
+
+  @media screen and (min-width: 1280px) {
+    .NavList {
+      display: flex;
+    }
+
+    .navItems {
+      padding: 0 15px 0 15px;
+      border-right: 1px solid ${({ colors }) => colors.secondaryTextColor};
+    }
+    .navItems:last-child {
+      padding-right: 0;
+      border: none;
+    }
+    .navItems:first-child {
+      padding-left: 0;
+    }
+    .navLink {
+      text-decoration: none;
+      color: ${({ colors }) => colors.secondaryTextColor};
+    }
+    .activeNavLink {
+      color: ${({ colors }) => colors.primaryTextColor};
     }
   }
 `;
