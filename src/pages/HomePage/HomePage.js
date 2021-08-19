@@ -2,6 +2,8 @@ import { HomePageStyled } from "./HomePageStyled";
 import WeekTabs from "../../components/weekDayTime/weekTabs/WeekTabs";
 import WeekTabContent from "../../components/weekDayTime/weekTabContent/WeekTabContent";
 import CurrentWeekRange from "../../components/weekDayTime/currentWeekRange/CurrentWeekRange";
+import TaskToggle from "../../components/taskToggle/TaskToggle";
+
 import Footer from "../../components/footer/Footer";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router";
@@ -46,7 +48,10 @@ const HomePage = () => {
 
       <div className="right-side">
         <CurrentWeekRange />
+
         <WeekTabContent />
+          <TaskToggle />
+
         <Footer />
         {/* пока футер только для десктопа, подожду адаптивку от Тани  :) */}
       </div>
