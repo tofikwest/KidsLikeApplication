@@ -7,9 +7,7 @@ import LogoStyled from "./LogoStyled";
 const Logo = () => {
   const history = useHistory();
 
-  const onhandleClickLogo = () => {
-    history.push("/");
-  };
+  const onhandleClickLogo = () => history.push("/");
 
   return (
     <LogoStyled colors={colors} onClick={onhandleClickLogo}>

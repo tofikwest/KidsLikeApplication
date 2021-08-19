@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 export const WeekTabContentStyled = styled.div`
+  @media screen and (min-width: 768px) {
+    overflow-x: hidden;
+  }
   .notification {
     font-family: inherit;
     font-style: normal;
@@ -59,6 +62,7 @@ export const WeekTabContentStyled = styled.div`
     }
     @media screen and (min-width: 1280px) {
       transform: translateX(0);
+      width: 980px;
       margin-left: 0;
       margin-right: 0;
     }

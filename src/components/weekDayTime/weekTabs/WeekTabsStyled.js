@@ -15,6 +15,7 @@ export const WeekTabsStyled = styled.ul`
   @media screen and (min-width: 1280px) {
     //==========этот костыль нужно убрать
     background-color: transparent;
+
     //=========конец костыля
     flex-direction: column;
     align-items: flex-start;
