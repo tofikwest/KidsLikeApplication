@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const NavigationStyled = styled.nav`
+  margin-left: auto;
   .NavList {
     padding: 0;
     list-style: none;
@@ -20,20 +21,6 @@ const NavigationStyled = styled.nav`
   .activeNavLink {
     color: ${({ colors }) => colors.primaryTextColor};
   }
-
-  /* @media screen and (min-width: 768px) {
-    .NavList {
-    }
-    .navItems {
-    }
-    .navLink {
-      text-decoration: none;
-      color: ${({ colors }) => colors.primaryTextColor};
-    }
-    .activeNavLink {
-      color: ${({ colors }) => colors.secondaryTextColor};
-    }
-  } */
 
   @media screen and (min-width: 1280px) {
     .NavList {

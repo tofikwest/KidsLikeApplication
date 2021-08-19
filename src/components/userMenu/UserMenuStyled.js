@@ -34,6 +34,7 @@ const UserMenuStyled = styled.div`
   }
   @media screen and (min-width: 768px) {
     position: static;
+    margin-left: 40px;
 
     .userName {
       color: ${({ colors }) => colors.secondaryTextColor};

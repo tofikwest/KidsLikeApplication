@@ -2,6 +2,7 @@ import styled from "styled-components";
 const BalanceCounterStyled = styled.div`
   display: flex;
   align-items: center;
+  margin-left: 40px;
 
   .balanceItemBox {
     display: flex;
@@ -21,6 +22,12 @@ const BalanceCounterStyled = styled.div`
     line-height: 1.2;
     letter-spacing: 0.04em;
     color: ${({ colors }) => colors.primaryTextColor};
+  }
+  @media screen and (min-width: 768px) {
+    margin-left: 52px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-left: 42px;
   }
 `;
 
