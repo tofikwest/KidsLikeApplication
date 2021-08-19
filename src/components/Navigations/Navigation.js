@@ -1,8 +1,8 @@
 import React from "react";
 import { mainRoutes } from "../../routes/mainRoutes";
 import NavigationListItems from "./NavigationListItems";
-import { colors } from "../../general/styles/colors";
 import NavigationStyled from "./NavigationStyled";
+import { colors } from "../../general/styles/colors";
 
 const Navigation = () => {
   return (

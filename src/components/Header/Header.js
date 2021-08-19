@@ -1,5 +1,5 @@
-// import { useSelector } from "react-redux";
 import { useSelector } from "react-redux";
+import { authorizedUser } from "../../redux/auth/authSelectors";
 import Navigation from "../Navigations/Navigation";
 import Modal from "../Modal/Modal";
 import Logo from "../Logo/Logo";
@@ -14,7 +14,7 @@ import HeaderStyled from "./HeaderStyled";
 const Header = () => {
   const [state, setOpenModal] = useModal();
 
-  const isAuth = useSelector((state) => state.auth.isAuthenticated);
+  const isAuth = useSelector(authorizedUser);
 
   return (
     <>
