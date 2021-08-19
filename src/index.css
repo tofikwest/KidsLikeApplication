@@ -109,25 +109,6 @@ body {
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
 }
-.Section {
-  max-width: 100%;
-  margin: 0 auto;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-@media screen and (min-width: 767px) {
-  .Section {
-    padding-left: 90px;
-    padding-right: 90px;
-  }
-}
-@media screen and (min-width: 1279px) {
-  .Section {
-    padding-left: 50px;
-    padding-right: 50px;
-  }
-}
-
 .visually-hidden {
   position: absolute !important;
   clip: rect(1px 1px 1px 1px);
