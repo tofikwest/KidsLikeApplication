@@ -3,6 +3,7 @@ import {
   getCurrentUserSuccess,
   loginUserSuccess,
   registerUserSuccess,
+  signOutSuccess,
 } from "../auth/authActions";
 
 const additionalInfoReducer = createReducer(
@@ -35,11 +36,13 @@ const additionalInfoReducer = createReducer(
       rewardsGained: payload.week.rewardsGained,
       rewardsPlanned: payload.week.rewardsPlanned,
     }),
-    // [signOutUser]: () => ({
-    //   email: "",
-    //   displayName: "",
-    //   localId: "",
-    // }),
+    [signOutSuccess]: () => ({
+      userBalance: 0,
+      startWeekDate: "",
+      endWeekDate: "",
+      rewardsGained: 0,
+      rewardsPlanned: 0,
+    }),
   }
 );
 

@@ -1,5 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
+import { signOutSuccess } from "../auth/authActions";
 import {
   buyGiftsError,
   buyGiftsRequest,
@@ -12,7 +13,7 @@ import {
 const itemsReducer = createReducer([], {
   [getGiftsSuccess]: (_, { payload }) => payload,
   [buyGiftsSuccess]: (_, { payload }) => payload,
-  //   [signOutUser]: () => [],
+  [signOutSuccess]: () => [],
 });
 
 const isLoadingReducer = createReducer(false, {
@@ -22,7 +23,7 @@ const isLoadingReducer = createReducer(false, {
   [buyGiftsRequest]: () => true,
   [buyGiftsSuccess]: () => false,
   [buyGiftsError]: () => false,
-  //   [signOutUser]: () => false,
+  [signOutSuccess]: () => false,
 });
 
 const errorReducer = createReducer("", {
@@ -30,7 +31,7 @@ const errorReducer = createReducer("", {
   [getGiftsError]: (_, { payload }) => payload,
   [buyGiftsRequest]: () => "",
   [buyGiftsError]: (_, { payload }) => payload,
-  //   [signOutUser]: () => "",
+  [signOutSuccess]: () => "",
 });
 
 const giftsReducer = combineReducers({
