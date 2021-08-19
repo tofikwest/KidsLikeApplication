@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CurrentDay from "../currentDay/CurrentDay";
-import ProgresiveBar from "../progresiveBar/ProgresiveBar";
+import ProgresiveBar from "../../progresiveBar/ProgresiveBar";
 import { CurrentWeekRangeStyled } from "./CurrentWeekRangeStyled";
 import { useLocation } from "react-router";
 
