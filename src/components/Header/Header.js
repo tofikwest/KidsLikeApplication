@@ -10,18 +10,19 @@ import { colors } from "../../general/styles/colors";
 import sprite from "../../images/sprite.svg";
 
 import useHeaderModal from "../../hooks/useModal";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [state, setOpenModal] = useHeaderModal();
 
-  // const token = useSelector((state) => state.auth.tokens.idToken);
-  // console.log(token);
+  const isAuth = useSelector((state) => state.auth.isAuthenticated);
 
   return (
     <>
       <HeaderStyled colors={colors}>
         <Logo />
         <BalanceCounter />
+
         {state.width > state.breakPointNavigation ? (
           <Navigation />
         ) : (
@@ -29,11 +30,12 @@ const Header = () => {
             <use href={sprite + "#icon-menu"} />
           </svg>
         )}
-        {state.width > state.breakPointUserMenu && <UserMenu />}
+        {isAuth && state.width > state.breakPointUserMenu && <UserMenu />}
       </HeaderStyled>
+
       {state.isModalOpen && (
         <Modal handleCloseModal={setOpenModal} modalName={state.modalName}>
-          {state.width < state.breakPointUserMenu && <UserMenu />}
+          {isAuth && state.width < state.breakPointUserMenu && <UserMenu />}
           <Navigation />
         </Modal>
       )}
