@@ -1,6 +1,32 @@
 import styled from "styled-components";
 
 export const ProgresiveBarStyled = styled.div`
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .stats-wrapper {
+    margin-bottom: 61px;
+    display: flex;
+    justify-content: center;
+
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+      flex-direction: column-reverse;
+      align-items: center;
+      margin-bottom: 0;
+    }
+    @media screen and (min-width: 1280px) {
+      flex-direction: column;
+      margin-right: 50px;
+      justify-content: space-between;
+      padding-top: 40px;
+      /* padding-left: 110px;
+      padding-right: 50px; */
+      margin-bottom: 0;
+    }
+  }
   .stats {
     font-style: normal;
     font-weight: 500;
@@ -12,9 +38,18 @@ export const ProgresiveBarStyled = styled.div`
     @media screen and (max-width: 767px) {
       display: none;
     }
+    @media screen and (min-width: 768px) {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
   }
-  .info {
-    width: 100%;
+  .stats1 {
+    @media screen and (min-width: 768px) {
+      margin-top: 10px;
+    }
+    @media screen and (min-width: 1280px) {
+      margin-bottom: 10px;
+    }
   }
   .stats-number {
     font-style: normal;
@@ -28,8 +63,12 @@ export const ProgresiveBarStyled = styled.div`
   }
   .progressLibrary_wrapper {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     margin-top: 10px;
+    @media screen and (min-width: 768px) {
+      width: 350px;
+      margin-bottom: 20px;
+    }
   }
 
   .secondPoints {
