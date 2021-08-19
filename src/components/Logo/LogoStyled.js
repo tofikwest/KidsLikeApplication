@@ -3,6 +3,7 @@ import styled from "styled-components";
 const LogoStyled = styled.div`
   display: flex;
   align-items: center;
+  cursor: pointer;
   .logoTitle {
     font-size: 16px;
     line-height: 1.25;

@@ -1,11 +1,9 @@
 import styled from "styled-components";
 
 export const FooterStyled = styled.footer`
-  display: flex;
-  align-items: baseline;
-  justify-content: flex-end;
+  text-align: center;
 
-  margin: 50px 0px 40px;
+  margin: 40px 0px 25px;
 
   font-family: Montserrat;
   font-style: normal;
@@ -16,8 +14,23 @@ export const FooterStyled = styled.footer`
 
   color: #858598;
 
+  @media screen and (min-width: 768px) {
+    display: flex;
+    align-items: baseline;
+    /* justify-content: flex-end; */
+    justify-content: center;
+
+    margin: 50px 0px 40px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    justify-content: flex-end;
+  }
+
   .footerLogo {
-    padding-right: 10px;
+    @media screen and (min-width: 768px) {
+      padding-right: 10px;
+    }
   }
 
   .footerLogoIcon {
@@ -25,13 +38,17 @@ export const FooterStyled = styled.footer`
   }
 
   .footerSlogan {
-    margin: 0;
-    padding: 0 10px;
-    border-right: 1px solid #e3e2e7;
-    border-left: 1px solid #e3e2e7;
+    @media screen and (min-width: 768px) {
+      margin: 0;
+      padding: 0 10px;
+      border-right: 1px solid #e3e2e7;
+      border-left: 1px solid #e3e2e7;
+    }
   }
 
   .footerYear {
-    padding-left: 10px;
+    @media screen and (min-width: 768px) {
+      padding-left: 10px;
+    }
   }
 `;
