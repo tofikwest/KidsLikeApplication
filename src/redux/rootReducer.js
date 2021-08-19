@@ -6,6 +6,7 @@ import tasksReducer from "./tasks/tasksReducer";
 import additionalInfoReducer from "./additionalInfo/additionalInfoReducer";
 
 import storage from "redux-persist/lib/storage";
+import { locationReducer } from "./location/locationReducer";
 
 const authPersistConfig = {
   key: "auth",
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   gifts: giftsReducer,
   additionalInfo: additionalInfoReducer,
   user: "",
+  lastLocation: locationReducer,
 });
 
 export default rootReducer;

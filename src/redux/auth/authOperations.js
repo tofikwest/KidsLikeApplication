@@ -29,7 +29,7 @@ export const register = (user) => async (dispatch) => {
   dispatch(registerUserRequest());
   try {
     const response = await axios.post("/auth/register", user);
-    idToken.set(response.data.idToken);
+    idToken.set(response.data.token);
     dispatch(registerUserSuccess(response.data));
   } catch (error) {
     dispatch(registerUserError(error.message));
@@ -40,7 +40,7 @@ export const login = (user) => async (dispatch) => {
   dispatch(loginUserRequest());
   try {
     const response = await axios.post("/auth/login", user);
-    idToken.set(response.data.idToken);
+    idToken.set(response.data.token);
     dispatch(loginUserSuccess(response.data));
   } catch (error) {
     dispatch(loginUserError(error.message));
@@ -81,15 +81,12 @@ export const logOut = () => async (dispatch) => {
 
 export const getCurrentUser = () => async (dispatch, getState) => {
   const {
-    auth: {
-      tokens: { idToken: persistedToken },
-    },
+    auth: { token: persistedToken },
   } = getState();
 
   if (!persistedToken) {
     return;
   }
-
   idToken.set(persistedToken);
   dispatch(getCurrentUserRequest());
   try {
