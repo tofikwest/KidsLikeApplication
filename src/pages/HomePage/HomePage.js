@@ -1,7 +1,6 @@
 import { HomePageStyled } from "./HomePageStyled";
 import WeekTabs from "../../components/weekDayTime/weekTabs/WeekTabs";
 import WeekTabContent from "../../components/weekDayTime/weekTabContent/WeekTabContent";
-import CurrentWeekRange from "../../components/weekDayTime/currentWeekRange/CurrentWeekRange";
 
 import Footer from "../../components/footer/Footer";
 import { useState, useEffect } from "react";
@@ -46,12 +45,9 @@ const HomePage = () => {
       {state.width < 767 && <WeekTabs />}
 
       <div className="right-side">
-        <CurrentWeekRange />
-
         <WeekTabContent />
 
         <Footer />
-        {/* пока футер только для десктопа, подожду адаптивку от Тани  :) */}
       </div>
     </HomePageStyled>
   );

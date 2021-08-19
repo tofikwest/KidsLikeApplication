@@ -8,7 +8,7 @@ const ProgresiveBar = () => {
   let userPoints = 4;
   let countPoints = 16;
   if (countPoints) {
-    percent = parseFloat((userPoints / countPoints) * 100);
+    percent = parseInt((userPoints / countPoints) * 100);
   }
   if (userPoints === 0) {
     percent = 0;
@@ -16,8 +16,8 @@ const ProgresiveBar = () => {
 
   return (
     <ProgresiveBarStyled>
-      <div className="info">
-        <p className="stats">
+      <div className="stats-wrapper">
+        <p className="stats stats1">
           Заработано баллов за эту неделю:
           <span className="stats-number">{userPoints}</span>
         </p>
@@ -32,7 +32,7 @@ const ProgresiveBar = () => {
         <span className="secondPoints">
           {userPoints}/{countPoints}
         </span>
-        <Progress percent={percent > 100 ? 100 : percent} />
+        <Progress percent={percent} />
       </div>
     </ProgresiveBarStyled>
   );
