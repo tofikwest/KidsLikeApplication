@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import CardList from "../../components/cardList/CardList";
+import TaskAddIcon from "../../components/taskAddIcon/TaskAddIcon";
 import { createTaskOperation } from "../../redux/tasks/tasksOperations";
 
 const initialState = {
@@ -62,6 +64,10 @@ const PlanningPage = () => {
           Add contact
         </button>
       </form>
+
+      <CardList>
+        <TaskAddIcon />
+      </CardList>
     </>
   );
 };
