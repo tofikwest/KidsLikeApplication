@@ -4,7 +4,6 @@ const HeaderStyled = styled.header`
   position: fixed;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   width: 100%;
   padding: 17px 20px;
   background-color: ${({ colors }) => colors.modalTextColor};
@@ -15,10 +14,15 @@ const HeaderStyled = styled.header`
   .menuNavImg {
     width: 22px;
     height: 14px;
+    margin-left: auto;
   }
 
   @media screen and (min-width: 768px) {
     padding: 17px 94px;
+
+    .menuNavImg {
+      margin-left: 118px;
+    }
   }
   @media screen and (min-width: 1280px) {
     padding: 17px 50px;
