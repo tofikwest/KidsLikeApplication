@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router";
+// import { useSelector } from "react-redux";
 import Navigation from "../Navigations/Navigation";
 import Modal from "../Modal/Modal";
 import Logo from "../Logo/Logo";
@@ -10,37 +9,13 @@ import HeaderStyled from "./HeaderStyled";
 import { colors } from "../../general/styles/colors";
 import sprite from "../../images/sprite.svg";
 
-const initialState = {
-  width: window.innerWidth,
-  breakPointNavigation: 1279,
-  breakPointUserMenu: 767,
-  isModalOpen: false,
-  modalName: "header",
-};
+import useHeaderModal from "../../hooks/useModal";
 
 const Header = () => {
-  const [state, setState] = useState(initialState);
-  const location = useLocation();
+  const [state, setOpenModal] = useHeaderModal();
 
-  useEffect(() => {
-    window.addEventListener("resize", handleResizeWindow);
-    location && closeModalOnLocation();
-    return () => {
-      window.removeEventListener("resize", handleResizeWindow);
-    };
-  }, [location]);
-
-  const closeModalOnLocation = () => {
-    setState((prev) => ({ ...prev, isModalOpen: false }));
-  };
-
-  const handleResizeWindow = () => {
-    setState((prev) => ({ ...prev, width: window.innerWidth }));
-  };
-
-  const setOpenModal = () => {
-    setState((prev) => ({ ...prev, isModalOpen: !prev.isModalOpen }));
-  };
+  // const token = useSelector((state) => state.auth.tokens.idToken);
+  // console.log(token);
 
   return (
     <>

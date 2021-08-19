@@ -1,14 +1,12 @@
-import Card from "../card/Card";
-// import TaskStatusIcon from "../taskStatusIcon/TaskStatusIcon";
-import TaskToggle from "../taskToggle/TaskToggle";
+import Card from "./card/Card";
 import { CardListStyled } from "./CardListStyled";
 import { tasks } from "./TempData"; // временная замена ответу от бека
 
-const CardList = () => {
+const CardList = ({ children }) => {
   return (
     <CardListStyled>
       {tasks.map((task) => (
-        <Card key={task.id} {...task} children={<TaskToggle />} />
+        <Card key={task.id} {...task} children={children} />
       ))}
     </CardListStyled>
   );
