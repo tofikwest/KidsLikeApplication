@@ -10,7 +10,7 @@ import {
 } from "./giftsAction";
 
 const itemsReducer = createReducer([], {
-  [getGiftsSuccess]: (_, { payload }) => payload.data.ruGifts,
+  [getGiftsSuccess]: (_, { payload }) => payload,
   [buyGiftsSuccess]: (_, { payload }) => payload,
   //   [signOutUser]: () => [],
 });

@@ -1,4 +1,5 @@
 import { combineReducers, createReducer } from "@reduxjs/toolkit";
+import { loginUserSuccess, registerUserSuccess } from "../auth/authActions";
 import {
   getTasksRequest,
   getTasksSuccess,
@@ -15,7 +16,9 @@ import {
 } from "./tasksAction";
 
 const itemsReducer = createReducer([], {
-  [getTasksSuccess]: (state, { payload }) => payload,
+  [registerUserSuccess]: (_, { payload }) => payload.week.tasks,
+  [loginUserSuccess]: (_, { payload }) => payload.week.tasks,
+  [getTasksSuccess]: (_, { payload }) => payload,
   [createTaskSuccess]: (_, { payload }) =>
     console.log("createTaskSuccess", payload),
   [setDaysTaskSuccess]: (_, { payload }) =>
