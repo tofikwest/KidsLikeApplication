@@ -1,9 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { authorizedUser } from "../../redux/auth/authSelectors";
 
 const NavigationListItems = ({ name, path, exact, isPrivat, restricted }) => {
-  const isAuth = useSelector((state) => state.auth.isAuthenticated);
+  const isAuth = useSelector(authorizedUser);
 
   return (
     <>

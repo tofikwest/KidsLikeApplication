@@ -1,21 +1,20 @@
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import { authorizedUser } from "../../redux/auth/authSelectors";
 import Navigation from "../Navigations/Navigation";
 import Modal from "../Modal/Modal";
 import Logo from "../Logo/Logo";
 import BalanceCounter from "../BalanceCounter/BalanceCounter";
 import UserMenu from "../userMenu/UserMenu";
+import useModal from "../../hooks/useModal";
 
-import HeaderStyled from "./HeaderStyled";
 import { colors } from "../../general/styles/colors";
 import sprite from "../../images/sprite.svg";
-
-import useHeaderModal from "../../hooks/useModal";
-import { useSelector } from "react-redux";
+import HeaderStyled from "./HeaderStyled";
 
 const Header = () => {
-  const [state, setOpenModal] = useHeaderModal();
+  const [state, setOpenModal] = useModal();
 
-  const isAuth = useSelector((state) => state.auth.isAuthenticated);
+  const isAuth = useSelector(authorizedUser);
 
   return (
     <>

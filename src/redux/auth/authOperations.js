@@ -31,6 +31,7 @@ export const register = (user) => async (dispatch) => {
   dispatch(registerUserRequest());
   try {
     const response = await registerUser(user);
+    // console.log("response registerUser", response);
     idToken.set(response.data.token);
     dispatch(registerUserSuccess(response.data));
   } catch (error) {
@@ -42,7 +43,7 @@ export const login = (user) => async (dispatch) => {
   dispatch(loginUserRequest());
   try {
     const response = await loginUser(user);
-    console.log("response loginUser", response);
+    // console.log("response loginUser", response);
     idToken.set(response.data.token);
     dispatch(loginUserSuccess(response.data));
   } catch (error) {
@@ -62,7 +63,7 @@ export const googleLogin = () => async (dispatch, getState) => {
   dispatch(loginUserRequest());
   try {
     const response = await axios.get("/auth/google");
-    console.log(`response`, response);
+    // console.log(`response`, response);
     dispatch(loginUserSuccess(response.data));
   } catch (error) {
     dispatch(loginUserError(error.message));
@@ -73,8 +74,7 @@ export const googleLogin = () => async (dispatch, getState) => {
 export const logOut = () => async (dispatch) => {
   dispatch(signOutRequest());
   try {
-    // await axios.post("/auth/logout");
-    logoutUser();
+    await logoutUser();
     idToken.unset();
     dispatch(signOutSuccess());
   } catch (error) {
@@ -93,7 +93,8 @@ export const getCurrentUser = () => async (dispatch, getState) => {
   idToken.set(persistedToken);
   dispatch(getCurrentUserRequest());
   try {
-    const response = getUserInfo();
+    const response = await getUserInfo();
+    // console.log("response getUserInfo", response);
     dispatch(getCurrentUserSuccess(response.data));
   } catch (error) {
     dispatch(getCurrentUserError(error.message));

@@ -20,9 +20,10 @@ const initialState = {
 const WeekTabContent = ({ currentTasks }) => {
   const [state, setState] = useState(initialState);
   const location = useLocation();
+
   const date = "2021-08-19"; // Эту переменную передаю в пропы (имитация нажатия на день недели). Дальше дата проверяется на сегодняшнюю и если совпадает то таски можно закрывать, иначе учидеть закрыты ли они были за прошлые дни.
-  console.log(location);
-  console.log(state);
+  // console.log(location);
+  // console.log(state);
 
   useEffect(() => {
     window.addEventListener("resize", handleResizeWindow);
@@ -68,7 +69,6 @@ const WeekTabContent = ({ currentTasks }) => {
 
   return (
     <WeekTabContentStyled>
-      {/* {state.width >= 1280 && <CurrentDay />} */}
       {state.width < state.breakPoint ||
         (state.width >= 1280 && <CurrentDay />)}
       {/* <CurrentDay day={} date={} /> */}

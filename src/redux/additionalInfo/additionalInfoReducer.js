@@ -1,5 +1,10 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { loginUserSuccess } from "../auth/authActions";
+import {
+  getCurrentUserSuccess,
+  loginUserSuccess,
+  registerUserSuccess,
+  signOutSuccess,
+} from "../auth/authActions";
 
 const additionalInfoReducer = createReducer(
   {
@@ -10,6 +15,13 @@ const additionalInfoReducer = createReducer(
     rewardsPlanned: 0,
   },
   {
+    [registerUserSuccess]: (_, { payload }) => ({
+      userBalance: payload.user.balance,
+      startWeekDate: payload.week.startWeekDate,
+      endWeekDate: payload.week.endWeekDate,
+      rewardsGained: payload.week.rewardsGained,
+      rewardsPlanned: payload.week.rewardsPlanned,
+    }),
     [loginUserSuccess]: (_, { payload }) => ({
       userBalance: payload.user.balance,
       startWeekDate: payload.week.startWeekDate,
@@ -17,11 +29,20 @@ const additionalInfoReducer = createReducer(
       rewardsGained: payload.week.rewardsGained,
       rewardsPlanned: payload.week.rewardsPlanned,
     }),
-    // [signOutUser]: () => ({
-    //   email: "",
-    //   displayName: "",
-    //   localId: "",
-    // }),
+    [getCurrentUserSuccess]: (_, { payload }) => ({
+      userBalance: payload.user.balance,
+      startWeekDate: payload.week.startWeekDate,
+      endWeekDate: payload.week.endWeekDate,
+      rewardsGained: payload.week.rewardsGained,
+      rewardsPlanned: payload.week.rewardsPlanned,
+    }),
+    [signOutSuccess]: () => ({
+      userBalance: 0,
+      startWeekDate: "",
+      endWeekDate: "",
+      rewardsGained: 0,
+      rewardsPlanned: 0,
+    }),
   }
 );
 

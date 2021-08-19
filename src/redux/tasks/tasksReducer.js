@@ -1,5 +1,11 @@
 import { combineReducers, createReducer } from "@reduxjs/toolkit";
 import {
+  getCurrentUserSuccess,
+  loginUserSuccess,
+  registerUserSuccess,
+  signOutSuccess,
+} from "../auth/authActions";
+import {
   getTasksRequest,
   getTasksSuccess,
   getTasksError,
@@ -15,14 +21,17 @@ import {
 } from "./tasksAction";
 
 const itemsReducer = createReducer([], {
-  [getTasksSuccess]: (state, { payload }) => payload,
+  [registerUserSuccess]: (_, { payload }) => payload.week.tasks,
+  [loginUserSuccess]: (_, { payload }) => payload.week.tasks,
+  [getCurrentUserSuccess]: (_, { payload }) => payload.week.tasks,
+  [getTasksSuccess]: (_, { payload }) => payload,
   [createTaskSuccess]: (_, { payload }) =>
     console.log("createTaskSuccess", payload),
   [setDaysTaskSuccess]: (_, { payload }) =>
     console.log("daysProvidedTaskSuccess", payload),
   [toggleTaskSuccess]: (_, { payload }) =>
     console.log("toggleTaskSuccess", payload),
-  //   [signOutUser]: () => [],
+  [signOutSuccess]: () => [],
 });
 
 const isLoadingReducer = createReducer(false, {
@@ -38,7 +47,7 @@ const isLoadingReducer = createReducer(false, {
   [toggleTaskRequest]: () => true,
   [toggleTaskSuccess]: () => false,
   [toggleTaskError]: () => false,
-  //   [signOutUser]: () => false,
+  [signOutSuccess]: () => false,
 });
 
 const errorReducer = createReducer("", {
@@ -50,7 +59,7 @@ const errorReducer = createReducer("", {
   [setDaysTaskError]: (_, { payload }) => payload,
   [toggleTaskRequest]: () => "",
   [toggleTaskError]: (_, { payload }) => payload,
-  //   [signOutUser]: () => "",
+  [signOutSuccess]: () => "",
 });
 
 const tasksReducer = combineReducers({
