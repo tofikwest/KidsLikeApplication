@@ -51,7 +51,7 @@
 
 .contacts_img {
   margin-bottom: 20px;
-  object-fit: cover;
+  height: 287px;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -86,6 +86,7 @@
 }
 
 .contacts_possition_describe {
+  width: 228px;
   font-size: 12px;
   font-family: "Montserrat";
   font-style: normal;

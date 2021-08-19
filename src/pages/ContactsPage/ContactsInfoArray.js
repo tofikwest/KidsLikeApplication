@@ -1,32 +1,34 @@
-import member from "../../images/team/alexNepiyvoda.jpeg";
+import member from "../../images/team/alexNepiyvoda-squos.jpeg";
 import TofikHasanov from "../../images/team/tofikHasanov.jpeg";
-import TatianaD from "../../images/team/TatianaD.jpeg";
+import TatianaD from "../../images/team/Tatidan3-squos.jpeg";
+import Dima from "../../images/team/Dima-squos.jpeg";
+import Tolik from "../../images/team/Tolik-squos.jpeg";
+import LizaK from "../../images/team/lizaK-squos.jpeg";
+import sanyaK from "../../images/team/sanyaK-squos.jpeg";
+
 const ContactsInfoArray = [
   {
     avatar: TofikHasanov,
     name: "Tofik Hasanov",
     position: "Team Lead",
-    description:
-      "Lorem Ipsum является стандартной рыбой для текстов на латиницу с начала XVI века.",
-    contacts: "annexcies@gmail.com",
+    contacts: "tofikhasanov31@gmail.com",
+    description: "Архитектура всего проэкта, работа над страницей Contact",
     id: 1,
   },
   {
-    avatar: member,
+    avatar: Tolik,
     name: "Anatolij Dejneko",
     position: "Scrum master",
-    description:
-      "Lorem Ipsum является стандартной рыбой для текстов на латиницу с начала XVI века.",
+    description: "Redux, работа над страницей Planning, Awards",
     contacts: "anatoliideineko@gmail.com",
     id: 2,
   },
   {
-    avatar: member,
+    avatar: Dima,
     name: "Dmitry Gupanets",
     position: "Front-End Developer",
     description:
-      "Lorem Ipsum является стандартной рыбой для текстов на латиницу с начала XVI века.",
-    contacts: "dmgpnts@gmail.com",
+      "Полностью проработан компонент Card, Footer и кнопкой выбора дня недели, так же помогал с вкладкой планирования задач",
     id: 3,
   },
   {
@@ -34,26 +36,22 @@ const ContactsInfoArray = [
     name: "Tatiana Danyliuk",
     position: "Front-End Developer",
     description:
-      "Lorem Ipsum является стандартной рыбой для текстов на латиницу с начала XVI века.",
-    contacts: "t.danyliuk@gmail.com",
+      "Контейнерный компонент, так же дочерние компоненты: WeekTabs, WeekTabsContent",
     id: 4,
   },
   {
-    avatar: member,
-    name: "Kasyan Alexander",
+    avatar: sanyaK,
+    name: "Kasian Aleksandr",
     position: "Front-End Developer",
-    description:
-      "Lorem Ipsum является стандартной рыбой для текстов на латиницу с начала XVI века.",
-    contacts: "prostotak4tobrabotalo@gmail.com",
+    description: "Header компонент,  выстроил Routes, сделал модальное окно",
     id: 5,
   },
   {
-    avatar: member,
+    avatar: LizaK,
     name: "Yelyzaveta Kudelia",
     position: "Front-End Developer",
     description:
-      "Lorem Ipsum является стандартной рыбой для текстов на латиницу с начала XVI века.",
-    contacts: "bagiraliza21@gmail.com",
+      "Форма для ввода данных о пользователе, страница логонизации и регистрации",
     id: 6,
   },
   {
@@ -61,8 +59,7 @@ const ContactsInfoArray = [
     name: "Aleksandr Nepiyvoda",
     position: "Front-End Developer",
     description:
-      "Lorem Ipsum является стандартной рыбой для текстов на латиницу с начала XVI века.",
-    contacts: "aleksandr.nepijvoda@gmail.com",
+      "Компонент отображения прогресса, так же помогал с вкладкой планирования задач",
     id: 7,
   },
 ];
