@@ -67,4 +67,10 @@ export const WeekTabContentStyled = styled.div`
       margin-right: 0;
     }
   }
+
+  .cards-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 40px;
+  }
 `;

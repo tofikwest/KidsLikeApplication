@@ -1,6 +1,6 @@
 import { CardItemStyled } from "./CardStyled";
 
-const Card = ({ img, taskName, taskReward, children }) => {
+const Card = ({ imageUrl, title, reward, date, days, children }) => {
   function declOfNum(n, text) {
     n = Math.abs(n) % 100;
     const n1 = n % 10;
@@ -19,16 +19,16 @@ const Card = ({ img, taskName, taskReward, children }) => {
   return (
     <CardItemStyled>
       <div className="card">
-        <img className="card__image" src={img} alt={taskName} />
+        <img className="card__image" src={imageUrl} alt={title} />
         <div className="card__footer">
           <div className="card__info">
-            <h3 className="card__taskName">{taskName}</h3>
-            <span className="card__rewardTag">{`${taskReward} ${declOfNum(
-              taskReward,
-              ["балл", "балла", "баллов"]
-            )}`}</span>
+            <h3 className="card__taskName">{title}</h3>
+            <span className="card__rewardTag">{`${reward} ${declOfNum(reward, [
+              "балл",
+              "балла",
+              "баллов",
+            ])}`}</span>
           </div>
-
           {children}
         </div>
       </div>

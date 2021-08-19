@@ -6,8 +6,10 @@ import ProgresiveBar from "../../progresiveBar/ProgresiveBar";
 import { WeekTabContentStyled } from "./WeekTabContentStyled";
 import CardList from "../../cardList/CardList";
 import CurrentWeekRange from "../currentWeekRange/CurrentWeekRange";
-import TaskToggle from "../../taskToggle/TaskToggle";
 import { authorizedUser } from "../../../redux/auth/authSelectors";
+import TaskStatusIcon from "../../taskStatusIcon/TaskStatusIcon";
+import TaskToggle from "../../taskToggle/TaskToggle";
+import axios from "axios";
 
 const initialState = {
   search: "",
@@ -18,6 +20,7 @@ const initialState = {
 const WeekTabContent = ({ currentTasks }) => {
   const [state, setState] = useState(initialState);
   const location = useLocation();
+  const date = "2021-08-19"; // Эту переменную передаю в пропы (имитация нажатия на день недели). Дальше дата проверяется на сегодняшнюю и если совпадает то таски можно закрывать, иначе учидеть закрыты ли они были за прошлые дни.
   console.log(location);
   console.log(state);
 
@@ -30,6 +33,37 @@ const WeekTabContent = ({ currentTasks }) => {
 
   const handleResizeWindow = () => {
     setState((prev) => ({ ...prev, width: window.innerWidth }));
+  };
+
+  // Пока тут ибо где еще хз
+
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    getTasks();
+  }, []);
+
+  const getTasks = async () => {
+    const res = await axios
+      .get("/user/info")
+      .then((res) => res.data.week.tasks);
+
+    setTasks(res);
+  };
+
+  const getCurrentDate = () => {
+    const todayDate = new Date();
+    const fullYear = todayDate.getFullYear();
+    let month = (todayDate.getMonth() + 1).toString();
+    let day = todayDate.getDate();
+
+    const dateString =
+      fullYear +
+      "-" +
+      (month > 1 && month < 10 ? 0 + month : month) +
+      "-" +
+      day;
+    return dateString;
   };
 
   return (
@@ -52,10 +86,15 @@ const WeekTabContent = ({ currentTasks }) => {
           <img src={planer} alt="children" className="children-img" />
         </>
       ) : (
-        <CardList>
-          <TaskToggle />
-        </CardList>
-        // <CardList />
+        <div className="cards-wrapper">
+          <CardList date={date} tasks={tasks}>
+            {date === getCurrentDate() ? (
+              <TaskToggle state={tasks} />
+            ) : (
+              <TaskStatusIcon />
+            )}
+          </CardList>
+        </div>
       )}
     </WeekTabContentStyled>
   );
