@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const CurrentDayStyled = styled.div`
   margin-bottom: 94px;
+
   @media screen and (min-width: 768px) {
     display: flex;
     justify-content: center;
@@ -9,7 +10,7 @@ export const CurrentDayStyled = styled.div`
   }
   @media screen and (min-width: 1280px) {
     margin-bottom: 0;
-    background-color: red;
+    background-color: yellow;
     flex-direction: column;
   }
 

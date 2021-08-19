@@ -16,8 +16,8 @@ const initialState = {
 const WeekTabContent = ({ currentTasks }) => {
   const [state, setState] = useState(initialState);
   const location = useLocation();
-  console.log(location);
-  console.log(state);
+  // console.log(location);
+  // console.log(state);
 
   useEffect(() => {
     window.addEventListener("resize", handleResizeWindow);
@@ -32,7 +32,6 @@ const WeekTabContent = ({ currentTasks }) => {
 
   return (
     <WeekTabContentStyled>
-      {/* {state.width >= 1280 && <CurrentDay />} */}
       {state.width < state.breakPoint ||
         (state.width >= 1280 && <CurrentDay />)}
       {/* <CurrentDay day={} date={} /> */}
