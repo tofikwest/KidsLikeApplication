@@ -1,6 +1,4 @@
 import { combineReducers, createReducer } from "@reduxjs/toolkit";
-import persistReducer from "redux-persist/es/persistReducer";
-import storage from "redux-persist/lib/storage";
 
 import {
   registerUserRequest,
@@ -12,34 +10,27 @@ import {
   signOutRequest,
   signOutSuccess,
   signOutError,
+  getCurrentUserSuccess,
+  getCurrentUserError,
 } from "./authActions";
 
-const authReducerPersistConfig = {
-  key: "auth",
-  storage: storage,
-  whitelist: ["idToken"],
+const initialUserState = {
+  name: null,
+  email: null,
 };
 
-const tokensReducer = createReducer(
-  {
-    idToken: "",
-    refreshToken: "",
-  },
-  {
-    [registerUserSuccess]: (_, { payload }) => ({
-      idToken: payload.idToken,
-      refreshToken: payload.refreshToken,
-    }),
-    [loginUserSuccess]: (_, { payload }) => ({
-      idToken: payload.idToken,
-      refreshToken: payload.refreshToken,
-    }),
-    [signOutSuccess]: () => ({
-      idToken: "",
-      refreshToken: "",
-    }),
-  }
-);
+const user = createReducer(initialUserState, {
+  [registerUserSuccess]: (_, { payload }) => payload.user,
+  [loginUserSuccess]: (_, { payload }) => payload.user,
+  [signOutSuccess]: () => initialUserState,
+  [getCurrentUserSuccess]: (_, { payload }) => payload,
+});
+const token = createReducer(null, {
+  [registerUserSuccess]: (_, { payload }) => payload.token,
+  [loginUserSuccess]: (_, { payload }) => payload.token,
+  [signOutSuccess]: () => null,
+});
+
 const loading = createReducer(false, {
   [registerUserRequest]: () => true,
   [registerUserSuccess]: () => false,
@@ -64,10 +55,20 @@ const error = createReducer(null, {
   [signOutError]: setError,
 });
 
-const authReducer = combineReducers({
-  tokens: persistReducer(authReducerPersistConfig, tokensReducer),
+const isAuthenticated = createReducer(false, {
+  [registerUserSuccess]: () => true,
+  [loginUserSuccess]: () => true,
+  [getCurrentUserSuccess]: () => true,
+  [registerUserError]: () => false,
+  [loginUserError]: () => false,
+  [getCurrentUserError]: () => false,
+  [signOutSuccess]: () => false,
+});
+
+export default combineReducers({
+  user,
+  isAuthenticated,
+  token,
   loading,
   error,
 });
-
-export default authReducer;
