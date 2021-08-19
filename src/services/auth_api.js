@@ -1,11 +1,26 @@
 import axios from "axios";
 
-const baseURL = "https://kidslikev1.herokuapp.com/";
+axios.defaults.baseURL = "https://kidslikev1.herokuapp.com";
 
 export const registerUser = async (user) => {
   try {
-    const res = await axios.post(baseURL + "/auth/register", user);
-    console.log("res", res);
+    return await axios.post("/auth/register", user);
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const loginUser = async (user) => {
+  try {
+    return await axios.post("/auth/login", user);
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const logoutUser = async () => {
+  try {
+    return await axios.post("/auth/logout");
   } catch (error) {
     throw error;
   }

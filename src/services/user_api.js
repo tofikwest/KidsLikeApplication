@@ -4,8 +4,7 @@ axios.defaults.baseURL = "https://kidslikev1.herokuapp.com";
 
 export const getUserInfo = async () => {
   try {
-    const res = await axios.get("/user/info");
-    console.log("res", res);
+    return await axios.get("/user/info");
   } catch (error) {
     throw error;
   }
