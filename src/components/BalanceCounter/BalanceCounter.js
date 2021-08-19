@@ -5,8 +5,11 @@ import BalanceCounterStyled from "./BalanceCounterStyled";
 const BalanceCounter = () => {
   return (
     <BalanceCounterStyled colors={colors}>
-      <span className="balanceItems">Баланс</span>
-      <span className="balanceItems">баллов:</span>
+      <div className="balanceItemBox">
+        <span className="balanceItems">Баланс</span>
+        <span className="balanceItems">баллов:</span>
+      </div>
+      <span className="balanceCount">0</span>
     </BalanceCounterStyled>
   );
 };
