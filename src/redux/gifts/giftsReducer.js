@@ -10,10 +10,8 @@ import {
 } from "./giftsAction";
 
 const itemsReducer = createReducer([], {
-  [getGiftsSuccess]: (_, { payload }) =>
-    console.log("getGiftsSuccess", payload),
-  [buyGiftsSuccess]: (_, { payload }) =>
-    console.log("buyGiftsSuccess", payload),
+  [getGiftsSuccess]: (_, { payload }) => payload.data.ruGifts,
+  [buyGiftsSuccess]: (_, { payload }) => payload,
   //   [signOutUser]: () => [],
 });
 
