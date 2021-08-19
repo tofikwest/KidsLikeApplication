@@ -109,7 +109,6 @@ body {
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
 }
-
 .visually-hidden {
   position: absolute !important;
   clip: rect(1px 1px 1px 1px);
