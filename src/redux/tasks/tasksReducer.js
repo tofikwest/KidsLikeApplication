@@ -15,8 +15,7 @@ import {
 } from "./tasksAction";
 
 const itemsReducer = createReducer([], {
-  [getTasksSuccess]: (_, { payload }) =>
-    console.log("createTaskSuccess", payload),
+  [getTasksSuccess]: (state, { payload }) => payload,
   [createTaskSuccess]: (_, { payload }) =>
     console.log("createTaskSuccess", payload),
   [setDaysTaskSuccess]: (_, { payload }) =>

@@ -10,13 +10,13 @@ const additionalInfoReducer = createReducer(
     rewardsPlanned: 0,
   },
   {
-    // [loginUserSuccess]: (_, { payload }) => ({
-    //   userBalance: payload.user.balance,
-    //   startWeekDate: payload.week.startWeekDate,
-    //   endWeekDate: payload.week.endWeekDate,
-    //   rewardsGained: payload.week.rewardsGained,
-    //   rewardsPlanned: payload.week.rewardsPlanned,
-    // }),
+    [loginUserSuccess]: (_, { payload }) => ({
+      userBalance: payload.user.balance,
+      startWeekDate: payload.week.startWeekDate,
+      endWeekDate: payload.week.endWeekDate,
+      rewardsGained: payload.week.rewardsGained,
+      rewardsPlanned: payload.week.rewardsPlanned,
+    }),
     // [signOutUser]: () => ({
     //   email: "",
     //   displayName: "",
