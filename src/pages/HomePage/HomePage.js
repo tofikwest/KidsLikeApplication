@@ -50,7 +50,7 @@ const HomePage = () => {
         <CurrentWeekRange />
 
         <WeekTabContent />
-          <TaskToggle />
+        <TaskToggle />
 
         <Footer />
         {/* пока футер только для десктопа, подожду адаптивку от Тани  :) */}
