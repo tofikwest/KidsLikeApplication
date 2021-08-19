@@ -1,12 +1,16 @@
 import styled from "styled-components";
 
 const HeaderStyled = styled.header`
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
   padding: 17px 20px;
+  background-color: ${({ colors }) => colors.modalTextColor};
+  box-shadow: 0px 2px 4px ${({ colors }) => colors.modalBoxShadowColor};
 
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+  z-index: 100;
 
   .menuNavImg {
     width: 22px;
