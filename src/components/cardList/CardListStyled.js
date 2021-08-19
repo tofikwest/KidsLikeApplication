@@ -3,9 +3,11 @@ import styled from "styled-components";
 export const CardListStyled = styled.ul`
   display: flex;
   flex-wrap: wrap;
+  align-self: flex-end;
 
   margin-left: auto;
   margin-right: auto;
+  margin-inline-end: 0;
 
   width: 280px; //temporary fixed width
   margin-top: -20px;

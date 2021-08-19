@@ -39,4 +39,10 @@ export const HomePageStyled = styled.div`
     width: 172px;
     /* margin-right: 28px; */
   }
+
+  .cards-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 40px;
+  }
 `;

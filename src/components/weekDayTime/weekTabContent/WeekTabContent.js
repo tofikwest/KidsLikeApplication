@@ -4,8 +4,10 @@ import planer from "../../../images/planer.png";
 import CurrentDay from "../currentDay/CurrentDay";
 import ProgresiveBar from "../../progresiveBar/ProgresiveBar";
 import { WeekTabContentStyled } from "./WeekTabContentStyled";
-// import CardList from "../../components/cardList/CardList";
+import CardList from "../../cardList/CardList";
 import CurrentWeekRange from "../currentWeekRange/CurrentWeekRange";
+import TaskToggle from "../../taskToggle/TaskToggle";
+import { authorizedUser } from "../../../redux/auth/authSelectors";
 
 const initialState = {
   search: "",
@@ -41,7 +43,7 @@ const WeekTabContent = ({ currentTasks }) => {
 
       <CurrentWeekRange />
 
-      {!currentTasks ? (
+      {!authorizedUser ? (
         <>
           <p className="notification">На этот день задач нет</p>
           <button type="button" className="home-button">
@@ -50,7 +52,9 @@ const WeekTabContent = ({ currentTasks }) => {
           <img src={planer} alt="children" className="children-img" />
         </>
       ) : (
-        <p>CardList</p>
+        <CardList>
+          <TaskToggle />
+        </CardList>
         // <CardList />
       )}
     </WeekTabContentStyled>
