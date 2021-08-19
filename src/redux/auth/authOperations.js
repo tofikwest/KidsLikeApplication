@@ -1,6 +1,7 @@
 import axios from "axios";
 import { loginUser, logoutUser, registerUser } from "../../services/auth_api";
 import { getUserInfo } from "../../services/user_api";
+import { getGiftsOperation } from "../gifts/giftOperations";
 import {
   registerUserRequest,
   registerUserSuccess,
@@ -44,6 +45,9 @@ export const login = (user) => async (dispatch) => {
   try {
     const response = await loginUser(user);
     // console.log("response loginUser", response);
+    const response2 = await getGiftsOperation();
+    console.log("response getGiftsOperation", response2);
+
     idToken.set(response.data.token);
     dispatch(loginUserSuccess(response.data));
   } catch (error) {
