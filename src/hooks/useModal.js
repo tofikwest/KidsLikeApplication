@@ -21,44 +21,16 @@ const useModal = () => {
     };
   }, [location]);
 
-  const closeModalOnLocation = () => {
+  const closeModalOnLocation = () =>
     setState((prev) => ({ ...prev, isModalOpen: false }));
-  };
 
-  const handleResizeWindow = () => {
+  const handleResizeWindow = () =>
     setState((prev) => ({ ...prev, width: window.innerWidth }));
-  };
 
-  const setOpenModal = () => {
+  const setOpenModal = () =>
     setState((prev) => ({ ...prev, isModalOpen: !prev.isModalOpen }));
-  };
 
-  return [state, setOpenModal];
+  return [state, setOpenModal, closeModalOnLocation];
 };
 
 export default useModal;
-
-// ????????????????????????instruction how to use modal?????????????????????????????
-
-// import useHeaderModal from "../../hooks/useModal";
-// import Modal from "../../components/Modal/Modal";
-
-// const ContactsPage = () => {
-//   const [state, setOpenModal] = useHeaderModal();
-
-//   return (
-//     <>
-//       <h3 onClick={setOpenModal}>test modal</h3>;
-
-//       {state.isModalOpen && (
-//         <Modal handleCloseModal={setOpenModal}>
-//           <h2>very-good</h2>
-//           <p>
-//             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur
-//           </p>
-//         </Modal>
-//       )}
-//     </>
-//   );
-// };
-// export default ContactsPage;
