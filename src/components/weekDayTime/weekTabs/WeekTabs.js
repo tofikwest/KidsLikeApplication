@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { WeekTabsStyled } from "./WeekTabsStyled";
 import { useLocation } from "react-router";
+import { WeekTabsData } from "./WeekTabsData";
 
 const initialState = {
   search: "",
@@ -11,8 +12,7 @@ const initialState = {
 const WeekTabs = () => {
   const [state, setState] = useState(initialState);
   const location = useLocation();
-  console.log(location);
-  console.log(state);
+  // console.log(location);
 
   useEffect(() => {
     window.addEventListener("resize", handleResizeWindow);
@@ -26,24 +26,24 @@ const WeekTabs = () => {
   };
 
   const handleClick = (e) => {
-    setState((prev) => ({ ...prev, search: e.target.value }));
+    const activeBtn = document.querySelector(
+      `button[value=${e.currentTarget.value}]`
+    );
+    const prevActiveBtn = document.querySelector(
+      `button[class="weekDays-listItem weekDays-active"]`
+    );
 
-    const activeBtn = document.querySelector(`button[value=${e.target.value}]`);
-
-    if (e.currentTarget === e.target) {
+    if (e.currentTarget === activeBtn) {
+      prevActiveBtn?.setAttribute("class", "weekDays-listItem");
       activeBtn.setAttribute("class", "weekDays-listItem weekDays-active");
+      setState((prev) => ({ ...prev, search: activeBtn.value }));
+      // console.log(state.search);
+      //тут лежит день недели на английском
     }
-    console.log(activeBtn);
-    //==================================================
-    //нужно снять активный класс с неактивной кнопки
-    if (e.currentTarget !== e.target) {
-      activeBtn.setAttribute("class", "weekDays-listItem");
-    }
-    //==================================================
-    //тут лежит день недели на английском
-    //нужен axios & render
+    // console.log(activeBtn);
   };
 
+  // нужен ли reset?
   // const reset = () => {
   //   setState({ ...initialState });
   // };
@@ -51,63 +51,21 @@ const WeekTabs = () => {
   return (
     <>
       <WeekTabsStyled>
-        <button
-          type="button"
-          value="tuesday"
-          onClick={handleClick}
-          className="weekDays-listItem"
-        >
-          {state.width > state.breakPoint ? "Понедельник" : "ПН"}
-        </button>
-
-        <button
-          type="button"
-          value="tuesday"
-          onClick={handleClick}
-          className="weekDays-listItem"
-        >
-          {state.width > state.breakPoint ? "Вторник" : "ВТ"}
-        </button>
-        <button
-          type="button"
-          value="wednesday"
-          onClick={handleClick}
-          className="weekDays-listItem"
-        >
-          {state.width > state.breakPoint ? "Среда" : "СР"}
-        </button>
-        <button
-          type="button"
-          value="thursday"
-          onClick={handleClick}
-          className="weekDays-listItem"
-        >
-          {state.width > state.breakPoint ? "Четверг" : "ЧТ"}
-        </button>
-        <button
-          type="button"
-          value="friday"
-          onClick={handleClick}
-          className="weekDays-listItem weekDays-active"
-        >
-          {state.width > state.breakPoint ? "Пятница" : "ПТ"}
-        </button>
-        <button
-          type="button"
-          value="saturday"
-          onClick={handleClick}
-          className="weekDays-listItem"
-        >
-          {state.width > state.breakPoint ? "Суббота" : "СБ"}
-        </button>
-        <button
-          type="button"
-          value="sunday"
-          onClick={handleClick}
-          className="weekDays-listItem"
-        >
-          {state.width > state.breakPoint ? "Воскресенье" : "ВС"}
-        </button>
+        {WeekTabsData.map(({ dayFull, dayShort, search }) => (
+          <button
+            key={dayShort}
+            type="button"
+            value={search}
+            onClick={handleClick}
+            className="weekDays-listItem"
+          >
+            {state.width >= state.breakPoint ? (
+              <span>{dayFull}</span>
+            ) : (
+              <span>{dayShort}</span>
+            )}
+          </button>
+        ))}
       </WeekTabsStyled>
     </>
   );
