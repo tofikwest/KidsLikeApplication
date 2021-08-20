@@ -12,7 +12,7 @@ export const getGiftsOperation = () => async (dispatch, getState) => {
   try {
     dispatch(getGiftsRequest());
     const res = await getAllGifts();
-    dispatch(getGiftsSuccess(res));
+    dispatch(getGiftsSuccess(res.data));
   } catch (error) {
     dispatch(getGiftsError(error.message));
   }
@@ -22,7 +22,7 @@ export const buyGiftOperation = (giftIds) => async (dispatch, getState) => {
   try {
     dispatch(buyGiftsRequest());
     const res = await buyGiftIds(giftIds);
-    dispatch(buyGiftsSuccess(res));
+    dispatch(buyGiftsSuccess(res.data));
   } catch (error) {
     dispatch(buyGiftsError(error.message));
   }

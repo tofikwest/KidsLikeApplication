@@ -16,8 +16,9 @@ const LogOutModalStyled = styled.div`
     width: 100px;
     padding: 5px;
     background-color: ${({ colors }) => colors.primaryBgColor};
-
+    border: none;
     border-radius: 6px;
+    cursor: pointer;
   }
   .userModalBtn:hover,
   :focus {
@@ -28,11 +29,7 @@ const LogOutModalStyled = styled.div`
   }
   .userModalBtn:first-child {
     margin-right: 5px;
-    /* border: 2px solid green; */
   }
-  /* .userModalBtn:not(:first-child) {
-    border: 2px solid red;
-  } */
 `;
 
 export default LogOutModalStyled;
