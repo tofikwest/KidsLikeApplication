@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const AuthContainer = styled.div`
-  padding: 100px 20px;
+  padding: 60px 0px;
   font-size: 12px;
   font-weight: 400;
   line-height: 1.25;
@@ -24,8 +24,8 @@ export const AuthContainer = styled.div`
   .user-form {
     display: flex;
     flex-direction: column;
-    width: 280px;
-    padding: 10px;
+    /* width: 280px; */
+    /* padding: 10px; */
     align-self: center;
   }
   .user-label {
@@ -37,9 +37,8 @@ export const AuthContainer = styled.div`
     width: 100%;
     outline: none;
     padding-left: 8px;
-
-    /* background-color: #f6f7fb;
-    box-shadow: inset 0px 1px rgba(0, 0, 0, 0.15); */
+    font-family: "Montserrat";
+    background-color: #f6f7fb /* box-shadow: inset 0px 1px rgba(0, 0, 0, 0.15); */ * /;
   }
   .user-input:focus +,
   .user-input:not(:placeholder-shown) {
@@ -95,5 +94,9 @@ export const AuthContainer = styled.div`
     font-size: 14px;
     cursor: pointer;
     margin-bottom: 30px;
+    background-color: #f6f7fb;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
   }
 `;
