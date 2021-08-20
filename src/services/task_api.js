@@ -2,13 +2,13 @@ import axios from "axios";
 
 axios.defaults.baseURL = "https://kidslikev1.herokuapp.com";
 
-export const getActiveTasks = async () => {
-  try {
-    return await axios.patch("task/active/");
-  } catch (error) {
-    throw error;
-  }
-};
+// export const getActiveTasks = async () => {
+//   try {
+//     return await axios.patch("task/active/");
+//   } catch (error) {
+//     throw error;
+//   }
+// };
 
 export const createNewTask = async (task) => {
   try {
