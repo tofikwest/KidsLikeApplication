@@ -9,7 +9,9 @@ import CurrentWeekRange from "../currentWeekRange/CurrentWeekRange";
 import { authorizedUser } from "../../../redux/auth/authSelectors";
 import TaskStatusIcon from "../../taskStatusIcon/TaskStatusIcon";
 import TaskToggle from "../../taskToggle/TaskToggle";
-import axios from "axios";
+import { getTasksOperation } from "../../../redux/tasks/tasksOperations";
+import { useSelector } from "react-redux";
+import { getTasks } from "../../../redux/tasks/tasksSelector";
 
 const initialState = {
   search: "",
@@ -21,7 +23,7 @@ const WeekTabContent = ({ currentTasks }) => {
   const [state, setState] = useState(initialState);
   const location = useLocation();
 
-  const date = "2021-08-19"; // Эту переменную передаю в пропы (имитация нажатия на день недели). Дальше дата проверяется на сегодняшнюю и если совпадает то таски можно закрывать, иначе учидеть закрыты ли они были за прошлые дни.
+  const date = "Thursday"; // Эту переменную передаю в пропы (имитация нажатия на день недели). Дальше дата проверяется на сегодняшнюю и если совпадает то таски можно закрывать, иначе учидеть закрыты ли они были за прошлые дни.
   // console.log(location);
   // console.log(state);
 
@@ -37,35 +39,45 @@ const WeekTabContent = ({ currentTasks }) => {
   };
 
   // Пока тут ибо где еще хз
-
-  const [tasks, setTasks] = useState([]);
+  const tasks = useSelector(getTasks);
 
   useEffect(() => {
-    getTasks();
+    getTasksOperation();
   }, []);
 
-  const getTasks = async () => {
-    const res = await axios
-      .get("/user/info")
-      .then((res) => res.data.week.tasks);
+  // const getCurrentDate = () => {
+  //   const todayDate = new Date();
+  //   const fullYear = todayDate.getFullYear();
+  //   let month = (todayDate.getMonth() + 1).toString();
+  //   let day = todayDate.getDate();
 
-    setTasks(res);
+  //   const dateString =
+  //     fullYear +
+  //     "-" +
+  //     (month > 1 && month < 10 ? 0 + month : month) +
+  //     "-" +
+  //     day;
+  //   return dateString;
+  // };
+
+  const getCurrentDateId = () => {
+    const date = new Date();
+    // let options = { weekday: "long" };
+    // const weekday = new Intl.DateTimeFormat("en-US", options).format(date);
+    const weekday = date.getDay();
+
+    if (weekday === 0) return 6;
+    else return weekday - 1;
   };
 
-  const getCurrentDate = () => {
-    const todayDate = new Date();
-    const fullYear = todayDate.getFullYear();
-    let month = (todayDate.getMonth() + 1).toString();
-    let day = todayDate.getDate();
-
-    const dateString =
-      fullYear +
-      "-" +
-      (month > 1 && month < 10 ? 0 + month : month) +
-      "-" +
-      day;
-    return dateString;
+  const getCurrentDateName = () => {
+    const date = new Date();
+    let options = { weekday: "long" };
+    const weekday = new Intl.DateTimeFormat("en-US", options).format(date);
+    return weekday;
   };
+
+  console.log(`tasks`, tasks);
 
   return (
     <WeekTabContentStyled>
@@ -88,8 +100,8 @@ const WeekTabContent = ({ currentTasks }) => {
       ) : (
         <div className="cards-wrapper">
           <CardList date={date} tasks={tasks}>
-            {date === getCurrentDate() ? (
-              <TaskToggle state={tasks} />
+            {date === getCurrentDateName() ? (
+              <TaskToggle />
             ) : (
               <TaskStatusIcon />
             )}

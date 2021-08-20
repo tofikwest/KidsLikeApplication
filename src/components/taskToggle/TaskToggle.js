@@ -5,11 +5,12 @@ import { ReactComponent as ThickIcon } from "../../images/thick.svg";
 // this component should be stateless!
 // MUST recieve METHOD to change the state.
 
-const TaskToggle = () => {
-  const [taskState, setTaskState] = useState(false);
-
-  const onTaskStateToggle = () => {
-    setTaskState((prevState) => !prevState);
+const TaskToggle = (dayId) => {
+  // const [taskState, setTaskState] = useState(false);
+  console.log(dayId);
+  const onTaskStateToggle = (e) => {
+    // setTaskState((prevState) => !prevState);
+    console.log(`e.target.checked`, e.target.checked);
   };
 
   return (
@@ -24,7 +25,7 @@ const TaskToggle = () => {
       handleDiameter={14}
       boxShadow="0px 1px 1px rgba(0, 0, 0, 0.25)"
       onChange={onTaskStateToggle}
-      checked={taskState}
+      checked={dayId.isCompleted}
     ></Switch>
   );
 };
