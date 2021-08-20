@@ -30,7 +30,7 @@ const useModal = () => {
   const setOpenModal = () =>
     setState((prev) => ({ ...prev, isModalOpen: !prev.isModalOpen }));
 
-  return [state, setOpenModal, closeModalOnLocation];
+  return [state, setOpenModal];
 };
 
 export default useModal;
