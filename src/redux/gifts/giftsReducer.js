@@ -11,7 +11,8 @@ import {
 } from "./giftsAction";
 
 const itemsReducer = createReducer([], {
-  [getGiftsSuccess]: (_, { payload }) => payload,
+  [getGiftsSuccess]: (_, { payload }) => payload.ruGifts,
+
   [buyGiftsSuccess]: (state, { payload }) =>
     state.map((gift) =>
       payload.purchasedGiftIds.includes(gift.id)
@@ -19,6 +20,9 @@ const itemsReducer = createReducer([], {
         : gift
     ),
   // (_, { payload }) => payload,
+
+  [buyGiftsSuccess]: (_, { payload }) => payload,
+
   [signOutSuccess]: () => [],
 });
 
