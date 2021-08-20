@@ -5,19 +5,25 @@ import {
   buyGiftsError,
   buyGiftsRequest,
   buyGiftsSuccess,
-  getGifstRequest,
+  getGiftsRequest,
   getGiftsError,
   getGiftsSuccess,
 } from "./giftsAction";
 
 const itemsReducer = createReducer([], {
   [getGiftsSuccess]: (_, { payload }) => payload,
-  [buyGiftsSuccess]: (_, { payload }) => payload,
+  [buyGiftsSuccess]: (state, { payload }) =>
+    state.map((gift) =>
+      payload.purchasedGiftIds.includes(gift.id)
+        ? { ...gift, isSelected: !gift.isSelected }
+        : gift
+    ),
+  // (_, { payload }) => payload,
   [signOutSuccess]: () => [],
 });
 
 const isLoadingReducer = createReducer(false, {
-  [getGifstRequest]: () => true,
+  [getGiftsRequest]: () => true,
   [getGiftsSuccess]: () => false,
   [getGiftsError]: () => false,
   [buyGiftsRequest]: () => true,
@@ -27,7 +33,7 @@ const isLoadingReducer = createReducer(false, {
 });
 
 const errorReducer = createReducer("", {
-  [getGifstRequest]: () => "",
+  [getGiftsRequest]: () => "",
   [getGiftsError]: (_, { payload }) => payload,
   [buyGiftsRequest]: () => "",
   [buyGiftsError]: (_, { payload }) => payload,

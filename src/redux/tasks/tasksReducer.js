@@ -25,12 +25,14 @@ const itemsReducer = createReducer([], {
   [loginUserSuccess]: (_, { payload }) => payload.week.tasks,
   [getCurrentUserSuccess]: (_, { payload }) => payload.week.tasks,
   [getTasksSuccess]: (_, { payload }) => payload,
-  [createTaskSuccess]: (_, { payload }) =>
-    console.log("createTaskSuccess", payload),
+  [createTaskSuccess]: (state, { payload }) => [...state, payload],
   [setDaysTaskSuccess]: (_, { payload }) =>
     console.log("daysProvidedTaskSuccess", payload),
+  // (state, { payload }) => state.map(task => task.id === payload ? { ...task, days.isActive: !task.days.isActive} : task),
   [toggleTaskSuccess]: (_, { payload }) =>
     console.log("toggleTaskSuccess", payload),
+  // (state, { payload }) => state.map(task => {
+  // (task.id === payload.id ? { ...task, task.days.isCompleted: !task.days.isCompleted } : task),}),
   [signOutSuccess]: () => [],
 });
 
