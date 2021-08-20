@@ -1,12 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { userBalance } from "../../redux/additionalInfo/additionalInfoSelectors";
 import { colors } from "../../general/styles/colors";
 import BalanceCounterStyled from "./BalanceCounterStyled";
 
 const BalanceCounter = () => {
-  const currencyBalance = useSelector(
-    (state) => state.additionalInfo.userBalance
-  );
+  const currencyBalance = useSelector(userBalance);
 
   return (
     <BalanceCounterStyled colors={colors}>

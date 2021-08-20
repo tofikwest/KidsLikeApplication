@@ -16,7 +16,7 @@ const ModalStyled = styled.div`
 
   .modal {
     position: relative;
-    padding-top: ${({ modalName }) => modalName === "header" && "80px"};
+    padding-top: ${({ modalName }) => (modalName === "header" ? "80px" : "0")};
     width: ${({ modalName }) => (modalName === "header" ? "274px" : "auto")};
     background-color: ${({ modalName, colors }) =>
       modalName === "header" ? colors.primaryBgColor : colors.modalTextColor};
@@ -33,10 +33,6 @@ const ModalStyled = styled.div`
     right: 20px;
     width: 20px;
     height: 20px;
-    /* fill: ${({ modalName, colors }) =>
-      modalName === "header"
-        ? colors.modalTextColor
-        : colors.primaryTextColor}; */
   }
 `;
 
