@@ -5,6 +5,7 @@ import {
   registerUserSuccess,
   signOutSuccess,
 } from "../auth/authActions";
+import { buyGiftsSuccess } from "../gifts/giftsAction";
 
 const additionalInfoReducer = createReducer(
   {
@@ -35,6 +36,9 @@ const additionalInfoReducer = createReducer(
       endWeekDate: payload.week.endWeekDate,
       rewardsGained: payload.week.rewardsGained,
       rewardsPlanned: payload.week.rewardsPlanned,
+    }),
+    [buyGiftsSuccess]: (_, { payload }) => ({
+      userBalance: payload.updatedBalance,
     }),
     [signOutSuccess]: () => ({
       userBalance: 0,
