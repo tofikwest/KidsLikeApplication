@@ -7,9 +7,6 @@ import { WeekTabContentStyled } from "./WeekTabContentStyled";
 import CardList from "../../cardList/CardList";
 import CurrentWeekRange from "../currentWeekRange/CurrentWeekRange";
 import { authorizedUser } from "../../../redux/auth/authSelectors";
-import TaskStatusIcon from "../../taskStatusIcon/TaskStatusIcon";
-import TaskToggle from "../../taskToggle/TaskToggle";
-import { getTasksOperation } from "../../../redux/tasks/tasksOperations";
 import { useSelector } from "react-redux";
 import { getTasks } from "../../../redux/tasks/tasksSelector";
 
@@ -23,7 +20,7 @@ const WeekTabContent = ({ currentTasks }) => {
   const [state, setState] = useState(initialState);
   const location = useLocation();
 
-  const date = "Thursday"; // Эту переменную передаю в пропы (имитация нажатия на день недели). Дальше дата проверяется на сегодняшнюю и если совпадает то таски можно закрывать, иначе учидеть закрыты ли они были за прошлые дни.
+  const date = "Friday"; // Эту переменную передаю в пропы (имитация нажатия на день недели). Дальше дата проверяется на сегодняшнюю и если совпадает то таски можно закрывать, иначе учидеть закрыты ли они были за прошлые дни.
   // console.log(location);
   // console.log(state);
 
@@ -40,10 +37,6 @@ const WeekTabContent = ({ currentTasks }) => {
 
   // Пока тут ибо где еще хз
   const tasks = useSelector(getTasks);
-
-  useEffect(() => {
-    getTasksOperation();
-  }, []);
 
   // const getCurrentDate = () => {
   //   const todayDate = new Date();
@@ -70,14 +63,13 @@ const WeekTabContent = ({ currentTasks }) => {
     else return weekday - 1;
   };
 
-  const getCurrentDateName = () => {
-    const date = new Date();
-    let options = { weekday: "long" };
-    const weekday = new Intl.DateTimeFormat("en-US", options).format(date);
-    return weekday;
-  };
+  // const getCurrentDateName = () => {
+  //   const date = new Date();
+  //   let options = { weekday: "long" };
+  //   const weekday = new Intl.DateTimeFormat("en-US", options).format(date);
 
-  console.log(`tasks`, tasks);
+  //   return weekday;
+  // };
 
   return (
     <WeekTabContentStyled>
@@ -99,13 +91,7 @@ const WeekTabContent = ({ currentTasks }) => {
         </>
       ) : (
         <div className="cards-wrapper">
-          <CardList date={date} tasks={tasks}>
-            {date === getCurrentDateName() ? (
-              <TaskToggle />
-            ) : (
-              <TaskStatusIcon />
-            )}
-          </CardList>
+          <CardList date={date} tasks={tasks} dateId={getCurrentDateId()} />
         </div>
       )}
     </WeekTabContentStyled>

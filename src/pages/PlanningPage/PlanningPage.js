@@ -1,73 +1,35 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
+// import { useDispatch} from "react-redux";
 import CardList from "../../components/cardList/CardList";
-import TaskAddIcon from "../../components/taskAddIcon/TaskAddIcon";
-import { createTaskOperation } from "../../redux/tasks/tasksOperations";
+// import { createTaskOperation } from "../../redux/tasks/tasksOperations";
+import { getTasks } from "../../redux/tasks/tasksSelector";
 
-const initialState = {
-  title: "",
-  reward: 0,
-  fileImg: "",
-};
+// const initialState = {
+//   title: "",
+//   reward: 0,
+//   fileImg: "",
+// };
 
 const PlanningPage = () => {
-  const [task, setTask] = useState({ ...initialState });
-  const dispatch = useDispatch();
+  // const [task, setTask] = useState({ ...initialState });
+  // const dispatch = useDispatch();
+  const tasks = useSelector(getTasks);
 
-  const onHandleChange = (e) => {
-    const { name, value } = e.target;
-    setTask((prev) => ({ ...prev, [name]: value }));
-  };
+  // const onHandleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setTask((prev) => ({ ...prev, [name]: value }));
+  // };
 
-  const onHandleSubmit = async (e) => {
-    e.preventDefault();
-    dispatch(createTaskOperation({ ...task }));
-    setTask({ ...initialState });
-  };
+  // const onHandleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   dispatch(createTaskOperation({ ...task }));
+  //   setTask({ ...initialState });
+  // };
 
   return (
     <>
-      <form className="taskForm" onSubmit={onHandleSubmit}>
-        <label className="labelForm">
-          Title:
-          <input
-            className="inputForm"
-            type="text"
-            name="title"
-            value={task.title}
-            required
-            onChange={onHandleChange}
-          />
-        </label>
-        <label className="labelForm">
-          Reward:
-          <input
-            className="inputForm"
-            type="number"
-            name="reward"
-            value={task.reward}
-            required
-            onChange={onHandleChange}
-          />
-        </label>
-        <label className="labelForm">
-          Reward:
-          <input
-            className="inputForm"
-            type="text"
-            name="fileImg"
-            value={task.fileImg}
-            onChange={onHandleChange}
-          />
-        </label>
-        <button type="submit" className="buttonForm">
-          Add contact
-        </button>
-      </form>
-
-      <CardList>
-        <TaskAddIcon />
-      </CardList>
+      <CardList tasks={tasks} />
     </>
   );
 };

@@ -20,7 +20,7 @@ export const createNewTask = async (task) => {
 
 export const setDaysSingleTask = async ({ taskId, date }) => {
   try {
-    return await axios.patch(`task/single-active/${taskId}`, date);
+    return await axios.patch(`/task/single-active/${taskId}`, date);
   } catch (error) {
     throw error;
   }
