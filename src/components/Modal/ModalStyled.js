@@ -20,11 +20,13 @@ const ModalStyled = styled.div`
     width: ${({ modalName }) => (modalName === "header" ? "274px" : "auto")};
     background-color: ${({ modalName, colors }) =>
       modalName === "header" ? colors.primaryBgColor : colors.modalTextColor};
+    /* background: ${({ modalName }) => modalName === "awards" && "none"}; */
     box-shadow: ${({ modalName, colors }) =>
       modalName === "header"
         ? `-15px 0px 20px ${colors.modalBoxShadowColor}`
         : `15px 15px 20px ${colors.modalBoxShadowColor}`};
     border-radius: ${({ modalName }) => modalName !== "header" && "6px"};
+    /* box-shadow: ${({ modalName }) => modalName === "awards" && "none"}; */
   }
 
   .btnModalCloseSvg {
@@ -34,6 +36,12 @@ const ModalStyled = styled.div`
     width: 20px;
     height: 20px;
   }
+
+  /* @media screen and (min-width: 768px) {
+    .modal {
+      padding-top: ${({ modalName }) => modalName === "awards" && "0"};
+    }
+  } */
 `;
 
 export default ModalStyled;

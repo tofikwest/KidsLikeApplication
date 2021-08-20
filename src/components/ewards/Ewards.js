@@ -1,69 +1,49 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  buyGiftOperation,
+  getGiftsOperation,
+} from "../../redux/gifts/giftOperations";
 import CardList from "../cardList/CardList";
 import TaskToggle from "../../components/taskToggle/TaskToggle";
-// import Card from "../cardList/card/Card";
-// import EwardsStyled from "./EwardsStyled";
-// import { useDispatch } from "react-redux";
-import useModal from "../../hooks/useModal";
-// import { getCurrentUser } from "../../redux/auth/authOperations";
-// import {
-//   buyGiftOperation,
-//   getGiftsOperation,
-// } from "../../redux/gifts/giftOperations";
-// import {
-//   getTasksOperation,
-//   toggleTaskOperation,
-// } from "../../redux/tasks/tasksOperations";
-import Modal from "../Modal/Modal";
 import EwardsModal from "./ewardsModal/EwardsModal";
+import Modal from "../Modal/Modal";
+
+// import EwardsStyled from "./EwardsStyled";
+import useModal from "../../hooks/useModal";
+import { getAwards } from "../../redux/gifts/giftsSelectors";
+import { useLocation } from "react-router-dom";
 
 const Ewards = () => {
-  //   const dispath = useDispatch();
+  const [state, setOpenModal, setState] = useModal();
+  const dispath = useDispatch();
+  const awards = useSelector(getAwards);
+  const location = useLocation();
+  //   console.log(awards);
 
-  //   const giftsId = {
-  //   };
-  //   const giftIds = [1, 2];
+  const giftIds = [1, 2];
+  useEffect(() => {
+    dispath(getGiftsOperation());
+    dispath(buyGiftOperation({ giftIds }));
 
-  //   const onClickGet = () => {
-  //     dispath(getGiftsOperation());
-  //   };
-  //   const onClickBay = () => {
-  //     dispath(buyGiftOperation({ giftIds }));
-  //   };
+    location.pathname === "/awards"
+      ? setState((prev) => ({ ...prev, modalName: "awards" }))
+      : setState((prev) => ({ ...prev, modalName: "header" }));
+  }, [location]);
 
-  //   const onHandleGetTask = () => {
-  //     dispath(getCurrentUser());
-  //   };
-
-  //   const data = ["2021-08-16"];
-
-  //   const id = "611d4d44d237860017f92e00";
-
-  //   const onHandleClickTogle = () => {
-  //     dispath(toggleTaskOperation({ data, id }));
-  //   };
-
-  const [state, setOpenModal] = useModal();
+  console.log(location);
+  console.log(state.modalName);
 
   return (
-    // <EwardsStyled>
-    //   <p>good </p>
-    //   <Card>
-
-    //   </Card>
-    // </EwardsStyled>
     <>
       <CardList>
         <TaskToggle />
       </CardList>
-      {/* <button onClick={onClickGet}>getGifts</button>
-      <button onClick={onClickBay}>bayGift</button>
-      <button onClick={onHandleGetTask}>getTask</button> */}
-      {/* <button onClick={onHandleClickTogle}>aceptTask</button> */}
+
       <button onClick={setOpenModal}>Подтвердить</button>
       {state.isModalOpen && (
-        <Modal handleCloseModal={setOpenModal}>
-          <EwardsModal />
+        <Modal handleCloseModal={setOpenModal} modalName={state.modalName}>
+          <EwardsModal setOpenModal={setOpenModal} />
         </Modal>
       )}
     </>
