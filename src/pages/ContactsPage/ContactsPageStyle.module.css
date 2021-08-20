@@ -2,7 +2,7 @@
   max-width: 100%;
   text-align: center;
   margin: 0 auto;
-  padding-top: 105px;
+  padding-top: 40px;
   padding-bottom: 50px;
 }
 
@@ -84,7 +84,13 @@
   margin-left: 30px;
   font-weight: 200;
 }
-
+.contacts_mail {
+  cursor: pointer;
+}
+.contacts_link {
+  color: #858598;
+  text-decoration: none;
+}
 .contacts_possition_describe {
   width: 228px;
   font-size: 12px;
@@ -99,9 +105,8 @@
 
 @media (min-width: 768px) {
   .contacts {
-    padding-top: 125px;
+    padding-top: 80px;
   }
-
   .contacts_all_card {
     width: 600px;
     flex-direction: row;
@@ -119,7 +124,7 @@
 
 @media (min-width: 1280px) {
   .contacts {
-    padding-top: 130px;
+    padding-top: 80px;
   }
 
   .contacts_all_card {

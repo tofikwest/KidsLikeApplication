@@ -12,14 +12,12 @@ const ContactsInfoArray = [
     name: "Tofik Hasanov",
     position: "Team Lead",
     contacts: "tofikhasanov31@gmail.com",
-    description: "Архитектура всего проэкта, работа над страницей Contact",
     id: 1,
   },
   {
     avatar: Tolik,
     name: "Anatolij Dejneko",
     position: "Scrum master",
-    description: "Redux, работа над страницей Planning, Awards",
     contacts: "anatoliideineko@gmail.com",
     id: 2,
   },
@@ -27,39 +25,35 @@ const ContactsInfoArray = [
     avatar: Dima,
     name: "Dmitry Gupanets",
     position: "Front-End Developer",
-    description:
-      "Полностью проработан компонент Card, Footer и кнопкой выбора дня недели, так же помогал с вкладкой планирования задач",
+    contacts: "dmgpnts@gmail.com",
     id: 3,
   },
   {
     avatar: TatianaD,
     name: "Tatiana Danyliuk",
     position: "Front-End Developer",
-    description:
-      "Контейнерный компонент, так же дочерние компоненты: WeekTabs, WeekTabsContent",
+    contacts: "t.danyliuk@gmail.com",
     id: 4,
   },
   {
     avatar: sanyaK,
     name: "Kasian Aleksandr",
     position: "Front-End Developer",
-    description: "Header компонент,  выстроил Routes, сделал модальное окно",
+    contacts: "kasianalekasndr@gmail.com",
     id: 5,
   },
   {
     avatar: LizaK,
     name: "Yelyzaveta Kudelia",
     position: "Front-End Developer",
-    description:
-      "Форма для ввода данных о пользователе, страница логонизации и регистрации",
+    contacts: "bagiraliza21@gmail.com",
     id: 6,
   },
   {
     avatar: member,
     name: "Aleksandr Nepiyvoda",
     position: "Front-End Developer",
-    description:
-      "Компонент отображения прогресса, так же помогал с вкладкой планирования задач",
+    contacts: "aleksandr.nepijvoda@gmail.com",
     id: 7,
   },
 ];
