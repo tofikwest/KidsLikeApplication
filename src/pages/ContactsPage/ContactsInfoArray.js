@@ -1,31 +1,30 @@
-import member from "../../images/team/alexNepiyvoda.jpeg";
+import member from "../../images/team/alexNepiyvoda-squos.jpeg";
 import TofikHasanov from "../../images/team/tofikHasanov.jpeg";
-import TatianaD from "../../images/team/TatianaD.jpeg";
+import TatianaD from "../../images/team/Tatidan3-squos.jpeg";
+import Dima from "../../images/team/Dima-squos.jpeg";
+import Tolik from "../../images/team/Tolik-squos.jpeg";
+import LizaK from "../../images/team/lizaK-squos.jpeg";
+import sanyaK from "../../images/team/sanyaK-squos.jpeg";
+
 const ContactsInfoArray = [
   {
     avatar: TofikHasanov,
     name: "Tofik Hasanov",
     position: "Team Lead",
-    description:
-      "Lorem Ipsum является стандартной рыбой для текстов на латиницу с начала XVI века.",
-    contacts: "annexcies@gmail.com",
+    contacts: "tofikhasanov31@gmail.com",
     id: 1,
   },
   {
-    avatar: member,
+    avatar: Tolik,
     name: "Anatolij Dejneko",
     position: "Scrum master",
-    description:
-      "Lorem Ipsum является стандартной рыбой для текстов на латиницу с начала XVI века.",
     contacts: "anatoliideineko@gmail.com",
     id: 2,
   },
   {
-    avatar: member,
+    avatar: Dima,
     name: "Dmitry Gupanets",
     position: "Front-End Developer",
-    description:
-      "Lorem Ipsum является стандартной рыбой для текстов на латиницу с начала XVI века.",
     contacts: "dmgpnts@gmail.com",
     id: 3,
   },
@@ -33,26 +32,20 @@ const ContactsInfoArray = [
     avatar: TatianaD,
     name: "Tatiana Danyliuk",
     position: "Front-End Developer",
-    description:
-      "Lorem Ipsum является стандартной рыбой для текстов на латиницу с начала XVI века.",
     contacts: "t.danyliuk@gmail.com",
     id: 4,
   },
   {
-    avatar: member,
-    name: "Kasyan Alexander",
+    avatar: sanyaK,
+    name: "Kasian Aleksandr",
     position: "Front-End Developer",
-    description:
-      "Lorem Ipsum является стандартной рыбой для текстов на латиницу с начала XVI века.",
-    contacts: "prostotak4tobrabotalo@gmail.com",
+    contacts: "kasianalekasndr@gmail.com",
     id: 5,
   },
   {
-    avatar: member,
+    avatar: LizaK,
     name: "Yelyzaveta Kudelia",
     position: "Front-End Developer",
-    description:
-      "Lorem Ipsum является стандартной рыбой для текстов на латиницу с начала XVI века.",
     contacts: "bagiraliza21@gmail.com",
     id: 6,
   },
@@ -60,8 +53,6 @@ const ContactsInfoArray = [
     avatar: member,
     name: "Aleksandr Nepiyvoda",
     position: "Front-End Developer",
-    description:
-      "Lorem Ipsum является стандартной рыбой для текстов на латиницу с начала XVI века.",
     contacts: "aleksandr.nepijvoda@gmail.com",
     id: 7,
   },

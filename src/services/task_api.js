@@ -2,37 +2,33 @@ import axios from "axios";
 
 axios.defaults.baseURL = "https://kidslikev1.herokuapp.com";
 
-export const getActiveTasks = async () => {
-  try {
-    const res = await axios.patch("task/active/");
-    console.log("res", res);
-  } catch (error) {
-    throw error;
-  }
-};
+// export const getActiveTasks = async () => {
+//   try {
+//     return await axios.patch("task/active/");
+//   } catch (error) {
+//     throw error;
+//   }
+// };
 
 export const createNewTask = async (task) => {
   try {
-    const res = await axios.post("/task", task);
-    console.log("res", res);
+    return await axios.post("/task", task);
   } catch (error) {
     throw error;
   }
 };
 
-export const setDaysSingleTask = async (taskId) => {
+export const setDaysSingleTask = async ({ taskId, date }) => {
   try {
-    const res = await axios.patch(`task/single-active/${taskId}`);
-    console.log("res", res);
+    return await axios.patch(`task/single-active/${taskId}`, date);
   } catch (error) {
     throw error;
   }
 };
 
-export const toggleStateTask = async (taskId) => {
+export const toggleStateTask = async ({ taskId, date }) => {
   try {
-    const res = await axios.patch(`/task/switch/${taskId}`);
-    console.log("res", res);
+    return await axios.patch(`/task/switch/${taskId}`, date);
   } catch (error) {
     throw error;
   }

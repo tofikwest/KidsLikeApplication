@@ -11,16 +11,19 @@ const ContactsPage = () => {
       <ul className={styles.contacts_all_card}>
         {contactsInfoArr.map((el) => (
           <li className={styles.contacts_card} key={el.id}>
-            <img
-              className={styles.contacts_img}
-              src={el.avatar}
-              alt=""
-              width="280"
-              height="245"
-            />
+            <img className={styles.contacts_img} src={el.avatar} alt="" />
             <p className={styles.contacts_name}>{el.name}</p>
             <p className={styles.contacts_possition}>{el.position}</p>
-            <p className={styles.contacts_mail}>{el.contacts}</p>
+            <p className={styles.contacts_mail}>
+              <a
+                className={styles.contacts_link}
+                href={`mailto:${el.contacts}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {el.contacts}
+              </a>
+            </p>
             <p className={styles.contacts_possition_describe}>
               {el.description}
             </p>

@@ -1,6 +1,6 @@
 import { createAction } from "@reduxjs/toolkit";
 
-export const getGifstRequest = createAction("tasks/getGifstRequest");
+export const getGiftsRequest = createAction("tasks/getGiftsRequest");
 export const getGiftsSuccess = createAction("tasks/getGiftsSuccess");
 export const getGiftsError = createAction("tasks/getGiftsError");
 
