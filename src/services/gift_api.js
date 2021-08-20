@@ -12,7 +12,7 @@ export const getAllGifts = async () => {
 
 export const buyGiftIds = async (giftIds) => {
   try {
-    return await axios.patch("task/active", giftIds);
+    return await axios.patch("/gift", giftIds);
   } catch (error) {
     throw error;
   }

@@ -50,12 +50,14 @@ export const setDaysSingleTaskOperation =
     }
   };
 
-export const toggleTaskOperation = (taskId) => async (dispatch, getState) => {
-  try {
-    dispatch(toggleTaskRequest());
-    const res = await toggleStateTask(taskId);
-    dispatch(toggleTaskSuccess(res));
-  } catch (error) {
-    dispatch(toggleTaskError(error.message));
-  }
-};
+export const toggleTaskOperation =
+  ({ taskId, date }) =>
+  async (dispatch, getState) => {
+    try {
+      dispatch(toggleTaskRequest());
+      const res = await toggleStateTask({ taskId, date });
+      dispatch(toggleTaskSuccess(res));
+    } catch (error) {
+      dispatch(toggleTaskError(error.message));
+    }
+  };
