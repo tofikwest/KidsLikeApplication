@@ -4,8 +4,11 @@ import planer from "../../../images/planer.png";
 import CurrentDay from "../currentDay/CurrentDay";
 import ProgresiveBar from "../../progresiveBar/ProgresiveBar";
 import { WeekTabContentStyled } from "./WeekTabContentStyled";
-// import CardList from "../../components/cardList/CardList";
+import CardList from "../../cardList/CardList";
 import CurrentWeekRange from "../currentWeekRange/CurrentWeekRange";
+import { authorizedUser } from "../../../redux/auth/authSelectors";
+import { useSelector } from "react-redux";
+import { getTasks } from "../../../redux/tasks/tasksSelector";
 
 const initialState = {
   search: "",
@@ -16,6 +19,8 @@ const initialState = {
 const WeekTabContent = ({ currentTasks }) => {
   const [state, setState] = useState(initialState);
   const location = useLocation();
+
+  const date = "Friday"; // Эту переменную передаю в пропы (имитация нажатия на день недели). Дальше дата проверяется на сегодняшнюю и если совпадает то таски можно закрывать, иначе учидеть закрыты ли они были за прошлые дни.
   // console.log(location);
   // console.log(state);
 
@@ -30,6 +35,42 @@ const WeekTabContent = ({ currentTasks }) => {
     setState((prev) => ({ ...prev, width: window.innerWidth }));
   };
 
+  // Пока тут ибо где еще хз
+  const tasks = useSelector(getTasks);
+
+  // const getCurrentDate = () => {
+  //   const todayDate = new Date();
+  //   const fullYear = todayDate.getFullYear();
+  //   let month = (todayDate.getMonth() + 1).toString();
+  //   let day = todayDate.getDate();
+
+  //   const dateString =
+  //     fullYear +
+  //     "-" +
+  //     (month > 1 && month < 10 ? 0 + month : month) +
+  //     "-" +
+  //     day;
+  //   return dateString;
+  // };
+
+  const getCurrentDateId = () => {
+    const date = new Date();
+    // let options = { weekday: "long" };
+    // const weekday = new Intl.DateTimeFormat("en-US", options).format(date);
+    const weekday = date.getDay();
+
+    if (weekday === 0) return 6;
+    else return weekday - 1;
+  };
+
+  // const getCurrentDateName = () => {
+  //   const date = new Date();
+  //   let options = { weekday: "long" };
+  //   const weekday = new Intl.DateTimeFormat("en-US", options).format(date);
+
+  //   return weekday;
+  // };
+
   return (
     <WeekTabContentStyled>
       {state.width < state.breakPoint ||
@@ -40,7 +81,7 @@ const WeekTabContent = ({ currentTasks }) => {
 
       <CurrentWeekRange />
 
-      {!currentTasks ? (
+      {!authorizedUser ? (
         <>
           <p className="notification">На этот день задач нет</p>
           <button type="button" className="home-button">
@@ -49,8 +90,9 @@ const WeekTabContent = ({ currentTasks }) => {
           <img src={planer} alt="children" className="children-img" />
         </>
       ) : (
-        <p>CardList</p>
-        // <CardList />
+        <div className="cards-wrapper">
+          <CardList date={date} tasks={tasks} dateId={getCurrentDateId()} />
+        </div>
       )}
     </WeekTabContentStyled>
   );

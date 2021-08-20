@@ -14,7 +14,7 @@ const initialState = {
 const HomePage = () => {
   const [state, setState] = useState(initialState);
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
 
   useEffect(() => {
     window.addEventListener("resize", handleResizeWindow);

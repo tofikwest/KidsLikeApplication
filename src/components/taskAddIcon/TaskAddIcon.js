@@ -7,7 +7,7 @@ import { TaskAddIconStyled } from "./TaskAddIconStyled";
 // this component should be stateless!
 // MUST recieve METHOD to change the state.
 
-const TaskAddIcon = () => {
+const TaskAddIcon = ({ task, taskId }) => {
   const [taskMenuState, setTaskMenuState] = useState(false);
 
   const onTaskStateToggle = () => {
@@ -18,7 +18,7 @@ const TaskAddIcon = () => {
     <div>
       {taskMenuState ? (
         <TaskAddIconStyled>
-          <DayList />
+          <DayList days={task.days} taskId={taskId} />
           <img src={okIcon} alt="ok" onClick={onTaskStateToggle} />
         </TaskAddIconStyled>
       ) : (

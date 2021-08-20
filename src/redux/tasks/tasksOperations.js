@@ -40,12 +40,12 @@ export const createTaskOperation = (task) => async (dispatch, getState) => {
 };
 
 export const setDaysSingleTaskOperation =
-  ({ taskId, date }) =>
-  async (dispatch, getState) => {
+  (taskId, date) => async (dispatch) => {
     try {
       dispatch(setDaysTaskRequest());
+
       const res = await setDaysSingleTask({ taskId, date });
-      dispatch(setDaysTaskSuccess(res));
+      dispatch(setDaysTaskSuccess(res.data));
     } catch (error) {
       dispatch(setDaysTaskError(error.message));
     }
@@ -53,11 +53,13 @@ export const setDaysSingleTaskOperation =
 
 export const toggleTaskOperation =
   ({ taskId, date }) =>
-  async (dispatch, getState) => {
+  async (dispatch) => {
     try {
       dispatch(toggleTaskRequest());
+      console.log(`object`, { taskId, date });
       const res = await toggleStateTask({ taskId, date });
-      dispatch(toggleTaskSuccess(res));
+      console.log(`res`, res);
+      dispatch(toggleTaskSuccess(res.data));
     } catch (error) {
       dispatch(toggleTaskError(error.message));
     }

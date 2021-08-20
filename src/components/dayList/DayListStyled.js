@@ -20,12 +20,26 @@ export const DayListStyled = styled.ul`
   border-radius: 5px;
 
   .dayListItem {
+    position: relative;
     font-weight: 700;
     font-size: 14px;
     line-height: 1.21;
     display: flex;
     align-items: center;
     letter-spacing: 0.02em;
+  }
+
+  .dayListCheckbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+  }
+
+  .dayListCheckboxIcon {
+    pointer-events: none;
   }
 
   .dayListValue {

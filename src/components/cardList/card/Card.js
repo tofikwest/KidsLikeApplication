@@ -1,6 +1,14 @@
+import { useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
+import { toggleTaskOperation } from "../../../redux/tasks/tasksOperations";
+import TaskAddIcon from "../../taskAddIcon/TaskAddIcon";
+import TaskToggle from "../../taskToggle/TaskToggle";
 import { CardItemStyled } from "./CardStyled";
 
-const Card = ({ img, taskName, taskReward, children }) => {
+const Card = ({ task, dateId }) => {
+  const dispatch = useDispatch();
+  const location = useLocation().pathname;
+
   function declOfNum(n, text) {
     n = Math.abs(n) % 100;
     const n1 = n % 10;
@@ -16,20 +24,36 @@ const Card = ({ img, taskName, taskReward, children }) => {
     return text[2];
   }
 
+  const onTaskToggle = (taskId) => {
+    const date = { date: task.days[dateId].date };
+
+    dispatch(toggleTaskOperation({ taskId, date }));
+  };
+
   return (
     <CardItemStyled>
       <div className="card">
-        <img className="card__image" src={img} alt={taskName} />
+        <img className="card__image" src={task.imageUrl} alt={task.title} />
         <div className="card__footer">
           <div className="card__info">
-            <h3 className="card__taskName">{taskName}</h3>
-            <span className="card__rewardTag">{`${taskReward} ${declOfNum(
-              taskReward,
+            <h3 className="card__taskName">{task.title}</h3>
+            <span className="card__rewardTag">{`${task.reward} ${declOfNum(
+              task.reward,
               ["балл", "балла", "баллов"]
             )}`}</span>
           </div>
-
-          {children}
+          {location === "/" ? (
+            <TaskToggle
+              taskId={task._id}
+              isChecked={task.days[dateId].isCompleted}
+              onTaskToggle={onTaskToggle}
+            />
+          ) : (
+            <></>
+          )}
+          {location === "/planning" ? (
+            <TaskAddIcon task={task} taskId={task._id} />
+          ) : null}
         </div>
       </div>
     </CardItemStyled>
