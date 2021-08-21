@@ -8,8 +8,11 @@ import CardList from "../cardList/CardList";
 import TaskToggle from "../../components/taskToggle/TaskToggle";
 import EwardsModal from "./ewardsModal/EwardsModal";
 import Modal from "../Modal/Modal";
+import ProgresiveBar from "../progresiveBar/ProgresiveBar";
 
-// import EwardsStyled from "./EwardsStyled";
+import EwardsStyled from "./EwardsStyled";
+import sprite from "../../images/sprite.svg";
+
 import useModal from "../../hooks/useModal";
 import { getAwards } from "../../redux/gifts/giftsSelectors";
 import { useLocation } from "react-router-dom";
@@ -35,7 +38,16 @@ const Ewards = () => {
   //   console.log(state.modalName);
 
   return (
-    <>
+    <EwardsStyled>
+      <div className="awardsBoxProgresiveBar">
+        <div>
+          <svg className="ewardSvg" onClick={setOpenModal}>
+            <use href={sprite + "#icon-award"} />
+          </svg>
+          <h3 className="awardsTitle">Мои призы</h3>
+        </div>
+        <ProgresiveBar />
+      </div>
       <CardList awards={awards}>
         <TaskToggle />
       </CardList>
@@ -47,13 +59,15 @@ const Ewards = () => {
         itaque dignissimos nisi facilis nemo vitae assumenda, necessitatibus,
         dolore quidem minus?
       </p>
-      <button onClick={setOpenModal}>Подтвердить</button>
+      <button className="awardsBtn" onClick={setOpenModal}>
+        Подтвердить
+      </button>
       {state.isModalOpen && (
         <Modal handleCloseModal={setOpenModal} modalName={state.modalName}>
           <EwardsModal setOpenModal={setOpenModal} />
         </Modal>
       )}
-    </>
+    </EwardsStyled>
   );
 };
 

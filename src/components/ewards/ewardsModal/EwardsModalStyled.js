@@ -31,7 +31,6 @@ const EwardsModalStyled = styled.div`
     padding: 130px 40px 10px 40px;
     width: 600px;
 
-    transform: translate(-50% -50%);
     .catImg {
       /* position: absolute; */
       width: 200px;
