@@ -36,9 +36,10 @@ const Card = ({
 
     dispatch(toggleTaskOperation({ taskId, date }));
   };
+  console.log(`location === "/planning"`, location === "/planning");
 
   return (
-    <CardItemStyled>
+    <CardItemStyled location={location}>
       <div className="card">
         <img className="card__image" src={task.imageUrl} alt={task.title} />
         <div className="card__footer">

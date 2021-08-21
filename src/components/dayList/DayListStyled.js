@@ -30,11 +30,6 @@ export const DayListStyled = styled.ul`
   }
 
   .dayListCheckbox {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 14px;
-    height: 14px;
     cursor: pointer;
   }
 
@@ -43,6 +38,11 @@ export const DayListStyled = styled.ul`
   }
 
   .dayListValue {
-    margin-left: 10px;
+    display: flex;
+    justify-content: space-around;
+
+    text-transform: capitalize;
+    width: 50px;
+    cursor: pointer;
   }
 `;
