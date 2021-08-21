@@ -2,10 +2,17 @@ import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { toggleTaskOperation } from "../../../redux/tasks/tasksOperations";
 import TaskAddIcon from "../../taskAddIcon/TaskAddIcon";
+import TaskStatusIcon from "../../taskStatusIcon/TaskStatusIcon";
 import TaskToggle from "../../taskToggle/TaskToggle";
 import { CardItemStyled } from "./CardStyled";
 
-const Card = ({ task, dateId }) => {
+const Card = ({
+  task,
+  currentDateId,
+  selectedDate,
+  previousDay,
+  presentDay,
+}) => {
   const dispatch = useDispatch();
   const location = useLocation().pathname;
 
@@ -25,7 +32,7 @@ const Card = ({ task, dateId }) => {
   }
 
   const onTaskToggle = (taskId) => {
-    const date = { date: task.days[dateId].date };
+    const date = { date: task.days[currentDateId].date };
 
     dispatch(toggleTaskOperation({ taskId, date }));
   };
@@ -42,14 +49,17 @@ const Card = ({ task, dateId }) => {
               ["балл", "балла", "баллов"]
             )}`}</span>
           </div>
-          {location === "/" ? (
+          {location === "/" && presentDay && (
             <TaskToggle
               taskId={task._id}
-              isChecked={task.days[dateId].isCompleted}
+              isChecked={task.days[currentDateId].isCompleted}
               onTaskToggle={onTaskToggle}
             />
-          ) : (
-            <></>
+          )}
+          {location === "/" && previousDay && (
+            <TaskStatusIcon
+              completionStatus={task.days[selectedDate].isCompleted}
+            />
           )}
           {location === "/planning" ? (
             <TaskAddIcon task={task} taskId={task._id} />

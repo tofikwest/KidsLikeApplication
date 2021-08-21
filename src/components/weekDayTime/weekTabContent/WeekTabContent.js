@@ -16,13 +16,9 @@ const initialState = {
   breakPoint: 767,
 };
 
-const WeekTabContent = ({ currentTasks }) => {
+const WeekTabContent = ({ currentTasks, selectedDate }) => {
   const [state, setState] = useState(initialState);
   const location = useLocation();
-
-  const date = "Friday"; // Эту переменную передаю в пропы (имитация нажатия на день недели). Дальше дата проверяется на сегодняшнюю и если совпадает то таски можно закрывать, иначе учидеть закрыты ли они были за прошлые дни.
-  // console.log(location);
-  // console.log(state);
 
   useEffect(() => {
     window.addEventListener("resize", handleResizeWindow);
@@ -35,47 +31,38 @@ const WeekTabContent = ({ currentTasks }) => {
     setState((prev) => ({ ...prev, width: window.innerWidth }));
   };
 
-  // Пока тут ибо где еще хз
   const tasks = useSelector(getTasks);
-
-  // const getCurrentDate = () => {
-  //   const todayDate = new Date();
-  //   const fullYear = todayDate.getFullYear();
-  //   let month = (todayDate.getMonth() + 1).toString();
-  //   let day = todayDate.getDate();
-
-  //   const dateString =
-  //     fullYear +
-  //     "-" +
-  //     (month > 1 && month < 10 ? 0 + month : month) +
-  //     "-" +
-  //     day;
-  //   return dateString;
-  // };
 
   const getCurrentDateId = () => {
     const date = new Date();
-    // let options = { weekday: "long" };
-    // const weekday = new Intl.DateTimeFormat("en-US", options).format(date);
     const weekday = date.getDay();
-
     if (weekday === 0) return 6;
     else return weekday - 1;
   };
 
-  // const getCurrentDateName = () => {
-  //   const date = new Date();
-  //   let options = { weekday: "long" };
-  //   const weekday = new Intl.DateTimeFormat("en-US", options).format(date);
+  const getCurrentDateName = (day) => {
+    const date = new Date(day);
+    let options = { weekday: "long" };
+    const weekday = new Intl.DateTimeFormat("en-US", options).format(date);
 
-  //   return weekday;
-  // };
+    return weekday;
+  };
+
+  const getSelectedDateIdByName = (dateName) => {
+    if (!tasks.length) return;
+    for (let i = 0; i < 7; i++) {
+      const checkDay = tasks[0].days[i].date;
+      if (getCurrentDateName(checkDay) === dateName) {
+        return i;
+      }
+    }
+  };
 
   return (
     <WeekTabContentStyled>
       {state.width < state.breakPoint ||
         (state.width >= 1280 && <CurrentDay />)}
-      {/* <CurrentDay day={} date={} /> */}
+
       {state.width > state.breakPoint && <ProgresiveBar />}
       {state.width > state.breakPoint && state.width < 1280 && <CurrentDay />}
 
@@ -91,7 +78,11 @@ const WeekTabContent = ({ currentTasks }) => {
         </>
       ) : (
         <div className="cards-wrapper">
-          <CardList date={date} tasks={tasks} dateId={getCurrentDateId()} />
+          <CardList
+            selectedDate={getSelectedDateIdByName(selectedDate)}
+            tasks={tasks}
+            currentDateId={getCurrentDateId()}
+          />
         </div>
       )}
     </WeekTabContentStyled>

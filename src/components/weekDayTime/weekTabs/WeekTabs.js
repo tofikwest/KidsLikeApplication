@@ -4,12 +4,12 @@ import { useLocation } from "react-router";
 import { WeekTabsData } from "./WeekTabsData";
 
 const initialState = {
-  search: "",
+  // search: "",
   width: window.innerWidth,
   breakPoint: 1280,
 };
 
-const WeekTabs = () => {
+const WeekTabs = ({ choosenDate }) => {
   const [state, setState] = useState(initialState);
   const location = useLocation();
   // console.log(location);
@@ -36,7 +36,8 @@ const WeekTabs = () => {
     if (e.currentTarget === activeBtn) {
       prevActiveBtn?.setAttribute("class", "weekDays-listItem");
       activeBtn.setAttribute("class", "weekDays-listItem weekDays-active");
-      setState((prev) => ({ ...prev, search: activeBtn.value }));
+      // setState((prev) => ({ ...prev, search: activeBtn.value }));
+      choosenDate(activeBtn.value);
       // console.log(state.search);
       //тут лежит день недели на английском
     }
