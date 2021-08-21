@@ -24,22 +24,29 @@ const Ewards = () => {
   const giftIds = [1, 2];
   useEffect(() => {
     dispath(getGiftsOperation());
-    dispath(buyGiftOperation({ giftIds }));
+    // dispath(buyGiftOperation({ giftIds }));
 
     location.pathname === "/awards"
       ? setState((prev) => ({ ...prev, modalName: "awards" }))
       : setState((prev) => ({ ...prev, modalName: "header" }));
   }, [location]);
 
-  console.log(location);
-  console.log(state.modalName);
+  //   console.log(location);
+  //   console.log(state.modalName);
 
   return (
     <>
-      <CardList>
+      <CardList awards={awards}>
         <TaskToggle />
       </CardList>
-
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque ab
+        odit vero incidunt earum? Voluptas similique, ex dolor temporibus in
+        ipsa, qui quasi consequatur quod explicabo ad provident possimus laborum
+        velit repellendus nemo. Quasi aliquam est, cumque harum voluptatibus
+        itaque dignissimos nisi facilis nemo vitae assumenda, necessitatibus,
+        dolore quidem minus?
+      </p>
       <button onClick={setOpenModal}>Подтвердить</button>
       {state.isModalOpen && (
         <Modal handleCloseModal={setOpenModal} modalName={state.modalName}>

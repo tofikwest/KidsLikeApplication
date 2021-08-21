@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { authorizedUser } from "../../redux/auth/authSelectors";
-import Navigation from "../Navigations/Navigation";
+import Navigation from "../Navigation/Navigation";
 import Modal from "../Modal/Modal";
 import Logo from "../Logo/Logo";
 import BalanceCounter from "../BalanceCounter/BalanceCounter";

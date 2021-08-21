@@ -1,11 +1,6 @@
 import styled from "styled-components";
 
 const EwardsModalStyled = styled.div`
-  position: relative;
-  /* display: flex;
-  flex-direction: column;
-  align-items: center; */
-
   background-color: #fff;
   box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.25);
   padding: 60px 20px 10px 20px;
@@ -32,15 +27,16 @@ const EwardsModalStyled = styled.div`
     text-align: center;
   }
 
-  /* @media screen and (min-width: 768px) {
-    padding: 60px 40px 10px 40px;
-    min-width: 600px;
- 
+  @media screen and (min-width: 768px) {
+    padding: 130px 40px 10px 40px;
+    width: 600px;
+
     transform: translate(-50% -50%);
     .catImg {
-      position: absolute;
-      top: -30%;
-      left: 40%;
+      /* position: absolute; */
+      width: 200px;
+      height: 230px;
+      transform: translate(80%, -110%);
     }
     .iconCloseAwards {
       position: absolute;
@@ -50,8 +46,10 @@ const EwardsModalStyled = styled.div`
       height: 20px;
     }
     .awardsModalTitle {
+      font-size: 30px;
+      line-height: 1.23;
     }
-  } */
+  }
 `;
 
 export default EwardsModalStyled;
