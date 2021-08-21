@@ -1,30 +1,31 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 import {
   buyGiftOperation,
   getGiftsOperation,
 } from "../../redux/gifts/giftOperations";
+import { getAwards } from "../../redux/gifts/giftsSelectors";
+import useModal from "../../hooks/useModal";
 import CardList from "../cardList/CardList";
-import TaskToggle from "../../components/taskToggle/TaskToggle";
-import EwardsModal from "./ewardsModal/EwardsModal";
+// import TaskToggle from "../../components/taskToggle/TaskToggle";
 import Modal from "../Modal/Modal";
+import Footer from "../footer/Footer";
+import EwardsModal from "./ewardsModal/EwardsModal";
 import ProgresiveBar from "../progresiveBar/ProgresiveBar";
 
 import EwardsStyled from "./EwardsStyled";
 import sprite from "../../images/sprite.svg";
-
-import useModal from "../../hooks/useModal";
-import { getAwards } from "../../redux/gifts/giftsSelectors";
-import { useLocation } from "react-router-dom";
+import { colors } from "../../general/styles/colors";
 
 const Ewards = () => {
   const [state, setOpenModal, setState] = useModal();
   const dispath = useDispatch();
   const awards = useSelector(getAwards);
   const location = useLocation();
-  //   console.log(awards);
+  console.log(awards);
 
-  const giftIds = [1, 2];
+  //   const giftIds = [1, 2];
   useEffect(() => {
     dispath(getGiftsOperation());
     // dispath(buyGiftOperation({ giftIds }));
@@ -38,19 +39,19 @@ const Ewards = () => {
   //   console.log(state.modalName);
 
   return (
-    <EwardsStyled>
-      <div className="awardsBoxProgresiveBar">
-        <div>
-          <svg className="ewardSvg" onClick={setOpenModal}>
+    <EwardsStyled colors={colors}>
+      <div className="ewardsProgresiveBox">
+        <div className="awardsLogo">
+          <svg className="ewardSvg">
             <use href={sprite + "#icon-award"} />
           </svg>
           <h3 className="awardsTitle">Мои призы</h3>
         </div>
-        <ProgresiveBar />
+        {state.width > state.breakPointUserMenu && <ProgresiveBar />}
       </div>
-      <CardList awards={awards}>
-        <TaskToggle />
-      </CardList>
+
+      <CardList awards={awards}></CardList>
+
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque ab
         odit vero incidunt earum? Voluptas similique, ex dolor temporibus in
@@ -62,6 +63,8 @@ const Ewards = () => {
       <button className="awardsBtn" onClick={setOpenModal}>
         Подтвердить
       </button>
+      <Footer />
+      {state.width < state.breakPointUserMenu && <ProgresiveBar />}
       {state.isModalOpen && (
         <Modal handleCloseModal={setOpenModal} modalName={state.modalName}>
           <EwardsModal setOpenModal={setOpenModal} />

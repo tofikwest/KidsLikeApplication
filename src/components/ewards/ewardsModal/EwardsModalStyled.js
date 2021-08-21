@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 const EwardsModalStyled = styled.div`
-  background-color: #fff;
-  box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.25);
+  background-color: ${({ colors }) => colors.modalTextColor};
+  box-shadow: ${({ colors }) => `15px 15px 20px ${colors.modalBoxShadowColor}`};
   padding: 60px 20px 10px 20px;
   width: 280px;
   min-height: 300px;
@@ -32,7 +32,6 @@ const EwardsModalStyled = styled.div`
     width: 600px;
 
     .catImg {
-      /* position: absolute; */
       width: 200px;
       height: 230px;
       transform: translate(80%, -110%);
