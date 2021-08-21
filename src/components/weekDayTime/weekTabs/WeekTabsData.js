@@ -2,36 +2,36 @@ export const WeekTabsData = [
   {
     dayFull: "Понедельник",
     dayShort: "ПН",
-    search: "monday",
+    search: "Monday",
   },
   {
     dayFull: "Вторник",
     dayShort: "ВТ",
-    search: "tuesday",
+    search: "Tuesday",
   },
   {
     dayFull: "Среда",
     dayShort: "СР",
-    search: "wednesday",
+    search: "Wednesday",
   },
   {
     dayFull: "Четверг",
     dayShort: "ЧТ",
-    search: "thursday",
+    search: "Thursday",
   },
   {
     dayFull: "Пятница",
     dayShort: "ПТ",
-    search: "friday",
+    search: "Friday",
   },
   {
     dayFull: "Суббота",
     dayShort: "СБ",
-    search: "saturday",
+    search: "Saturday",
   },
   {
     dayFull: "Воскресенье",
     dayShort: "ВС",
-    search: "sunday",
+    search: "Sunday",
   },
 ];

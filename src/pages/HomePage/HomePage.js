@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router";
 
 const initialState = {
+  search: "",
   width: window.innerWidth,
   breakPoint: 1280,
 };
@@ -27,25 +28,29 @@ const HomePage = () => {
     setState((prev) => ({ ...prev, width: window.innerWidth }));
   };
 
+  const choosenDate = (date) => {
+    setState((prevState) => ({ ...prevState, search: date }));
+  };
+
   return (
     <HomePageStyled>
       {state.width < state.breakPoint && state.width > 768 && (
         <div className="upside-bar">
           <p className="upside-bar--current-week">Неделя: 21-27 Декабря</p>
-          <WeekTabs />
+          <WeekTabs choosenDate={choosenDate} />
         </div>
       )}
 
       {state.width > state.breakPoint && (
         <div className="home-sidebar">
-          <WeekTabs />
+          <WeekTabs choosenDate={choosenDate} />
         </div>
       )}
 
-      {state.width < 767 && <WeekTabs />}
+      {state.width < 767 && <WeekTabs choosenDate={choosenDate} />}
 
       <div className="right-side">
-        <WeekTabContent />
+        <WeekTabContent selectedDate={state.search} />
 
         <Footer />
       </div>

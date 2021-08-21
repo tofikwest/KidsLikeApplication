@@ -56,9 +56,7 @@ export const toggleTaskOperation =
   async (dispatch) => {
     try {
       dispatch(toggleTaskRequest());
-      console.log(`object`, { taskId, date });
       const res = await toggleStateTask({ taskId, date });
-      console.log(`res`, res);
       dispatch(toggleTaskSuccess(res.data));
     } catch (error) {
       dispatch(toggleTaskError(error.message));

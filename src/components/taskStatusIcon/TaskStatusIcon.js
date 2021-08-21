@@ -1,8 +1,8 @@
-const TaskStatusIcon = () => {
-  const isTaskCompleted = false;
+const TaskStatusIcon = ({ completionStatus }) => {
+  const isTaskHaveBeenCompleted = completionStatus;
   return (
     <>
-      {isTaskCompleted ? (
+      {isTaskHaveBeenCompleted ? (
         <svg
           width="30"
           height="30"
