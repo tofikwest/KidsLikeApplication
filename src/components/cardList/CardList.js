@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
 import Card from "./card/Card";
+import EdwardsCart from "../ewards/edwardsCart/EdwardsCart";
 import { CardListStyled } from "./CardListStyled";
 
 const CardList = ({ selectedDate, tasks, currentDateId, awards }) => {
@@ -24,6 +25,9 @@ const CardList = ({ selectedDate, tasks, currentDateId, awards }) => {
   // console.log(awards);
   return (
     <CardListStyled>
+      {location === "/awards" &&
+        awards.map((eward) => <EdwardsCart key={eward.id} eward={eward} />)}
+
       {previousDay &&
         Boolean(tasks) &&
         activeTasks.map((task) => (

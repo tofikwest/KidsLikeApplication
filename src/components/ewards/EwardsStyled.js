@@ -3,6 +3,7 @@ import styled from "styled-components";
 const EwardsStyled = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
   padding-top: 20px;
 
@@ -25,7 +26,7 @@ const EwardsStyled = styled.div`
   .awardsBtn {
     width: 220px;
     height: 48px;
-    /* padding: 15px 30px 15px 30px; */
+    margin-top: 40px;
     font-weight: 500;
     font-size: 12px;
     line-height: 1.25;

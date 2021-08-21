@@ -23,16 +23,15 @@ const Ewards = () => {
   const dispath = useDispatch();
   const awards = useSelector(getAwards);
   const location = useLocation();
-  console.log(awards);
 
   //   const giftIds = [1, 2];
   useEffect(() => {
     dispath(getGiftsOperation());
-    // dispath(buyGiftOperation({ giftIds }));
-
     location.pathname === "/awards"
       ? setState((prev) => ({ ...prev, modalName: "awards" }))
       : setState((prev) => ({ ...prev, modalName: "header" }));
+    // dispath(buyGiftOperation({ giftIds }));
+    return dispath(getGiftsOperation());
   }, [location]);
 
   //   console.log(location);
@@ -50,16 +49,8 @@ const Ewards = () => {
         {state.width > state.breakPointUserMenu && <ProgresiveBar />}
       </div>
 
-      <CardList awards={awards}></CardList>
+      <CardList awards={awards} />
 
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque ab
-        odit vero incidunt earum? Voluptas similique, ex dolor temporibus in
-        ipsa, qui quasi consequatur quod explicabo ad provident possimus laborum
-        velit repellendus nemo. Quasi aliquam est, cumque harum voluptatibus
-        itaque dignissimos nisi facilis nemo vitae assumenda, necessitatibus,
-        dolore quidem minus?
-      </p>
       <button className="awardsBtn" onClick={setOpenModal}>
         Подтвердить
       </button>
