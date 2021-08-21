@@ -23,7 +23,7 @@ const CardList = ({ selectedDate, tasks, currentDateId }) => {
   }
 
   return (
-    <CardListStyled>
+    <CardListStyled location={location}>
       {previousDay &&
         Boolean(tasks) &&
         activeTasks.map((task) => (
