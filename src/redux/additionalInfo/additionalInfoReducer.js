@@ -6,6 +6,7 @@ import {
   signOutSuccess,
 } from "../auth/authActions";
 import { buyGiftsSuccess } from "../gifts/giftsAction";
+import { toggleTaskSuccess } from "../tasks/tasksAction";
 
 const additionalInfoReducer = createReducer(
   {
@@ -40,6 +41,11 @@ const additionalInfoReducer = createReducer(
     [buyGiftsSuccess]: (_, { payload }) => ({
       userBalance: payload.updatedBalance,
     }),
+    [toggleTaskSuccess]: (_, { payload }) => ({
+      userBalance: payload.updatedBalance,
+      rewardsGained: payload.updatedWeekGainedRewards,
+    }),
+
     [signOutSuccess]: () => ({
       userBalance: 0,
       startWeekDate: "",
