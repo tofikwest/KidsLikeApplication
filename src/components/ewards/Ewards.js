@@ -12,7 +12,7 @@ import CardList from "../cardList/CardList";
 import Modal from "../Modal/Modal";
 import Footer from "../footer/Footer";
 import EwardsModal from "./ewardsModal/EwardsModal";
-import ProgresiveBar from "../progresiveBar/ProgresiveBar";
+import ProgressBar from "../progressBar/ProgressBar";
 
 import EwardsStyled from "./EwardsStyled";
 import sprite from "../../images/sprite.svg";
@@ -46,7 +46,7 @@ const Ewards = () => {
           </svg>
           <h3 className="awardsTitle">Мои призы</h3>
         </div>
-        {state.width > state.breakPointUserMenu && <ProgresiveBar />}
+        {state.width > state.breakPointUserMenu && <ProgressBar />}
       </div>
 
       <CardList awards={awards} />
@@ -55,7 +55,7 @@ const Ewards = () => {
         Подтвердить
       </button>
       <Footer />
-      {state.width < state.breakPointUserMenu && <ProgresiveBar />}
+      {state.width < state.breakPointUserMenu && <ProgressBar />}
       {state.isModalOpen && (
         <Modal handleCloseModal={setOpenModal} modalName={state.modalName}>
           <EwardsModal setOpenModal={setOpenModal} />

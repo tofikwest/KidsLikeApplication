@@ -8,15 +8,11 @@ export const WeekTabsStyled = styled.ul`
   margin-bottom: 20px;
 
   @media screen and (min-width: 768px) {
-    width: 100%;
+    max-width: 376px;
     height: 70px;
   }
 
   @media screen and (min-width: 1280px) {
-    //==========этот костыль нужно убрать
-    background-color: transparent;
-
-    //=========конец костыля
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
