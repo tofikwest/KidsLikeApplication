@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import moment from "moment";
+
 import { useLocation } from "react-router";
 import CurrentWeek from "../currentWeek/CurrentWeek";
 import { CurrentDayStyled } from "./CurrentDayStyled";
@@ -8,7 +10,10 @@ const initialState = {
   breakPoint: 767,
 };
 
-const CurrentDay = ({ day, date }) => {
+let date = null;
+let day = null;
+
+const CurrentDay = () => {
   const [state, setState] = useState(initialState);
   const location = useLocation();
 
@@ -22,6 +27,11 @@ const CurrentDay = ({ day, date }) => {
   const handleResizeWindow = () => {
     setState((prev) => ({ ...prev, width: window.innerWidth }));
   };
+
+  date = moment().format("DD-MM-YYYY");
+  day = moment().format("dddd");
+  let newDay = day[0].toUpperCase() + day.slice(1);
+
   return (
     <>
       {state.width < state.breakPoint && <CurrentWeek />}
@@ -32,8 +42,8 @@ const CurrentDay = ({ day, date }) => {
           <div>
             <span className="current-tasks">Мoи задачи:</span>
             <span className="current-day">
-              СРЕДА, 18-08-2021
-              {/* {`${day}`}, {`${date}`} */}
+              {/* СРЕДА, 18-08-2021 */}
+              {`${newDay}`}, {`${date}`}
             </span>
           </div>
         )}
@@ -41,8 +51,8 @@ const CurrentDay = ({ day, date }) => {
           <>
             <span className="current-tasks">Мoи задачи:</span>
             <span className="current-day">
-              СРЕДА, 18-08-2021
-              {/* {`${day}`}, {`${date}`} */}
+              {/* СРЕДА, 18-08-2021 */}
+              {`${newDay}`}, {`${date}`}
             </span>
           </>
         )}
