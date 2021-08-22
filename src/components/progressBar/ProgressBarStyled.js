@@ -1,11 +1,16 @@
 import styled from "styled-components";
 
-export const ProgresiveBarStyled = styled.div`
+export const ProgressBarStyled = styled.div`
   @media screen and (min-width: 768px) {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+  @media screen and (min-width: 1280px) {
+    max-width: 360px;
+    align-items: flex-end;
+    margin-right: 30px;
   }
   .stats-wrapper {
     margin-bottom: 61px;
@@ -19,11 +24,7 @@ export const ProgresiveBarStyled = styled.div`
     }
     @media screen and (min-width: 1280px) {
       flex-direction: column;
-      margin-right: 50px;
       justify-content: space-between;
-      padding-top: 40px;
-      /* padding-left: 110px;
-      padding-right: 50px; */
       margin-bottom: 0;
     }
   }
@@ -48,6 +49,7 @@ export const ProgresiveBarStyled = styled.div`
       margin-top: 10px;
     }
     @media screen and (min-width: 1280px) {
+      margin-top: 0;
       margin-bottom: 10px;
     }
   }
@@ -63,16 +65,23 @@ export const ProgresiveBarStyled = styled.div`
   }
   .progressLibrary_wrapper {
     display: flex;
-    /* justify-content: space-between; */
+    justify-content: space-between;
     margin-top: 10px;
     @media screen and (min-width: 768px) {
       width: 350px;
       margin-bottom: 20px;
     }
+    @media screen and (min-width: 1280px) {
+      margin-bottom: 0;
+    }
   }
-
   .secondPoints {
     font-weight: bold;
-    margin-right: 26px;
+  }
+  .react-sweet-progress-symbol {
+    display: none;
+  }
+  .react-sweet-progress {
+    width: 280px;
   }
 `;

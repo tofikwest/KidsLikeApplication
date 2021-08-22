@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router";
 import planer from "../../../images/planer.png";
 import CurrentDay from "../currentDay/CurrentDay";
-import ProgresiveBar from "../../progresiveBar/ProgresiveBar";
+import ProgressBar from "../../progressBar/ProgressBar";
 import { WeekTabContentStyled } from "./WeekTabContentStyled";
 import CardList from "../../cardList/CardList";
 import CurrentWeekRange from "../currentWeekRange/CurrentWeekRange";
@@ -61,22 +61,26 @@ const WeekTabContent = ({ currentTasks, selectedDate }) => {
   return (
     <WeekTabContentStyled>
       {state.width < state.breakPoint ||
-        (state.width >= 1280 && <CurrentDay />)}
+        (state.width >= 1280 && (
+          <div className="desktop-dayWeek-wrapper">
+            <CurrentDay /> <ProgressBar />
+          </div>
+        ))}
 
-      {state.width > state.breakPoint && <ProgresiveBar />}
+      {/* {state.width > state.breakPoint && <ProgressBar />} */}
       {state.width > state.breakPoint && state.width < 1280 && <CurrentDay />}
 
-      <CurrentWeekRange />
+      {/* <CurrentWeekRange /> */}
 
-      {!authorizedUser ? (
-        <>
-          <p className="notification">На этот день задач нет</p>
-          <button type="button" className="home-button">
-            Запланировать задачи
-          </button>
-          <img src={planer} alt="children" className="children-img" />
-        </>
-      ) : (
+      {/* {!authorizedUser ? ( */}
+      <>
+        <p className="notification">На этот день задач нет</p>
+        <button type="button" className="home-button">
+          Запланировать задачи
+        </button>
+        <img src={planer} alt="children" className="children-img" />
+      </>
+      {/* ) : (
         <div className="cards-wrapper">
           <CardList
             selectedDate={getSelectedDateIdByName(selectedDate)}
@@ -84,7 +88,7 @@ const WeekTabContent = ({ currentTasks, selectedDate }) => {
             currentDateId={getCurrentDateId()}
           />
         </div>
-      )}
+      )} */}
     </WeekTabContentStyled>
   );
 };
