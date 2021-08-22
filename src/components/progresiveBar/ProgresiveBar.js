@@ -9,11 +9,11 @@ import {
 import { ProgresiveBarStyled } from "./ProgresiveBarStyled";
 
 const ProgresiveBar = () => {
-  // const userPoints = useSelector(getRewardsGained);
-  // const countPoints = useSelector(getRewardsPlanned);
+  const userPoints = useSelector(getRewardsGained);
+  const countPoints = useSelector(getRewardsPlanned);
   let percent = 100;
-  let userPoints = 4;
-  let countPoints = 16;
+  // let userPoints = 4;
+  // let countPoints = 16;
   if (countPoints) {
     percent = parseInt((userPoints / countPoints) * 100);
   }
