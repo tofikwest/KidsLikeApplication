@@ -24,9 +24,11 @@ const CardList = ({ selectedDate, tasks, currentDateId, awards }) => {
   }
   // console.log(awards);
   return (
+
     <CardListStyled>
       {location === "/awards" &&
         awards.map((eward) => <EdwardsCart key={eward.id} eward={eward} />)}
+
 
       {previousDay &&
         Boolean(tasks) &&

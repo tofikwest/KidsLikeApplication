@@ -37,28 +37,31 @@ const DayList = ({ days, taskId }) => {
       {days.map((day) => (
         <li className="dayListItem" key={day._id}>
           <input
-            className="dayListCheckbox"
+            className="dayListCheckbox visually-hidden"
             name={day._id}
+            id={day.date}
             type="checkbox"
             value={getDateId(day.date)}
             checked={day.isActive}
             onChange={onHandleChange}
           />
-          {day.isActive ? (
-            <img
-              className="dayListCheckboxIcon"
-              src={checkedIcon}
-              alt={day._id}
-            />
-          ) : (
-            <img
-              className="dayListCheckboxIcon"
-              src={uncheckedIcon}
-              alt={day._id}
-            />
-          )}
 
-          <span className="dayListValue">{getLocalShortDayName(day.date)}</span>
+          <label htmlFor={day.date} className="dayListValue">
+            {day.isActive ? (
+              <img
+                className="dayListCheckboxIcon"
+                src={checkedIcon}
+                alt={day._id}
+              />
+            ) : (
+              <img
+                className="dayListCheckboxIcon"
+                src={uncheckedIcon}
+                alt={day._id}
+              />
+            )}
+            {getLocalShortDayName(day.date)}
+          </label>
         </li>
       ))}
     </DayListStyled>
