@@ -12,8 +12,6 @@ const ProgressBar = () => {
   const userPoints = useSelector(getRewardsGained);
   const countPoints = useSelector(getRewardsPlanned);
   let percent = 100;
-  // let userPoints = 4;
-  // let countPoints = 16;
   if (countPoints) {
     percent = parseInt((userPoints / countPoints) * 100);
   }
@@ -39,7 +37,7 @@ const ProgressBar = () => {
         <span className="secondPoints">
           {userPoints}/{countPoints}
         </span>
-        <Progress percent={percent} />
+        <Progress percent={percent > 100 ? 100 : percent} />
       </div>
     </ProgressBarStyled>
   );

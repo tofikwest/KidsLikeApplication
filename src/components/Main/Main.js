@@ -1,4 +1,5 @@
 import React, { Suspense } from "react";
+import Loader from "react-loader-spinner";
 import { useSelector } from "react-redux";
 import { Switch } from "react-router-dom";
 import { authorizedUser } from "../../redux/auth/authSelectors";
@@ -11,7 +12,7 @@ const Main = () => {
   const isAuth = useSelector(authorizedUser);
   return (
     <MainStyled>
-      <Suspense fallback={<p>...loading</p>}>
+      <Suspense fallback={<Loader />}>
         <Switch>
           {mainRoutes.map(({ path, exact, component, isPrivat, restricted }) =>
             isPrivat ? (
