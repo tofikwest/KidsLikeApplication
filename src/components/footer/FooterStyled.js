@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const FooterStyled = styled.footer`
   text-align: center;
 
-  margin: 40px 0px 25px;
+  margin: 40px 0px 80px;
 
   font-family: Montserrat;
   font-style: normal;
@@ -17,7 +17,6 @@ export const FooterStyled = styled.footer`
   @media screen and (min-width: 768px) {
     display: flex;
     align-items: baseline;
-    /* justify-content: flex-end; */
     justify-content: center;
 
     margin: 50px 0px 40px;

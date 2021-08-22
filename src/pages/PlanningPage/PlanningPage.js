@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import CardList from "../../components/cardList/CardList";
 import Footer from "../../components/footer/Footer";
+import MobileTaskFooter from "../../components/mobileTaskFooter/MobileTaskFooter";
 import PlanningPageTopSection from "../../components/planningPageTopSection/PlanningPageTopSection";
 import { getTasks } from "../../redux/tasks/tasksSelector";
 
@@ -29,11 +30,15 @@ const PlanningPage = () => {
 
   return (
     <>
-      <PlanningPageTopSection isMobile={state.width < state.tabletBreakpoint} />
+      <PlanningPageTopSection
+        isMobile={state.width < state.tabletBreakpoint}
+        isDesktop={state.width > state.desktopBreakpoint}
+      />
       <CardList tasks={tasks} />
 
       {/* <NewTaskModal /> */}
       <Footer />
+      {state.width < state.tabletBreakpoint && <MobileTaskFooter />}
     </>
   );
 };

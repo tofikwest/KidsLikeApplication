@@ -22,13 +22,10 @@ const CardList = ({ selectedDate, tasks, currentDateId, awards }) => {
     activeTasks = tasks.filter((task) => task.days[selectedDate].isActive);
     featureDay = true;
   }
-  // console.log(awards);
   return (
-
-    <CardListStyled>
+    <CardListStyled location={location}>
       {location === "/awards" &&
         awards.map((eward) => <EdwardsCart key={eward.id} eward={eward} />)}
-
 
       {previousDay &&
         Boolean(tasks) &&

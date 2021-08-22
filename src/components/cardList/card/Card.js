@@ -36,7 +36,6 @@ const Card = ({
 
     dispatch(toggleTaskOperation({ taskId, date }));
   };
-  console.log(`location === "/planning"`, location === "/planning");
 
   return (
     <CardItemStyled location={location}>
