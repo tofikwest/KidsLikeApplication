@@ -8,7 +8,7 @@ const AddCustomTask = () => {
         Хочешь получить больше призов - добавь задачи :)
       </p>
       <button className="addTaskButton" type="button">
-        <img src={addTaskIcon} alt="asas" />
+        <img src={addTaskIcon} alt="add task" />
       </button>
     </AddCustomTaskStyled>
   );

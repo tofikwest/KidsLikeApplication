@@ -6,7 +6,7 @@ import {
 } from "../../../redux/tasks/tasksSelector";
 import { PlanningPointsStyled } from "./PlanningPointsStyled";
 
-const PlanningPoints = ({ isMobile }) => {
+const PlanningPoints = ({ isMobile, isDesktop }) => {
   const startWeekDate = useSelector(getStartWeekDate);
   const endWeekDate = useSelector(getEndWeekDate);
   const rewardsPlanned = useSelector(getRewardsPlanned);
@@ -38,19 +38,36 @@ const PlanningPoints = ({ isMobile }) => {
     <PlanningPointsStyled>
       <p className="weekPlansText">
         План на неделю:
-        {!isMobile ? (
-          <span className="weekPlansDate">{`${configuredStartingDate()} - ${configuredEndingDate()}`}</span>
-        ) : (
-          <select name="date" id="date">
-            <option value="default">{`${startingDate} - ${endingDate}`}</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
+        {isMobile || (!isMobile && !isDesktop) ? (
+          <select className="weekPlansDaySelector" name="date" id="date">
+            <option
+              className="weekPlansDay"
+              value="default"
+            >{`${startingDate} - ${endingDate}`}</option>
+            <option className="weekPlansDay" value="1">
+              1
+            </option>
+            <option className="weekPlansDay" value="2">
+              2
+            </option>
+            <option className="weekPlansDay" value="3">
+              3
+            </option>
+            <option className="weekPlansDay" value="4">
+              4
+            </option>
+            <option className="weekPlansDay" value="5">
+              5
+            </option>
+            <option className="weekPlansDay" value="6">
+              6
+            </option>
+            <option className="weekPlansDay" value="7">
+              7
+            </option>
           </select>
+        ) : (
+          <span className="weekPlansDate">{`${configuredStartingDate()} - ${configuredEndingDate()}`}</span>
         )}
       </p>
 

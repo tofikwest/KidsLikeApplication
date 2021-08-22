@@ -2,8 +2,12 @@ import styled from "styled-components";
 
 export const AddCustomTaskStyled = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
+
+  @media screen and (min-width: 1280px) {
+    justify-content: flex-end;
+  }
 
   .addTaskText {
     font-family: "Montserrat", sans-serif;
