@@ -7,6 +7,7 @@ import {
 } from "../../../redux/additionalInfo/additionalInfoSelectors";
 import { CurrentWeekStyled } from "./CurrentWeekStyled";
 import { useSelector } from "react-redux";
+import { colors } from "../../../general/styles/colors";
 
 const CurrentWeek = () => {
   const startOfTheWeek = useSelector(getStartOfTheWeek);
@@ -16,7 +17,7 @@ const CurrentWeek = () => {
   const end = endOfTheWeek && moment(endOfTheWeek).format("D MMMM");
 
   return (
-    <CurrentWeekStyled>
+    <CurrentWeekStyled colors={colors}>
       <p className="current-week">
         Неделя: {start}-{end}
       </p>

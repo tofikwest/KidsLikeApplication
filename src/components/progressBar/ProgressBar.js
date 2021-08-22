@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Progress } from "react-sweet-progress";
 import "react-sweet-progress/lib/style.css";
+import { colors } from "../../general/styles/colors";
 import {
   getRewardsGained,
   getRewardsPlanned,
@@ -20,7 +21,7 @@ const ProgressBar = () => {
   }
 
   return (
-    <ProgressBarStyled>
+    <ProgressBarStyled colors={colors}>
       <div className="stats-wrapper">
         <p className="stats stats1">
           Заработано баллов за эту неделю:

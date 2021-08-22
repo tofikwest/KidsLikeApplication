@@ -1,14 +1,6 @@
 import styled from "styled-components";
 
 export const CurrentDayStyled = styled.div`
-  /* margin-bottom: 94px; */
-
-  /* @media screen and (min-width: 768px) {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 103px;
-  }*/
-
   display: flex;
   flex-direction: column;
   margin-bottom: 61px;
@@ -28,7 +20,7 @@ export const CurrentDayStyled = styled.div`
     font-size: 12px;
     line-height: 15px;
     letter-spacing: 0.2em;
-    color: #000000;
+    color: ${({ colors }) => colors.primaryTextColor};
     text-align: center;
     @media screen and (min-width: 1280px) {
       display: inline-flex;
@@ -40,7 +32,7 @@ export const CurrentDayStyled = styled.div`
     font-size: 12px;
     line-height: 1.25;
     letter-spacing: 0.04em;
-    color: #a6abb9;
+    color: ${({ colors }) => colors.thirdTextColor};
     text-align: center;
 
     margin-bottom: 2px;

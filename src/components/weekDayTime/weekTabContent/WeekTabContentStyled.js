@@ -18,7 +18,7 @@ export const WeekTabContentStyled = styled.div`
     line-height: 1.25;
     text-align: center;
     letter-spacing: 0.04em;
-    color: #000000;
+    color: ${({ colors }) => colors.primaryTextColor};
     margin-bottom: 20px;
     margin-top: 0;
   }
@@ -28,6 +28,7 @@ export const WeekTabContentStyled = styled.div`
     width: 220px;
     height: 48px;
     background-color: #ffbc33;
+    background-color: ${({ colors }) => colors.primaryBgColor};
     border-radius: 6px;
     color: #fafafa;
     filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.15));
@@ -40,6 +41,7 @@ export const WeekTabContentStyled = styled.div`
     border-color: transparent;
     margin: 0 auto;
     margin-bottom: 61px;
+    cursor: pointer;
 
     @media screen and (min-width: 768px) {
       margin-bottom: 103px;

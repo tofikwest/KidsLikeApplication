@@ -9,7 +9,7 @@ export const HomePageStyled = styled.div`
       display: flex;
       min-width: 240px;
       height: 100vh;
-      background-color: #ffbc33;
+      background-color: ${({ colors }) => colors.primaryBgColor};
     }
   }
   .right-side {
@@ -17,7 +17,7 @@ export const HomePageStyled = styled.div`
   }
 
   .upside-bar {
-    background-color: #ffbc33;
+    background-color: ${({ colors }) => colors.primaryBgColor};
     height: 70px;
     display: flex;
     align-items: center;
