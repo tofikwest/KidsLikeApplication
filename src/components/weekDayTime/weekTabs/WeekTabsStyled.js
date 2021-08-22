@@ -27,7 +27,7 @@ export const WeekTabsStyled = styled.ul`
     font-size: 12px;
     line-height: 1.25;
     letter-spacing: 0.04em;
-    color: #000000;
+    color: ${({ colors }) => colors.primaryTextColor};
     text-align: center;
     border-color: transparent;
     cursor: pointer;
@@ -66,7 +66,7 @@ export const WeekTabsStyled = styled.ul`
   }
 
   .weekDays-active {
-    background-color: #ffbc33;
+    background-color: ${({ colors }) => colors.primaryBgColor};
     @media screen and (min-width: 768px) {
       background-color: #ffffff;
     }

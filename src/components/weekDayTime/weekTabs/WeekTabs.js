@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { WeekTabsStyled } from "./WeekTabsStyled";
 import { useLocation } from "react-router";
 import { WeekTabsData } from "./WeekTabsData";
+import { colors } from "../../../general/styles/colors";
 
 const initialState = {
   // search: "",
@@ -51,7 +52,7 @@ const WeekTabs = ({ choosenDate }) => {
 
   return (
     <>
-      <WeekTabsStyled>
+      <WeekTabsStyled colors={colors}>
         {WeekTabsData.map(({ dayFull, dayShort, search }) => (
           <button
             key={dayShort}
