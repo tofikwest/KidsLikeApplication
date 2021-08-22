@@ -16,6 +16,7 @@ const EwardsStyled = styled.div`
   .awardsLogo {
     display: flex;
     align-items: center;
+    margin-bottom: 30px;
   }
 
   .ewardSvg {

@@ -23,7 +23,7 @@ const Ewards = () => {
   const dispath = useDispatch();
   const awards = useSelector(getAwards);
   const location = useLocation();
-
+  //   console.log(awards);
   //   const giftIds = [1, 2];
   useEffect(() => {
     dispath(getGiftsOperation());

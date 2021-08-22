@@ -1,23 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import TaskToggle from "../../taskToggle/TaskToggle";
 import { CardItemStyled } from "../../cardList/card/CardStyled";
+import { buyGiftOperation } from "../../../redux/gifts/giftOperations";
+
+const initialState = { ewardsId: [] };
 
 const EdwardsCart = ({ eward }) => {
-  function declOfNum(n, text) {
-    n = Math.abs(n) % 100;
-    const n1 = n % 10;
-    if (n > 10 && n < 20) {
-      return text[2];
-    }
-    if (n1 > 1 && n1 < 5) {
-      return text[1];
-    }
-    if (n1 === 1) {
-      return text[0];
-    }
-    return text[2];
-  }
-  //   console.log(price);
+  const [state, setState] = useState(initialState);
+  const dispath = useDispatch();
+
+  //   console.log(state);
+
+  //   const giftIds = [1, 2, 3];
+  const onAwardsToggle = (ewardId) => {
+    // dispath(buyGiftOperation());
+    setState((prev) => ({
+      ...prev,
+      ewardsId: [...prev.ewardsId, ewardId],
+    }));
+
+    // console.log(ewardId);
+  };
+  //   console.log(ewar d);
+
   return (
     <CardItemStyled>
       <div className="cart">
@@ -25,12 +31,13 @@ const EdwardsCart = ({ eward }) => {
         <div className="card__footer">
           <div className="card__info">
             <h3 className="card__taskName">{eward.title}</h3>
-            <span className="card__rewardTag">{`${eward.price} ${declOfNum(
-              eward.price,
-              ["балл", "балла", "баллов"]
-            )}`}</span>
+            <span className="card__rewardTag">{eward.price} баллов</span>
           </div>
-          <TaskToggle />
+          <TaskToggle
+            awardId={eward.id}
+            isChecked={eward.isSelected}
+            onAwardsToggle={onAwardsToggle}
+          />
         </div>
       </div>
     </CardItemStyled>
