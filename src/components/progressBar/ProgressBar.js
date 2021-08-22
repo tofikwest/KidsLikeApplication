@@ -6,9 +6,9 @@ import {
   getRewardsGained,
   getRewardsPlanned,
 } from "../../redux/additionalInfo/additionalInfoSelectors";
-import { ProgresiveBarStyled } from "./ProgresiveBarStyled";
+import { ProgressBarStyled } from "./ProgressBarStyled";
 
-const ProgresiveBar = () => {
+const ProgressBar = () => {
   const userPoints = useSelector(getRewardsGained);
   const countPoints = useSelector(getRewardsPlanned);
   let percent = 100;
@@ -20,7 +20,7 @@ const ProgresiveBar = () => {
   }
 
   return (
-    <ProgresiveBarStyled>
+    <ProgressBarStyled>
       <div className="stats-wrapper">
         <p className="stats stats1">
           Заработано баллов за эту неделю:
@@ -39,8 +39,8 @@ const ProgresiveBar = () => {
         </span>
         <Progress percent={percent > 100 ? 100 : percent} />
       </div>
-    </ProgresiveBarStyled>
+    </ProgressBarStyled>
   );
 };
 
-export default ProgresiveBar;
+export default ProgressBar;

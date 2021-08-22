@@ -5,6 +5,8 @@ import WeekTabContent from "../../components/weekDayTime/weekTabContent/WeekTabC
 import Footer from "../../components/footer/Footer";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router";
+import CurrentDay from "../../components/weekDayTime/currentDay/CurrentDay";
+import CurrentWeek from "../../components/weekDayTime/currentWeek/CurrentWeek";
 
 const initialState = {
   search: "",
@@ -34,20 +36,27 @@ const HomePage = () => {
 
   return (
     <HomePageStyled>
-      {state.width < state.breakPoint && state.width > 768 && (
+      {state.width < state.breakPoint && state.width >= 768 && (
         <div className="upside-bar">
-          <p className="upside-bar--current-week">Неделя: 21-27 Декабря</p>
+          <CurrentWeek />
           <WeekTabs choosenDate={choosenDate} />
         </div>
       )}
 
-      {state.width > state.breakPoint && (
+      {state.width >= state.breakPoint && (
         <div className="home-sidebar">
           <WeekTabs choosenDate={choosenDate} />
         </div>
       )}
 
-      {state.width < 767 && <WeekTabs choosenDate={choosenDate} />}
+      {state.width < 767 && (
+        <>
+          <WeekTabs choosenDate={choosenDate} />
+          <>
+            <CurrentDay />
+          </>
+        </>
+      )}
 
       <div className="right-side">
         <WeekTabContent selectedDate={state.search} />

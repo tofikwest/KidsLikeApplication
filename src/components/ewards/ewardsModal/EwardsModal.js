@@ -1,11 +1,13 @@
 import React from "react";
 import catImg from "../../../images/catModal.png";
+
 import EwardsModalStyled from "./EwardsModalStyled";
+import { colors } from "../../../general/styles/colors";
 import sprite from "../../../images/sprite.svg";
 
 const EwardsModal = ({ setOpenModal }) => {
   return (
-    <EwardsModalStyled>
+    <EwardsModalStyled colors={colors}>
       <svg className="iconCloseAwards" onClick={setOpenModal}>
         <use href={sprite + "#icon-close-awards-modal"} />
       </svg>

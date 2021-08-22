@@ -14,9 +14,9 @@ const TaskStatusIcon = ({ completionStatus }) => {
           <path
             d="M10 14.8519L13.4286 19L20 11"
             stroke="white"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </svg>
       ) : (

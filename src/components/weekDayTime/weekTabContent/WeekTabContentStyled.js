@@ -4,6 +4,12 @@ export const WeekTabContentStyled = styled.div`
   @media screen and (min-width: 768px) {
     overflow-x: hidden;
   }
+  @media screen and (min-width: 1280px) {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 40px;
+    flex-direction: column;
+  }
   .notification {
     font-family: inherit;
     font-style: normal;
@@ -57,8 +63,6 @@ export const WeekTabContentStyled = styled.div`
       height: 362px;
       object-fit: cover;
       transform: translateX(-15%);
-      //нужно ли убирать края картинки? мешают?
-      /* overflow-x: hidden; */
     }
     @media screen and (min-width: 1280px) {
       transform: translateX(0);
@@ -68,6 +72,13 @@ export const WeekTabContentStyled = styled.div`
     }
   }
 
+  .desktop-dayWeek-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 110px;
+    padding-right: 30px;
+    margin-bottom: 94px;
+  }
   .cards-wrapper {
     display: flex;
     justify-content: flex-end;
