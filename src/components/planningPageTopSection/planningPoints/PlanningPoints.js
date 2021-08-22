@@ -17,6 +17,8 @@ const PlanningPoints = ({ isMobile }) => {
     return day;
   };
 
+  const startingDate = configuredStartingDate();
+
   const configuredEndingDate = () => {
     const date = new Date(endWeekDate);
     const day = date.getDate();
@@ -30,6 +32,8 @@ const PlanningPoints = ({ isMobile }) => {
     return `${day}.${month}.${year}`;
   };
 
+  const endingDate = configuredEndingDate();
+
   return (
     <PlanningPointsStyled>
       <p className="weekPlansText">
@@ -38,9 +42,7 @@ const PlanningPoints = ({ isMobile }) => {
           <span className="weekPlansDate">{`${configuredStartingDate()} - ${configuredEndingDate()}`}</span>
         ) : (
           <select name="date" id="date">
-            <option value="default">
-              {`${configuredStartingDate()} - ${configuredEndingDate()}`}
-            </option>
+            <option value="default">{`${startingDate} - ${endingDate}`}</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
