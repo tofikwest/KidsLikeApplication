@@ -1,12 +1,21 @@
+import { useLocation } from "react-router-dom";
 import Switch from "react-switch";
 import { ReactComponent as ExclIcon } from "../../images/excl.svg";
 import { ReactComponent as ThickIcon } from "../../images/thick.svg";
 // this component should be stateless!
 // MUST recieve METHOD to change the state.
 
-const TaskToggle = ({ onTaskToggle, taskId, isChecked }) => {
+const TaskToggle = ({
+  onTaskToggle,
+  taskId,
+  isChecked,
+  onAwardsToggle,
+  awardId,
+}) => {
+  const location = useLocation().pathname;
+
   const onTaskStateToggle = () => {
-    onTaskToggle(taskId);
+    location === "/awards" ? onAwardsToggle(awardId) : onTaskToggle(taskId);
   };
 
   return (

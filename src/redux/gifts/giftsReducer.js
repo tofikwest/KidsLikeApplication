@@ -19,6 +19,10 @@ const itemsReducer = createReducer([], {
   //       ? { ...gift, isSelected: !gift.isSelected }
   //       : gift
   //   ),
+
+  // (_, { payload }) => payload,
+
+
   [buyGiftsSuccess]: (_, { payload }) => payload,
 
   [signOutSuccess]: () => [],
