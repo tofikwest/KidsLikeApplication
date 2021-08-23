@@ -9,6 +9,7 @@ import CurrentWeekRange from "../currentWeekRange/CurrentWeekRange";
 import { authorizedUser } from "../../../redux/auth/authSelectors";
 import { useSelector } from "react-redux";
 import { getTasks } from "../../../redux/tasks/tasksSelector";
+import { colors } from "../../../general/styles/colors";
 
 const initialState = {
   search: "",
@@ -59,7 +60,7 @@ const WeekTabContent = ({ currentTasks, selectedDate }) => {
   };
 
   return (
-    <WeekTabContentStyled>
+    <WeekTabContentStyled colors={colors}>
       {state.width < state.breakPoint ||
         (state.width >= 1280 && (
           <div className="desktop-dayWeek-wrapper">

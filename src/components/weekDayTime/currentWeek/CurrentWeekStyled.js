@@ -14,7 +14,7 @@ export const CurrentWeekStyled = styled.div`
     font-size: 14px;
     line-height: 1.22;
     letter-spacing: 0.04em;
-    color: #000000;
+    color: ${({ colors }) => colors.primaryTextColor};
     text-align: center;
 
     @media screen and (min-width: 768px) {

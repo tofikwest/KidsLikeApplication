@@ -4,6 +4,7 @@ import moment from "moment";
 import { useLocation } from "react-router";
 import CurrentWeek from "../currentWeek/CurrentWeek";
 import { CurrentDayStyled } from "./CurrentDayStyled";
+import { colors } from "../../../general/styles/colors";
 
 const initialState = {
   width: window.innerWidth,
@@ -36,7 +37,7 @@ const CurrentDay = () => {
     <>
       {state.width < state.breakPoint && <CurrentWeek />}
 
-      <CurrentDayStyled>
+      <CurrentDayStyled colors={colors}>
         {state.width >= 1280 && <CurrentWeek />}
         {state.width >= 1280 && (
           <div>

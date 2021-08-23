@@ -1,7 +1,7 @@
 import { HomePageStyled } from "./HomePageStyled";
 import WeekTabs from "../../components/weekDayTime/weekTabs/WeekTabs";
 import WeekTabContent from "../../components/weekDayTime/weekTabContent/WeekTabContent";
-
+import { colors } from "../../general/styles/colors";
 import Footer from "../../components/footer/Footer";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router";
@@ -35,7 +35,7 @@ const HomePage = () => {
   };
 
   return (
-    <HomePageStyled>
+    <HomePageStyled colors={colors}>
       {state.width < state.breakPoint && state.width >= 768 && (
         <div className="upside-bar">
           <CurrentWeek />
