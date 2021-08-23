@@ -5,6 +5,7 @@ import giftsReducer from "./gifts/giftsReducer";
 import tasksReducer from "./tasks/tasksReducer";
 import additionalInfoReducer from "./additionalInfo/additionalInfoReducer";
 import storage from "redux-persist/lib/storage";
+import { selectPlanningDateReducer } from "./planningTasks/planningTasksReducer";
 import locationReducer from "./location/locationReducer";
 
 const authPersistConfig = {
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
   gifts: giftsReducer,
   additionalInfo: additionalInfoReducer,
   user: "",
+  planningSelectedDateId: selectPlanningDateReducer,
   lastLocation: persistReducer(locationPersistConfig, locationReducer),
 });
 
