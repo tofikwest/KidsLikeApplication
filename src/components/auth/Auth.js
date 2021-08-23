@@ -1,49 +1,45 @@
 import React from "react";
 import { Formik } from "formik";
+import * as Yup from "yup";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getCurrentUserOperation, login, register } from "../../redux/auth/authOperations";
+import { setToken } from "../../redux/auth/authSelectors";
 import { AuthContainer } from "./AuthStyled";
 import sprite from "../../images/sprite.svg";
-import { googleLogin, login, register } from "../../redux/auth/authOperations";
-import { useDispatch } from "react-redux";
-import * as Yup from "yup";
 
 const validationSchema = Yup.object({
-  email: Yup.string().email("Invalid email format").required("Required"),
+  email: Yup.string()
+    .required("это обязательное поле")
+    .matches(/^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/, "неверный формат"),
   password: Yup.string()
-    .required("No password provided!")
-    .min(8, "Password is too short! Should be 8 chars minimum")
-    .matches(/(?=.*[0-9])/, "Password must contain a number!"),
+    .required("это обязательное поле")
+    .min(8, "длина пароля - не менее 8 символов")
+    .matches(/(?=.*[0-9])/, "пароль должен содержать цифру"),
 });
 
 const Auth = () => {
   const dispatch = useDispatch();
+  const token = useSelector(setToken);
+
+  useEffect(() => {
+    if (token) {
+      getCurrentUserOperation();
+    }
+  }, [token]);
 
   return (
     <AuthContainer>
       <h1 className="authTitle">Выполняй задания, получи классные призы!</h1>
       <p className="authText">Вы можете авторизоваться с помощью Google Account:</p>
-
-      <button className="googleBtn" type="button" onClick={() => dispatch(googleLogin())}>
+      <a href="https://kidslikev1.herokuapp.com/auth/google" className="googleBtn" aria-label="google button">
         <svg className="icon-user">
           <use href={sprite + "#icon-google-symb"} />
         </svg>{" "}
         Google
-      </button>
-
+      </a>
       <p>Или зайти с помощью e-mail и пароля, предварительно зарегистрировавшись:</p>
-      <Formik
-        initialValues={{ email: "", password: "" }}
-        validationSchema={validationSchema}
-        // validate={(values) => {
-        //   const errors = {};
-        //   if (!values.email) {
-        //     // className="accent-red"
-        //     errors.email = "Это обязательное поле";
-        //   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-        //     errors.email = "Invalid email address";
-        //   }
-        //   return errors;
-        // }}
-      >
+      <Formik initialValues={{ email: "", password: "" }} validationSchema={validationSchema}>
         {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
           <form onSubmit={handleSubmit} className="user-form">
             <label className="user-label" htmlFor="email">
@@ -59,7 +55,7 @@ const Auth = () => {
               placeholder="your@email.com"
               className="user-input"
             />
-            {errors.email && touched.email && errors.email}
+            {errors.email && touched.email && <p className="accent-red">{errors.email}</p>}
             <label className="user-label" htmlFor="password">
               <span className="accent-red">*</span>
               Пароль:

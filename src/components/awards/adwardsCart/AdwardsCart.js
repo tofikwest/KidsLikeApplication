@@ -1,29 +1,8 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React from "react";
 import TaskToggle from "../../taskToggle/TaskToggle";
 import { CardItemStyled } from "../../cardList/card/CardStyled";
-import { buyGiftOperation } from "../../../redux/gifts/giftOperations";
 
-const initialState = { ewardsId: [] };
-
-const EdwardsCart = ({ eward }) => {
-  const [state, setState] = useState(initialState);
-  const dispath = useDispatch();
-
-  //   console.log(state);
-
-  //   const giftIds = [1, 2, 3];
-  const onAwardsToggle = (ewardId) => {
-    // dispath(buyGiftOperation());
-    setState((prev) => ({
-      ...prev,
-      ewardsId: [...prev.ewardsId, ewardId],
-    }));
-
-    // console.log(ewardId);
-  };
-  //   console.log(ewar d);
-
+const EdwardsCart = ({ eward, onAwardsToggle }) => {
   return (
     <CardItemStyled>
       <div className="cart">

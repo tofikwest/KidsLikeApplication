@@ -5,7 +5,7 @@ import CurrentDay from "../currentDay/CurrentDay";
 import ProgressBar from "../../progressBar/ProgressBar";
 import { WeekTabContentStyled } from "./WeekTabContentStyled";
 import CardList from "../../cardList/CardList";
-import CurrentWeekRange from "../currentWeekRange/CurrentWeekRange";
+// import CurrentWeekRange from "../currentWeekRange/CurrentWeekRange";
 import { authorizedUser } from "../../../redux/auth/authSelectors";
 import { useSelector } from "react-redux";
 import { getTasks } from "../../../redux/tasks/tasksSelector";
@@ -17,7 +17,7 @@ const initialState = {
   breakPoint: 767,
 };
 
-const WeekTabContent = ({ currentTasks, selectedDate }) => {
+const WeekTabContent = ({ selectedDate }) => {
   const [state, setState] = useState(initialState);
   const location = useLocation();
 
@@ -64,16 +64,22 @@ const WeekTabContent = ({ currentTasks, selectedDate }) => {
       {state.width < state.breakPoint ||
         (state.width >= 1280 && (
           <div className="desktop-dayWeek-wrapper">
-            <CurrentDay /> <ProgressBar />
+            <CurrentDay selectedDate={selectedDate} /> <ProgressBar />
           </div>
         ))}
 
       {/* {state.width > state.breakPoint && <ProgressBar />} */}
-      {state.width > state.breakPoint && state.width < 1280 && <CurrentDay />}
+      {state.width > state.breakPoint && state.width < 1280 && (
+        <CurrentDay selectedDate={selectedDate} />
+      )}
 
       {/* <CurrentWeekRange /> */}
 
+<<<<<<< HEAD
       {!authorizedUser ? (
+=======
+      {!authorizedUser && !selectedDate ? (
+>>>>>>> dev
         <>
           <p className="notification">На этот день задач нет</p>
           <button type="button" className="home-button">

@@ -11,31 +11,37 @@ import CardList from "../cardList/CardList";
 // import TaskToggle from "../../components/taskToggle/TaskToggle";
 import Modal from "../Modal/Modal";
 import Footer from "../footer/Footer";
-import EwardsModal from "./ewardsModal/EwardsModal";
+import EwardsModal from "./awardsModal/AwardsModal";
 import ProgressBar from "../progressBar/ProgressBar";
 
-import EwardsStyled from "./EwardsStyled";
+import EwardsStyled from "./AwardsStyled";
 import sprite from "../../images/sprite.svg";
 import { colors } from "../../general/styles/colors";
 
 const Ewards = () => {
-  const [state, setOpenModal, setState] = useModal();
+  const [stateModal, setOpenModal, setOptionModal] = useModal();
   const dispath = useDispatch();
   const awards = useSelector(getAwards);
   const location = useLocation();
-  //   console.log(awards);
-  //   const giftIds = [1, 2];
+
   useEffect(() => {
     dispath(getGiftsOperation());
+
     location.pathname === "/awards"
-      ? setState((prev) => ({ ...prev, modalName: "awards" }))
-      : setState((prev) => ({ ...prev, modalName: "header" }));
+      ? setOptionModal((prev) => ({ ...prev, modalName: "awards" }))
+      : setOptionModal((prev) => ({ ...prev, modalName: "header" }));
     // dispath(buyGiftOperation({ giftIds }));
     return dispath(getGiftsOperation());
   }, [location]);
 
-  //   console.log(location);
-  //   console.log(state.modalName);
+  const onHandleClickConfirm = () => {
+    setOpenModal();
+  };
+
+  useEffect(() => {
+    stateModal.isModalOpen && dispath(buyGiftOperation());
+    return dispath(buyGiftOperation());
+  }, [stateModal.isModalOpen]);
 
   return (
     <EwardsStyled colors={colors}>
@@ -46,18 +52,18 @@ const Ewards = () => {
           </svg>
           <h3 className="awardsTitle">Мои призы</h3>
         </div>
-        {state.width > state.breakPointUserMenu && <ProgressBar />}
+        {stateModal.width > stateModal.breakPointUserMenu && <ProgressBar />}
       </div>
 
       <CardList awards={awards} />
 
-      <button className="awardsBtn" onClick={setOpenModal}>
+      <button className="awardsBtn" onClick={onHandleClickConfirm}>
         Подтвердить
       </button>
       <Footer />
-      {state.width < state.breakPointUserMenu && <ProgressBar />}
-      {state.isModalOpen && (
-        <Modal handleCloseModal={setOpenModal} modalName={state.modalName}>
+      {stateModal.width < stateModal.breakPointUserMenu && <ProgressBar />}
+      {stateModal.isModalOpen && (
+        <Modal handleCloseModal={setOpenModal} modalName={stateModal.modalName}>
           <EwardsModal setOpenModal={setOpenModal} />
         </Modal>
       )}

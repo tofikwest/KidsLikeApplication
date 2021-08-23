@@ -5,7 +5,6 @@ import { WeekTabsData } from "./WeekTabsData";
 import { colors } from "../../../general/styles/colors";
 
 const initialState = {
-  // search: "",
   width: window.innerWidth,
   breakPoint: 1280,
 };
@@ -13,7 +12,6 @@ const initialState = {
 const WeekTabs = ({ choosenDate }) => {
   const [state, setState] = useState(initialState);
   const location = useLocation();
-  // console.log(location);
 
   useEffect(() => {
     window.addEventListener("resize", handleResizeWindow);
@@ -37,18 +35,9 @@ const WeekTabs = ({ choosenDate }) => {
     if (e.currentTarget === activeBtn) {
       prevActiveBtn?.setAttribute("class", "weekDays-listItem");
       activeBtn.setAttribute("class", "weekDays-listItem weekDays-active");
-      // setState((prev) => ({ ...prev, search: activeBtn.value }));
       choosenDate(activeBtn.value);
-      // console.log(state.search);
-      //тут лежит день недели на английском
     }
-    // console.log(activeBtn);
   };
-
-  // нужен ли reset?
-  // const reset = () => {
-  //   setState({ ...initialState });
-  // };
 
   return (
     <>

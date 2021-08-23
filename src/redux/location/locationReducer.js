@@ -1,8 +1,12 @@
-import { createReducer } from "@reduxjs/toolkit";
+import { combineReducers, createReducer } from "@reduxjs/toolkit";
 import { setLastLocation } from "./locationAction";
 
-const initialUserLocation = {};
+const initialUserLocation = "";
 
-export const locationReducer = createReducer(initialUserLocation, {
+const currentLocation = createReducer(initialUserLocation, {
   [setLastLocation]: (_, { payload }) => payload,
 });
+const locationReducer = combineReducers({
+  location: currentLocation,
+});
+export default locationReducer;

@@ -1,9 +1,25 @@
+import { useState } from "react";
 import { useLocation } from "react-router-dom";
+
+import { buyGiftOperation } from "../../redux/gifts/giftOperations";
 import Card from "./card/Card";
-import EdwardsCart from "../ewards/edwardsCart/EdwardsCart";
+import EdwardsCart from "../awards/adwardsCart/AdwardsCart";
 import { CardListStyled } from "./CardListStyled";
 
+const initialState = [];
+
 const CardList = ({ selectedDate, tasks, currentDateId, awards }) => {
+  const [awardsId, setAwardsId] = useState(initialState);
+
+  const giftIds = awardsId;
+  // console.log(giftIds);
+
+  const onAwardsToggle = (ewardId) => {
+    setAwardsId((prev) => {
+      return prev.includes(ewardId) ? [...prev] : [...prev, ewardId];
+    });
+  };
+
   let presentDay = false;
   let previousDay = false;
   let featureDay = false;
@@ -22,10 +38,18 @@ const CardList = ({ selectedDate, tasks, currentDateId, awards }) => {
     activeTasks = tasks.filter((task) => task.days[selectedDate].isActive);
     featureDay = true;
   }
+
   return (
     <CardListStyled location={location}>
       {location === "/awards" &&
-        awards.map((eward) => <EdwardsCart key={eward.id} eward={eward} />)}
+        awards.map((eward) => (
+          <EdwardsCart
+            key={eward.id}
+            eward={eward}
+            onAwardsToggle={onAwardsToggle}
+            awardsId={awardsId}
+          />
+        ))}
 
       {previousDay &&
         Boolean(tasks) &&
