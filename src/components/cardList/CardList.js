@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 
 import { buyGiftOperation } from "../../redux/gifts/giftOperations";
 import Card from "./card/Card";
-import EdwardsCart from "../ewards/edwardsCart/EdwardsCart";
+import EdwardsCart from "../awards/adwardsCart/AdwardsCart";
 import { CardListStyled } from "./CardListStyled";
 
 const initialState = [];
@@ -12,7 +12,7 @@ const CardList = ({ selectedDate, tasks, currentDateId, awards }) => {
   const [awardsId, setAwardsId] = useState(initialState);
 
   const giftIds = awardsId;
-  console.log(giftIds);
+  // console.log(giftIds);
 
   const onAwardsToggle = (ewardId) => {
     setAwardsId((prev) => {

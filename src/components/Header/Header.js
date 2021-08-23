@@ -12,7 +12,7 @@ import sprite from "../../images/sprite.svg";
 import HeaderStyled from "./HeaderStyled";
 
 const Header = () => {
-  const [state, setOpenModal] = useModal();
+  const [stateModal, setOpenModal] = useModal();
 
   const isAuth = useSelector(authorizedUser);
 
@@ -22,19 +22,23 @@ const Header = () => {
         <Logo />
         <BalanceCounter />
 
-        {state.width > state.breakPointNavigation ? (
+        {stateModal.width > stateModal.breakPointNavigation ? (
           <Navigation />
         ) : (
           <svg className="menuNavImg" onClick={setOpenModal}>
             <use href={sprite + "#icon-menu"} />
           </svg>
         )}
-        {isAuth && state.width > state.breakPointUserMenu && <UserMenu />}
+        {isAuth && stateModal.width > stateModal.breakPointUserMenu && (
+          <UserMenu />
+        )}
       </HeaderStyled>
 
-      {state.isModalOpen && (
-        <Modal handleCloseModal={setOpenModal} modalName={state.modalName}>
-          {isAuth && state.width < state.breakPointUserMenu && <UserMenu />}
+      {stateModal.isModalOpen && (
+        <Modal handleCloseModal={setOpenModal} modalName={stateModal.modalName}>
+          {isAuth && stateModal.width < stateModal.breakPointUserMenu && (
+            <UserMenu />
+          )}
           <Navigation />
         </Modal>
       )}

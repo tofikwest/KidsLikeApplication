@@ -4,14 +4,18 @@ import authReducer from "./auth/authReducer";
 import giftsReducer from "./gifts/giftsReducer";
 import tasksReducer from "./tasks/tasksReducer";
 import additionalInfoReducer from "./additionalInfo/additionalInfoReducer";
-
 import storage from "redux-persist/lib/storage";
-import { locationReducer } from "./location/locationReducer";
+import locationReducer from "./location/locationReducer";
 
 const authPersistConfig = {
   key: "auth",
   storage,
-  whitelist: ["isAuthenticated", "token", "loading", "error"],
+  whitelist: ["isAuthenticated", "token", "isLoading", "error"],
+};
+const locationPersistConfig = {
+  key: "location",
+  storage,
+  whitelist: ["location"],
 };
 
 const rootReducer = combineReducers({
@@ -20,7 +24,7 @@ const rootReducer = combineReducers({
   gifts: giftsReducer,
   additionalInfo: additionalInfoReducer,
   user: "",
-  lastLocation: locationReducer,
+  lastLocation: persistReducer(locationPersistConfig, locationReducer),
 });
 
 export default rootReducer;

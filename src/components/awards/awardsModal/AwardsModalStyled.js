@@ -21,14 +21,46 @@ const EwardsModalStyled = styled.div`
     height: 15px;
   }
   .awardsModalTitle {
+    margin-bottom: 25px;
     font-weight: 600;
     font-size: 18px;
     line-height: 1.22;
     text-align: center;
   }
 
+  .modalListAwards {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: -35px;
+  }
+
+  .modalListItemsAwards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: calc(100% / 2);
+    margin-bottom: 35px;
+  }
+
+  .modalListItemsTitleAwards {
+    font-size: 12px;
+    line-height: 1.25;
+
+    letter-spacing: 0.04em;
+  }
+  .modalListItemsImageAwards {
+    margin-bottom: 15px;
+    width: 90px;
+    height: 90px;
+
+    border: 5px solid ${({ colors }) => colors.primaryBgColor};
+    border-radius: 50%;
+  }
+
   @media screen and (min-width: 768px) {
-    padding: 130px 40px 10px 40px;
+    padding: 130px 40px 50px 40px;
     width: 600px;
 
     .catImg {
@@ -45,7 +77,16 @@ const EwardsModalStyled = styled.div`
     }
     .awardsModalTitle {
       font-size: 30px;
-      line-height: 1.23;
+      line-height: 1.25;
+    }
+
+    .modalListAwards {
+      margin-right: -35px;
+    }
+
+    .modalListItemsAwards {
+      margin: 0 35px 35px 0;
+      width: calc((100% / 4) - 35px);
     }
   }
 `;
