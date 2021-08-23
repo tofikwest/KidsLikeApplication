@@ -15,3 +15,5 @@ export const signOutError = createAction("auth/signOutError");
 export const getCurrentUserRequest = createAction("auth/getCurrentUserRequest");
 export const getCurrentUserSuccess = createAction("auth/getCurrentUserSuccess");
 export const getCurrentUserError = createAction("auth/getCurrentUserError");
+
+export const setGoogleToken = createAction("auth/setGoogleToken");

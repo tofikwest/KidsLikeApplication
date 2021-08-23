@@ -10,6 +10,7 @@ import {
   signOutSuccess,
   getCurrentUserSuccess,
   getCurrentUserError,
+  setGoogleToken,
 } from "./authActions";
 
 const initialUserState = {
@@ -37,6 +38,7 @@ const tokenReducer = createReducer(null, {
   [registerUserSuccess]: (_, { payload }) => payload.token,
   [loginUserSuccess]: (_, { payload }) => payload.token,
   [signOutSuccess]: () => null,
+  [setGoogleToken]: (_, { payload }) => payload,
 });
 
 const isLoadingReducer = createReducer(false, {
