@@ -23,10 +23,10 @@ const Ewards = () => {
   const dispath = useDispatch();
   const awards = useSelector(getAwards);
   const location = useLocation();
-  //   console.log(awards);
-  //   const giftIds = [1, 2];
+
   useEffect(() => {
     dispath(getGiftsOperation());
+
     location.pathname === "/awards"
       ? setOptionModal((prev) => ({ ...prev, modalName: "awards" }))
       : setOptionModal((prev) => ({ ...prev, modalName: "header" }));
@@ -34,8 +34,14 @@ const Ewards = () => {
     return dispath(getGiftsOperation());
   }, [location]);
 
-  //   console.log(location);
-  //   console.log(state.modalName);
+  const onHandleClickConfirm = () => {
+    setOpenModal();
+  };
+
+  useEffect(() => {
+    stateModal.isModalOpen && dispath(buyGiftOperation());
+    return dispath(buyGiftOperation());
+  }, [stateModal.isModalOpen]);
 
   return (
     <EwardsStyled colors={colors}>
@@ -51,7 +57,7 @@ const Ewards = () => {
 
       <CardList awards={awards} />
 
-      <button className="awardsBtn" onClick={setOpenModal}>
+      <button className="awardsBtn" onClick={onHandleClickConfirm}>
         Подтвердить
       </button>
       <Footer />

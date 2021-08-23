@@ -20,7 +20,7 @@ const EwardsModal = ({ setOpenModal }) => {
 
       <ul className="modalListAwards">
         {awards.map((award) => (
-          <li className="modalListItemsAwards">
+          <li className="modalListItemsAwards" key={award.id}>
             <img
               className="modalListItemsImageAwards"
               src={award.imageUrl}

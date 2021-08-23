@@ -12,7 +12,7 @@ const CardList = ({ selectedDate, tasks, currentDateId, awards }) => {
   const [awardsId, setAwardsId] = useState(initialState);
 
   const giftIds = awardsId;
-  console.log(giftIds);
+  // console.log(giftIds);
 
   const onAwardsToggle = (ewardId) => {
     setAwardsId((prev) => {
