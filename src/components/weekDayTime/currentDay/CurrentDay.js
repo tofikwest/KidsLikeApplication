@@ -1,22 +1,73 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
-
 import { useLocation } from "react-router";
 import CurrentWeek from "../currentWeek/CurrentWeek";
 import { CurrentDayStyled } from "./CurrentDayStyled";
 import { colors } from "../../../general/styles/colors";
+import { useSelector } from "react-redux";
+import { getStartOfTheWeek } from "../../../redux/additionalInfo/additionalInfoSelectors";
 
 const initialState = {
   width: window.innerWidth,
   breakPoint: 767,
 };
 
-let date = null;
-let day = null;
-
-const CurrentDay = () => {
+const CurrentDay = ({ selectedDate }) => {
   const [state, setState] = useState(initialState);
   const location = useLocation();
+
+  const startOfTheWeek = useSelector(getStartOfTheWeek);
+
+  const start = startOfTheWeek && moment(startOfTheWeek).format("DD");
+  const monthYear = startOfTheWeek && moment(startOfTheWeek).format("MM-YYYY");
+
+  const daysArray = [
+    {
+      day: "Monday",
+      date: +start,
+      russianDay: "Понедельник",
+    },
+    {
+      day: "Tuesday",
+      date: +start + 1,
+      russianDay: "Вторник",
+    },
+    {
+      day: "Wednesday",
+      date: +start + 2,
+      russianDay: "Среда",
+    },
+    {
+      day: "Thursday",
+      date: +start + 3,
+      russianDay: "Четверг",
+    },
+    {
+      day: "Friday",
+      date: +start + 4,
+      russianDay: "Пятница",
+    },
+    {
+      day: "Saturday",
+      date: +start + 5,
+      russianDay: "Суббота",
+    },
+    {
+      day: "Sunday",
+      date: +start + 6,
+      russianDay: "Воскресенье",
+    },
+  ];
+
+  const dateNumber = daysArray
+    .map(({ day, russianDay, date }) => {
+      if (day === selectedDate) {
+        return `${russianDay}, ${date}`;
+      }
+    })
+    .join("");
+
+  const newDate = `${dateNumber}-${monthYear}`;
 
   useEffect(() => {
     window.addEventListener("resize", handleResizeWindow);
@@ -29,9 +80,9 @@ const CurrentDay = () => {
     setState((prev) => ({ ...prev, width: window.innerWidth }));
   };
 
-  date = moment().format("DD-MM-YYYY");
-  day = moment().format("dddd");
-  let newDay = day[0].toUpperCase() + day.slice(1);
+  const todayDate = moment().format("DD-MM-YYYY");
+  const todayDayRaw = moment().format("dddd");
+  const todayDay = todayDayRaw[0].toUpperCase() + todayDayRaw.slice(1);
 
   return (
     <>
@@ -43,8 +94,7 @@ const CurrentDay = () => {
           <div>
             <span className="current-tasks">Мoи задачи:</span>
             <span className="current-day">
-              {/* СРЕДА, 18-08-2021 */}
-              {`${newDay}`}, {`${date}`}
+              {dateNumber ? newDate : `${todayDay} ${todayDate}`}
             </span>
           </div>
         )}
@@ -52,8 +102,7 @@ const CurrentDay = () => {
           <>
             <span className="current-tasks">Мoи задачи:</span>
             <span className="current-day">
-              {/* СРЕДА, 18-08-2021 */}
-              {`${newDay}`}, {`${date}`}
+              {dateNumber ? newDate : `${todayDay} ${todayDate}`}
             </span>
           </>
         )}
