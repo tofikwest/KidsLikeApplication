@@ -21,8 +21,7 @@ const LogoutModal = ({ setStateUserInfo }) => {
   //     console.log(setOpenModal);
   //   };
 
-  const [setOpenModal] = useModal();
-
+  // const [setOpenModal] = useModal();
 
   const goback = () => {
     setStateUserInfo((prev) => ({ ...prev, isLogout: false }));
