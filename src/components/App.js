@@ -13,8 +13,8 @@ const App = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const { search } = useLocation();
-  // const history = useHistory();
-  // const lastLocation = useSelector((state) => state.lastLocation.location);
+  const history = useHistory();
+  const lastLocation = useSelector((state) => state.lastLocation.location);
 
   useEffect(() => {
     if (search) {
@@ -28,9 +28,9 @@ const App = () => {
     dispatch(setLastLocation(location.pathname));
   }, [dispatch, location]);
 
-  // useEffect(() => {
-  //   history.push(lastLocation);
-  // }, [dispatch, history]);
+  useEffect(() => {
+    history.push(lastLocation);
+  }, [dispatch, history]);
 
   return (
     <>
