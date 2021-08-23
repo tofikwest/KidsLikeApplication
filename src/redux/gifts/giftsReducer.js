@@ -22,7 +22,6 @@ const itemsReducer = createReducer([], {
 
   // (_, { payload }) => payload,
 
-
   [buyGiftsSuccess]: (_, { payload }) => payload,
 
   [signOutSuccess]: () => [],

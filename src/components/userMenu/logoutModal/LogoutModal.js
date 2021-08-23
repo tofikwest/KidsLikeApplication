@@ -5,6 +5,7 @@ import useModal from "../../../hooks/useModal";
 import Modal from "../../Modal/Modal";
 import LogOutModalStyled from "./LogoutModalStyled";
 import { colors } from "../../../general/styles/colors";
+
 const LogoutModal = ({ setStateUserInfo }) => {
   const dispatch = useDispatch();
 
@@ -19,6 +20,9 @@ const LogoutModal = ({ setStateUserInfo }) => {
   //     console.log(e);
   //     console.log(setOpenModal);
   //   };
+
+  const [setOpenModal] = useModal();
+
 
   const goback = () => {
     setStateUserInfo((prev) => ({ ...prev, isLogout: false }));
