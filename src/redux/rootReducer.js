@@ -7,6 +7,7 @@ import additionalInfoReducer from "./additionalInfo/additionalInfoReducer";
 
 import storage from "redux-persist/lib/storage";
 import { locationReducer } from "./location/locationReducer";
+import { selectPlanningDateReducer } from "./planningTasks/planningTasksReducer";
 
 const authPersistConfig = {
   key: "auth",
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   additionalInfo: additionalInfoReducer,
   user: "",
   lastLocation: locationReducer,
+  planningSelectedDateId: selectPlanningDateReducer,
 });
 
 export default rootReducer;

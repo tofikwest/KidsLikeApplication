@@ -73,15 +73,15 @@ const WeekTabContent = ({ currentTasks, selectedDate }) => {
 
       {/* <CurrentWeekRange /> */}
 
-      {/* {!authorizedUser ? ( */}
-      <>
-        <p className="notification">На этот день задач нет</p>
-        <button type="button" className="home-button">
-          Запланировать задачи
-        </button>
-        <img src={planer} alt="children" className="children-img" />
-      </>
-      {/* ) : (
+      {!authorizedUser ? (
+        <>
+          <p className="notification">На этот день задач нет</p>
+          <button type="button" className="home-button">
+            Запланировать задачи
+          </button>
+          <img src={planer} alt="children" className="children-img" />
+        </>
+      ) : (
         <div className="cards-wrapper">
           <CardList
             selectedDate={getSelectedDateIdByName(selectedDate)}
@@ -89,7 +89,7 @@ const WeekTabContent = ({ currentTasks, selectedDate }) => {
             currentDateId={getCurrentDateId()}
           />
         </div>
-      )} */}
+      )}
     </WeekTabContentStyled>
   );
 };

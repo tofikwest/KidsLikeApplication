@@ -3,7 +3,7 @@ import { getRewardsPlanned } from "../../redux/tasks/tasksSelector";
 import addTaskIcon from "../../images/add-task-button.svg";
 import { MobileTaskFooterStyled } from "./MobileTaskFooterStyled";
 
-const MobileTaskFooter = () => {
+const MobileTaskFooter = ({ onClickOpenModal }) => {
   const rewardsPlanned = useSelector(getRewardsPlanned);
 
   function declOfNum(n, text) {
@@ -28,7 +28,11 @@ const MobileTaskFooter = () => {
           <span className="plannedRewardPoints">{rewardsPlanned}</span>
           {declOfNum(rewardsPlanned, ["балл", "балла", "баллов"])}
         </p>
-        <button className="addTaskButton" type="button">
+        <button
+          className="addTaskButton"
+          type="button"
+          onClick={onClickOpenModal}
+        >
           <img src={addTaskIcon} alt="add icon" />
         </button>
       </div>
