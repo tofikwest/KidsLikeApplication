@@ -94,7 +94,7 @@ const CurrentDay = ({ selectedDate }) => {
           <div>
             <span className="current-tasks">Мoи задачи:</span>
             <span className="current-day">
-              {dateNumber ? newDate : `${todayDay} ${todayDate}`}
+              {dateNumber ? newDate : `${todayDay}, ${todayDate}`}
             </span>
           </div>
         )}
@@ -102,7 +102,7 @@ const CurrentDay = ({ selectedDate }) => {
           <>
             <span className="current-tasks">Мoи задачи:</span>
             <span className="current-day">
-              {dateNumber ? newDate : `${todayDay} ${todayDate}`}
+              {dateNumber ? newDate : `${todayDay}, ${todayDate}`}
             </span>
           </>
         )}
