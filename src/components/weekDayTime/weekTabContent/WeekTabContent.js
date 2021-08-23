@@ -75,11 +75,7 @@ const WeekTabContent = ({ selectedDate }) => {
 
       {/* <CurrentWeekRange /> */}
 
-<<<<<<< HEAD
-      {!authorizedUser ? (
-=======
-      {!authorizedUser && !selectedDate ? (
->>>>>>> dev
+      {!authorizedUser || !selectedDate ? (
         <>
           <p className="notification">На этот день задач нет</p>
           <button type="button" className="home-button">
