@@ -87,11 +87,14 @@ export const AuthContainer = styled.div`
     justify-content: space-around;
   }
   .googleBtn {
+    width: 150px;
     display: flex;
     align-items: center;
     padding: 11px 32px;
     font: inherit;
     font-size: 14px;
+    color: #000;
+    text-decoration: none;
     cursor: pointer;
     margin-bottom: 30px;
     background-color: #f6f7fb;

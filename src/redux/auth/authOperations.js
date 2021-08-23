@@ -1,7 +1,6 @@
 import axios from "axios";
 import { loginUser, logoutUser, registerUser } from "../../services/auth_api";
 import { getUserInfo } from "../../services/user_api";
-import { getGiftsOperation } from "../gifts/giftOperations";
 import {
   registerUserRequest,
   registerUserSuccess,
@@ -44,34 +43,11 @@ export const login = (user) => async (dispatch) => {
   dispatch(loginUserRequest());
   try {
     const response = await loginUser(user);
-    // console.log("response loginUser", response);
-    const response2 = await getGiftsOperation();
-    console.log("response getGiftsOperation", response2);
-
+    console.log("response loginUser", response);
     idToken.set(response.data.token);
     dispatch(loginUserSuccess(response.data));
   } catch (error) {
     dispatch(loginUserError(error.message));
-  }
-};
-
-export const googleLogin = () => async (dispatch, getState) => {
-  //   const {
-  //     tokens: { idToken: persistedToken },
-  //   } = getState();
-
-  //   if (!persistedToken) {
-  //     return;
-  //   }
-  //   idToken.set(persistedToken);
-  dispatch(loginUserRequest());
-  try {
-    const response = await axios.get("/auth/google");
-    // console.log(`response`, response);
-    dispatch(loginUserSuccess(response.data));
-  } catch (error) {
-    dispatch(loginUserError(error.message));
-    console.log(`error`, error);
   }
 };
 
@@ -86,7 +62,7 @@ export const logOut = () => async (dispatch) => {
   }
 };
 
-export const getCurrentUser = () => async (dispatch, getState) => {
+export const getCurrentUserOperation = () => async (dispatch, getState) => {
   const {
     auth: { token: persistedToken },
   } = getState();
@@ -98,7 +74,7 @@ export const getCurrentUser = () => async (dispatch, getState) => {
   dispatch(getCurrentUserRequest());
   try {
     const response = await getUserInfo();
-    // console.log("response getUserInfo", response);
+
     dispatch(getCurrentUserSuccess(response.data));
   } catch (error) {
     dispatch(getCurrentUserError(error.message));
