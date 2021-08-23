@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 
 import { buyGiftOperation } from "../../redux/gifts/giftOperations";
 import Card from "./card/Card";
-import EdwardsCart from "../ewards/edwardsCart/EdwardsCart";
+import EdwardsCart from "../awards/adwardsCart/AdwardsCart";
 import { CardListStyled } from "./CardListStyled";
 
 const initialState = [];
