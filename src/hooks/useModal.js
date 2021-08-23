@@ -10,7 +10,7 @@ const initialState = {
 };
 
 const useModal = () => {
-  const [state, setState] = useState(initialState);
+  const [stateModal, setOptionModal] = useState(initialState);
   const location = useLocation();
 
   useEffect(() => {
@@ -22,15 +22,15 @@ const useModal = () => {
   }, [location]);
 
   const closeModalOnLocation = () =>
-    setState((prev) => ({ ...prev, isModalOpen: false }));
+    setOptionModal((prev) => ({ ...prev, isModalOpen: false }));
 
   const handleResizeWindow = () =>
-    setState((prev) => ({ ...prev, width: window.innerWidth }));
+    setOptionModal((prev) => ({ ...prev, width: window.innerWidth }));
 
   const setOpenModal = () =>
-    setState((prev) => ({ ...prev, isModalOpen: !prev.isModalOpen }));
+    setOptionModal((prev) => ({ ...prev, isModalOpen: !prev.isModalOpen }));
 
-  return [state, setOpenModal, setState];
+  return [stateModal, setOpenModal, setOptionModal];
 };
 
 export default useModal;
