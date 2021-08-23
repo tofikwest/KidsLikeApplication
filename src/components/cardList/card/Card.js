@@ -1,6 +1,10 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { toggleTaskOperation } from "../../../redux/tasks/tasksOperations";
+import { getSelectedDateId } from "../../../redux/planningTasks/planningTasksSelector";
+import {
+  setDaysSingleTaskOperation,
+  toggleTaskOperation,
+} from "../../../redux/tasks/tasksOperations";
 import TaskAddIcon from "../../taskAddIcon/TaskAddIcon";
 import TaskStatusIcon from "../../taskStatusIcon/TaskStatusIcon";
 import TaskToggle from "../../taskToggle/TaskToggle";
@@ -15,6 +19,7 @@ const Card = ({
 }) => {
   const dispatch = useDispatch();
   const location = useLocation().pathname;
+  const selectedDropdownDate = useSelector(getSelectedDateId);
 
   function declOfNum(n, text) {
     n = Math.abs(n) % 100;
@@ -35,6 +40,27 @@ const Card = ({
     const date = { date: task.days[currentDateId].date };
 
     dispatch(toggleTaskOperation({ taskId, date }));
+  };
+
+  const isExactDate = () => {
+    return selectedDropdownDate !== "default";
+  };
+
+  const selectedDateStatus = () => {
+    if (!isExactDate(selectedDropdownDate)) return 0;
+    return selectedDropdownDate;
+  };
+
+  const taskStatusRequest = (taskId) => {
+    let dataInitial = task.days.map((day) => day.isActive);
+    const previousValue = task.days[selectedDropdownDate].isActive;
+    dataInitial.splice(selectedDropdownDate, 1, !previousValue);
+
+    console.log(`dataInitial`, dataInitial);
+
+    const daysOfTask = { days: dataInitial };
+
+    dispatch(setDaysSingleTaskOperation(taskId, daysOfTask));
   };
 
   return (
@@ -62,7 +88,13 @@ const Card = ({
             />
           )}
           {location === "/planning" ? (
-            <TaskAddIcon task={task} taskId={task._id} />
+            <TaskAddIcon
+              task={task}
+              taskId={task._id}
+              exactDate={isExactDate()}
+              isTaskScheduled={task.days[selectedDateStatus()].isActive}
+              taskStatusRequest={taskStatusRequest}
+            />
           ) : null}
         </div>
       </div>

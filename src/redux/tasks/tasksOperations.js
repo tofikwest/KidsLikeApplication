@@ -19,21 +19,11 @@ import {
   toggleTaskError,
 } from "./tasksAction";
 
-// export const getTasksOperation = () => async (dispatch, getState) => {
-//   try {
-//     dispatch(getTasksRequest());
-//     const res = await getActiveTasks();
-//     dispatch(getTasksSuccess(res));
-//   } catch (error) {
-//     dispatch(getTasksError(error.message));
-//   }
-// };
-
 export const createTaskOperation = (task) => async (dispatch, getState) => {
   try {
     dispatch(createTaskRequest());
     const res = await createNewTask(task);
-    dispatch(createTaskSuccess({ ...res }));
+    dispatch(createTaskSuccess({ ...res.data }));
   } catch (error) {
     dispatch(createTaskError(error.message));
   }
