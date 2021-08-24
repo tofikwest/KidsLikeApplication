@@ -9,6 +9,7 @@ export const HomePageStyled = styled.div`
       display: flex;
       min-width: 240px;
       height: 100vh;
+      margin-left: -50px;
       background-color: ${({ colors }) => colors.primaryBgColor};
     }
   }

@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./ContactsPageStyle.module.css";
 import contactsInfoArr from "./ContactsInfoArray";
+import Footer from "../../components/footer/Footer";
+
 const ContactsPage = () => {
   return (
     <div className={styles.contacts}>
@@ -30,6 +32,7 @@ const ContactsPage = () => {
           </li>
         ))}
       </ul>
+      <Footer />
     </div>
   );
 };

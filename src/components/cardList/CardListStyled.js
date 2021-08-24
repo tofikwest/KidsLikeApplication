@@ -13,7 +13,7 @@ export const CardListStyled = styled.ul`
   margin-top: -20px;
 
   @media screen and (min-width: 768px) {
-    width: 680px;
+    width: 600px;
 
     margin-top: -30px;
     margin-left: -20px;
@@ -21,7 +21,7 @@ export const CardListStyled = styled.ul`
 
   @media screen and (min-width: 1280px) {
     width: ${({ location }) =>
-      location === "/planning" || location === "/awards" ? "1220px" : "900px"};
+      location === "/planning" || location === "/awards" ? "1200px" : "900px"};
     margin-top: -20px;
   }
   list-style: none;
