@@ -25,11 +25,23 @@ const HomePage = () => {
     };
   }, [location]);
 
+  useEffect(() => {
+    const date = new Date();
+    let options = { weekday: "long" };
+    const currentDayOfTheWeek = new Intl.DateTimeFormat(
+      "en-US",
+      options
+    ).format(date);
+
+    setState((prevState) => ({ ...prevState, search: currentDayOfTheWeek }));
+  }, []);
+
   const handleResizeWindow = () => {
     setState((prev) => ({ ...prev, width: window.innerWidth }));
   };
 
   const choosenDate = (date) => {
+    console.log(`date`, date);
     setState((prevState) => ({ ...prevState, search: date }));
   };
 
@@ -58,7 +70,10 @@ const HomePage = () => {
       )}
 
       <div className="right-side">
-        <WeekTabContent selectedDate={state.search} />
+        <WeekTabContent
+          selectedDate={state.search}
+          choosenDateTab={state.search}
+        />
 
         <Footer />
       </div>
