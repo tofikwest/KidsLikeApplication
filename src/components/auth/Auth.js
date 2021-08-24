@@ -7,6 +7,7 @@ import { getCurrentUserOperation, login, register } from "../../redux/auth/authO
 import { setToken } from "../../redux/auth/authSelectors";
 import { AuthContainer } from "./AuthStyled";
 import sprite from "../../images/sprite.svg";
+import Footer from "../footer/Footer";
 
 const validationSchema = Yup.object({
   email: Yup.string()
@@ -31,17 +32,18 @@ const Auth = () => {
   return (
     <AuthContainer>
       <h1 className="authTitle">Выполняй задания, получи классные призы!</h1>
-      <p className="authText">Вы можете авторизоваться с помощью Google Account:</p>
-      <a href="https://kidslikev1.herokuapp.com/auth/google" className="googleBtn" aria-label="google button">
-        <svg className="icon-user">
-          <use href={sprite + "#icon-google-symb"} />
-        </svg>{" "}
-        Google
-      </a>
-      <p>Или зайти с помощью e-mail и пароля, предварительно зарегистрировавшись:</p>
+
       <Formik initialValues={{ email: "", password: "" }} validationSchema={validationSchema}>
         {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
           <form onSubmit={handleSubmit} className="user-form">
+            <p className="authText">Вы можете авторизоваться с помощью Google Account:</p>
+            <a href="https://kidslikev1.herokuapp.com/auth/google" className="googleBtn" aria-label="google button">
+              <svg className="icon-user">
+                <use href={sprite + "#icon-google-symb"} />
+              </svg>{" "}
+              Google
+            </a>
+            <p>Или зайти с помощью e-mail и пароля, предварительно зарегистрировавшись:</p>
             <label className="user-label" htmlFor="email">
               <span className="accent-red">*</span>
               E-mail:
@@ -82,6 +84,7 @@ const Auth = () => {
           </form>
         )}
       </Formik>
+      <Footer />
     </AuthContainer>
   );
 };

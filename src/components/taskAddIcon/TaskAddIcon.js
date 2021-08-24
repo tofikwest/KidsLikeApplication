@@ -21,7 +21,7 @@ const TaskAddIcon = ({
 
   const closeDayList = (e) => {
     if (
-      e.target.nodeName !== "IMG" &&
+      e?.path[0]?.attributes[2]?.nodeValue !== taskId &&
       e.target.nodeName !== "LABEL" &&
       e.target.nodeName !== "INPUT"
     )
@@ -46,9 +46,19 @@ const TaskAddIcon = ({
         {!exactDate ? (
           <>
             {taskMenuState ? (
-              <img src={okIcon} alt="ok" onClick={onTaskStateToggle} />
+              <img
+                src={okIcon}
+                alt="ok"
+                onClick={onTaskStateToggle}
+                idatt={taskId}
+              />
             ) : (
-              <img src={addIcon} alt="add" onClick={onTaskStateToggle} />
+              <img
+                src={addIcon}
+                alt="add"
+                onClick={onTaskStateToggle}
+                idatt={taskId}
+              />
             )}
           </>
         ) : (
