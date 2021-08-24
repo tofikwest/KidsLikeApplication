@@ -68,7 +68,6 @@ const WeekTabContent = ({ selectedDate }) => {
           </div>
         ))}
 
-      {/* {state.width > state.breakPoint && <ProgressBar />} */}
       {state.width > state.breakPoint && state.width < 1280 && (
         <CurrentDay selectedDate={selectedDate} />
       )}

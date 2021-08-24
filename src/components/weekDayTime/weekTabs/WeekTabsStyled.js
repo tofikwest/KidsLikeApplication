@@ -10,6 +10,8 @@ export const WeekTabsStyled = styled.ul`
   @media screen and (min-width: 768px) {
     max-width: 376px;
     height: 70px;
+    padding-top: 0;
+    margin-bottom: 0;
   }
 
   @media screen and (min-width: 1280px) {

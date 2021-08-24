@@ -1,9 +1,6 @@
 import styled from "styled-components";
 
 export const WeekTabContentStyled = styled.div`
-  @media screen and (min-width: 768px) {
-    overflow-x: hidden;
-  }
   @media screen and (min-width: 1280px) {
     display: flex;
     justify-content: space-between;
@@ -27,7 +24,6 @@ export const WeekTabContentStyled = styled.div`
     display: block;
     width: 220px;
     height: 48px;
-    background-color: #ffbc33;
     background-color: ${({ colors }) => colors.primaryBgColor};
     border-radius: 6px;
     color: #fafafa;
@@ -68,9 +64,8 @@ export const WeekTabContentStyled = styled.div`
     }
     @media screen and (min-width: 1280px) {
       transform: translateX(0);
-      width: 980px;
+      width: 100%;
       margin-left: 0;
-      margin-right: 0;
     }
   }
 
@@ -84,6 +79,5 @@ export const WeekTabContentStyled = styled.div`
   .cards-wrapper {
     display: flex;
     justify-content: flex-end;
-    margin-top: 40px;
   }
 `;
