@@ -60,11 +60,8 @@ const CurrentDay = ({ selectedDate }) => {
   ];
 
   const dateNumber = daysArray
-    .map(({ day, russianDay, date }) => {
-      if (day === selectedDate) {
-        return `${russianDay}, ${date}`;
-      }
-    })
+    .filter(({ day }) => day === selectedDate)
+    .map(({ russianDay, date }) => `${russianDay}, ${date}`)
     .join("");
 
   const newDate = `${dateNumber}-${monthYear}`;
