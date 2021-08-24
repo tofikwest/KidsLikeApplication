@@ -41,7 +41,6 @@ const HomePage = () => {
   };
 
   const choosenDate = (date) => {
-    console.log(`date`, date);
     setState((prevState) => ({ ...prevState, search: date }));
   };
 
