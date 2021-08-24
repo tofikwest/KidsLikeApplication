@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import {
@@ -18,6 +18,11 @@ import EwardsStyled from "./AwardsStyled";
 import sprite from "../../images/sprite.svg";
 import { colors } from "../../general/styles/colors";
 
+// const initialState = {
+//   giftIds: [],
+// };
+const initialState = [];
+
 const Ewards = () => {
   const [stateModal, setOpenModal, setOptionModal] = useModal();
   const dispath = useDispatch();
@@ -30,18 +35,25 @@ const Ewards = () => {
     location.pathname === "/awards"
       ? setOptionModal((prev) => ({ ...prev, modalName: "awards" }))
       : setOptionModal((prev) => ({ ...prev, modalName: "header" }));
-    // dispath(buyGiftOperation({ giftIds }));
+
     return dispath(getGiftsOperation());
   }, [location]);
 
+  // ++++++++++++++++++++++++++++++++Logic giftsId++++++++++++++++++++++++++++++++++++++++
+  const [giftIds, setGiftIdsState] = useState(initialState);
+
+  const onToggleGetAwardsId = (awardId) => {
+    setGiftIdsState((prev) => {
+      return prev.includes(awardId) ? [...prev] : [...prev, awardId];
+    });
+  };
+
   const onHandleClickConfirm = () => {
+    dispath(buyGiftOperation({ giftIds }));
     setOpenModal();
   };
 
-  useEffect(() => {
-    stateModal.isModalOpen && dispath(buyGiftOperation());
-    return dispath(buyGiftOperation());
-  }, [stateModal.isModalOpen]);
+  // ++++++++++++++++++++++++++++++++Logic giftsId+++++++++++++++++++++++++++++++++++++++++
 
   return (
     <EwardsStyled colors={colors}>
@@ -55,7 +67,7 @@ const Ewards = () => {
         {stateModal.width > stateModal.breakPointUserMenu && <ProgressBar />}
       </div>
 
-      <CardList awards={awards} />
+      <CardList awards={awards} onToggleGetAwardsId={onToggleGetAwardsId} />
 
       <button className="awardsBtn" onClick={onHandleClickConfirm}>
         Подтвердить
