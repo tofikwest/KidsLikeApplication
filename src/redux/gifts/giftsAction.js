@@ -1,9 +1,11 @@
 import { createAction } from "@reduxjs/toolkit";
 
-export const getGiftsRequest = createAction("tasks/getGiftsRequest");
-export const getGiftsSuccess = createAction("tasks/getGiftsSuccess");
-export const getGiftsError = createAction("tasks/getGiftsError");
+export const getGiftsRequest = createAction("awards/getGiftsRequest");
+export const getGiftsSuccess = createAction("awards/getGiftsSuccess");
+export const getGiftsError = createAction("awards/getGiftsError");
 
-export const buyGiftsRequest = createAction("tasks/buyGiftsRequest");
-export const buyGiftsSuccess = createAction("tasks/buyGiftsSuccess");
-export const buyGiftsError = createAction("tasks/buyGiftsError");
+export const buyGiftsRequest = createAction("awards/buyGiftsRequest");
+export const buyGiftsSuccess = createAction("awards/buyGiftsSuccess");
+export const buyGiftsError = createAction("awards/buyGiftsError");
+
+export const toggleAwardSuccess = createAction("awards/toggleAwardSuccess");
