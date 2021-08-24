@@ -5,19 +5,19 @@ import CurrentDay from "../currentDay/CurrentDay";
 import ProgressBar from "../../progressBar/ProgressBar";
 import { WeekTabContentStyled } from "./WeekTabContentStyled";
 import CardList from "../../cardList/CardList";
-// import CurrentWeekRange from "../currentWeekRange/CurrentWeekRange";
 import { authorizedUser } from "../../../redux/auth/authSelectors";
 import { useSelector } from "react-redux";
 import { getTasks } from "../../../redux/tasks/tasksSelector";
 import { colors } from "../../../general/styles/colors";
+import { Link } from "react-router-dom";
 
 const initialState = {
-  search: "",
   width: window.innerWidth,
   breakPoint: 767,
 };
 
-const WeekTabContent = ({ selectedDate }) => {
+const WeekTabContent = ({ selectedDate, choosenDateTab }) => {
+  const isAuthorized = useSelector(authorizedUser);
   const [state, setState] = useState(initialState);
   const location = useLocation();
 
@@ -59,6 +59,15 @@ const WeekTabContent = ({ selectedDate }) => {
     }
   };
 
+  const isAnyTasksForChoosenDate = () => {
+    const currentDayId = getSelectedDateIdByName(choosenDateTab);
+    const currentDayTasks = tasks.filter(
+      (task) => task?.days[currentDayId]?.isActive
+    );
+    const isCurrentDayHaveTasks = Boolean(currentDayTasks.length);
+    return isCurrentDayHaveTasks;
+  };
+
   return (
     <WeekTabContentStyled colors={colors}>
       {state.width < state.breakPoint ||
@@ -68,22 +77,21 @@ const WeekTabContent = ({ selectedDate }) => {
           </div>
         ))}
 
-      {/* {state.width > state.breakPoint && <ProgressBar />} */}
       {state.width > state.breakPoint && state.width < 1280 && (
         <CurrentDay selectedDate={selectedDate} />
       )}
 
-      {/* <CurrentWeekRange /> */}
-
-      {!authorizedUser || !selectedDate ? (
+      {isAuthorized && !isAnyTasksForChoosenDate() && (
         <>
           <p className="notification">На этот день задач нет</p>
-          <button type="button" className="home-button">
+          <Link to="/planning" type="button" className="home-button">
             Запланировать задачи
-          </button>
+          </Link>
           <img src={planer} alt="children" className="children-img" />
         </>
-      ) : (
+      )}
+
+      {isAuthorized && isAnyTasksForChoosenDate() && (
         <div className="cards-wrapper">
           <CardList
             selectedDate={getSelectedDateIdByName(selectedDate)}
@@ -97,9 +105,3 @@ const WeekTabContent = ({ selectedDate }) => {
 };
 
 export default WeekTabContent;
-
-//====================================
-
-// 13. WeekTabContent(обертка списка текущих задач):
-// Принимает в пропах информацию о текущих задачах.
-// Получает соответствующие методы.

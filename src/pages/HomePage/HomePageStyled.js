@@ -22,8 +22,10 @@ export const HomePageStyled = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    margin-left: -20px;
-    margin-right: -20px;
+    margin-left: -94px;
+    margin-right: -94px;
     margin-bottom: 40px;
+    padding-right: 74px;
+    padding-left: 68px;
   }
 `;
