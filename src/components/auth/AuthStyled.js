@@ -22,6 +22,7 @@ export const AuthContainer = styled.div`
   margin: 0 auto;
   background: url(${backMob}) bottom;
   background-repeat: no-repeat;
+
   .authTitle {
     font-weight: 600;
     font-size: 18px;
@@ -119,8 +120,11 @@ export const AuthContainer = styled.div`
   }
   @media screen and (min-width: 768px) {
     padding: 0px 164px 305px 164px;
-    background: url(${backTabImg3}) bottom center, url(${backTabImg1}) left bottom, url(${backTabImg2}) right bottom;
+    background: url(${backTabImg3}) bottom center,
+      url(${backTabImg1}) left bottom, url(${backTabImg2}) right bottom;
     background-repeat: no-repeat;
+    margin-left: -94px;
+    margin-right: -94px;
 
     .authTitle {
       font-size: 28px;
@@ -148,7 +152,7 @@ export const AuthContainer = styled.div`
   } */
 
   @media screen and (min-width: 1280px) {
-    padding: 0px 80px;
+    padding: 0px 80px 0px 206px;
     flex-basis: calc(50%);
     /* background: url(${backDeskImg2}) bottom right, url(${backDeskImg3}) left, url(${backDeskImg4}) right,
       url(${backDeskImg1});
@@ -177,8 +181,8 @@ export const BackDeskImg = styled.div`
   @media screen and (min-width: 1280px) {
     flex-basis: calc(50%);
 
-    background: url(${backDeskImg2}) bottom right, url(${backDeskImg3}) left, url(${backDeskImg4}) right,
-      url(${backDeskImg1});
+    background: url(${backDeskImg2}) bottom right, url(${backDeskImg3}) left,
+      url(${backDeskImg4}) right, url(${backDeskImg1});
     background-repeat: no-repeat;
   }
 `;
@@ -189,5 +193,6 @@ export const DeskWrapper = styled.div`
     display: flex;
     padding-top: 22px;
     padding-bottom: 22px;
+    height: 100%;
   }
 `;

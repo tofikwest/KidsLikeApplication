@@ -20,7 +20,6 @@ export const CurrentWeekStyled = styled.div`
     @media screen and (min-width: 768px) {
       margin-top: 0;
       margin-bottom: 0;
-      margin-left: 10px;
     }
 
     @media screen and (min-width: 1280px) {
