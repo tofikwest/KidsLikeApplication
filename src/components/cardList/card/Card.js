@@ -56,8 +56,6 @@ const Card = ({
     const previousValue = task.days[selectedDropdownDate].isActive;
     dataInitial.splice(selectedDropdownDate, 1, !previousValue);
 
-    console.log(`dataInitial`, dataInitial);
-
     const daysOfTask = { days: dataInitial };
 
     dispatch(setDaysSingleTaskOperation(taskId, daysOfTask));

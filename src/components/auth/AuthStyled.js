@@ -1,4 +1,10 @@
 import styled from "styled-components";
+import backImg1 from "../../images/auth-background/back1-tablet.png";
+import backImg2 from "../../images/auth-background/back2-tablet.png";
+import backImg3 from "../../images/auth-background/back3-tablet.png";
+import back2xImg1 from "../../images/auth-background/back1-tablet@2x.png";
+import back2xImg2 from "../../images/auth-background/back2-tablet@2x.png";
+import back2xImg3 from "../../images/auth-background/back3-tablet@2x.png";
 
 export const AuthContainer = styled.div`
   padding: 60px 0px;
@@ -24,8 +30,7 @@ export const AuthContainer = styled.div`
   .user-form {
     display: flex;
     flex-direction: column;
-    /* width: 280px; */
-    /* padding: 10px; */
+    max-width: 280px;
     align-self: center;
   }
   .user-label {
@@ -35,10 +40,11 @@ export const AuthContainer = styled.div`
   .user-input {
     height: 42px;
     width: 100%;
-    outline: none;
+    border: none;
     padding-left: 8px;
     font-family: "Montserrat";
-    background-color: #f6f7fb /* box-shadow: inset 0px 1px rgba(0, 0, 0, 0.15); */ * /;
+    background-color: #f6f7fb;
+    box-shadow: inset 0px 1px rgba(0, 0, 0, 0.15);
   }
   .user-input:focus +,
   .user-input:not(:placeholder-shown) {
@@ -68,6 +74,7 @@ export const AuthContainer = styled.div`
   }
   .user-button {
     font-size: 10px;
+    line-height: 1.22;
     font-family: inherit;
     align-self: center;
     width: 135px;
@@ -93,6 +100,7 @@ export const AuthContainer = styled.div`
     padding: 11px 32px;
     font: inherit;
     font-size: 14px;
+    line-height: 1.22;
     color: #000;
     text-decoration: none;
     cursor: pointer;
@@ -101,5 +109,37 @@ export const AuthContainer = styled.div`
     border: none;
     border-radius: 4px;
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
+  }
+  @media screen and (min-width: 768px) {
+    padding: 0px 164px 305px 164px;
+    background: url(${backImg3}) bottom center, url(${backImg1}) left bottom, url(${backImg2}) right bottom;
+    background-repeat: no-repeat;
+
+    .authTitle {
+      font-size: 28px;
+      margin-top: 72px;
+      margin-bottom: 38px;
+      max-width: 400px;
+    }
+    .user-form {
+      max-width: 400px;
+      padding: 40px;
+      border-radius: 4px;
+      box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
+    }
+    .user-button {
+      width: 154px;
+      font-size: 12px;
+      line-height: 1.22;
+    }
+  }
+  /* @media (min-device-pixel-ratio: 2) and (min-width: 768px),
+    (min-resolution: 192dpi) and (min-width: 768px),
+    (min-resolution: 2dppx) and (min-width: 768px) {
+    background: url(${back2xImg3}) bottom center, url(${back2xImg2}) right bottom, url(${back2xImg1}) left bottom;
+    background-repeat: no-repeat;
+  } */
+  @media screen and (min-width: 1280px) {
+    max-width: 1240px;
   }
 `;
