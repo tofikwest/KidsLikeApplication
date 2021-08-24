@@ -7,7 +7,8 @@ export const SectionStyled = styled.section`
   padding-right: 20px;
 
   @media screen and (min-width: 768px) {
-    max-width: 728px;
+    max-width: 768px;
+    /* padding: 0; */
   }
   @media screen and (min-width: 1280px) {
     max-width: 1240px;

@@ -1,24 +1,23 @@
-import { useState } from "react";
 import { useLocation } from "react-router-dom";
-
-import { buyGiftOperation } from "../../redux/gifts/giftOperations";
 import Card from "./card/Card";
-import EdwardsCart from "../awards/adwardsCart/AdwardsCart";
+import AwardsCard from "../awards/awardsCard/AwardsCard";
 import { CardListStyled } from "./CardListStyled";
+import { useDispatch } from "react-redux";
+import { toggleAwardSuccess } from "../../redux/gifts/giftsAction";
 
-const initialState = [];
+const CardList = ({
+  selectedDate,
+  tasks,
+  currentDateId,
+  awards,
+  onToggleGetAwardsId,
+}) => {
+  // const dispatch = useDispatch();
 
-const CardList = ({ selectedDate, tasks, currentDateId, awards }) => {
-  const [awardsId, setAwardsId] = useState(initialState);
-
-  const giftIds = awardsId;
-  // console.log(giftIds);
-
-  const onAwardsToggle = (ewardId) => {
-    setAwardsId((prev) => {
-      return prev.includes(ewardId) ? [...prev] : [...prev, ewardId];
-    });
-  };
+  // const onAwardsToggle = (awardId) => {
+  //   dispatch(toggleAwardSuccess(awardId));
+  //   onToggleGetAwardsId(awardId);
+  // };
 
   let presentDay = false;
   let previousDay = false;
@@ -42,12 +41,11 @@ const CardList = ({ selectedDate, tasks, currentDateId, awards }) => {
   return (
     <CardListStyled location={location}>
       {location === "/awards" &&
-        awards.map((eward) => (
-          <EdwardsCart
-            key={eward.id}
-            eward={eward}
-            onAwardsToggle={onAwardsToggle}
-            awardsId={awardsId}
+        awards.map((award) => (
+          <AwardsCard
+            key={award.id}
+            award={award}
+            onToggleGetAwardsId={onToggleGetAwardsId}
           />
         ))}
 
