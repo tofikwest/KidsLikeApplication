@@ -5,10 +5,17 @@ import EwardsModalStyled from "./AwardsModalStyled";
 import { colors } from "../../../general/styles/colors";
 import sprite from "../../../images/sprite.svg";
 import { useSelector } from "react-redux";
-import { getAwards } from "../../../redux/gifts/giftsSelectors";
+import { getAwards, getAwardsId } from "../../../redux/gifts/giftsSelectors";
 
-const EwardsModal = ({ setOpenModal }) => {
+const AwardsModal = ({ setOpenModal }) => {
   const awards = useSelector(getAwards);
+  const awardsId = useSelector(getAwardsId);
+
+  // ++++++++++++++++++++++++++++++Filter awards selected++++++++++++++++++++++++++++++
+  const modalAwards = awards.filter(
+    (award, index) => award.id === awardsId[index]
+  );
+  // ++++++++++++++++++++++++++++++Filter awards selected++++++++++++++++++++++++++++++
 
   return (
     <EwardsModalStyled colors={colors}>
@@ -19,7 +26,7 @@ const EwardsModal = ({ setOpenModal }) => {
       <h3 className="awardsModalTitle">Поздравляем! Ты получаешь:</h3>
 
       <ul className="modalListAwards">
-        {awards.map((award) => (
+        {modalAwards.map((award) => (
           <li className="modalListItemsAwards" key={award.id}>
             <img
               className="modalListItemsImageAwards"
@@ -34,4 +41,4 @@ const EwardsModal = ({ setOpenModal }) => {
   );
 };
 
-export default EwardsModal;
+export default AwardsModal;
