@@ -67,8 +67,9 @@ export const WeekTabContentStyled = styled.div`
     }
     @media screen and (min-width: 1280px) {
       transform: translateX(0);
-      width: 100%;
+      width: 1040px;
       margin-left: 0;
+      margin-right: -50px;
     }
   }
 
