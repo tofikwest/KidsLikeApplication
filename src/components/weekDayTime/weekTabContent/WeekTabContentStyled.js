@@ -21,7 +21,10 @@ export const WeekTabContentStyled = styled.div`
   }
 
   .home-button {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
     width: 220px;
     height: 48px;
     background-color: ${({ colors }) => colors.primaryBgColor};
