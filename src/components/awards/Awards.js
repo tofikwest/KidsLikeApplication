@@ -5,10 +5,10 @@ import {
   buyGiftOperation,
   getGiftsOperation,
 } from "../../redux/gifts/giftOperations";
-import { getAwards } from "../../redux/gifts/giftsSelectors";
+import { getAwards, getAwardsError } from "../../redux/gifts/giftsSelectors";
+import { toggleAwardsResetSuccess } from "../../redux/gifts/giftsAction";
 import useModal from "../../hooks/useModal";
 import CardList from "../cardList/CardList";
-// import TaskToggle from "../../components/taskToggle/TaskToggle";
 import Modal from "../Modal/Modal";
 import Footer from "../footer/Footer";
 import AwardsModal from "./awardsModal/AwardsModal";
@@ -17,7 +17,6 @@ import ProgressBar from "../progressBar/ProgressBar";
 import AwardsStyled from "./AwardsStyled";
 import sprite from "../../images/sprite.svg";
 import { colors } from "../../general/styles/colors";
-import { toggleAwardsResetSuccess } from "../../redux/gifts/giftsAction";
 
 const initialState = [];
 
@@ -26,11 +25,13 @@ const Awards = () => {
   const [stateModal, setOpenModal, setOptionModal] = useModal();
   const dispath = useDispatch();
   const awards = useSelector(getAwards);
+  const error = useSelector(getAwardsError);
   const location = useLocation();
 
   useEffect(() => {
     dispath(getGiftsOperation());
-    stateModal.isModalOpen && dispath(toggleAwardsResetSuccess());
+    !stateModal.isModalOpen && dispath(toggleAwardsResetSuccess());
+    !stateModal.isModalOpen && setGiftIdsState(initialState);
     location.pathname === "/awards"
       ? setOptionModal((prev) => ({ ...prev, modalName: "awards" }))
       : setOptionModal((prev) => ({ ...prev, modalName: "header" }));
@@ -44,11 +45,21 @@ const Awards = () => {
     });
   };
 
-  const onHandleClickConfirm = () => {
-    dispath(buyGiftOperation({ giftIds }));
-    setOpenModal();
-    setGiftIdsState(initialState);
+  // const getGifts = async () => {
+  //   dispath(buyGiftOperation({ giftIds }));
+  // };
+
+  // const callBack = () => {
+  //   giftIds.length && setOpenModal();
+  // };
+  const onHandleClickConfirm = async () => {
+    dispath(buyGiftOperation({ giftIds }, setOpenModal));
+    // console.log(error);
+    // console.log(giftIds);
   };
+
+  // useEffect(() => {
+  // }, [giftIds, error, setOpenModal]);
   // ++++++++++++++++++++++++++++++++Logic giftsId+++++++++++++++++++++++++++++++++++++++++
 
   return (
@@ -62,12 +73,17 @@ const Awards = () => {
         </div>
         {stateModal.width > stateModal.breakPointUserMenu && <ProgressBar />}
       </div>
-
       <CardList awards={awards} onToggleGetAwardsId={onToggleGetAwardsId} />
 
       <button className="awardsBtn" onClick={onHandleClickConfirm}>
         Подтвердить
       </button>
+
+      {error === "Request failed with status code 400" && (
+        <p>Выберите подарок</p>
+      )}
+      {error === "Request failed with status code 409" && <p>no many</p>}
+
       <Footer />
       {stateModal.width < stateModal.breakPointUserMenu && <ProgressBar />}
       {stateModal.isModalOpen && (

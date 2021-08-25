@@ -18,12 +18,15 @@ export const getGiftsOperation = () => async (dispatch, getState) => {
   }
 };
 
-export const buyGiftOperation = (giftIds) => async (dispatch, getState) => {
-  try {
-    dispatch(buyGiftsRequest());
-    const res = await buyGiftIds(giftIds);
-    dispatch(buyGiftsSuccess(res.data));
-  } catch (error) {
-    dispatch(buyGiftsError(error.message));
-  }
-};
+export const buyGiftOperation =
+  (giftIds, openAwardsModal) => async (dispatch, getState) => {
+    try {
+      dispatch(buyGiftsRequest());
+      await buyGiftIds(giftIds).then((res) =>
+        dispatch(buyGiftsSuccess(res.data))
+      );
+      openAwardsModal();
+    } catch (error) {
+      dispatch(buyGiftsError(error.message));
+    }
+  };

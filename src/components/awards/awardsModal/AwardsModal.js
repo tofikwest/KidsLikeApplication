@@ -21,6 +21,7 @@ const AwardsModal = ({ setOpenModal, giftIds }) => {
   };
 
   const arrAwards = modalAwards();
+
   // ++++++++++++++++++++++++++++++Filter awards selected++++++++++++++++++++++++++++++
 
   return (
