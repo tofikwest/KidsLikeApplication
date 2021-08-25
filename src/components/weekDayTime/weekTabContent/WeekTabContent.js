@@ -78,7 +78,10 @@ const WeekTabContent = ({ selectedDate, choosenDateTab }) => {
         ))}
 
       {state.width > state.breakPoint && state.width < 1280 && (
-        <CurrentDay selectedDate={selectedDate} />
+        <>
+          <ProgressBar />
+          <CurrentDay selectedDate={selectedDate} />
+        </>
       )}
 
       {isAuthorized && !isAnyTasksForChoosenDate() && (
