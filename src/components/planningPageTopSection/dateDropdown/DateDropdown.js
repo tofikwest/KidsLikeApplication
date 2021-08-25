@@ -58,6 +58,7 @@ const DateDropdown = ({
         options={getOptions()}
         onChange={onHandleChange}
         classNamePrefix="react-select"
+        isSearchable={false}
         value={getOptions()[value + 1]}
         components={{
           DropdownIndicator: () => null,
