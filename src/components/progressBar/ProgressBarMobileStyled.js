@@ -5,7 +5,7 @@ export const ProgressBarMobileStyled = styled.div`
   bottom: 0;
   left: 0;
   z-index: 1000;
-  background-color: rgba(241, 241, 241, 0.5);
+  background-color: #f1f1f1;
 
   .mobileStats {
     font-family: inherit;

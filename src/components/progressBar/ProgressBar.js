@@ -38,7 +38,21 @@ const ProgressBar = () => {
         <span className="secondPoints">
           {userPoints}/{countPoints}
         </span>
-        <Progress percent={percent > 100 ? 100 : percent} />
+        <Progress
+          percent={percent > 100 ? 100 : percent}
+          theme={{
+            success: {
+              color: "rgb(223, 105, 180)",
+            },
+            active: {
+              color: "#9ECB44",
+              trailColor: "#E0E0E0",
+            },
+            default: {
+              trailColor: "#E0E0E0",
+            },
+          }}
+        />
       </div>
     </ProgressBarStyled>
   );

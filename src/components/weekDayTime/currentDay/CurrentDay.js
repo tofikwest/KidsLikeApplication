@@ -77,10 +77,6 @@ const CurrentDay = ({ selectedDate }) => {
     setState((prev) => ({ ...prev, width: window.innerWidth }));
   };
 
-  const todayDate = moment().format("DD-MM-YYYY");
-  const todayDayRaw = moment().format("dddd");
-  const todayDay = todayDayRaw[0].toUpperCase() + todayDayRaw.slice(1);
-
   return (
     <>
       {state.width < state.breakPoint && <CurrentWeek />}
@@ -90,17 +86,14 @@ const CurrentDay = ({ selectedDate }) => {
         {state.width >= 1280 && (
           <div>
             <span className="current-tasks">Мoи задачи:</span>
-            <span className="current-day">
-              {dateNumber ? newDate : `${todayDay}, ${todayDate}`}
-            </span>
+            <span className="current-day"></span>
+            {dateNumber && newDate}
           </div>
         )}
         {state.width < 1280 && (
           <>
             <span className="current-tasks">Мoи задачи:</span>
-            <span className="current-day">
-              {dateNumber ? newDate : `${todayDay}, ${todayDate}`}
-            </span>
+            <span className="current-day">{dateNumber && newDate}</span>
           </>
         )}
       </CurrentDayStyled>
