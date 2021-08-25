@@ -43,6 +43,7 @@ export const DateDropdownStyled = styled.div`
   }
 
   .react-select__single-value {
+    margin-left: 10px;
     text-transform: capitalize;
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
@@ -58,7 +59,6 @@ export const DateDropdownStyled = styled.div`
 
     @media screen and (min-width: 768px) {
       margin-top: 0;
-      margin-left: 10px;
       margin-bottom: 30px;
     }
   }

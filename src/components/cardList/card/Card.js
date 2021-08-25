@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
+import { declOfNumHelper } from "../../../helpers/declOfNumHelper";
 import { getSelectedDateId } from "../../../redux/planningTasks/planningTasksSelector";
 import {
   setDaysSingleTaskOperation,
@@ -20,21 +21,6 @@ const Card = ({
   const dispatch = useDispatch();
   const location = useLocation().pathname;
   const selectedDropdownDate = useSelector(getSelectedDateId);
-
-  function declOfNum(n, text) {
-    n = Math.abs(n) % 100;
-    const n1 = n % 10;
-    if (n > 10 && n < 20) {
-      return text[2];
-    }
-    if (n1 > 1 && n1 < 5) {
-      return text[1];
-    }
-    if (n1 === 1) {
-      return text[0];
-    }
-    return text[2];
-  }
 
   const onTaskToggle = (taskId) => {
     const date = { date: task.days[currentDateId].date };
@@ -68,10 +54,13 @@ const Card = ({
         <div className="card__footer">
           <div className="card__info">
             <h3 className="card__taskName">{task.title}</h3>
-            <span className="card__rewardTag">{`${task.reward} ${declOfNum(
-              task.reward,
-              ["балл", "балла", "баллов"]
-            )}`}</span>
+            <span className="card__rewardTag">{`${
+              task.reward
+            } ${declOfNumHelper(task.reward, [
+              "балл",
+              "балла",
+              "баллов",
+            ])}`}</span>
           </div>
           {location === "/" && presentDay && (
             <TaskToggle
