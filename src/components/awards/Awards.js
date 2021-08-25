@@ -6,7 +6,11 @@ import {
   getGiftsOperation,
 } from "../../redux/gifts/giftOperations";
 import { getAwards, getAwardsError } from "../../redux/gifts/giftsSelectors";
-import { toggleAwardsResetSuccess } from "../../redux/gifts/giftsAction";
+// import {
+//   getGiftsSuccess,
+//   toggleAwardsResetSuccess,
+//   toggleAwardsResetSuccessT,
+// } from "../../redux/gifts/giftsAction";
 import useModal from "../../hooks/useModal";
 import CardList from "../cardList/CardList";
 import Modal from "../Modal/Modal";
@@ -30,36 +34,27 @@ const Awards = () => {
 
   useEffect(() => {
     dispath(getGiftsOperation());
-    !stateModal.isModalOpen && dispath(toggleAwardsResetSuccess());
-    !stateModal.isModalOpen && setGiftIdsState(initialState);
     location.pathname === "/awards"
       ? setOptionModal((prev) => ({ ...prev, modalName: "awards" }))
       : setOptionModal((prev) => ({ ...prev, modalName: "header" }));
-  }, [location, stateModal.isModalOpen]);
+  }, [location, setOptionModal, dispath]);
 
   // ++++++++++++++++++++++++++++++++Logic giftsId++++++++++++++++++++++++++++++++++++++++
 
   const onToggleGetAwardsId = (awardId) => {
     setGiftIdsState((prev) => {
-      return prev.includes(awardId) ? [...prev] : [...prev, awardId];
+      return prev.includes(awardId)
+        ? [...prev].filter((item) => item !== awardId)
+        : [...prev, awardId];
     });
   };
 
-  // const getGifts = async () => {
-  //   dispath(buyGiftOperation({ giftIds }));
-  // };
-
-  // const callBack = () => {
-  //   giftIds.length && setOpenModal();
-  // };
   const onHandleClickConfirm = async () => {
     dispath(buyGiftOperation({ giftIds }, setOpenModal));
-    // console.log(error);
-    // console.log(giftIds);
+    dispath(getGiftsOperation());
+    setGiftIdsState(initialState);
   };
 
-  // useEffect(() => {
-  // }, [giftIds, error, setOpenModal]);
   // ++++++++++++++++++++++++++++++++Logic giftsId+++++++++++++++++++++++++++++++++++++++++
 
   return (
@@ -82,7 +77,9 @@ const Awards = () => {
       {error === "Request failed with status code 400" && (
         <p>Выберите подарок</p>
       )}
-      {error === "Request failed with status code 409" && <p>no many</p>}
+      {error === "Request failed with status code 409" && (
+        <p>Не хватает быллов</p>
+      )}
 
       <Footer />
       {stateModal.width < stateModal.breakPointUserMenu && <ProgressBar />}
