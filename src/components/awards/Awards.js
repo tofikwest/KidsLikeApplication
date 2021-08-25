@@ -17,11 +17,13 @@ import Modal from "../Modal/Modal";
 import Footer from "../footer/Footer";
 import AwardsModal from "./awardsModal/AwardsModal";
 import ProgressBar from "../progressBar/ProgressBar";
+import AwardsError from "./awardsError/AwardsError";
 
 import AwardsStyled from "./AwardsStyled";
 import sprite from "../../images/sprite.svg";
 import { colors } from "../../general/styles/colors";
 
+import HomeMobileFooter from "../homeFooter/HomeMobileFooter";
 const initialState = [];
 
 const Awards = () => {
@@ -57,6 +59,9 @@ const Awards = () => {
 
   // ++++++++++++++++++++++++++++++++Logic giftsId+++++++++++++++++++++++++++++++++++++++++
 
+  const onClickOpenModal = () => {
+    setOpenModal();
+  };
   return (
     <AwardsStyled colors={colors}>
       <div className="awardsProgresiveBox">
@@ -74,15 +79,14 @@ const Awards = () => {
         Подтвердить
       </button>
 
-      {error === "Request failed with status code 400" && (
-        <p>Выберите подарок</p>
-      )}
-      {error === "Request failed with status code 409" && (
-        <p>Не хватает быллов</p>
-      )}
+      <AwardsError error={error} />
 
       <Footer />
-      {stateModal.width < stateModal.breakPointUserMenu && <ProgressBar />}
+
+      {stateModal.width < stateModal.breakPointUserMenu && (
+        <HomeMobileFooter onClickOpenModal={onClickOpenModal} />
+      )}
+
       {stateModal.isModalOpen && (
         <Modal handleCloseModal={setOpenModal} modalName={stateModal.modalName}>
           <AwardsModal setOpenModal={setOpenModal} giftIds={giftIds} />
