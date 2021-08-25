@@ -38,6 +38,14 @@ const AwardsStyled = styled.div`
     border-radius: 6px;
     cursor: pointer;
   }
+
+  @media screen and (min-width: 768px) {
+    padding-top: 40px;
+
+    .awardsProgresiveBox {
+      margin-bottom: 40px;
+    }
+  }
 `;
 
 export default AwardsStyled;

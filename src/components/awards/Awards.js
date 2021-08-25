@@ -17,10 +17,7 @@ import ProgressBar from "../progressBar/ProgressBar";
 import AwardsStyled from "./AwardsStyled";
 import sprite from "../../images/sprite.svg";
 import { colors } from "../../general/styles/colors";
-import {
-  toggleAwardsResetSuccess,
-  toggleAwardsResetSuccessT,
-} from "../../redux/gifts/giftsAction";
+import { toggleAwardsResetSuccess } from "../../redux/gifts/giftsAction";
 
 const initialState = [];
 
@@ -33,11 +30,11 @@ const Awards = () => {
 
   useEffect(() => {
     dispath(getGiftsOperation());
-    dispath(toggleAwardsResetSuccess());
+    stateModal.isModalOpen && dispath(toggleAwardsResetSuccess());
     location.pathname === "/awards"
       ? setOptionModal((prev) => ({ ...prev, modalName: "awards" }))
       : setOptionModal((prev) => ({ ...prev, modalName: "header" }));
-  }, [location]);
+  }, [location, stateModal.isModalOpen]);
 
   // ++++++++++++++++++++++++++++++++Logic giftsId++++++++++++++++++++++++++++++++++++++++
 
