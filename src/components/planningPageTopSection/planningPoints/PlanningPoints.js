@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import { declOfNumHelper } from "../../../helpers/declOfNumHelper";
 import { setSelectedDateId } from "../../../redux/planningTasks/planningTasksAction";
 import {
   getEndWeekDate,
@@ -65,7 +66,8 @@ const PlanningPoints = ({ isMobile, isDesktop }) => {
       {!isMobile && (
         <p className="totalWeekPlans">
           Определены задач на
-          <span className="totalWeekPlansNumber">{rewardsPlanned}</span> баллов
+          <span className="totalWeekPlansNumber">{rewardsPlanned}</span>
+          {declOfNumHelper(rewardsPlanned, ["балл", "балла", "баллов"])}
         </p>
       )}
     </PlanningPointsStyled>
