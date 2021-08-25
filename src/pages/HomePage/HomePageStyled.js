@@ -14,6 +14,9 @@ export const HomePageStyled = styled.div`
   }
   .right-side {
     width: 100%;
+    @media screen and (max-width: 767px) {
+      padding-bottom: 25px;
+    }
   }
 
   .upside-bar {
@@ -27,5 +30,16 @@ export const HomePageStyled = styled.div`
     margin-bottom: 40px;
     padding-right: 74px;
     padding-left: 68px;
+  }
+  .footer-320-stats {
+    font-family: inherit;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.25;
+    letter-spacing: 0.04em;
+    color: #a6abb9;
+    margin: 0;
+    padding-top: 12px;
   }
 `;
