@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const EwardsModalStyled = styled.div`
+const AwardsModalStyled = styled.div`
   background-color: ${({ colors }) => colors.modalTextColor};
   box-shadow: ${({ colors }) => `15px 15px 20px ${colors.modalBoxShadowColor}`};
   padding: 60px 20px 10px 20px;
@@ -91,4 +91,4 @@ const EwardsModalStyled = styled.div`
   }
 `;
 
-export default EwardsModalStyled;
+export default AwardsModalStyled;
