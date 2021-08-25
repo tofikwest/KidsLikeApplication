@@ -22,6 +22,8 @@ export const AuthContainer = styled.div`
   margin: 0 auto;
   background: url(${backMob}) bottom;
   background-repeat: no-repeat;
+  margin-left: -20px;
+  margin-right: -20px;
 
   .authTitle {
     font-weight: 600;
@@ -30,6 +32,8 @@ export const AuthContainer = styled.div`
     text-align: center;
     color: #000;
     margin-bottom: 40px;
+    margin-right: auto;
+    margin-left: auto;
   }
   .authText {
     margin-bottom: 20px;
@@ -40,6 +44,7 @@ export const AuthContainer = styled.div`
     flex-direction: column;
     max-width: 280px;
     align-self: center;
+    margin: 0 auto;
   }
   .user-label {
     margin-bottom: 10px;
@@ -120,8 +125,7 @@ export const AuthContainer = styled.div`
   }
   @media screen and (min-width: 768px) {
     padding: 0px 164px 305px 164px;
-    background: url(${backTabImg3}) bottom center,
-      url(${backTabImg1}) left bottom, url(${backTabImg2}) right bottom;
+    background: url(${backTabImg3}) bottom center, url(${backTabImg1}) left bottom, url(${backTabImg2}) right bottom;
     background-repeat: no-repeat;
     margin-left: -94px;
     margin-right: -94px;
@@ -131,12 +135,15 @@ export const AuthContainer = styled.div`
       margin-top: 72px;
       margin-bottom: 38px;
       max-width: 400px;
+      margin-right: auto;
+      margin-left: auto;
     }
     .user-form {
       max-width: 400px;
       padding: 40px;
       border-radius: 4px;
       box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
+      margin: 0 auto;
     }
     .user-button {
       width: 154px;
@@ -181,8 +188,8 @@ export const BackDeskImg = styled.div`
   @media screen and (min-width: 1280px) {
     flex-basis: calc(50%);
 
-    background: url(${backDeskImg2}) bottom right, url(${backDeskImg3}) left,
-      url(${backDeskImg4}) right, url(${backDeskImg1});
+    background: url(${backDeskImg2}) bottom right, url(${backDeskImg3}) left, url(${backDeskImg4}) right,
+      url(${backDeskImg1});
     background-repeat: no-repeat;
   }
 `;
