@@ -6,6 +6,7 @@ const initialState = {
   breakPointNavigation: 1279,
   breakPointUserMenu: 767,
   isModalOpen: false,
+  isModalOpenTask: false,
   modalName: "header",
 };
 
@@ -30,7 +31,13 @@ const useModal = () => {
   const setOpenModal = () =>
     setOptionModal((prev) => ({ ...prev, isModalOpen: !prev.isModalOpen }));
 
-  return [stateModal, setOpenModal, setOptionModal];
+  const setOpenModalTask = () =>
+    setOptionModal((prev) => ({
+      ...prev,
+      isModalOpenTask: !prev.isModalOpenTask,
+    }));
+
+  return [stateModal, setOpenModal, setOpenModalTask, setOptionModal];
 };
 
 export default useModal;
