@@ -7,7 +7,7 @@ import sprite from "../../../images/sprite.svg";
 import { useSelector } from "react-redux";
 import { getAwards, getAwardsId } from "../../../redux/gifts/giftsSelectors";
 
-const AwardsModal = ({ setOpenModal }) => {
+const AwardsModal = ({ setOpenModal, giftIds }) => {
   const awards = useSelector(getAwards);
   const awardsId = useSelector(getAwardsId);
 
@@ -24,7 +24,7 @@ const AwardsModal = ({ setOpenModal }) => {
   // ++++++++++++++++++++++++++++++Filter awards selected++++++++++++++++++++++++++++++
 
   return (
-    <AwardsModalStyled colors={colors}>
+    <AwardsModalStyled colors={colors} giftIds={giftIds}>
       <svg className="iconCloseAwards" onClick={setOpenModal}>
         <use href={sprite + "#icon-close-awards-modal"} />
       </svg>

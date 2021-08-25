@@ -72,7 +72,7 @@ const Awards = () => {
       {stateModal.width < stateModal.breakPointUserMenu && <ProgressBar />}
       {stateModal.isModalOpen && (
         <Modal handleCloseModal={setOpenModal} modalName={stateModal.modalName}>
-          <AwardsModal setOpenModal={setOpenModal} />
+          <AwardsModal setOpenModal={setOpenModal} giftIds={giftIds} />
         </Modal>
       )}
     </AwardsStyled>
