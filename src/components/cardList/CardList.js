@@ -2,8 +2,6 @@ import { useLocation } from "react-router-dom";
 import Card from "./card/Card";
 import AwardsCard from "../awards/awardsCard/AwardsCard";
 import { CardListStyled } from "./CardListStyled";
-import { useDispatch } from "react-redux";
-import { toggleAwardSuccess } from "../../redux/gifts/giftsAction";
 
 const CardList = ({
   selectedDate,
@@ -12,13 +10,6 @@ const CardList = ({
   awards,
   onToggleGetAwardsId,
 }) => {
-  // const dispatch = useDispatch();
-
-  // const onAwardsToggle = (awardId) => {
-  //   dispatch(toggleAwardSuccess(awardId));
-  //   onToggleGetAwardsId(awardId);
-  // };
-
   let presentDay = false;
   let previousDay = false;
   let featureDay = false;

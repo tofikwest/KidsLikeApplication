@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-const EwardsModalStyled = styled.div`
+const AwardsModalStyled = styled.div`
   background-color: ${({ colors }) => colors.modalTextColor};
   box-shadow: ${({ colors }) => `15px 15px 20px ${colors.modalBoxShadowColor}`};
-  padding: 60px 20px 10px 20px;
+  padding: 60px 20px 50px 20px;
   width: 280px;
   min-height: 300px;
 
@@ -32,6 +32,7 @@ const EwardsModalStyled = styled.div`
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
     margin-bottom: -35px;
   }
 
@@ -40,7 +41,7 @@ const EwardsModalStyled = styled.div`
     flex-direction: column;
     align-items: center;
     text-align: center;
-    width: calc(100% / 2);
+    width: ${(giftIds) => (giftIds.length === 1 ? "100%" : "calc(100% / 2)")};
     margin-bottom: 35px;
   }
 
@@ -91,4 +92,4 @@ const EwardsModalStyled = styled.div`
   }
 `;
 
-export default EwardsModalStyled;
+export default AwardsModalStyled;
