@@ -15,6 +15,10 @@ export const DateDropdownStyled = styled.div`
     right: 10px;
   }
 
+  .react-select__value-container {
+    padding: 0px 8px 0px 0px;
+  }
+
   .react-select__indicator-separator {
     display: none;
   }
