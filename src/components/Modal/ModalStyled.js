@@ -30,10 +30,10 @@ const ModalStyled = styled.div`
 
   .btnModalCloseSvg {
     position: absolute;
-    top: 20px;
+    top: 25px;
     right: 20px;
-    width: 20px;
-    height: 20px;
+    width: 14px;
+    height: 14px;
   }
 
   @media screen and (min-width: 768px) {

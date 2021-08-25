@@ -13,10 +13,7 @@ export const CardItemStyled = styled.li`
 
   @media screen and (min-width: 1280px) {
     margin-top: 20px;
-    flex-basis: ${({ location }) =>
-      location === "/planning"
-        ? "calc((100% - 80px) / 4)"
-        : "calc((100% - 60px) / 3)"};
+    flex-basis: calc((100% - 80px) / 4);
   }
 
   .card__image {

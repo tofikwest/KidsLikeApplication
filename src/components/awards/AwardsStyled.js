@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
-const EwardsStyled = styled.div`
+const AwardsStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   padding-top: 20px;
 
-  .ewardsProgresiveBox {
+  .awardsProgresiveBox {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -19,7 +19,7 @@ const EwardsStyled = styled.div`
     margin-bottom: 30px;
   }
 
-  .ewardSvg {
+  .awardSvg {
     width: 26px;
     height: 26px;
     margin-right: 15px;
@@ -38,6 +38,14 @@ const EwardsStyled = styled.div`
     border-radius: 6px;
     cursor: pointer;
   }
+
+  @media screen and (min-width: 768px) {
+    padding-top: 40px;
+
+    .awardsProgresiveBox {
+      margin-bottom: 40px;
+    }
+  }
 `;
 
-export default EwardsStyled;
+export default AwardsStyled;
