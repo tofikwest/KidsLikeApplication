@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import backMob from "../../images/auth-background/back-mobile.png";
+import backMob2x from "../../images/auth-background/back-mobile@2x.png";
 import backTabImg1 from "../../images/auth-background/back1-tablet.png";
 import backTabImg2 from "../../images/auth-background/back2-tablet.png";
 import backTabImg3 from "../../images/auth-background/back3-tablet.png";
@@ -10,6 +11,10 @@ import backDeskImg1 from "../../images/auth-background/back-desk1.png";
 import backDeskImg2 from "../../images/auth-background/back-desk2.png";
 import backDeskImg3 from "../../images/auth-background/back-desk3.png";
 import backDeskImg4 from "../../images/auth-background/back-desk4.png";
+import back2xDeskImg1 from "../../images/auth-background/back-desk1@2x.png";
+import back2xDeskImg2 from "../../images/auth-background/back-desk2@2x.png";
+import back2xDeskImg3 from "../../images/auth-background/back-desk3@2x.png";
+import back2xDeskImg4 from "../../images/auth-background/back-desk4@2x.png";
 
 export const AuthContainer = styled.div`
   padding: 60px 0px;
@@ -18,7 +23,6 @@ export const AuthContainer = styled.div`
   line-height: 1.25;
   letter-spacing: 0.04em;
   color: #858598;
-  /* width: 100vw; */
   margin: 0 auto;
   background: url(${backMob}) bottom;
   background-repeat: no-repeat;
@@ -71,7 +75,6 @@ export const AuthContainer = styled.div`
   }
   .user-input::placeholder {
     color: #a6abb9;
-    /* padding-left: 10px; */
     font-size: 14px;
     line-height: 1.21;
     transition: opacity 300ms linear;
@@ -123,6 +126,15 @@ export const AuthContainer = styled.div`
     border-radius: 4px;
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
   }
+  // 0px - 767px 2x+
+  @media (min-device-pixel-ratio: 2) and (max-width: 767px),
+    (min-resolution: 192dpi) and (max-width: 767px),
+    (min-resolution: 2dppx) and (max-width: 767px) {
+    background: url(${backMob2x}) bottom;
+    background-repeat: no-repeat;
+    background-size: 320px;
+  }
+
   @media screen and (min-width: 768px) {
     padding: 0px 164px 305px 164px;
     background: url(${backTabImg3}) bottom center, url(${backTabImg1}) left bottom, url(${backTabImg2}) right bottom;
@@ -151,19 +163,19 @@ export const AuthContainer = styled.div`
       line-height: 1.22;
     }
   }
-  /* @media (min-device-pixel-ratio: 2) and (min-width: 768px),
+  //768px+ 2x+
+  @media (min-device-pixel-ratio: 2) and (min-width: 768px),
     (min-resolution: 192dpi) and (min-width: 768px),
     (min-resolution: 2dppx) and (min-width: 768px) {
-    background: url(${back2xTabImg3}) bottom center, url(${back2xTabImg2}) right bottom, url(${back2xTabImg1}) left bottom;
+    background: url(${back2xTabImg3}) bottom center, url(${back2xTabImg2}) right bottom,
+      url(${back2xTabImg1}) left bottom;
     background-repeat: no-repeat;
-  } */
+    background-size: 250px, 300px, 300px;
+  }
 
   @media screen and (min-width: 1280px) {
     padding: 0px 80px 0px 206px;
     flex-basis: calc(50%);
-    /* background: url(${backDeskImg2}) bottom right, url(${backDeskImg3}) left, url(${backDeskImg4}) right,
-      url(${backDeskImg1});
-    background-repeat: no-repeat; */
     background: none;
     .authTitle {
       text-align: start;
@@ -177,13 +189,6 @@ export const AuthContainer = styled.div`
   }
 `;
 
-// export const BackMobImg = styled.div`
-//   background: url(${backMob}) bottom;
-//   background-repeat: no-repeat;
-//   width: 100vw;
-//   height: auto;
-// `;
-
 export const BackDeskImg = styled.div`
   @media screen and (min-width: 1280px) {
     flex-basis: calc(50%);
@@ -191,6 +196,14 @@ export const BackDeskImg = styled.div`
     background: url(${backDeskImg2}) bottom right, url(${backDeskImg3}) left, url(${backDeskImg4}) right,
       url(${backDeskImg1});
     background-repeat: no-repeat;
+  }
+  @media (min-device-pixel-ratio: 2) and (min-width: 1280px),
+    (min-resolution: 192dpi) and (min-width: 1280px),
+    (min-resolution: 2dppx) and (min-width: 1280px) {
+    background: url(${back2xDeskImg2}) bottom right, url(${back2xDeskImg3}) left, url(${back2xDeskImg4}) right center,
+      url(${back2xDeskImg1});
+    background-repeat: no-repeat;
+    background-size: 360px, 300px, 350px, 450px;
   }
 `;
 
