@@ -9,7 +9,7 @@ const initialState = {
   breakPoint: 1280,
 };
 
-const WeekTabs = ({ choosenDate }) => {
+const WeekTabs = ({ choosenDate, selectedDate }) => {
   const [state, setState] = useState(initialState);
   const location = useLocation();
 
@@ -42,13 +42,17 @@ const WeekTabs = ({ choosenDate }) => {
   return (
     <>
       <WeekTabsStyled colors={colors}>
-        {WeekTabsData.map(({ dayFull, dayShort, search }) => (
+        {WeekTabsData.map(({ dayFull, dayShort, search, className }) => (
           <button
             key={dayShort}
             type="button"
             value={search}
             onClick={handleClick}
-            className="weekDays-listItem"
+            className={
+              search === selectedDate
+                ? "weekDays-listItem weekDays-active"
+                : "weekDays-listItem"
+            }
           >
             {state.width >= state.breakPoint ? (
               <span>{dayFull}</span>

@@ -7,6 +7,12 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router";
 import CurrentDay from "../../components/weekDayTime/currentDay/CurrentDay";
 import CurrentWeek from "../../components/weekDayTime/currentWeek/CurrentWeek";
+import HomeMobileFooter from "../../components/homeFooter/HomeMobileFooter";
+import useModal from "../../hooks/useModal";
+import { useSelector } from "react-redux";
+import { getTasks } from "../../redux/tasks/tasksSelector";
+import AddCustomTaskModal from "../../components/planningPageTopSection/addCustomTaskModal/AddCustomTaskModal";
+import Modal from "../../components/Modal/Modal";
 
 const initialState = {
   search: "",
@@ -44,24 +50,32 @@ const HomePage = () => {
     setState((prevState) => ({ ...prevState, search: date }));
   };
 
+  const [stateModal, setOpenModal] = useModal();
+
+  const onClickOpenModal = () => {
+    setOpenModal();
+  };
+
+  const tasks = useSelector(getTasks);
+
   return (
     <HomePageStyled colors={colors}>
       {state.width < state.breakPoint && state.width >= 768 && (
         <div className="upside-bar">
           <CurrentWeek />
-          <WeekTabs choosenDate={choosenDate} />
+          <WeekTabs selectedDate={state.search} choosenDate={choosenDate} />
         </div>
       )}
 
       {state.width >= state.breakPoint && (
         <div className="home-sidebar">
-          <WeekTabs choosenDate={choosenDate} />
+          <WeekTabs selectedDate={state.search} choosenDate={choosenDate} />
         </div>
       )}
 
       {state.width < 767 && (
         <>
-          <WeekTabs choosenDate={choosenDate} />
+          <WeekTabs selectedDate={state.search} choosenDate={choosenDate} />
           <>
             <CurrentDay selectedDate={state.search} />
           </>
@@ -73,20 +87,22 @@ const HomePage = () => {
           selectedDate={state.search}
           choosenDateTab={state.search}
         />
-
-        <Footer />
+        {stateModal.isModalOpen && (
+          <Modal handleCloseModal={setOpenModal}>
+            <AddCustomTaskModal closeModal={setOpenModal} />
+          </Modal>
+        )}
+        {state.width <= 320 ? (
+          <>
+            {tasks && <Footer />}
+            <HomeMobileFooter onClickOpenModal={onClickOpenModal} />
+          </>
+        ) : (
+          <Footer />
+        )}
       </div>
     </HomePageStyled>
   );
 };
 
 export default HomePage;
-
-//======================================
-// Контейнерный компонент.
-// Дочерние компоненты: WeekTabs, WeekTabContent
-// Помимо базовой разметки, необходимой для размещения элементов
-// на странице, напрямую работает с store.
-// Передает дочерним компонентам пропы для их отрисовки.
-// Осуществляет запросы на сервер.Записывает полученные данные в store.
-//   !!!Отвечает за передачу необходимых пропов в дочерние компоненты."
