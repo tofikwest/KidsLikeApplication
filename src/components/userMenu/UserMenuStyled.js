@@ -31,6 +31,7 @@ const UserMenuStyled = styled.div`
     width: 18px;
     height: 18px;
     fill: ${({ colors }) => colors.modalTextColor};
+    cursor: pointer;
   }
   @media screen and (min-width: 768px) {
     position: static;

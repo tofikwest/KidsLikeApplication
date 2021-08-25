@@ -1,24 +1,31 @@
 import React from "react";
 import catImg from "../../../images/catModal.png";
 
-import EwardsModalStyled from "./AwardsModalStyled";
+import AwardsModalStyled from "./AwardsModalStyled";
 import { colors } from "../../../general/styles/colors";
 import sprite from "../../../images/sprite.svg";
 import { useSelector } from "react-redux";
 import { getAwards, getAwardsId } from "../../../redux/gifts/giftsSelectors";
 
-const AwardsModal = ({ setOpenModal }) => {
+const AwardsModal = ({ setOpenModal, giftIds }) => {
   const awards = useSelector(getAwards);
   const awardsId = useSelector(getAwardsId);
 
   // ++++++++++++++++++++++++++++++Filter awards selected++++++++++++++++++++++++++++++
-  const modalAwards = awards.filter(
-    (award, index) => award.id === awardsId[index]
-  );
+  const modalAwards = () => {
+    const res = awardsId.reduce((acc, el) => {
+      if (awards.filter((award) => award.id === el)) acc.push(awards[el - 1]);
+      return acc;
+    }, []);
+    return res;
+  };
+
+  const arrAwards = modalAwards();
+
   // ++++++++++++++++++++++++++++++Filter awards selected++++++++++++++++++++++++++++++
 
   return (
-    <EwardsModalStyled colors={colors}>
+    <AwardsModalStyled colors={colors} giftIds={giftIds}>
       <svg className="iconCloseAwards" onClick={setOpenModal}>
         <use href={sprite + "#icon-close-awards-modal"} />
       </svg>
@@ -26,7 +33,7 @@ const AwardsModal = ({ setOpenModal }) => {
       <h3 className="awardsModalTitle">Поздравляем! Ты получаешь:</h3>
 
       <ul className="modalListAwards">
-        {modalAwards.map((award) => (
+        {arrAwards.map((award) => (
           <li className="modalListItemsAwards" key={award.id}>
             <img
               className="modalListItemsImageAwards"
@@ -37,7 +44,7 @@ const AwardsModal = ({ setOpenModal }) => {
           </li>
         ))}
       </ul>
-    </EwardsModalStyled>
+    </AwardsModalStyled>
   );
 };
 

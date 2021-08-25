@@ -9,6 +9,8 @@ import {
   getGiftsError,
   getGiftsSuccess,
   toggleAwardSuccess,
+  toggleAwardsResetSuccess,
+  toggleAwardsResetSuccessT,
 } from "./giftsAction";
 
 const itemsReducer = createReducer([], {
@@ -17,12 +19,17 @@ const itemsReducer = createReducer([], {
       award.id === payload ? { ...award, isSelected: !award.isSelected } : award
     ),
 
+  // [toggleAwardsResetSuccessT]: (state, { payload }) => {
+  //   state.map((award) => ({ ...award, isSelected: "false" }));
+  // },
+
   [getGiftsSuccess]: (_, { payload }) => payload.ruGifts,
   [signOutSuccess]: () => [],
 });
 
 const selectGiftsId = createReducer([], {
   [buyGiftsSuccess]: (_, { payload }) => payload.purchasedGiftIds,
+  [toggleAwardsResetSuccess]: () => [],
 });
 
 const isLoadingReducer = createReducer(false, {
