@@ -5,6 +5,7 @@ import {
   getRewardsPlanned,
   getStartWeekDate,
 } from "../../../redux/tasks/tasksSelector";
+import DateDropdown from "../dateDropdown/DateDropdown";
 import { PlanningPointsStyled } from "./PlanningPointsStyled";
 
 const PlanningPoints = ({ isMobile, isDesktop }) => {
@@ -34,57 +35,32 @@ const PlanningPoints = ({ isMobile, isDesktop }) => {
     return `${day}.${month}.${year}`;
   };
 
-  const onSelectDate = (e) => {
-    dispatch(setSelectedDateId(e.target.value));
+  const onSelectDate = (value) => {
+    console.log(`value`, value);
+    dispatch(setSelectedDateId(value));
   };
 
   const startingDate = configuredStartingDate();
   const endingDate = configuredDate(endWeekDate, 0);
+  const commonValue = `${startingDate} - ${endingDate}`;
 
   return (
     <PlanningPointsStyled>
-      <p className="weekPlansText">
+      <span className="weekPlansText">
         План на неделю:
         {isMobile || (!isMobile && !isDesktop) ? (
-          <select
-            className="weekPlansDaySelector"
-            name="date"
-            id="date"
-            onChange={onSelectDate}
-          >
-            <option
-              className="weekPlansDay"
-              value="default"
-            >{`${startingDate} - ${endingDate}`}</option>
-            <option className="weekPlansDay" value="0">
-              {`${configuredDate(startWeekDate, 0)} - Пн`}
-            </option>
-            <option className="weekPlansDay" value="1">
-              {`${configuredDate(startWeekDate, 1)} - Вт`}
-            </option>
-            <option className="weekPlansDay" value="2">
-              {`${configuredDate(startWeekDate, 2)} - Ср`}
-            </option>
-            <option className="weekPlansDay" value="3">
-              {`${configuredDate(startWeekDate, 3)} - Чт`}
-            </option>
-            <option className="weekPlansDay" value="4">
-              {`${configuredDate(startWeekDate, 4)} - Пт`}
-            </option>
-            <option className="weekPlansDay" value="5">
-              {`${configuredDate(startWeekDate, 5)} - Сб`}
-            </option>
-            <option className="weekPlansDay" value="6">
-              {`${configuredDate(startWeekDate, 6)} - Вс`}
-            </option>
-          </select>
+          <DateDropdown
+            configuredDate={configuredDate}
+            startWeekDate={startWeekDate}
+            startingDate={startingDate}
+            endingDate={endingDate}
+            onSelectDate={onSelectDate}
+            commonValue={commonValue}
+          />
         ) : (
-          <span className="weekPlansDate">{`${configuredStartingDate()} - ${configuredDate(
-            endWeekDate,
-            0
-          )}`}</span>
+          <span className="weekPlansDate">{commonValue}</span>
         )}
-      </p>
+      </span>
 
       {!isMobile && (
         <p className="totalWeekPlans">

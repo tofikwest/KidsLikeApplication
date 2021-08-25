@@ -13,6 +13,7 @@ export const PlanningPointsStyled = styled.div`
 
   .weekPlansText {
     margin: 0;
+    margin-bottom: 30px;
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
     font-size: 18px;
@@ -22,7 +23,13 @@ export const PlanningPointsStyled = styled.div`
     text-align: center;
 
     @media screen and (min-width: 768px) {
-      text-align: start;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @media screen and (min-width: 1280px) {
+      margin-bottom: 0;
     }
   }
 
@@ -77,38 +84,5 @@ export const PlanningPointsStyled = styled.div`
     line-height: 1.21;
     letter-spacing: 0.04em;
     color: #ffffff;
-  }
-
-  .weekPlansDaySelector {
-    margin-top: 10px;
-
-    font-family: "Montserrat", sans-serif;
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 1.25;
-    letter-spacing: 0.2em;
-    color: #000000;
-    padding: 6px 9px 5px 8px;
-    border-color: #ffbc33;
-    border-radius: 4px;
-
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-
-    @media screen and (min-width: 768px) {
-      margin-top: 0;
-      margin-left: 10px;
-      margin-bottom: 30px;
-    }
-  }
-
-  .weekPlansDay {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 1.25;
-    display: flex;
-    align-items: center;
-    letter-spacing: 0.2em;
-    color: #000000;
   }
 `;
