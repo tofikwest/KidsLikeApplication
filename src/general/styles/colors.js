@@ -8,4 +8,5 @@ export const colors = {
   modalBoxShadowColor: "rgba(0, 0, 0, 0.25)",
   modalTextColor: "#ffffff",
   userLogoBgColor: "#2196F3",
+  awardsErrorColor: "tomato",
 };

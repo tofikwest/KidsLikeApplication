@@ -6,18 +6,24 @@ import {
   getGiftsOperation,
 } from "../../redux/gifts/giftOperations";
 import { getAwards, getAwardsError } from "../../redux/gifts/giftsSelectors";
-import { toggleAwardsResetSuccess } from "../../redux/gifts/giftsAction";
+// import {
+//   getGiftsSuccess,
+//   toggleAwardsResetSuccess,
+//   toggleAwardsResetSuccessT,
+// } from "../../redux/gifts/giftsAction";
 import useModal from "../../hooks/useModal";
 import CardList from "../cardList/CardList";
 import Modal from "../Modal/Modal";
 import Footer from "../footer/Footer";
 import AwardsModal from "./awardsModal/AwardsModal";
 import ProgressBar from "../progressBar/ProgressBar";
+import AwardsError from "./awardsError/AwardsError";
 
 import AwardsStyled from "./AwardsStyled";
 import sprite from "../../images/sprite.svg";
 import { colors } from "../../general/styles/colors";
 
+import HomeMobileFooter from "../homeFooter/HomeMobileFooter";
 const initialState = [];
 
 const Awards = () => {
@@ -30,38 +36,32 @@ const Awards = () => {
 
   useEffect(() => {
     dispath(getGiftsOperation());
-    !stateModal.isModalOpen && dispath(toggleAwardsResetSuccess());
-    !stateModal.isModalOpen && setGiftIdsState(initialState);
     location.pathname === "/awards"
       ? setOptionModal((prev) => ({ ...prev, modalName: "awards" }))
       : setOptionModal((prev) => ({ ...prev, modalName: "header" }));
-  }, [location, stateModal.isModalOpen]);
+  }, [location, setOptionModal, dispath]);
 
   // ++++++++++++++++++++++++++++++++Logic giftsId++++++++++++++++++++++++++++++++++++++++
 
   const onToggleGetAwardsId = (awardId) => {
     setGiftIdsState((prev) => {
-      return prev.includes(awardId) ? [...prev] : [...prev, awardId];
+      return prev.includes(awardId)
+        ? [...prev].filter((item) => item !== awardId)
+        : [...prev, awardId];
     });
   };
 
-  // const getGifts = async () => {
-  //   dispath(buyGiftOperation({ giftIds }));
-  // };
-
-  // const callBack = () => {
-  //   giftIds.length && setOpenModal();
-  // };
   const onHandleClickConfirm = async () => {
     dispath(buyGiftOperation({ giftIds }, setOpenModal));
-    // console.log(error);
-    // console.log(giftIds);
+    dispath(getGiftsOperation());
+    setGiftIdsState(initialState);
   };
 
-  // useEffect(() => {
-  // }, [giftIds, error, setOpenModal]);
   // ++++++++++++++++++++++++++++++++Logic giftsId+++++++++++++++++++++++++++++++++++++++++
 
+  const onClickOpenModal = () => {
+    setOpenModal();
+  };
   return (
     <AwardsStyled colors={colors}>
       <div className="awardsProgresiveBox">
@@ -79,13 +79,14 @@ const Awards = () => {
         Подтвердить
       </button>
 
-      {error === "Request failed with status code 400" && (
-        <p>Выберите подарок</p>
-      )}
-      {error === "Request failed with status code 409" && <p>no many</p>}
+      <AwardsError error={error} />
 
       <Footer />
-      {stateModal.width < stateModal.breakPointUserMenu && <ProgressBar />}
+
+      {stateModal.width < stateModal.breakPointUserMenu && (
+        <HomeMobileFooter onClickOpenModal={onClickOpenModal} />
+      )}
+
       {stateModal.isModalOpen && (
         <Modal handleCloseModal={setOpenModal} modalName={stateModal.modalName}>
           <AwardsModal setOpenModal={setOpenModal} giftIds={giftIds} />

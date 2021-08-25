@@ -9,9 +9,9 @@ export const buyGiftsSuccess = createAction("awards/buyGiftsSuccess");
 export const buyGiftsError = createAction("awards/buyGiftsError");
 
 export const toggleAwardSuccess = createAction("awards/toggleAwardSuccess");
-export const toggleAwardsResetSuccess = createAction(
-  "awards/toggleAwardsResetSuccess"
-);
+// export const toggleAwardsResetSuccess = createAction(
+//   "awards/toggleAwardsResetSuccess"
+// );
 
 // export const toggleAwardsResetSuccessT = createAction(
 //   "awards/toggleAwardsResetSuccessT"
