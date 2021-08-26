@@ -1,11 +1,10 @@
 import styled from "styled-components";
 
 export const HomeMobileFooterStyled = styled.div`
-  /* position: fixed; */
   bottom: 0;
   left: 0;
   width: 100vw;
-  background-color: #f1f1f1;
+  background-color: ${({ colors }) => colors.footerHomeMobileBgColor};
   margin-left: -20px;
 
   .homeMobileFooterWrapper {

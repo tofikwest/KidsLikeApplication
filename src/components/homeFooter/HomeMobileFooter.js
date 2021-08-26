@@ -1,10 +1,11 @@
 import addTaskIcon from "../../images/add-task-button.svg";
 import { HomeMobileFooterStyled } from "./HomeMobileFooterStyled";
 import ProgressBarMobile from "../progressBar/ProgressBarMobile";
+import { colors } from "../../general/styles/colors";
 
 const HomeMobileFooter = ({ onClickOpenModal }) => {
   return (
-    <HomeMobileFooterStyled>
+    <HomeMobileFooterStyled colors={colors}>
       <div className="homeMobileFooterWrapper">
         <ProgressBarMobile />
 
