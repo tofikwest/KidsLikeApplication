@@ -90,5 +90,8 @@
   "Lack of points": "Lack of points",
   "Are you sure": "Are you sure ?",
   "Yes": "Yes",
-  "No": "No"
+  "No": "No",
+  "this is mandatory area": "this is mandatory area",
+  "password must be at least 8 characters": "password must be at least 8 characters",
+  "invalid format": "invalid format"
 }

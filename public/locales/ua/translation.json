@@ -90,5 +90,8 @@
   "Lack of points": "Не вистачає балів",
   "Are you sure": "Ти впевнений ?",
   "Yes": "Так",
-  "No": "Ні"
+  "No": "Ні",
+  "this is mandatory area": "це обов'язкове поле",
+  "password must be at least 8 characters": "довжина паролю - не менше 8 символів",
+  "invalid format": "невірний формат"
 }

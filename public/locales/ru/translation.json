@@ -89,5 +89,8 @@
   "Lack of points": "Не хватает бaллов",
   "Are you sure": "Ты уверен ?",
   "Yes": "Да",
-  "No": "Нет"
+  "No": "Нет",
+  "this is mandatory area": "это обязательное поле",
+  "password must be at least 8 characters": "длина пароля - не менее 8 символов",
+  "invalid format": "неверный формат"
 }
