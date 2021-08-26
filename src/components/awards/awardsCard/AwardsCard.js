@@ -5,9 +5,11 @@ import { useTranslation } from "react-i18next";
 import TaskToggle from "../../taskToggle/TaskToggle";
 import { CardItemStyled } from "../../cardList/card/CardStyled";
 import { colors } from "../../../general/styles/colors";
+import { useLocation } from "react-router-dom";
 
 const AwardsCard = ({ award, onToggleGetAwardsId }) => {
   const dispatch = useDispatch();
+  const location = useLocation().pathname;
   const { t } = useTranslation();
 
   const onAwardsToggle = (awardId) => {
@@ -16,7 +18,7 @@ const AwardsCard = ({ award, onToggleGetAwardsId }) => {
   };
 
   return (
-    <CardItemStyled color={colors}>
+    <CardItemStyled location={location} color={colors}>
       <div className="cart">
         <img
           className="card__image"

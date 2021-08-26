@@ -6,6 +6,7 @@ import {
   buyGiftsError,
   buyGiftsSuccess,
   buyGiftsRequest,
+  toggleAwardsReset,
 } from "./giftsAction";
 
 export const getGiftsOperation = () => async (dispatch, getState) => {
@@ -28,5 +29,6 @@ export const buyGiftOperation =
       openAwardsModal();
     } catch (error) {
       dispatch(buyGiftsError(error.message));
+      dispatch(toggleAwardsReset());
     }
   };
