@@ -13,7 +13,7 @@ const LogoutModal = ({ setStateUserInfo }) => {
     dispatch(logOut());
   };
 
-  const [setOpenModal] = useModal();
+  const [state, setOpenModal] = useModal();
 
   const goback = () => {
     setStateUserInfo((prev) => ({ ...prev, isLogout: false }));
