@@ -6,7 +6,7 @@ import {
   getGiftsOperation,
 } from "../../redux/gifts/giftOperations";
 import { getAwards, getAwardsError } from "../../redux/gifts/giftsSelectors";
-// import { toggleAwardsReset } from "../../redux/gifts/giftsAction";
+import { toggleAwardsReset } from "../../redux/gifts/giftsAction";
 import { getTasks } from "../../redux/tasks/tasksSelector";
 import useModal from "../../hooks/useModal";
 import CardList from "../cardList/CardList";
@@ -46,6 +46,7 @@ const Awards = () => {
 
   useEffect(() => {
     !stateModal.isModalOpen && setGiftIdsState(initialState);
+    !stateModal.isModalOpen && dispatch(toggleAwardsReset());
   }, [stateModal]);
 
   const onToggleGetAwardsId = (awardId) => {
@@ -58,7 +59,6 @@ const Awards = () => {
 
   const onHandleClickConfirm = async () => {
     dispatch(buyGiftOperation({ giftIds }, setOpenModal));
-    // dispatch(toggleAwardsReset());
   };
 
   // ++++++++++++++++++++++++++++++++Logic giftsId+++++++++++++++++++++++++++++++++++++++++
