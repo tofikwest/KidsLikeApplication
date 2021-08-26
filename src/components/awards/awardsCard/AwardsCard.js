@@ -1,8 +1,8 @@
 import React from "react";
-import TaskToggle from "../../taskToggle/TaskToggle";
-import { CardItemStyled } from "../../cardList/card/CardStyled";
 import { useDispatch } from "react-redux";
 import { toggleAwardSuccess } from "../../../redux/gifts/giftsAction";
+import TaskToggle from "../../taskToggle/TaskToggle";
+import { CardItemStyled } from "../../cardList/card/CardStyled";
 
 const AwardsCard = ({ award, onToggleGetAwardsId }) => {
   const dispatch = useDispatch();

@@ -39,12 +39,14 @@ const App = () => {
 
   return (
     <>
+
       <LanguageContext.Provider value={{ language, setLanguage }}>
+        <Header />
         <Section>
-          <Header />
           <Main />
         </Section>
       </LanguageContext.Provider>
+
     </>
   );
 };
