@@ -18,8 +18,7 @@ const DayList = ({ days, taskId }) => {
     const weekday = new Intl.DateTimeFormat("ru-RU", options).format(
       formatDate
     );
-
-    console.log("🚀 ~ weekday", weekday);
+    
     return weekday;
   };
 
