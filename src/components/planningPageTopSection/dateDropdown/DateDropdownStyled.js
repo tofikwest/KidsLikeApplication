@@ -28,7 +28,7 @@ export const DateDropdownStyled = styled.div`
   }
 
   .react-select__control {
-    border-color: #ffbc33;
+    border-color: ${({ colors }) => colors.primaryBgColor};
     box-shadow: none;
   }
 
@@ -38,7 +38,7 @@ export const DateDropdownStyled = styled.div`
   }
 
   .react-select__control--is-focused {
-    border-color: #ffbc33;
+    border-color: ${({ colors }) => colors.primaryBgColor};
     box-shadow: none;
   }
 
@@ -50,9 +50,9 @@ export const DateDropdownStyled = styled.div`
     font-size: 12px;
     line-height: 1.25;
     letter-spacing: 0.2em;
-    color: #000000;
+    color: ${({ colors }) => colors.primaryTextColor};
     padding: 6px 9px 5px 0px;
-    border-color: #ffbc33;
+    border-color: ${({ colors }) => colors.primaryBgColor};
     border-radius: 4px;
 
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
@@ -72,7 +72,7 @@ export const DateDropdownStyled = styled.div`
     display: flex;
     align-items: center;
     letter-spacing: 0.2em;
-    color: #000000;
+    color: ${({ colors }) => colors.primaryTextColor};
   }
 
   .react-select__placeholder {
@@ -80,27 +80,17 @@ export const DateDropdownStyled = styled.div`
     font-weight: 500;
     font-size: 14px;
     line-height: 1.25;
-    /* display: flex;
-    align-items: center; */
     letter-spacing: 0em;
-    color: #00000057;
+    color: ${({ colors }) => colors.primaryTextColor};
   }
 
   .react-select__menu {
-    border: 1px solid #ffbc33;
+    border: 1px solid ${({ colors }) => colors.primaryBgColor};
 
     border-radius: 4px;
   }
 
   .react-select__option--is-selected {
-    background-color: #ffbc33;
+    background-color: ${({ colors }) => colors.primaryBgColor};
   }
-
-  /* .react-select__indicator {
-    background-image: url("../../../images/dropdown-arrow.svg");
-  } */
-
-  /* .react-select__dropdown-indicator {
-    background-image: url("../../../images/dropdown-arrow.svg");
-  } */
 `;

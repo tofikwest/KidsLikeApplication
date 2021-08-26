@@ -28,7 +28,7 @@ export const CardItemStyled = styled.li`
     align-items: center;
 
     padding: 14px 20px;
-    background-color: #ffbc33;
+    background-color: ${({ colors }) => colors.primaryBgColor};
     border-radius: 0px 0px 6px 6px;
   }
 
@@ -40,7 +40,7 @@ export const CardItemStyled = styled.li`
     margin-bottom: 4px;
 
     font-family: "Montserrat", sans-serif;
-    color: #000000;
+    color: ${({ colors }) => colors.primaryTextColor};
     text-transform: uppercase;
 
     font-weight: 700;
@@ -52,11 +52,11 @@ export const CardItemStyled = styled.li`
   .card__rewardTag {
     padding: 3px 10px;
 
-    background-color: #5679d7;
+    background-color: ${({ colors }) => colors.cardRewardColor};
     border-radius: 3px;
 
     font-family: "Montserrat", sans-serif;
-    color: #ffffff;
+    color: ${({ colors }) => colors.modalTextColor};
     font-weight: 500;
     font-size: 10px;
     line-height: 1.2;

@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import { colors } from "../../../general/styles/colors";
 import { declOfNumHelper } from "../../../helpers/declOfNumHelper";
 import { setSelectedDateId } from "../../../redux/planningTasks/planningTasksAction";
 import {
@@ -46,7 +47,7 @@ const PlanningPoints = ({ isMobile, isDesktop }) => {
   const commonValue = `${startingDate} - ${endingDate}`;
 
   return (
-    <PlanningPointsStyled>
+    <PlanningPointsStyled colors={colors}>
       <span className="weekPlansText">
         План на неделю:
         {isMobile || (!isMobile && !isDesktop) ? (

@@ -5,7 +5,7 @@ export const MobileTaskFooterStyled = styled.div`
   bottom: 0;
   left: 0;
   width: 100vw;
-  background-color: #f1f1f1;
+  background-color: ${({ colors }) => colors.footerHomeMobileBgColor};
 
   .mobileFooterWrapper {
     position: relative;
@@ -28,7 +28,7 @@ export const MobileTaskFooterStyled = styled.div`
     letter-spacing: 0.04em;
     text-transform: uppercase;
 
-    color: #a6abb9;
+    color: ${({ colors }) => colors.thirdTextColor};
   }
 
   .plannedRewardPoints {
@@ -38,10 +38,10 @@ export const MobileTaskFooterStyled = styled.div`
 
     width: 30px;
     height: 30px;
-    background-color: #8ec63f;
+    background-color: ${({ colors }) => colors.rewardAmountCircleColor};
     border-radius: 50%;
     margin-right: 10px;
-    color: #ffffff;
+    color: ${({ colors }) => colors.modalTextColor};
   }
 
   .addTaskButton {
