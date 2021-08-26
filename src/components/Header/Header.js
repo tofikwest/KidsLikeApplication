@@ -10,7 +10,7 @@ import useModal from "../../hooks/useModal";
 import { colors } from "../../general/styles/colors";
 import sprite from "../../images/sprite.svg";
 import HeaderStyled from "./HeaderStyled";
-import LanguageSwitcher from "../languageSwitcher/LanguageSwitcher";
+import LanguageSwitcher from "../../languageSwitcher/LanguageSwitcher";
 
 const Header = () => {
   const [stateModal, setOpenModal] = useModal();

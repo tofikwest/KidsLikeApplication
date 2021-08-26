@@ -1,37 +1,50 @@
-import React, { useContext } from "react";
+import React from "react";
+import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import languages from "../../languages";
 import { authorizedUser } from "../../redux/auth/authSelectors";
-import { LanguageContext } from "../App";
 
 const NavigationListItems = ({ name, path, exact, isPrivat, restricted }) => {
   const isAuth = useSelector(authorizedUser);
-  const { language } = useContext(LanguageContext);
+  const { t } = useTranslation();
 
   return (
     <>
       {!isPrivat && !restricted && (
         <li className="navItems">
-          <NavLink className="navLink" activeClassName="activeNavLink" to={path} exact={exact}>
-            {languages[language].header.navigation[name][0].toUpperCase() +
-              languages[language].header.navigation[name].slice(1)}
+          <NavLink
+            className="navLink"
+            activeClassName="activeNavLink"
+            to={path}
+            exact={exact}
+          >
+            {t("Contacts")}
           </NavLink>
         </li>
       )}
       {isAuth && isPrivat && !restricted && (
         <li className="navItems">
-          <NavLink className="navLink" activeClassName="activeNavLink" to={path} exact={exact}>
-            {languages[language].header.navigation[name][0].toUpperCase() +
-              languages[language].header.navigation[name].slice(1)}
+          <NavLink
+            className="navLink"
+            activeClassName="activeNavLink"
+            to={path}
+            exact={exact}
+          >
+            {path === "/planning" && t("Planning")}
+            {path === "/awards" && t("Awards")}
+            {path === "/" && t("Home")}
           </NavLink>
         </li>
       )}
       {!isAuth && !isPrivat && restricted && (
         <li className="navItems">
-          <NavLink className="navLink" activeClassName="activeNavLink" to={path} exact={exact}>
-            {languages[language].header.navigation[name][0].toUpperCase() +
-              languages[language].header.navigation[name].slice(1)}
+          <NavLink
+            className="navLink"
+            activeClassName="activeNavLink"
+            to={path}
+            exact={exact}
+          >
+            {t("Authorization")}
           </NavLink>
         </li>
       )}

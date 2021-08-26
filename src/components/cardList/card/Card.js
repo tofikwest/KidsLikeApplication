@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { colors } from "../../../general/styles/colors";
@@ -22,6 +23,7 @@ const Card = ({
   const dispatch = useDispatch();
   const location = useLocation().pathname;
   const selectedDropdownDate = useSelector(getSelectedDateId);
+  const { t } = useTranslation();
 
   const onTaskToggle = (taskId) => {
     const date = { date: task.days[currentDateId].date };
@@ -51,16 +53,16 @@ const Card = ({
   return (
     <CardItemStyled location={location} colors={colors}>
       <div className="card">
-        <img className="card__image" src={task.imageUrl} alt={task.title} />
+        <img className="card__image" src={task.imageUrl} alt={t(task.title)} />
         <div className="card__footer">
           <div className="card__info">
-            <h3 className="card__taskName">{task.title}</h3>
+            <h3 className="card__taskName">{t(task.title)} </h3>
             <span className="card__rewardTag">{`${
               task.reward
             } ${declOfNumHelper(task.reward, [
-              "балл",
-              "балла",
-              "баллов",
+              t("one point"),
+              t("point"),
+              t("points"),
             ])}`}</span>
           </div>
           {location === "/" && presentDay && (

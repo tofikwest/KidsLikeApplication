@@ -16,6 +16,7 @@ import ProgressBar from "../progressBar/ProgressBar";
 import AwardsError from "./awardsError/AwardsError";
 import HomeMobileFooter from "../homeFooter/HomeMobileFooter";
 import AddCustomTaskModal from "../planningPageTopSection/addCustomTaskModal/AddCustomTaskModal";
+import { useTranslation } from "react-i18next";
 
 import AwardsStyled from "./AwardsStyled";
 import sprite from "../../images/sprite.svg";
@@ -31,6 +32,7 @@ const Awards = () => {
   const awards = useSelector(getAwards);
   const error = useSelector(getAwardsError);
   const location = useLocation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispath(getGiftsOperation());
@@ -72,14 +74,14 @@ const Awards = () => {
           <svg className="awardSvg">
             <use href={sprite + "#icon-award"} />
           </svg>
-          <h3 className="awardsTitle">Мои призы</h3>
+          <h3 className="awardsTitle">{t("My gifts").toUpperCase()}</h3>
         </div>
         {stateModal.width > stateModal.breakPointUserMenu && <ProgressBar />}
       </div>
       <CardList awards={awards} onToggleGetAwardsId={onToggleGetAwardsId} />
 
       <button className="awardsBtn" onClick={onHandleClickConfirm}>
-        Подтвердить
+        {t("Confirm")}
       </button>
 
       <AwardsError error={error} />

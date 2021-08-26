@@ -1,4 +1,4 @@
-import React, { createContext, useEffect } from "react";
+import React, { createContext, useEffect, Suspense } from "react";
 import Header from "./Header/Header";
 import Main from "./Main/Main";
 import Section from "../general/Section/Section";
@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCurrentUserOperation } from "../redux/auth/authOperations";
 import { setGoogleToken } from "../redux/auth/authActions";
 import { setLastLocation } from "../redux/location/locationAction";
-import useLanguagePersistor from "../hooks/useLanguagePersistor";
+import LoaderComponent from "./loader/Loader";
 
 export const LanguageContext = createContext();
 
@@ -35,19 +35,13 @@ const App = () => {
     history.push(lastLocation);
   }, [dispatch, history]);
 
-  const [language, setLanguage] = useLanguagePersistor();
-
   return (
-    <>
-
-      <LanguageContext.Provider value={{ language, setLanguage }}>
-        <Header />
-        <Section>
-          <Main />
-        </Section>
-      </LanguageContext.Provider>
-
-    </>
+    <Suspense fallback={<LoaderComponent />}>
+      <Header />
+      <Section>
+        <Main />
+      </Section>
+    </Suspense>
   );
 };
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { Progress } from "react-sweet-progress";
 import "react-sweet-progress/lib/style.css";
@@ -10,6 +11,8 @@ import {
 import { ProgressBarStyled } from "./ProgressBarStyled";
 
 const ProgressBar = () => {
+  const { t } = useTranslation();
+
   const userPoints = useSelector(getRewardsGained);
   const countPoints = useSelector(getRewardsPlanned);
   let percent = 100;
@@ -24,12 +27,12 @@ const ProgressBar = () => {
     <ProgressBarStyled colors={colors}>
       <div className="stats-wrapper">
         <p className="stats stats1">
-          Заработано баллов за эту неделю:
+          {t("Earned points this week")}
           <span className="stats-number">{userPoints}</span>
         </p>
 
         <p className="stats">
-          Запланировано баллов на эту неделю:
+          {t("Total points this week")}
           <span className="stats-number">{countPoints}</span>
         </p>
       </div>
