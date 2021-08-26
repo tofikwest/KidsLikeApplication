@@ -6,7 +6,9 @@ const AwardsErrorStyled = styled.div`
 
   .errorAwards {
     position: absolute;
-    top: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     color: ${({ colors }) => colors.awardsErrorColor};
   }
 `;

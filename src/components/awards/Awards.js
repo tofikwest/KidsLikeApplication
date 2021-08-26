@@ -28,17 +28,17 @@ const Awards = () => {
   const [giftIds, setGiftIdsState] = useState(initialState);
   const [stateModal, setOpenModal, setOpenModalTask, setOptionModal] =
     useModal();
-  const dispath = useDispatch();
+  const dispatch = useDispatch();
   const awards = useSelector(getAwards);
   const error = useSelector(getAwardsError);
   const location = useLocation();
 
   useEffect(() => {
-    dispath(getGiftsOperation());
+    dispatch(getGiftsOperation());
     location.pathname === "/awards"
       ? setOptionModal((prev) => ({ ...prev, modalName: "awards" }))
       : setOptionModal((prev) => ({ ...prev, modalName: "header" }));
-  }, [location, setOptionModal, dispath]);
+  }, [location, setOptionModal, dispatch]);
 
   // ++++++++++++++++++++++++++++++++Logic giftsId++++++++++++++++++++++++++++++++++++++++
 
@@ -51,9 +51,8 @@ const Awards = () => {
   };
 
   const onHandleClickConfirm = async () => {
-    dispath(buyGiftOperation({ giftIds }, setOpenModal));
-    dispath(toggleAwardsReset());
-    // dispath(getGiftsOperation());
+    dispatch(buyGiftOperation({ giftIds }, setOpenModal));
+    // dispatch(toggleAwardsReset());
     setGiftIdsState(initialState);
   };
 

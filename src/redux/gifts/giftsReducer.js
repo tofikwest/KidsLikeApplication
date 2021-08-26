@@ -30,7 +30,7 @@ const itemsReducer = createReducer([], {
 const selectGiftsId = createReducer([], {
   [buyGiftsSuccess]: (_, { payload }) => payload.purchasedGiftIds,
   [signOutSuccess]: () => [],
-  [toggleAwardsReset]: () => [],
+  // [toggleAwardsReset]: () => [],
 });
 
 const isLoadingReducer = createReducer(false, {
