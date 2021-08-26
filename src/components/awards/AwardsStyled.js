@@ -38,6 +38,10 @@ const AwardsStyled = styled.div`
     border-radius: 6px;
     cursor: pointer;
   }
+  .awardsBtn:hover,
+  .awardsBtn:focus {
+    background-color: ${({ colors }) => colors.hoverBtnColor};
+  }
 
   @media screen and (min-width: 768px) {
     padding-top: 40px;
