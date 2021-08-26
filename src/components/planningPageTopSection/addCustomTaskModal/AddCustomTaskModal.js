@@ -10,14 +10,7 @@ import { colors } from "../../../general/styles/colors";
 
 const AddCustomTaskModal = ({ closeModal }) => {
   const dispatch = useDispatch();
-  const { t } = useTranslation();
-
-  //   const [image, setImage] = useState(
-  //     "https://cdn.pixabay.com/photo/2016/03/31/18/32/default-1294448_960_720.png"
-  //   );
-
-const AddCustomTaskModal = ({ closeModal }) => {
-  const dispatch = useDispatch();
+  const { t } = useTranslation()
   const [taskName, setTaskName] = useState("");
   const [reward, setReward] = useState("");
 
