@@ -13,4 +13,5 @@ export const colors = {
   cardDayPopupWindow: "#3e7adc",
   footerDeviderColor: "#e3e2e7",
   footerHomeMobileBgColor: "#f1f1f1",
+  rewardAmountCircleColor: "#8ec63f",
 };
