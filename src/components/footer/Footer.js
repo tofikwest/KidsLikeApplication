@@ -1,6 +1,9 @@
+import { useTranslation } from "react-i18next";
 import { FooterStyled } from "./FooterStyled";
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <FooterStyled>
       <span className="footerLogo">
@@ -26,7 +29,9 @@ const Footer = () => {
           </defs>
         </svg>
       </span>
-      <p className="footerSlogan">Делаем жизнь родителей и детей изи :)</p>
+      <p className="footerSlogan">
+        {t("Making the life of parents and their children easy")}
+      </p>
       <span className="footerYear">2021</span>
     </FooterStyled>
   );

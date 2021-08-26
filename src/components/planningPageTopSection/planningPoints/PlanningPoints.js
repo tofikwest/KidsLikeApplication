@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { declOfNumHelper } from "../../../helpers/declOfNumHelper";
 import { setSelectedDateId } from "../../../redux/planningTasks/planningTasksAction";
@@ -11,6 +12,8 @@ import { PlanningPointsStyled } from "./PlanningPointsStyled";
 
 const PlanningPoints = ({ isMobile, isDesktop }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
+
   const startWeekDate = useSelector(getStartWeekDate);
   const endWeekDate = useSelector(getEndWeekDate);
   const rewardsPlanned = useSelector(getRewardsPlanned);
@@ -48,7 +51,7 @@ const PlanningPoints = ({ isMobile, isDesktop }) => {
   return (
     <PlanningPointsStyled>
       <span className="weekPlansText">
-        План на неделю:
+        {t("Plan for the week")}
         {isMobile || (!isMobile && !isDesktop) ? (
           <DateDropdown
             configuredDate={configuredDate}
@@ -65,9 +68,13 @@ const PlanningPoints = ({ isMobile, isDesktop }) => {
 
       {!isMobile && (
         <p className="totalWeekPlans">
-          Определены задач на
+          {t("Defined tasks")}
           <span className="totalWeekPlansNumber">{rewardsPlanned}</span>
-          {declOfNumHelper(rewardsPlanned, ["балл", "балла", "баллов"])}
+          {declOfNumHelper(rewardsPlanned, [
+            t("one point"),
+            t("point"),
+            t("points"),
+          ])}
         </p>
       )}
     </PlanningPointsStyled>

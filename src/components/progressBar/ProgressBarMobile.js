@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { Progress } from "react-sweet-progress";
 import "react-sweet-progress/lib/style.css";
@@ -10,6 +11,8 @@ import {
 import { ProgressBarMobileStyled } from "./ProgressBarMobileStyled";
 
 const ProgressBarMobile = () => {
+  const { t } = useTranslation();
+
   const userPoints = useSelector(getRewardsGained);
   const countPoints = useSelector(getRewardsPlanned);
   let percent = 100;
@@ -22,7 +25,7 @@ const ProgressBarMobile = () => {
 
   return (
     <ProgressBarMobileStyled colors={colors}>
-      <p className="mobileStats">Заработано баллов :</p>
+      <p className="mobileStats">{t("Earned points")}</p>
 
       <div className="mobileProgressLibrary_wrapper">
         <span className="mobileSecondPoints">
