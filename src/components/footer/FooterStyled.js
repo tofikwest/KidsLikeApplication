@@ -31,6 +31,7 @@ export const FooterStyled = styled.footer`
   }
 
   .footerLogoIcon {
+    /* margin-left: 4px; */
     margin-left: 4px;
   }
 
