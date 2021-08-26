@@ -20,7 +20,7 @@ const Header = () => {
   return (
     <>
       <HeaderStyled colors={colors}>
-        {/* <LanguageSwitcher /> */}
+        <LanguageSwitcher />
         <Logo />
         <BalanceCounter />
 
