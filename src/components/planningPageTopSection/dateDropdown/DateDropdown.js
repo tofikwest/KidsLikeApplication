@@ -65,6 +65,7 @@ const DateDropdown = ({
           IndicatorSeparator: () => null,
         }}
       />
+
       <img className="arrowIcon" src={selectIcon} alt="icon" />
     </DateDropdownStyled>
   );
