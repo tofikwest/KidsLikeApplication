@@ -44,7 +44,7 @@ const WeekTabs = ({ choosenDate, selectedDate }) => {
   return (
     <>
       <WeekTabsStyled colors={colors}>
-        {WeekTabsData.map(({ dayFull, dayShort, search, className }) => (
+        {WeekTabsData.map(({ dayShort, search, className }) => (
           <button
             key={dayShort}
             type="button"
@@ -57,7 +57,7 @@ const WeekTabs = ({ choosenDate, selectedDate }) => {
             }
           >
             {state.width >= state.breakPoint ? (
-              <span>{t(dayFull)}</span>
+              <span>{t(search)}</span>
             ) : (
               <span>{t(dayShort)}</span>
             )}

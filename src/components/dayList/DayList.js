@@ -4,9 +4,12 @@ import uncheckedIcon from "../../images/checkbox-false.svg";
 import { useDispatch } from "react-redux";
 import { setDaysSingleTaskOperation } from "../../redux/tasks/tasksOperations";
 import { colors } from "../../general/styles/colors";
+import { useTranslation } from "react-i18next";
 
 const DayList = ({ days, taskId }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
+
   const dataInitial = days.map((day) => day.isActive);
 
   const getLocalShortDayName = (date) => {
@@ -16,6 +19,7 @@ const DayList = ({ days, taskId }) => {
       formatDate
     );
 
+    console.log("🚀 ~ weekday", weekday);
     return weekday;
   };
 
@@ -61,7 +65,7 @@ const DayList = ({ days, taskId }) => {
                 alt={day._id}
               />
             )}
-            {getLocalShortDayName(day.date)}
+            {t(getLocalShortDayName(day.date))}
           </label>
         </li>
       ))}
