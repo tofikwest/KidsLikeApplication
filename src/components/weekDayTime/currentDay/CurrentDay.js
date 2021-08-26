@@ -13,7 +13,7 @@ const initialState = {
   breakPoint: 767,
 };
 
-const CurrentDay = ({ selectedDate }) => {
+const CurrentDay = ({ selectedDate, isAnyTasksForChoosenDate }) => {
   const [state, setState] = useState(initialState);
   const location = useLocation();
   const { t } = useTranslation();
@@ -76,7 +76,10 @@ const CurrentDay = ({ selectedDate }) => {
     <>
       {state.width < state.breakPoint && <CurrentWeek />}
 
-      <CurrentDayStyled colors={colors}>
+      <CurrentDayStyled
+        colors={colors}
+        isAnyTasksForChoosenDate={isAnyTasksForChoosenDate}
+      >
         {state.width >= 1280 && <CurrentWeek />}
         {state.width >= 1280 && (
           <div>

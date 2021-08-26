@@ -4,11 +4,14 @@ export const CurrentDayStyled = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: ${({ isAnyTasksForChoosenDate }) =>
+    isAnyTasksForChoosenDate ? "30px" : "61px"};
+
   @media screen and (min-width: 768px) {
     flex-direction: row;
     justify-content: center;
-    margin-bottom: 40px;
+    margin-bottom: ${({ isAnyTasksForChoosenDate }) =>
+      isAnyTasksForChoosenDate ? "40px" : "103px"};
   }
   @media screen and (min-width: 1280px) {
     flex-direction: column;

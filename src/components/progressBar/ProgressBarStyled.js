@@ -10,7 +10,6 @@ export const ProgressBarStyled = styled.div`
   @media screen and (min-width: 1280px) {
     max-width: 360px;
     align-items: flex-end;
-    margin-right: 30px;
   }
   .stats-wrapper {
     margin-bottom: 61px;

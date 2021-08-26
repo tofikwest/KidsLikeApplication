@@ -71,7 +71,10 @@ const WeekTabContent = ({ selectedDate, choosenDateTab }) => {
   };
 
   return (
-    <WeekTabContentStyled colors={colors}>
+    <WeekTabContentStyled
+      colors={colors}
+      isAnyTasksForChoosenDate={isAnyTasksForChoosenDate()}
+    >
       {state.width < state.breakPoint ||
         (state.width >= 1280 && (
           <div className="desktop-dayWeek-wrapper">
@@ -82,7 +85,10 @@ const WeekTabContent = ({ selectedDate, choosenDateTab }) => {
       {state.width > state.breakPoint && state.width < 1280 && (
         <>
           <ProgressBar />
-          <CurrentDay selectedDate={selectedDate} />
+          <CurrentDay
+            selectedDate={selectedDate}
+            isAnyTasksForChoosenDate={isAnyTasksForChoosenDate()}
+          />
         </>
       )}
 

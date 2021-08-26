@@ -23,6 +23,7 @@ export const CardItemStyled = styled.li`
     display: block;
     border-radius: 6px 6px 0px 0px;
     width: 100%;
+    height: 194px;
   }
 
   .card__footer {
