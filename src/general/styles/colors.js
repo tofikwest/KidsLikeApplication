@@ -9,4 +9,9 @@ export const colors = {
   modalTextColor: "#ffffff",
   userLogoBgColor: "#2196F3",
   awardsErrorColor: "tomato",
+  cardRewardColor: "#5679d7",
+  cardDayPopupWindow: "#3e7adc",
+  footerDeviderColor: "#e3e2e7",
+  footerHomeMobileBgColor: "#f1f1f1",
+  rewardAmountCircleColor: "#8ec63f",
 };

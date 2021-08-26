@@ -1,22 +1,19 @@
 import styled from "styled-components";
 
-export const DateDropdownStyled = styled.div`
+export const LanguageSwitcherStyled = styled.div`
   position: relative;
   box-shadow: 4px 4px 6px 2px rgba(0, 0, 0, 0.15);
 
-  @media screen and (min-width: 768px) {
-    margin-left: 10px;
-    width: 168px;
-  }
+  width: 58px;
 
   .arrowIcon {
     position: absolute;
     top: 50%;
-    right: 10px;
+    right: 7px;
   }
 
   .react-select__value-container {
-    padding: 0px 8px 0px 0px;
+    padding: 0px 0px 0px 0px;
   }
 
   .react-select__indicator-separator {
@@ -43,15 +40,14 @@ export const DateDropdownStyled = styled.div`
   }
 
   .react-select__single-value {
-    margin-left: 10px;
+    margin-left: 7px;
     text-transform: capitalize;
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
     font-size: 12px;
     line-height: 1.25;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.1em;
     color: ${({ colors }) => colors.primaryTextColor};
-    padding: 6px 9px 5px 0px;
     border-color: ${({ colors }) => colors.primaryBgColor};
     border-radius: 4px;
 
@@ -59,7 +55,6 @@ export const DateDropdownStyled = styled.div`
 
     @media screen and (min-width: 768px) {
       margin-top: 0;
-      margin-bottom: 30px;
     }
   }
 

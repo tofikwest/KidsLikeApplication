@@ -92,7 +92,7 @@ const HomePage = () => {
             <AddCustomTaskModal closeModal={setOpenModal} />
           </Modal>
         )}
-        {state.width <= 320 ? (
+        {state.width <= 767 ? (
           <>
             {tasks && <Footer />}
             <HomeMobileFooter onClickOpenModal={onClickOpenModal} />

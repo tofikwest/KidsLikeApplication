@@ -6,11 +6,7 @@ import {
   getGiftsOperation,
 } from "../../redux/gifts/giftOperations";
 import { getAwards, getAwardsError } from "../../redux/gifts/giftsSelectors";
-// import {
-//   getGiftsSuccess,
-//   toggleAwardsResetSuccess,
-//   toggleAwardsResetSuccessT,
-// } from "../../redux/gifts/giftsAction";
+import { getTasks } from "../../redux/tasks/tasksSelector";
 import useModal from "../../hooks/useModal";
 import CardList from "../cardList/CardList";
 import Modal from "../Modal/Modal";
@@ -18,15 +14,14 @@ import Footer from "../footer/Footer";
 import AwardsModal from "./awardsModal/AwardsModal";
 import ProgressBar from "../progressBar/ProgressBar";
 import AwardsError from "./awardsError/AwardsError";
+import HomeMobileFooter from "../homeFooter/HomeMobileFooter";
+import AddCustomTaskModal from "../planningPageTopSection/addCustomTaskModal/AddCustomTaskModal";
+import { useTranslation } from "react-i18next";
 
 import AwardsStyled from "./AwardsStyled";
 import sprite from "../../images/sprite.svg";
 import { colors } from "../../general/styles/colors";
 
-import HomeMobileFooter from "../homeFooter/HomeMobileFooter";
-import { getTasks } from "../../redux/tasks/tasksSelector";
-import AddCustomTaskModal from "../planningPageTopSection/addCustomTaskModal/AddCustomTaskModal";
-import { useTranslation } from "react-i18next";
 const initialState = [];
 
 const Awards = () => {
@@ -48,6 +43,10 @@ const Awards = () => {
 
   // ++++++++++++++++++++++++++++++++Logic giftsId++++++++++++++++++++++++++++++++++++++++
 
+  useEffect(() => {
+    !stateModal.isModalOpen && setGiftIdsState(initialState);
+  }, [stateModal]);
+
   const onToggleGetAwardsId = (awardId) => {
     setGiftIdsState((prev) => {
       return prev.includes(awardId)
@@ -59,7 +58,6 @@ const Awards = () => {
   const onHandleClickConfirm = async () => {
     dispath(buyGiftOperation({ giftIds }, setOpenModal));
     dispath(getGiftsOperation());
-    setGiftIdsState(initialState);
   };
 
   // ++++++++++++++++++++++++++++++++Logic giftsId+++++++++++++++++++++++++++++++++++++++++

@@ -6,6 +6,7 @@ import closeModalImg from "../../../images/close-modal.svg";
 import { useDispatch } from "react-redux";
 import { createTaskOperation } from "../../../redux/tasks/tasksOperations";
 import { useTranslation } from "react-i18next";
+import { colors } from "../../../general/styles/colors";
 
 const AddCustomTaskModal = ({ closeModal }) => {
   const dispatch = useDispatch();
@@ -14,16 +15,15 @@ const AddCustomTaskModal = ({ closeModal }) => {
   //   const [image, setImage] = useState(
   //     "https://cdn.pixabay.com/photo/2016/03/31/18/32/default-1294448_960_720.png"
   //   );
+
+const AddCustomTaskModal = ({ closeModal }) => {
+  const dispatch = useDispatch();
   const [taskName, setTaskName] = useState("");
   const [reward, setReward] = useState("");
 
   const onHandleCloseClick = () => {
     closeModal();
   };
-
-  //   const onHandleChangeImage = (e) => {
-  //     setImage(e.target.value);
-  //   };
 
   const onHandleChangeTaskName = (e) => {
     setTaskName(e.target.value);
@@ -39,14 +39,13 @@ const AddCustomTaskModal = ({ closeModal }) => {
     const task = {
       title: taskName,
       reward,
-      //   file: image,
     };
-    console.log(`task`, task);
+
     dispatch(createTaskOperation(task));
   };
 
   return (
-    <AddCustomTaskModalStyled>
+    <AddCustomTaskModalStyled colors={colors}>
       <img
         className="closeModalImg"
         src={closeModalImg}
@@ -58,12 +57,7 @@ const AddCustomTaskModal = ({ closeModal }) => {
           <label className="modalImageLabel" htmlFor="image">
             <img className="modalImage" src={addImageIcon} alt="add-icon" />
           </label>
-          <input
-            className="modalImageInput"
-            type="text"
-            id="image"
-            // onChange={onHandleChangeImage}
-          />
+          <input className="modalImageInput" type="text" id="image" />
         </div>
         <div className="modalBottomWrapper">
           <label className="modalInputLabel">

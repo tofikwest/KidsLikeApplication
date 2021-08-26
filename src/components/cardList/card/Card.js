@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
+import { colors } from "../../../general/styles/colors";
 import { declOfNumHelper } from "../../../helpers/declOfNumHelper";
 import { getSelectedDateId } from "../../../redux/planningTasks/planningTasksSelector";
 import {
@@ -50,7 +51,7 @@ const Card = ({
   };
 
   return (
-    <CardItemStyled location={location}>
+    <CardItemStyled location={location} colors={colors}>
       <div className="card">
         <img className="card__image" src={task.imageUrl} alt={t(task.title)} />
         <div className="card__footer">

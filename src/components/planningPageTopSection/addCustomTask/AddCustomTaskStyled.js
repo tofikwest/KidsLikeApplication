@@ -16,7 +16,7 @@ export const AddCustomTaskStyled = styled.div`
     line-height: 1.25;
     text-align: right;
     letter-spacing: 0.04em;
-    color: #a6abb9;
+    color: ${({ colors }) => colors.thirdTextColor};
   }
 
   .addTaskButton {

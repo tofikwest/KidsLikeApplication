@@ -1,11 +1,12 @@
 import { useTranslation } from "react-i18next";
+import { colors } from "../../general/styles/colors";
 import { FooterStyled } from "./FooterStyled";
 
 const Footer = () => {
   const { t } = useTranslation();
 
   return (
-    <FooterStyled>
+    <FooterStyled colors={colors}>
       <span className="footerLogo">
         KidsLike
         <svg

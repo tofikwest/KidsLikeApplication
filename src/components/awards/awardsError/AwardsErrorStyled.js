@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { colors } from "../../../general/styles/colors";
 
 const AwardsErrorStyled = styled.div`
   position: relative;
@@ -7,8 +6,12 @@ const AwardsErrorStyled = styled.div`
 
   .errorAwards {
     position: absolute;
-    top: 10px;
+    width: 100%;
+    top: 20px;
+    left: 50%;
+    transform: translate(-50%, -50%);
     color: ${({ colors }) => colors.awardsErrorColor};
+    text-align: center;
   }
 `;
 
