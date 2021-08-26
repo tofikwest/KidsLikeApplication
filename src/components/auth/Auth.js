@@ -1,10 +1,9 @@
 import React from "react";
 import { Formik } from "formik";
-
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getCurrentUserOperation, login, register } from "../../redux/auth/authOperations";
-import { setToken } from "../../redux/auth/authSelectors";
+import { getError, setToken } from "../../redux/auth/authSelectors";
 import { AuthContainer, BackDeskImg, DeskWrapper } from "./AuthStyled";
 import sprite from "../../images/sprite.svg";
 import Footer from "../footer/Footer";
@@ -15,12 +14,21 @@ const Auth = () => {
   const dispatch = useDispatch();
   const token = useSelector(setToken);
   const { t } = useTranslation();
+  const error = useSelector(getError);
 
   useEffect(() => {
     if (token) {
       getCurrentUserOperation();
     }
   }, [token]);
+
+  useEffect(() => {
+    if (error !== null)
+      return () => {
+        alert(`Wrong password!`);
+      };
+    // return () => dispatch(resetError());
+  }, [error, dispatch]);
 
   return (
     <DeskWrapper>
