@@ -47,7 +47,7 @@ const Awards = () => {
   useEffect(() => {
     !stateModal.isModalOpen && setGiftIdsState(initialState);
     !stateModal.isModalOpen && dispatch(toggleAwardsReset());
-  }, [stateModal]);
+  }, [stateModal, dispatch]);
 
   const onToggleGetAwardsId = (awardId) => {
     setGiftIdsState((prev) => {
