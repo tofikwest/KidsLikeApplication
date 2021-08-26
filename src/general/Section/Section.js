@@ -2,7 +2,7 @@ import React from "react";
 import { SectionStyled } from "./SectionStyled";
 
 const Section = ({ children }) => {
-  return <SectionStyled className="Section">{children}</SectionStyled>;
+  return <SectionStyled>{children}</SectionStyled>;
 };
 
 export default Section;

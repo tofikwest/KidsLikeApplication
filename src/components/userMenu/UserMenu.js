@@ -34,7 +34,7 @@ const UserMenu = () => {
           <span className="userName">
             {userName &&
               userName[0].toUpperCase() +
-                userName.substring(15).toLowerCase() +
+                userName.substring(1, 10).toLowerCase() +
                 "..."}
           </span>
           <svg className="iconLogOut" onClick={onHandleClickLogout}>

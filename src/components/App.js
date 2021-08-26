@@ -34,8 +34,8 @@ const App = () => {
 
   return (
     <>
+      <Header />
       <Section>
-        <Header />
         <Main />
       </Section>
     </>
