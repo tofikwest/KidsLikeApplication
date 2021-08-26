@@ -5,11 +5,12 @@ const AwardsModalStyled = styled.div`
   box-shadow: ${({ colors }) => `15px 15px 20px ${colors.modalBoxShadowColor}`};
   padding: 60px 20px 50px 20px;
   width: 280px;
-  max-height: calc(100vh - 200px);
+  max-height: calc(100vh - 190px);
 
   border-radius: 6px;
 
-  overflow-y: scroll;
+  overflow-y: ${({ giftIds }) =>
+    giftIds.length === 1 ? "no-scroll" : "scroll"};
 
   .catImg {
     position: absolute;

@@ -3,7 +3,7 @@ import styled from "styled-components";
 const ModalStyled = styled.div`
   position: fixed;
   padding-top: ${({ modalName }) => modalName === "awards" && "140px"};
-  padding-bottom: 20px;
+  padding-bottom: ${({ modalName }) => (modalName === "header" ? "0" : "20px")};
   top: 0;
   left: 0;
   width: 100vw;
@@ -22,7 +22,8 @@ const ModalStyled = styled.div`
     position: relative;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: ${({ modalName }) =>
+      modalName === "header" ? "flex-start" : "center"};
     padding-top: ${({ modalName }) => (modalName === "header" ? "80px" : "0")};
     width: ${({ modalName }) => (modalName === "header" ? "274px" : "auto")};
     background-color: ${({ modalName, colors }) =>
