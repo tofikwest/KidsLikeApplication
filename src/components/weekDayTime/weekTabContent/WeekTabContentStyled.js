@@ -76,7 +76,6 @@ export const WeekTabContentStyled = styled.div`
     display: flex;
     justify-content: space-between;
     padding-left: 110px;
-    padding-right: 30px;
     margin-bottom: 94px;
   }
   .cards-wrapper {
