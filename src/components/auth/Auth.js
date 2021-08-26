@@ -9,12 +9,14 @@ import sprite from "../../images/sprite.svg";
 import Footer from "../footer/Footer";
 import { useTranslation } from "react-i18next";
 import { validationSchema } from "./Validator";
+import { useState } from "react";
 
 const Auth = () => {
   const dispatch = useDispatch();
   const token = useSelector(setToken);
   const { t } = useTranslation();
   const error = useSelector(getError);
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     if (token) {
@@ -23,11 +25,9 @@ const Auth = () => {
   }, [token]);
 
   useEffect(() => {
-    if (error !== null)
-      return () => {
-        alert(`Wrong password!`);
-      };
-    // return () => dispatch(resetError());
+    if (error?.includes("403")) {
+      setErrorMessage("Wrong password!");
+    }
   }, [error, dispatch]);
 
   return (
@@ -68,13 +68,17 @@ const Auth = () => {
               <input
                 type="password"
                 name="password"
-                onChange={handleChange}
+                onChange={(e) => {
+                  errorMessage && setErrorMessage("");
+                  handleChange(e);
+                }}
                 onBlur={handleBlur}
                 value={values.password}
                 placeholder="abraKadabra777"
                 className="user-input"
               />
               {errors.password && touched.password && <p className="accent-red">{t([errors.password])}</p>}
+              {errorMessage && <p className="accent-red">{errorMessage}</p>}
 
               <div className="auth-btn-wrap">
                 <button className="user-button" type="button" onClick={() => dispatch(login(values))}>

@@ -34,7 +34,8 @@ const App = () => {
 
   useEffect(() => {
     history.push(lastLocation);
-  }, [dispatch, history, lastLocation]);
+    // eslint-disable-next-line
+  }, [dispatch, history]);
 
   return (
     <Suspense fallback={<LoaderComponent />}>
