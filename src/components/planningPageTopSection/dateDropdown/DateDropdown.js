@@ -4,6 +4,7 @@ import Select from "react-select";
 import { getTasks } from "../../../redux/tasks/tasksSelector";
 import { DateDropdownStyled } from "./DateDropdownStyled";
 import selectIcon from "../../../images/dropdown-arrow.svg";
+import { colors } from "../../../general/styles/colors";
 
 const DateDropdown = ({
   configuredDate,
@@ -53,7 +54,7 @@ const DateDropdown = ({
   };
 
   return (
-    <DateDropdownStyled>
+    <DateDropdownStyled colors={colors}>
       <Select
         options={getOptions()}
         onChange={onHandleChange}
