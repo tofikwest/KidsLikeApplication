@@ -31,16 +31,12 @@ const Header = () => {
             <use href={sprite + "#icon-menu"} />
           </svg>
         )}
-        {isAuth && stateModal.width > stateModal.breakPointUserMenu && (
-          <UserMenu />
-        )}
+        {isAuth && stateModal.width > stateModal.breakPointUserMenu && <UserMenu />}
       </HeaderStyled>
 
       {stateModal.isModalOpen && (
         <Modal handleCloseModal={setOpenModal} modalName={stateModal.modalName}>
-          {isAuth && stateModal.width < stateModal.breakPointUserMenu && (
-            <UserMenu />
-          )}
+          {isAuth && stateModal.width < stateModal.breakPointUserMenu && <UserMenu />}
           <Navigation />
         </Modal>
       )}
