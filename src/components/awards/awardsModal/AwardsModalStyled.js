@@ -5,13 +5,19 @@ const AwardsModalStyled = styled.div`
   box-shadow: ${({ colors }) => `15px 15px 20px ${colors.modalBoxShadowColor}`};
   padding: 60px 20px 50px 20px;
   width: 280px;
-  min-height: 300px;
+  max-height: calc(100vh - 200px);
+
+  border-radius: 6px;
+
+  overflow-y: scroll;
 
   .catImg {
     position: absolute;
     width: 130px;
     height: 150px;
-    transform: translate(50%, -110%);
+    top: -105px;
+    left: 50%;
+    transform: translate(-50%);
   }
   .iconCloseAwards {
     position: absolute;
@@ -27,7 +33,6 @@ const AwardsModalStyled = styled.div`
     line-height: 1.22;
     text-align: center;
   }
-
   .modalListAwards {
     display: flex;
     flex-wrap: wrap;
@@ -35,16 +40,15 @@ const AwardsModalStyled = styled.div`
     justify-content: center;
     margin-bottom: -35px;
   }
-
   .modalListItemsAwards {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    width: ${(giftIds) => (giftIds.length === 1 ? "100%" : "calc(100% / 2)")};
+    width: ${({ giftIds }) =>
+      giftIds.length === 1 ? "100%" : "calc(100% / 2)"};
     margin-bottom: 35px;
   }
-
   .modalListItemsTitleAwards {
     font-size: 12px;
     line-height: 1.25;
@@ -65,9 +69,9 @@ const AwardsModalStyled = styled.div`
     width: 600px;
 
     .catImg {
+      top: -115px;
       width: 200px;
       height: 230px;
-      transform: translate(80%, -110%);
     }
     .iconCloseAwards {
       position: absolute;
@@ -80,11 +84,9 @@ const AwardsModalStyled = styled.div`
       font-size: 30px;
       line-height: 1.25;
     }
-
     .modalListAwards {
       margin-right: -35px;
     }
-
     .modalListItemsAwards {
       margin: 0 35px 35px 0;
       width: calc((100% / 4) - 35px);
