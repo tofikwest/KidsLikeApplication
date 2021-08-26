@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 const NavigationStyled = styled.nav`
-  margin-left: auto;
+  width: 100%;
+
   .NavList {
     padding: 0;
     list-style: none;
@@ -23,6 +24,8 @@ const NavigationStyled = styled.nav`
   }
 
   @media screen and (min-width: 1280px) {
+    width: auto;
+    margin-left: auto;
     .NavList {
       display: flex;
     }
