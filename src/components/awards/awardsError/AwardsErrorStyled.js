@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { colors } from "../../../general/styles/colors";
 
 const AwardsErrorStyled = styled.div`
   position: relative;
