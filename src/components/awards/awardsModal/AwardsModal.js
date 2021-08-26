@@ -1,17 +1,18 @@
 import React from "react";
-import catImg from "../../../images/catModal.png";
+import { useSelector } from "react-redux";
+import { getAwards, getAwardsId } from "../../../redux/gifts/giftsSelectors";
 
 import AwardsModalStyled from "./AwardsModalStyled";
 import { colors } from "../../../general/styles/colors";
+import catImg from "../../../images/catModal.png";
 import sprite from "../../../images/sprite.svg";
-import { useSelector } from "react-redux";
-import { getAwards, getAwardsId } from "../../../redux/gifts/giftsSelectors";
 
 const AwardsModal = ({ setOpenModal, giftIds }) => {
   const awards = useSelector(getAwards);
   const awardsId = useSelector(getAwardsId);
 
   // ++++++++++++++++++++++++++++++Filter awards selected++++++++++++++++++++++++++++++
+
   const modalAwards = () => {
     const res = awardsId.reduce((acc, el) => {
       if (awards.filter((award) => award.id === el)) acc.push(awards[el - 1]);
@@ -23,6 +24,8 @@ const AwardsModal = ({ setOpenModal, giftIds }) => {
   const arrAwards = modalAwards();
 
   // ++++++++++++++++++++++++++++++Filter awards selected++++++++++++++++++++++++++++++
+
+  console.log(giftIds.length);
 
   return (
     <AwardsModalStyled colors={colors} giftIds={giftIds}>
