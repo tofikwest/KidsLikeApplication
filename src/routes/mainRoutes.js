@@ -2,7 +2,7 @@ import { lazy } from "react";
 
 export const mainRoutes = [
   {
-    name: "Главная",
+    name: "home",
     path: "/",
     exact: true,
     component: lazy(() => import("../pages/HomePage/HomePage")),
@@ -10,7 +10,7 @@ export const mainRoutes = [
     restricted: false,
   },
   {
-    name: "Планирование",
+    name: "planning",
     path: "/planning",
     exact: true,
     component: lazy(() => import("../pages/PlanningPage/PlanningPage")),
@@ -19,7 +19,7 @@ export const mainRoutes = [
   },
 
   {
-    name: "Награды",
+    name: "awards",
     path: "/awards",
     exact: true,
     component: lazy(() => import("../pages/AwardsPage/AwardsPage")),
@@ -27,7 +27,7 @@ export const mainRoutes = [
     restricted: false,
   },
   {
-    name: "Авторизация",
+    name: "authorization",
     path: "/auth",
     exact: true,
     component: lazy(() => import("../pages/AuthPage/AuthPage")),
@@ -35,7 +35,7 @@ export const mainRoutes = [
     restricted: true,
   },
   {
-    name: "Контакты",
+    name: "contacts",
     path: "/contacts",
     exact: true,
     component: lazy(() => import("../pages/ContactsPage/ContactsPage")),

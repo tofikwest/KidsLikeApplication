@@ -24,11 +24,14 @@ import sprite from "../../images/sprite.svg";
 import { colors } from "../../general/styles/colors";
 
 import HomeMobileFooter from "../homeFooter/HomeMobileFooter";
+import { getTasks } from "../../redux/tasks/tasksSelector";
+import AddCustomTaskModal from "../planningPageTopSection/addCustomTaskModal/AddCustomTaskModal";
 const initialState = [];
 
 const Awards = () => {
   const [giftIds, setGiftIdsState] = useState(initialState);
-  const [stateModal, setOpenModal, setOptionModal] = useModal();
+  const [stateModal, setOpenModal, setOpenModalTask, setOptionModal] =
+    useModal();
   const dispath = useDispatch();
   const awards = useSelector(getAwards);
   const error = useSelector(getAwardsError);
@@ -59,9 +62,11 @@ const Awards = () => {
 
   // ++++++++++++++++++++++++++++++++Logic giftsId+++++++++++++++++++++++++++++++++++++++++
 
-  const onClickOpenModal = () => {
-    setOpenModal();
+  const onClickOpenModalTask = () => {
+    setOpenModalTask();
   };
+
+  const tasks = useSelector(getTasks);
   return (
     <AwardsStyled colors={colors}>
       <div className="awardsProgresiveBox">
@@ -81,16 +86,25 @@ const Awards = () => {
 
       <AwardsError error={error} />
 
-      <Footer />
-
-      {stateModal.width < stateModal.breakPointUserMenu && (
-        <HomeMobileFooter onClickOpenModal={onClickOpenModal} />
-      )}
-
       {stateModal.isModalOpen && (
         <Modal handleCloseModal={setOpenModal} modalName={stateModal.modalName}>
           <AwardsModal setOpenModal={setOpenModal} giftIds={giftIds} />
         </Modal>
+      )}
+
+      {stateModal.width <= 320 ? (
+        <>
+          {tasks && <Footer />}
+          <HomeMobileFooter onClickOpenModal={onClickOpenModalTask} />
+
+          {stateModal.isModalOpenTask && (
+            <Modal handleCloseModal={setOpenModalTask}>
+              <AddCustomTaskModal closeModal={setOpenModalTask} />
+            </Modal>
+          )}
+        </>
+      ) : (
+        <Footer />
       )}
     </AwardsStyled>
   );
