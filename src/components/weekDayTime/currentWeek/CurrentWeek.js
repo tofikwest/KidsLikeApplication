@@ -1,6 +1,5 @@
 import React from "react";
 import * as moment from "moment";
-import "moment/locale/ru";
 import {
   getEndOfTheWeek,
   getStartOfTheWeek,
@@ -15,13 +14,32 @@ const CurrentWeek = () => {
 
   const startOfTheWeek = useSelector(getStartOfTheWeek);
   const endOfTheWeek = useSelector(getEndOfTheWeek);
-
   const start = startOfTheWeek && moment(startOfTheWeek).format("DD");
-  const end = endOfTheWeek && moment(endOfTheWeek).format("D MMMM");
+  const end = endOfTheWeek && moment(endOfTheWeek).format("DD");
+
+  function getThisMonth() {
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    return months[moment().get("M")];
+  }
+  const month = getThisMonth(moment().get("M"));
   return (
     <CurrentWeekStyled colors={colors}>
       <p className="current-week">
-        {t("Week")} {t(start)}-{t(end)}
+        {t("Week")} {start}-{end} {t(month)}
       </p>
     </CurrentWeekStyled>
   );

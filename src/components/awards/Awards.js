@@ -6,6 +6,7 @@ import {
   getGiftsOperation,
 } from "../../redux/gifts/giftOperations";
 import { getAwards, getAwardsError } from "../../redux/gifts/giftsSelectors";
+import { toggleAwardsReset } from "../../redux/gifts/giftsAction";
 import { getTasks } from "../../redux/tasks/tasksSelector";
 import useModal from "../../hooks/useModal";
 import CardList from "../cardList/CardList";
@@ -28,23 +29,24 @@ const Awards = () => {
   const [giftIds, setGiftIdsState] = useState(initialState);
   const [stateModal, setOpenModal, setOpenModalTask, setOptionModal] =
     useModal();
-  const dispath = useDispatch();
+  const dispatch = useDispatch();
   const awards = useSelector(getAwards);
   const error = useSelector(getAwardsError);
   const location = useLocation();
   const { t } = useTranslation();
 
   useEffect(() => {
-    dispath(getGiftsOperation());
+    dispatch(getGiftsOperation());
     location.pathname === "/awards"
       ? setOptionModal((prev) => ({ ...prev, modalName: "awards" }))
       : setOptionModal((prev) => ({ ...prev, modalName: "header" }));
-  }, [location, setOptionModal, dispath]);
+  }, [location, setOptionModal, dispatch]);
 
   // ++++++++++++++++++++++++++++++++Logic giftsId++++++++++++++++++++++++++++++++++++++++
 
   useEffect(() => {
     !stateModal.isModalOpen && setGiftIdsState(initialState);
+    !stateModal.isModalOpen && dispatch(toggleAwardsReset());
   }, [stateModal]);
 
   const onToggleGetAwardsId = (awardId) => {
@@ -56,8 +58,7 @@ const Awards = () => {
   };
 
   const onHandleClickConfirm = async () => {
-    dispath(buyGiftOperation({ giftIds }, setOpenModal));
-    dispath(getGiftsOperation());
+    dispatch(buyGiftOperation({ giftIds }, setOpenModal));
   };
 
   // ++++++++++++++++++++++++++++++++Logic giftsId+++++++++++++++++++++++++++++++++++++++++

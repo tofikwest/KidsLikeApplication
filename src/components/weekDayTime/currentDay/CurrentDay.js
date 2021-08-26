@@ -27,43 +27,36 @@ const CurrentDay = ({ selectedDate }) => {
     {
       day: "Monday",
       date: +start,
-      russianDay: "Понедельник",
     },
     {
       day: "Tuesday",
       date: +start + 1,
-      russianDay: "Вторник",
     },
     {
       day: "Wednesday",
       date: +start + 2,
-      russianDay: "Среда",
     },
     {
       day: "Thursday",
       date: +start + 3,
-      russianDay: "Четверг",
     },
     {
       day: "Friday",
       date: +start + 4,
-      russianDay: "Пятница",
     },
     {
       day: "Saturday",
       date: +start + 5,
-      russianDay: "Суббота",
     },
     {
       day: "Sunday",
       date: +start + 6,
-      russianDay: "Воскресенье",
     },
   ];
 
   const dateNumber = daysArray
     .filter(({ day }) => day === selectedDate)
-    .map(({ russianDay, date }) => `${russianDay}, ${date}`)
+    .map(({ date }) => `${","} ${date}`)
     .join("");
 
   const newDate = `${dateNumber}-${monthYear}`;
@@ -88,14 +81,17 @@ const CurrentDay = ({ selectedDate }) => {
         {state.width >= 1280 && (
           <div>
             <span className="current-tasks">{t("My tasks")}</span>
-            <span className="current-day"></span>
-            {dateNumber && newDate}
+            <span className="current-day">
+              {t(selectedDate).toUpperCase()}
+              {dateNumber && newDate}
+            </span>
           </div>
         )}
         {state.width < 1280 && (
           <>
             <span className="current-tasks">{t("My tasks")}</span>
-            <span className="current-day">{dateNumber && newDate}</span>
+            {t(selectedDate).toUpperCase()}
+            {dateNumber && newDate}
           </>
         )}
       </CurrentDayStyled>

@@ -64,7 +64,7 @@ export const WeekTabContentStyled = styled.div`
       height: 362px;
       object-fit: cover;
       margin-left: -94px;
-
+    }
     @media screen and (min-width: 1280px) {
       width: 1040px;
       margin-left: 0;
