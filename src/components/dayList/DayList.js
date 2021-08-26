@@ -3,6 +3,7 @@ import checkedIcon from "../../images/checkbox-true.svg";
 import uncheckedIcon from "../../images/checkbox-false.svg";
 import { useDispatch } from "react-redux";
 import { setDaysSingleTaskOperation } from "../../redux/tasks/tasksOperations";
+import { colors } from "../../general/styles/colors";
 
 const DayList = ({ days, taskId }) => {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ const DayList = ({ days, taskId }) => {
   };
 
   return (
-    <DayListStyled>
+    <DayListStyled colors={colors}>
       {days.map((day) => (
         <li className="dayListItem" key={day._id}>
           <input

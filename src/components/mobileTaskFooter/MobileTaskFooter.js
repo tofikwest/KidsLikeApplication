@@ -3,12 +3,13 @@ import { getRewardsPlanned } from "../../redux/tasks/tasksSelector";
 import addTaskIcon from "../../images/add-task-button.svg";
 import { MobileTaskFooterStyled } from "./MobileTaskFooterStyled";
 import { declOfNumHelper } from "../../helpers/declOfNumHelper";
+import { colors } from "../../general/styles/colors";
 
 const MobileTaskFooter = ({ onClickOpenModal }) => {
   const rewardsPlanned = useSelector(getRewardsPlanned);
 
   return (
-    <MobileTaskFooterStyled>
+    <MobileTaskFooterStyled colors={colors}>
       <div className="mobileFooterWrapper">
         <p className="amountText">
           <span className="plannedRewardPoints">{rewardsPlanned}</span>

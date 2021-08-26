@@ -13,8 +13,8 @@ export const DayListStyled = styled.ul`
   width: 114px;
   height: 208px;
 
-  background-color: #3e7adc;
-  color: #ffffff;
+  background-color: ${({ colors }) => colors.cardDayPopupWindow};
+  color: ${({ colors }) => colors.modalTextColor};
 
   filter: drop-shadow(4px 6px 15px rgba(0, 0, 0, 0.1));
   border-radius: 5px;

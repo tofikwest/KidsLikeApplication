@@ -8,7 +8,6 @@ export const PlanningPointsStyled = styled.div`
 
   @media screen and (min-width: 1280px) {
     flex-direction: row;
-    /* justify-content: space-between; */
   }
 
   .weekPlansText {
@@ -19,7 +18,7 @@ export const PlanningPointsStyled = styled.div`
     font-size: 18px;
     line-height: 1.22;
     letter-spacing: 0.04em;
-    color: #000000;
+    color: ${({ colors }) => colors.primaryTextColor};
     text-align: center;
 
     @media screen and (min-width: 768px) {
@@ -40,7 +39,7 @@ export const PlanningPointsStyled = styled.div`
     font-size: 12px;
     line-height: 1.25;
     letter-spacing: 0.2em;
-    color: #000000;
+    color: ${({ colors }) => colors.primaryTextColor};
   }
 
   .totalWeekPlans {
@@ -54,7 +53,7 @@ export const PlanningPointsStyled = styled.div`
     font-size: 12px;
     line-height: 1.25;
     letter-spacing: 0.04em;
-    color: #a6abb9;
+    color: ${({ colors }) => colors.thirdTextColor};
 
     @media screen and (min-width: 768px) {
       margin-bottom: 10px;
@@ -74,7 +73,7 @@ export const PlanningPointsStyled = styled.div`
 
     width: 30px;
     height: 30px;
-    background-color: #8ec63f;
+    background-color: ${({ colors }) => colors.rewardAmountCircleColor};
     border-radius: 50%;
     margin: 0 5px;
 
@@ -83,6 +82,6 @@ export const PlanningPointsStyled = styled.div`
     font-size: 14px;
     line-height: 1.21;
     letter-spacing: 0.04em;
-    color: #ffffff;
+    color: ${({ colors }) => colors.modalTextColor};
   }
 `;

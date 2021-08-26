@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const FooterStyled = styled.footer`
   text-align: center;
-
   margin: 40px 0px 80px;
 
   font-family: Montserrat;
@@ -12,13 +11,12 @@ export const FooterStyled = styled.footer`
   line-height: 1.2;
   letter-spacing: 0.08em;
 
-  color: #858598;
+  color: ${({ colors }) => colors.secondaryTextColor};
 
   @media screen and (min-width: 768px) {
     display: flex;
     align-items: baseline;
     justify-content: center;
-
     margin: 50px 0px 40px;
   }
 
@@ -40,8 +38,8 @@ export const FooterStyled = styled.footer`
     @media screen and (min-width: 768px) {
       margin: 0;
       padding: 0 10px;
-      border-right: 1px solid #e3e2e7;
-      border-left: 1px solid #e3e2e7;
+      border-right: 1px solid ${({ colors }) => colors.footerDeviderColor};
+      border-left: 1px solid ${({ colors }) => colors.footerDeviderColor};
     }
   }
 
