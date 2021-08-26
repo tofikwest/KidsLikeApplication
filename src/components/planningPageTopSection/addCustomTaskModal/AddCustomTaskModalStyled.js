@@ -2,12 +2,12 @@ import styled from "styled-components";
 import modalImage from "../../../images/planning-modal.png";
 
 export const AddCustomTaskModalStyled = styled.div`
+  background-color: #ffffff;
+  border-radius: 6px;
+
   .closeModalImg {
     display: block;
     margin: 5px 5px 0 auto;
-  }
-
-  .modalForm {
   }
 
   .modalTopWrapper {
