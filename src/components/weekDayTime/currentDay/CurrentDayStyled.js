@@ -3,14 +3,19 @@ import styled from "styled-components";
 export const CurrentDayStyled = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 61px;
+  text-align: center;
+  margin-bottom: ${({ isAnyTasksForChoosenDate }) =>
+    isAnyTasksForChoosenDate ? "30px" : "61px"};
+
   @media screen and (min-width: 768px) {
     flex-direction: row;
     justify-content: center;
-    margin-bottom: 103px;
+    margin-bottom: ${({ isAnyTasksForChoosenDate }) =>
+      isAnyTasksForChoosenDate ? "40px" : "103px"};
   }
   @media screen and (min-width: 1280px) {
     flex-direction: column;
+    text-align: left;
     margin-bottom: 0;
     width: 350px;
   }
