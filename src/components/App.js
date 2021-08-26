@@ -33,7 +33,7 @@ const App = () => {
 
   useEffect(() => {
     history.push(lastLocation);
-  }, [dispatch, history]);
+  }, [dispatch, history, lastLocation]);
 
   return (
     <Suspense fallback={<LoaderComponent />}>

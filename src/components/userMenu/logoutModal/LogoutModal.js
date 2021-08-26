@@ -22,7 +22,7 @@ const LogoutModal = ({ setStateUserInfo }) => {
   };
 
   return (
-    <Modal handleCloseModal={setOpenModal}>
+    <Modal handleCloseModal={setOpenModal} state={state}>
       <LogOutModalStyled colors={colors}>
         <span className="userModalTitle">{t("Are you sure")}</span>
         <div className="userModalBtnBox">
