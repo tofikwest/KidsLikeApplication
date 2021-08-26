@@ -1,35 +1,36 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getCurrentUserOperation, login, register } from "../../redux/auth/authOperations";
+import {
+  getCurrentUserOperation,
+  login,
+  register,
+} from "../../redux/auth/authOperations";
 import { setToken } from "../../redux/auth/authSelectors";
 import { AuthContainer, BackDeskImg, DeskWrapper } from "./AuthStyled";
 import sprite from "../../images/sprite.svg";
 import Footer from "../footer/Footer";
-import { LanguageContext } from "../App";
-import languages from "../../languages";
-import { buttonLangSelector } from "../../languages/languagesSelectors/AuthLangSelector";
+import { useTranslation } from "react-i18next";
 
-const validationSchema = Yup.object(
-  //  { language } = useContext(LanguageContext)
-  {
-    email: Yup.string()
-      // .required({languages[language].pages.authPage.errRequired})
-      .required("це обовязкове поле")
-      .matches(/^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/, "неверный формат"),
-    password: Yup.string()
-      .required("{languages[language].pages.authPage.errRequired}")
-      .min(8, "длина пароля - не менее 8 символов")
-      .matches(/(?=.*[0-9])/, "пароль должен содержать цифру"),
-  }
-);
+const validationSchema = Yup.object({
+  email: Yup.string()
+    .required("this is mandatory area")
+    .matches(
+      /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/,
+      "Invalid format"
+    ),
+  password: Yup.string()
+    .required("this is mandatory area")
+    .min(8, "password must be at least 8 characters")
+    .matches(/(?=.*[0-9])/, "password must contain a number"),
+});
 
 const Auth = () => {
   const dispatch = useDispatch();
   const token = useSelector(setToken);
-  const { language } = useContext(LanguageContext);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (token) {
@@ -41,19 +42,35 @@ const Auth = () => {
     <DeskWrapper>
       <BackDeskImg />
       <AuthContainer>
-        <h1 className="authTitle">{languages[language].pages.authPage.title}</h1>
+        <h1 className="authTitle">{t("Complete tasks, win awesome prizes")}</h1>
 
-        <Formik initialValues={{ email: "", password: "" }} validationSchema={validationSchema}>
-          {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
+        <Formik
+          initialValues={{ email: "", password: "" }}
+          validationSchema={validationSchema}
+        >
+          {({
+            values,
+            errors,
+            touched,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+          }) => (
             <form onSubmit={handleSubmit} className="user-form">
-              <p className="authText">{languages[language].pages.authPage.authForm.authGoogleText}</p>
-              <a href="https://kidslikev1.herokuapp.com/auth/google" className="googleBtn" aria-label="google button">
+              <p className="authText">
+                {t("You may log in using your Google Account")}
+              </p>
+              <a
+                href="https://kidslikev1.herokuapp.com/auth/google"
+                className="googleBtn"
+                aria-label="google button"
+              >
                 <svg className="icon-user">
                   <use href={sprite + "#icon-google-symb"} />
                 </svg>{" "}
                 Google
               </a>
-              <p>{languages[language].pages.authPage.authForm.authText}</p>
+              <p>{t("Or register and then use your e-mail & password")}</p>
               <label className="user-label" htmlFor="email">
                 <span className="accent-red">*</span>
                 E-mail:
@@ -67,10 +84,12 @@ const Auth = () => {
                 placeholder="your@email.com"
                 className="user-input"
               />
-              {errors.email && touched.email && <p className="accent-red">{errors.email}</p>}
+              {errors.email && touched.email && (
+                <p className="accent-red">{errors.email}</p>
+              )}
               <label className="user-label" htmlFor="password">
                 <span className="accent-red">*</span>
-                {languages[language].pages.authPage.authForm.password}
+                {t("Password")}
               </label>
               <input
                 type="password"
@@ -81,14 +100,24 @@ const Auth = () => {
                 placeholder="abraKadabra777"
                 className="user-input"
               />
-              {errors.password && touched.password && <p className="accent-red">{errors.password}</p>}
+              {errors.password && touched.password && (
+                <p className="accent-red">{errors.password}</p>
+              )}
 
               <div className="auth-btn-wrap">
-                <button className="user-button" type="button" onClick={() => dispatch(login(values))}>
-                  {buttonLangSelector(language, "login")}
+                <button
+                  className="user-button"
+                  type="button"
+                  onClick={() => dispatch(login(values))}
+                >
+                  {t("Log In")}
                 </button>
-                <button className="user-button" type="button" onClick={() => dispatch(register(values))}>
-                  {buttonLangSelector(language, "register")}
+                <button
+                  className="user-button"
+                  type="button"
+                  onClick={() => dispatch(register(values))}
+                >
+                  {t("Registration")}
                 </button>
               </div>
             </form>

@@ -3,6 +3,7 @@ import { WeekTabsStyled } from "./WeekTabsStyled";
 import { useLocation } from "react-router";
 import { WeekTabsData } from "./WeekTabsData";
 import { colors } from "../../../general/styles/colors";
+import { useTranslation } from "react-i18next";
 
 const initialState = {
   width: window.innerWidth,
@@ -12,6 +13,7 @@ const initialState = {
 const WeekTabs = ({ choosenDate, selectedDate }) => {
   const [state, setState] = useState(initialState);
   const location = useLocation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     window.addEventListener("resize", handleResizeWindow);
@@ -55,9 +57,9 @@ const WeekTabs = ({ choosenDate, selectedDate }) => {
             }
           >
             {state.width >= state.breakPoint ? (
-              <span>{dayFull}</span>
+              <span>{t(dayFull)}</span>
             ) : (
-              <span>{dayShort}</span>
+              <span>{t(dayShort)}</span>
             )}
           </button>
         ))}

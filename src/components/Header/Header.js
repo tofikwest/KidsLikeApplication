@@ -10,7 +10,7 @@ import useModal from "../../hooks/useModal";
 import { colors } from "../../general/styles/colors";
 import sprite from "../../images/sprite.svg";
 import HeaderStyled from "./HeaderStyled";
-import LanguageSwitcher from "../languageSwitcher/LanguageSwitcher";
+import LanguageSwitcher from "../../languageSwitcher/LanguageSwitcher";
 
 const Header = () => {
   const [stateModal, setOpenModal] = useModal();
@@ -31,12 +31,16 @@ const Header = () => {
             <use href={sprite + "#icon-menu"} />
           </svg>
         )}
-        {isAuth && stateModal.width > stateModal.breakPointUserMenu && <UserMenu />}
+        {isAuth && stateModal.width > stateModal.breakPointUserMenu && (
+          <UserMenu />
+        )}
       </HeaderStyled>
 
       {stateModal.isModalOpen && (
         <Modal handleCloseModal={setOpenModal} modalName={stateModal.modalName}>
-          {isAuth && stateModal.width < stateModal.breakPointUserMenu && <UserMenu />}
+          {isAuth && stateModal.width < stateModal.breakPointUserMenu && (
+            <UserMenu />
+          )}
           <Navigation />
         </Modal>
       )}

@@ -6,6 +6,7 @@ import { CurrentDayStyled } from "./CurrentDayStyled";
 import { colors } from "../../../general/styles/colors";
 import { useSelector } from "react-redux";
 import { getStartOfTheWeek } from "../../../redux/additionalInfo/additionalInfoSelectors";
+import { useTranslation } from "react-i18next";
 
 const initialState = {
   width: window.innerWidth,
@@ -15,6 +16,7 @@ const initialState = {
 const CurrentDay = ({ selectedDate }) => {
   const [state, setState] = useState(initialState);
   const location = useLocation();
+  const { t } = useTranslation();
 
   const startOfTheWeek = useSelector(getStartOfTheWeek);
 
@@ -85,14 +87,14 @@ const CurrentDay = ({ selectedDate }) => {
         {state.width >= 1280 && <CurrentWeek />}
         {state.width >= 1280 && (
           <div>
-            <span className="current-tasks">Мoи задачи:</span>
+            <span className="current-tasks">{t("My tasks")}</span>
             <span className="current-day"></span>
             {dateNumber && newDate}
           </div>
         )}
         {state.width < 1280 && (
           <>
-            <span className="current-tasks">Мoи задачи:</span>
+            <span className="current-tasks">{t("My tasks")}</span>
             <span className="current-day">{dateNumber && newDate}</span>
           </>
         )}

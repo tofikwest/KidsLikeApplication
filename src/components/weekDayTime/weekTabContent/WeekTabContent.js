@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { getTasks } from "../../../redux/tasks/tasksSelector";
 import { colors } from "../../../general/styles/colors";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const initialState = {
   width: window.innerWidth,
@@ -20,6 +21,7 @@ const WeekTabContent = ({ selectedDate, choosenDateTab }) => {
   const isAuthorized = useSelector(authorizedUser);
   const [state, setState] = useState(initialState);
   const location = useLocation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     window.addEventListener("resize", handleResizeWindow);
@@ -86,9 +88,9 @@ const WeekTabContent = ({ selectedDate, choosenDateTab }) => {
 
       {isAuthorized && !isAnyTasksForChoosenDate() && (
         <>
-          <p className="notification">На этот день задач нет</p>
+          <p className="notification">{t("No tasks for that day")}</p>
           <Link to="/planning" type="button" className="home-button">
-            Запланировать задачи
+            {t("Plan tasks")}
           </Link>
           <img src={planer} alt="children" className="children-img" />
         </>

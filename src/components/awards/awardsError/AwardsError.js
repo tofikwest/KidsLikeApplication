@@ -1,15 +1,18 @@
 import React from "react";
 import AwardsErrorStyled from "./AwardsErrorStyled";
 import { colors } from "../../../general/styles/colors";
+import { useTranslation } from "react-i18next";
 
 const AwardsError = ({ error }) => {
+  const { t } = useTranslation();
+
   return (
     <AwardsErrorStyled colors={colors}>
       {error === "Request failed with status code 400" && (
-        <p className="errorAwards">Выберите подарок </p>
+        <span className="errorAwards">{t("Select Present")} </span>
       )}
       {error === "Request failed with status code 409" && (
-        <p className="errorAwards">Не хватает баллов </p>
+        <span className="errorAwards">{t("Lack of points")}</span>
       )}
     </AwardsErrorStyled>
   );

@@ -5,10 +5,12 @@ import penIcon from "../../../images/pen-modal.svg";
 import closeModalImg from "../../../images/close-modal.svg";
 import { useDispatch } from "react-redux";
 import { createTaskOperation } from "../../../redux/tasks/tasksOperations";
+import { useTranslation } from "react-i18next";
 import { colors } from "../../../general/styles/colors";
 
 const AddCustomTaskModal = ({ closeModal }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation()
   const [taskName, setTaskName] = useState("");
   const [reward, setReward] = useState("");
 
@@ -56,7 +58,7 @@ const AddCustomTaskModal = ({ closeModal }) => {
             <input
               className="modalInput"
               type="text"
-              placeholder="Добавить задание..."
+              placeholder={t("Add task")}
               value={taskName}
               onChange={onHandleChangeTaskName}
             />
@@ -67,7 +69,7 @@ const AddCustomTaskModal = ({ closeModal }) => {
             <input
               className="modalInput"
               type="number"
-              placeholder="Добавить баллы..."
+              placeholder={t("Add points")}
               value={reward}
               onChange={onHandleChangeReward}
             />

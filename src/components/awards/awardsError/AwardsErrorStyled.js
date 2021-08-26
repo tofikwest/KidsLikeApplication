@@ -6,10 +6,12 @@ const AwardsErrorStyled = styled.div`
 
   .errorAwards {
     position: absolute;
-    top: 50%;
+    width: 100%;
+    top: 20px;
     left: 50%;
     transform: translate(-50%, -50%);
     color: ${({ colors }) => colors.awardsErrorColor};
+    text-align: center;
   }
 `;
 

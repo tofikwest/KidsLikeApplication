@@ -6,7 +6,8 @@ import {
   getGiftsOperation,
 } from "../../redux/gifts/giftOperations";
 import { getAwards, getAwardsError } from "../../redux/gifts/giftsSelectors";
-import { toggleAwardsReset } from "../../redux/gifts/giftsAction";
+// import { toggleAwardsReset } from "../../redux/gifts/giftsAction";
+import { getTasks } from "../../redux/tasks/tasksSelector";
 import useModal from "../../hooks/useModal";
 import CardList from "../cardList/CardList";
 import Modal from "../Modal/Modal";
@@ -14,14 +15,14 @@ import Footer from "../footer/Footer";
 import AwardsModal from "./awardsModal/AwardsModal";
 import ProgressBar from "../progressBar/ProgressBar";
 import AwardsError from "./awardsError/AwardsError";
+import HomeMobileFooter from "../homeFooter/HomeMobileFooter";
+import AddCustomTaskModal from "../planningPageTopSection/addCustomTaskModal/AddCustomTaskModal";
+import { useTranslation } from "react-i18next";
 
 import AwardsStyled from "./AwardsStyled";
 import sprite from "../../images/sprite.svg";
 import { colors } from "../../general/styles/colors";
 
-import HomeMobileFooter from "../homeFooter/HomeMobileFooter";
-import { getTasks } from "../../redux/tasks/tasksSelector";
-import AddCustomTaskModal from "../planningPageTopSection/addCustomTaskModal/AddCustomTaskModal";
 const initialState = [];
 
 const Awards = () => {
@@ -32,6 +33,7 @@ const Awards = () => {
   const awards = useSelector(getAwards);
   const error = useSelector(getAwardsError);
   const location = useLocation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(getGiftsOperation());
@@ -41,6 +43,10 @@ const Awards = () => {
   }, [location, setOptionModal, dispatch]);
 
   // ++++++++++++++++++++++++++++++++Logic giftsId++++++++++++++++++++++++++++++++++++++++
+
+  useEffect(() => {
+    !stateModal.isModalOpen && setGiftIdsState(initialState);
+  }, [stateModal]);
 
   const onToggleGetAwardsId = (awardId) => {
     setGiftIdsState((prev) => {
@@ -53,7 +59,6 @@ const Awards = () => {
   const onHandleClickConfirm = async () => {
     dispatch(buyGiftOperation({ giftIds }, setOpenModal));
     // dispatch(toggleAwardsReset());
-    setGiftIdsState(initialState);
   };
 
   // ++++++++++++++++++++++++++++++++Logic giftsId+++++++++++++++++++++++++++++++++++++++++
@@ -70,14 +75,14 @@ const Awards = () => {
           <svg className="awardSvg">
             <use href={sprite + "#icon-award"} />
           </svg>
-          <h3 className="awardsTitle">Мои призы</h3>
+          <h3 className="awardsTitle">{t("My gifts").toUpperCase()}</h3>
         </div>
         {stateModal.width > stateModal.breakPointUserMenu && <ProgressBar />}
       </div>
       <CardList awards={awards} onToggleGetAwardsId={onToggleGetAwardsId} />
 
       <button className="awardsBtn" onClick={onHandleClickConfirm}>
-        Подтвердить
+        {t("Confirm")}
       </button>
 
       <AwardsError error={error} />
