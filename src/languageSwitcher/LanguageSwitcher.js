@@ -10,17 +10,17 @@ const LanguageSwitcher = () => {
       <LanguageSwitcherStyled>
         {i18n.language === "en" && (
           <button className="langBtn" onClick={() => i18n.changeLanguage("ru")}>
-            RU
+            EN
           </button>
         )}
         {i18n.language === "ru" && (
           <button className="langBtn" onClick={() => i18n.changeLanguage("ua")}>
-            UA
+            RU
           </button>
         )}
         {i18n.language === "ua" && (
           <button className="langBtn" onClick={() => i18n.changeLanguage("en")}>
-            EN
+            UA
           </button>
         )}
       </LanguageSwitcherStyled>
