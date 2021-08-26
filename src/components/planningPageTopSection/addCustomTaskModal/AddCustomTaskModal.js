@@ -10,12 +10,17 @@ import { colors } from "../../../general/styles/colors";
 
 const AddCustomTaskModal = ({ closeModal }) => {
   const dispatch = useDispatch();
-  const { t } = useTranslation()
+  const { t } = useTranslation();
+  const [image, setImage] = useState(null);
   const [taskName, setTaskName] = useState("");
   const [reward, setReward] = useState("");
 
   const onHandleCloseClick = () => {
     closeModal();
+  };
+
+  const onHandleChangeImage = (e) => {
+    setImage(e.target.files[0]);
   };
 
   const onHandleChangeTaskName = (e) => {
@@ -32,6 +37,7 @@ const AddCustomTaskModal = ({ closeModal }) => {
     const task = {
       title: taskName,
       reward,
+      file: image,
     };
 
     dispatch(createTaskOperation(task));
@@ -50,7 +56,14 @@ const AddCustomTaskModal = ({ closeModal }) => {
           <label className="modalImageLabel" htmlFor="image">
             <img className="modalImage" src={addImageIcon} alt="add-icon" />
           </label>
-          <input className="modalImageInput" type="text" id="image" />
+
+          <input
+            className="modalImageInput"
+            type="file"
+            id="image"
+            accept=".png"
+            onChange={onHandleChangeImage}
+          />
         </div>
         <div className="modalBottomWrapper">
           <label className="modalInputLabel">

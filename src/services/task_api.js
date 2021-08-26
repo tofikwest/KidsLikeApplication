@@ -12,6 +12,7 @@ axios.defaults.baseURL = "https://kidslikev1.herokuapp.com";
 
 export const createNewTask = async (task) => {
   try {
+    console.log(`task`, task);
     return await axios.post("/task", task);
   } catch (error) {
     throw error;
