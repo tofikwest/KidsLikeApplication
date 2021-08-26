@@ -26,6 +26,7 @@ const HeaderStyled = styled.header`
     }
   }
   @media screen and (min-width: 1280px) {
+    width: 1280px;
     padding: 17px 50px;
   }
 `;

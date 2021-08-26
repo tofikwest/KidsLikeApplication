@@ -9,6 +9,7 @@ import { getCurrentUserOperation } from "../redux/auth/authOperations";
 import { setGoogleToken } from "../redux/auth/authActions";
 import { setLastLocation } from "../redux/location/locationAction";
 import LoaderComponent from "./loader/Loader";
+import SectionHeader from "../general/sectionHeader/SectionHeader";
 
 export const LanguageContext = createContext();
 
@@ -37,7 +38,9 @@ const App = () => {
 
   return (
     <Suspense fallback={<LoaderComponent />}>
-      <Header />
+      <SectionHeader>
+        <Header />
+      </SectionHeader>
       <Section>
         <Main />
       </Section>
