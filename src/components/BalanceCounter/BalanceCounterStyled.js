@@ -2,7 +2,7 @@ import styled from "styled-components";
 const BalanceCounterStyled = styled.div`
   display: flex;
   align-items: center;
-  margin-left: 40px;
+  margin-left: 20px;
 
   .balanceItemBox {
     display: flex;

@@ -21,4 +21,16 @@ export const LanguageSwitcherStyled = styled.div`
     border-radius: 50%;
     cursor: pointer;
   }
+  @media (min-width: 767px) {
+    .langBtn {
+      position: absolute;
+      transform: translate(-58px, -16px);
+    }
+  }
+  @media (min-width: 1279px) {
+    .langBtn {
+      position: absolute;
+      transform: translate(550px, -16px);
+    }
+  }
 `;
