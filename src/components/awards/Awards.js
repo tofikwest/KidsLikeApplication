@@ -7,9 +7,7 @@ import {
 } from "../../redux/gifts/giftOperations";
 import { getAwards, getAwardsError } from "../../redux/gifts/giftsSelectors";
 // import {
-//   getGiftsSuccess,
 //   toggleAwardsResetSuccess,
-//   toggleAwardsResetSuccessT,
 // } from "../../redux/gifts/giftsAction";
 import useModal from "../../hooks/useModal";
 import CardList from "../cardList/CardList";

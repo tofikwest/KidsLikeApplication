@@ -10,7 +10,6 @@ import {
   getGiftsSuccess,
   toggleAwardSuccess,
   // toggleAwardsResetSuccess,
-  // toggleAwardsResetSuccessT,
 } from "./giftsAction";
 
 const itemsReducer = createReducer([], {
@@ -19,7 +18,7 @@ const itemsReducer = createReducer([], {
       award.id === payload ? { ...award, isSelected: !award.isSelected } : award
     ),
 
-  // [toggleAwardsResetSuccessT]: (state, { payload }) => {
+  // [toggleAwardsResetSuccess]: (state, { payload }) => {
   //   state.map((award) =>
   //     award.isSelected ? { ...award, isSelected: !award.isSelected } : award
   //   );

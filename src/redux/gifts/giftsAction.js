@@ -12,7 +12,3 @@ export const toggleAwardSuccess = createAction("awards/toggleAwardSuccess");
 // export const toggleAwardsResetSuccess = createAction(
 //   "awards/toggleAwardsResetSuccess"
 // );
-
-// export const toggleAwardsResetSuccessT = createAction(
-//   "awards/toggleAwardsResetSuccessT"
-// );
