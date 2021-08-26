@@ -1,8 +1,9 @@
+import { colors } from "../../general/styles/colors";
 import { FooterStyled } from "./FooterStyled";
 
 const Footer = () => {
   return (
-    <FooterStyled>
+    <FooterStyled colors={colors}>
       <span className="footerLogo">
         KidsLike
         <svg

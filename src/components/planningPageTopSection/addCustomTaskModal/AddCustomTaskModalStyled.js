@@ -27,7 +27,7 @@ export const AddCustomTaskModalStyled = styled.div`
 
   .modalImageLabel:hover,
   .modalImageLabel:focus {
-    outline: 1px solid #0dacd4;
+    outline: 1px solid ${({ colors }) => colors.userLogoBgColor};
   }
 
   .modalImageInput {
@@ -40,7 +40,7 @@ export const AddCustomTaskModalStyled = styled.div`
 
     padding: 20px 27px 30px 27px;
 
-    background: #ffbc33;
+    background: ${({ colors }) => colors.primaryBgColor};
     box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.25);
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
@@ -66,9 +66,9 @@ export const AddCustomTaskModalStyled = styled.div`
 
     height: 28px;
     width: 100%;
-    background-color: #ffbc33;
+    background-color: ${({ colors }) => colors.primaryBgColor};
     border: none;
-    border-bottom: 1px solid #ffffff;
+    border-bottom: 1px solid ${({ colors }) => colors.modalTextColor};
   }
 
   .modalInput::placeholder {
@@ -78,7 +78,7 @@ export const AddCustomTaskModalStyled = styled.div`
     font-size: 14px;
     line-height: 1.21;
     letter-spacing: 0.04em;
-    color: #ffffff;
+    color: ${({ colors }) => colors.modalTextColor};
   }
 
   .modalButton {
@@ -87,7 +87,7 @@ export const AddCustomTaskModalStyled = styled.div`
     margin-top: 20px;
     padding: 5px 17px;
 
-    background-color: #ffffff;
+    background-color: ${({ colors }) => colors.modalTextColor};
     border-radius: 4px;
     border-color: transparent;
 
@@ -96,6 +96,6 @@ export const AddCustomTaskModalStyled = styled.div`
     font-size: 14px;
     line-height: 1.21;
     letter-spacing: 0.04em;
-    color: #000000;
+    color: ${({ colors }) => colors.primaryTextColor};
   }
 `;

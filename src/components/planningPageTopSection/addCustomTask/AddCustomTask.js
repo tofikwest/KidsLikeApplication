@@ -1,5 +1,6 @@
 import { AddCustomTaskStyled } from "./AddCustomTaskStyled";
 import addTaskIcon from "../../../images/add-task-button.svg";
+import { colors } from "../../../general/styles/colors";
 
 const AddCustomTask = ({ openModal }) => {
   const onHandleClick = () => {
@@ -7,7 +8,7 @@ const AddCustomTask = ({ openModal }) => {
   };
 
   return (
-    <AddCustomTaskStyled>
+    <AddCustomTaskStyled colors={colors}>
       <p className="addTaskText">
         Хочешь получить больше призов - добавь задачи :)
       </p>

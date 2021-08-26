@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { toggleAwardSuccess } from "../../../redux/gifts/giftsAction";
 import TaskToggle from "../../taskToggle/TaskToggle";
 import { CardItemStyled } from "../../cardList/card/CardStyled";
+import { colors } from "../../../general/styles/colors";
 
 const AwardsCard = ({ award, onToggleGetAwardsId }) => {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ const AwardsCard = ({ award, onToggleGetAwardsId }) => {
   };
 
   return (
-    <CardItemStyled>
+    <CardItemStyled color={colors}>
       <div className="cart">
         <img className="card__image" src={award.imageUrl} alt={award.title} />
         <div className="card__footer">
