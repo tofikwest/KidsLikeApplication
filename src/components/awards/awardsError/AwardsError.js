@@ -6,10 +6,10 @@ const AwardsError = ({ error }) => {
   return (
     <AwardsErrorStyled colors={colors}>
       {error === "Request failed with status code 400" && (
-        <span className="errorAwards">Выберите подарок </span>
+        <p className="errorAwards">Выберите подарок </p>
       )}
       {error === "Request failed with status code 409" && (
-        <span className="errorAwards">Не хватает быллов </span>
+        <p className="errorAwards">Не хватает баллов </p>
       )}
     </AwardsErrorStyled>
   );

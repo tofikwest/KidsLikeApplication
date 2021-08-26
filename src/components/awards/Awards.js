@@ -6,9 +6,7 @@ import {
   getGiftsOperation,
 } from "../../redux/gifts/giftOperations";
 import { getAwards, getAwardsError } from "../../redux/gifts/giftsSelectors";
-// import {
-//   toggleAwardsResetSuccess,
-// } from "../../redux/gifts/giftsAction";
+import { toggleAwardsReset } from "../../redux/gifts/giftsAction";
 import useModal from "../../hooks/useModal";
 import CardList from "../cardList/CardList";
 import Modal from "../Modal/Modal";
@@ -54,7 +52,8 @@ const Awards = () => {
 
   const onHandleClickConfirm = async () => {
     dispath(buyGiftOperation({ giftIds }, setOpenModal));
-    dispath(getGiftsOperation());
+    dispath(toggleAwardsReset());
+    // dispath(getGiftsOperation());
     setGiftIdsState(initialState);
   };
 
