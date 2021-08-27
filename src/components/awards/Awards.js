@@ -93,7 +93,7 @@ const Awards = () => {
         </Modal>
       )}
 
-      {stateModal.width <= 320 ? (
+      {stateModal.width <= 767 ? (
         <>
           {tasks && <Footer />}
           <HomeMobileFooter onClickOpenModal={onClickOpenModalTask} />

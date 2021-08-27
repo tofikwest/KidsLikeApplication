@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const FooterStyled = styled.footer`
   text-align: center;
-  margin: 40px 0px 40px;
+  margin: 40px 0px 65px;
 
   font-family: Montserrat;
   font-style: normal;
