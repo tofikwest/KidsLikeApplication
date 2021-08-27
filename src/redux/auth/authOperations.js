@@ -31,7 +31,6 @@ export const register = (user) => async (dispatch) => {
   dispatch(registerUserRequest());
   try {
     const response = await registerUser(user);
-    // console.log("response registerUser", response);
     idToken.set(response.data.token);
     dispatch(registerUserSuccess(response.data));
   } catch (error) {
@@ -43,7 +42,6 @@ export const login = (user) => async (dispatch) => {
   dispatch(loginUserRequest());
   try {
     const response = await loginUser(user);
-    console.log("response loginUser", response);
     idToken.set(response.data.token);
     dispatch(loginUserSuccess(response.data));
   } catch (error) {
