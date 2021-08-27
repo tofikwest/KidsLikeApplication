@@ -65,7 +65,11 @@ const CardList = ({
         activeTasks.map((task) => <Card key={task._id} task={task} />)}
       {location === "/planning" &&
         tasks.map((task) => (
-          <Card key={task._id} task={task} currentDateId={currentDateId} />
+          <Card
+            key={task._id || task.id}
+            task={task}
+            currentDateId={currentDateId}
+          />
         ))}
     </CardListStyled>
   );
