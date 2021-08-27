@@ -34,13 +34,17 @@ const AddCustomTaskModal = ({ closeModal }) => {
   const onHandleSubmit = (e) => {
     e.preventDefault();
 
-    const task = {
-      title: taskName,
-      reward,
-      file: image,
-    };
+    const formData = new FormData();
+    if (image) {
+      formData.set("title", taskName);
+      formData.set("reward", Number(reward));
+      formData.append("file", image);
+    } else {
+      formData.set("title", taskName);
+      formData.set("reward", Number(reward));
+    }
 
-    dispatch(createTaskOperation(task));
+    dispatch(createTaskOperation(formData));
   };
 
   return (
