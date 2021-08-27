@@ -44,8 +44,8 @@
   "Always ready for new challenges": "Всегда готовы к новым вызовам!",
   "Tofik Hasanov": "Тофик Гасанов",
   "Anatolij Dejneko": "Анатолий Дейнеко",
-  "Dmirty Gupanets": "Дмитрий Гупанец",
-  "Tatiana Daniliuk": "Татьяна Данилюк",
+  "Dmitry Gupanets": "Дмитрий Гупанец",
+  "Tatiana Danyliuk": "Татьяна Данилюк",
   "Aleksandr Kasian": "Александр Касян",
   "Yelyzaveta Kudelia": "Елизавета Куделя",
   "Aleksandr Nepiyvoda": "Александр Непийвода",
@@ -99,5 +99,8 @@
   "No": "Нет",
   "this is mandatory area": "это обязательное поле",
   "password must be at least 8 characters": "длина пароля - не менее 8 символов",
-  "invalid format": "неверный формат"
+  "invalid format": "неверный формат",
+  "password must contain a number": "пароль должен содержать цифру"
+   "Select Present": "Выберите подарок"
+
 }

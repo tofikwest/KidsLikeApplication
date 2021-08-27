@@ -44,8 +44,8 @@
   "Always ready for new challenges": "Always ready for new challenges!",
   "Tofik Hasanov": "Tofik Hasanov",
   "Anatolij Dejneko": "Anatolij Dejneko",
-  "Dmirty Gupanets": "Dmirty Gupanets",
-  "Tatiana Daniliuk": "Tatiana Daniliuk",
+  "Dmitry Gupanets": "Dmitry Gupanets",
+  "Tatiana Danyliuk": "Tatiana Danyliuk",
   "Aleksandr Kasian": "Aleksandr Kasian",
   "Yelyzaveta Kudelia": "Yelyzaveta Kudelia",
   "Aleksandr Nepiyvoda": "Aleksandr Nepiyvoda",
@@ -100,5 +100,6 @@
   "No": "No",
   "this is mandatory area": "this is mandatory area",
   "password must be at least 8 characters": "password must be at least 8 characters",
-  "invalid format": "invalid format"
+  "invalid format": "invalid format",
+  "password must contain a number": "password must contain a number"
 }

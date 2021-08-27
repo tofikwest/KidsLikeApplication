@@ -44,9 +44,9 @@
   "Always ready for new challenges": "Завжди готові до нових викликів!",
   "Tofik Hasanov": "Тофік Гасанов",
   "Anatolij Dejneko": "Анатолій Дейнеко",
-  "Dmirty Gupanets": "Дмитро Гупанець",
-  "Tatiana Daniliuk": "Тетяна Данилюк",
-  "Aleksandr Kasian": "Олександр Касян",
+  "Dmitry Gupanets": "Дмитро Гупанець",
+  "Tatiana Danyliuk": "Тетяна Данилюк",
+  "Aleksandr Kasian": "Олександр Кас'ян",
   "Yelyzaveta Kudelia": "Єлизавета Куделя",
   "Aleksandr Nepiyvoda": "Олександр Непийвода",
   "Team Lead": "Тім Лід",
@@ -100,5 +100,6 @@
   "No": "Ні",
   "this is mandatory area": "це обов'язкове поле",
   "password must be at least 8 characters": "довжина паролю - не менше 8 символів",
-  "invalid format": "невірний формат"
+  "invalid format": "невірний формат",
+  "password must contain a number": "пароль має містити цифру"
 }

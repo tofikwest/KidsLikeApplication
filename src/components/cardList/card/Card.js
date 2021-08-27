@@ -50,8 +50,6 @@ const Card = ({
     dispatch(setDaysSingleTaskOperation(taskId, daysOfTask));
   };
 
-  console.log("location", location);
-
   return (
     <CardItemStyled location={location} colors={colors}>
       <div className="card">

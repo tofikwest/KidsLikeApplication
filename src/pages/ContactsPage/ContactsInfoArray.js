@@ -37,7 +37,7 @@ const ContactsInfoArray = [
   },
   {
     avatar: sanyaK,
-    name: "Kasian Aleksandr",
+    name: "Aleksandr Kasian",
     position: "Front-End Developer",
     contacts: "kasianalekasndr@gmail.com",
     id: 5,

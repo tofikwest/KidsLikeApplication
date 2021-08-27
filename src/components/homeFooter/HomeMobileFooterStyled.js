@@ -1,12 +1,11 @@
 import styled from "styled-components";
 
 export const HomeMobileFooterStyled = styled.div`
-  /* position: fixed; */
+  position: fixed;
   bottom: 0;
   left: 0;
   width: 100vw;
   background-color: #f1f1f1;
-  margin-left: -20px;
 
   .homeMobileFooterWrapper {
     position: relative;
@@ -16,7 +15,6 @@ export const HomeMobileFooterStyled = styled.div`
     max-width: 280px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 20px;
   }
 
   .addTaskButton {

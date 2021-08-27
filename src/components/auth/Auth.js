@@ -47,39 +47,42 @@ const Auth = () => {
                 Google
               </a>
               <p>{t("Or register and then use your e-mail & password")}</p>
-              <label className="user-label" htmlFor="email">
-                <span className="accent-red">*</span>
-                E-mail:
-              </label>
-              <input
-                type="email"
-                name="email"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.email}
-                placeholder="your@email.com"
-                className="user-input"
-              />
-              {errors.email && touched.email && <p className="accent-red">{t([errors.email])}</p>}
-              <label className="user-label" htmlFor="password">
-                <span className="accent-red">*</span>
-                {t("Password")}
-              </label>
-              <input
-                type="password"
-                name="password"
-                onChange={(e) => {
-                  errorMessage && setErrorMessage("");
-                  handleChange(e);
-                }}
-                onBlur={handleBlur}
-                value={values.password}
-                placeholder="abraKadabra777"
-                className="user-input"
-              />
-              {errors.password && touched.password && <p className="accent-red">{t([errors.password])}</p>}
-              {errorMessage && <p className="accent-red">{errorMessage}</p>}
-
+              <div className="forAbsolutewrap">
+                <label className="user-label" htmlFor="email">
+                  <span className="accent-red">*</span>
+                  E-mail:
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.email}
+                  placeholder="your@email.com"
+                  className="user-input"
+                />
+                {errors.email && touched.email && <p className="mistakeStyle">{t([errors.email])}</p>}
+              </div>
+              <div className="forAbsolutewrap">
+                <label className="user-label" htmlFor="password">
+                  <span className="accent-red">*</span>
+                  {t("Password")}
+                </label>
+                <input
+                  type="password"
+                  name="password"
+                  onChange={(e) => {
+                    errorMessage && setErrorMessage("");
+                    handleChange(e);
+                  }}
+                  onBlur={handleBlur}
+                  value={values.password}
+                  placeholder="abraKadabra777"
+                  className="user-input"
+                />
+                {errors.password && touched.password && <p className="mistakeStyle">{t([errors.password])}</p>}
+                {errorMessage && <p className="mistakeStyle2">{errorMessage}</p>}
+              </div>
               <div className="auth-btn-wrap">
                 <button className="user-button" type="button" onClick={() => dispatch(login(values))}>
                   {t("Log In")}
