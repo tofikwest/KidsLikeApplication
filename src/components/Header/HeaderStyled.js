@@ -22,7 +22,7 @@ const HeaderStyled = styled.header`
     justify-content: space-between;
 
     .menuNavImg {
-      margin-left: 118px;
+      /* margin-left: 118px; */
     }
   }
   @media screen and (min-width: 1280px) {
