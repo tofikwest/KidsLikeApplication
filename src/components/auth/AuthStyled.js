@@ -151,7 +151,8 @@ export const AuthContainer = styled.div`
 
   @media screen and (min-width: 768px) {
     padding: 0px 164px 305px 164px;
-    background: url(${backTabImg3}) bottom center, url(${backTabImg1}) left bottom, url(${backTabImg2}) right bottom;
+    background: url(${backTabImg3}) bottom center,
+      url(${backTabImg1}) left bottom, url(${backTabImg2}) right bottom;
     background-repeat: no-repeat;
     margin-left: -94px;
     margin-right: -94px;
@@ -175,14 +176,19 @@ export const AuthContainer = styled.div`
       width: 154px;
       font-size: 12px;
       line-height: 1.22;
+      cursor: pointer;
+    }
+    .user-button:hover,
+    .user-button:focus {
+      background-color: #ec9334;
     }
   }
   //768px+ 2x+
   @media (min-device-pixel-ratio: 2) and (min-width: 768px),
     (min-resolution: 192dpi) and (min-width: 768px),
     (min-resolution: 2dppx) and (min-width: 768px) {
-    background: url(${back2xTabImg3}) bottom center, url(${back2xTabImg2}) right bottom,
-      url(${back2xTabImg1}) left bottom;
+    background: url(${back2xTabImg3}) bottom center,
+      url(${back2xTabImg2}) right bottom, url(${back2xTabImg1}) left bottom;
     background-repeat: no-repeat;
     background-size: 250px, 300px, 300px;
   }
@@ -207,15 +213,15 @@ export const BackDeskImg = styled.div`
   @media screen and (min-width: 1280px) {
     flex-basis: calc(50%);
 
-    background: url(${backDeskImg2}) bottom right, url(${backDeskImg3}) left, url(${backDeskImg4}) right,
-      url(${backDeskImg1});
+    background: url(${backDeskImg2}) bottom right, url(${backDeskImg3}) left,
+      url(${backDeskImg4}) right, url(${backDeskImg1});
     background-repeat: no-repeat;
   }
   @media (min-device-pixel-ratio: 2) and (min-width: 1280px),
     (min-resolution: 192dpi) and (min-width: 1280px),
     (min-resolution: 2dppx) and (min-width: 1280px) {
-    background: url(${back2xDeskImg2}) bottom right, url(${back2xDeskImg3}) left, url(${back2xDeskImg4}) right center,
-      url(${back2xDeskImg1});
+    background: url(${back2xDeskImg2}) bottom right, url(${back2xDeskImg3}) left,
+      url(${back2xDeskImg4}) right center, url(${back2xDeskImg1});
     background-repeat: no-repeat;
     background-size: 360px, 300px, 350px, 450px;
   }

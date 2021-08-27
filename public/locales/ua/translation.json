@@ -101,5 +101,6 @@
   "this is mandatory area": "це обов'язкове поле",
   "password must be at least 8 characters": "довжина паролю - не менше 8 символів",
   "invalid format": "невірний формат",
-  "password must contain a number": "пароль має містити цифру"
+  "password must contain a number": "пароль має містити цифру",
+  "Wrong password": "невірний пароль!"
 }

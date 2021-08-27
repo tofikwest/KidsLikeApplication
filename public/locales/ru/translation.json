@@ -100,7 +100,7 @@
   "this is mandatory area": "это обязательное поле",
   "password must be at least 8 characters": "длина пароля - не менее 8 символов",
   "invalid format": "неверный формат",
-  "password must contain a number": "пароль должен содержать цифру"
-   "Select Present": "Выберите подарок"
-
+  "password must contain a number": "пароль должен содержать цифру",
+  "Select Present": "Выберите подарок",
+  "Wrong password": "неверный пароль!"
 }

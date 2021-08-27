@@ -2,7 +2,11 @@ import React from "react";
 import { Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getCurrentUserOperation, login, register } from "../../redux/auth/authOperations";
+import {
+  getCurrentUserOperation,
+  login,
+  register,
+} from "../../redux/auth/authOperations";
 import { getError, setToken } from "../../redux/auth/authSelectors";
 import { AuthContainer, BackDeskImg, DeskWrapper } from "./AuthStyled";
 import sprite from "../../images/sprite.svg";
@@ -26,7 +30,7 @@ const Auth = () => {
 
   useEffect(() => {
     if (error?.includes("403")) {
-      setErrorMessage("Wrong password!");
+      setErrorMessage("Wrong password");
     }
   }, [error, dispatch]);
 
@@ -36,11 +40,27 @@ const Auth = () => {
       <AuthContainer>
         <h1 className="authTitle">{t("Complete tasks, win awesome prizes")}</h1>
 
-        <Formik initialValues={{ email: "", password: "" }} validationSchema={validationSchema}>
-          {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
+        <Formik
+          initialValues={{ email: "", password: "" }}
+          validationSchema={validationSchema}
+        >
+          {({
+            values,
+            errors,
+            touched,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+          }) => (
             <form onSubmit={handleSubmit} className="user-form">
-              <p className="authText">{t("You may log in using your Google Account")}</p>
-              <a href="https://kidslikev1.herokuapp.com/auth/google" className="googleBtn" aria-label="google button">
+              <p className="authText">
+                {t("You may log in using your Google Account")}
+              </p>
+              <a
+                href="https://kidslikev1.herokuapp.com/auth/google"
+                className="googleBtn"
+                aria-label="google button"
+              >
                 <svg className="icon-user">
                   <use href={sprite + "#icon-google-symb"} />
                 </svg>{" "}
@@ -61,7 +81,9 @@ const Auth = () => {
                   placeholder="your@email.com"
                   className="user-input"
                 />
-                {errors.email && touched.email && <p className="mistakeStyle">{t([errors.email])}</p>}
+                {errors.email && touched.email && (
+                  <p className="mistakeStyle">{t([errors.email])}</p>
+                )}
               </div>
               <div className="forAbsolutewrap">
                 <label className="user-label" htmlFor="password">
@@ -80,14 +102,26 @@ const Auth = () => {
                   placeholder="abraKadabra777"
                   className="user-input"
                 />
-                {errors.password && touched.password && <p className="mistakeStyle">{t([errors.password])}</p>}
-                {errorMessage && <p className="mistakeStyle2">{errorMessage}</p>}
+                {errors.password && touched.password && (
+                  <p className="mistakeStyle">{t([errors.password])}</p>
+                )}
+                {errorMessage && (
+                  <p className="mistakeStyle2">{t(errorMessage)}</p>
+                )}
               </div>
               <div className="auth-btn-wrap">
-                <button className="user-button" type="button" onClick={() => dispatch(login(values))}>
+                <button
+                  className="user-button"
+                  type="button"
+                  onClick={() => dispatch(login(values))}
+                >
                   {t("Log In")}
                 </button>
-                <button className="user-button" type="button" onClick={() => dispatch(register(values))}>
+                <button
+                  className="user-button"
+                  type="button"
+                  onClick={() => dispatch(register(values))}
+                >
                   {t("Registration")}
                 </button>
               </div>

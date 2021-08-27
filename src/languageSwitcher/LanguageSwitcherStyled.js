@@ -21,6 +21,10 @@ export const LanguageSwitcherStyled = styled.div`
     border-radius: 50%;
     cursor: pointer;
   }
+  .langBtn:hover,
+  .langBtn:focus {
+    background-color: #ec9334;
+  }
   @media (min-width: 767px) {
     .langBtn {
       position: absolute;
