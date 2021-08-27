@@ -45,6 +45,7 @@ const AddCustomTaskModal = ({ closeModal }) => {
     }
 
     dispatch(createTaskOperation(formData));
+    closeModal();
   };
 
   return (
