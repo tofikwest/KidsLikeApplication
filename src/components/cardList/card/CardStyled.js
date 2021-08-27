@@ -12,7 +12,6 @@ export const CardItemStyled = styled.li`
 
   @media screen and (min-width: 1280px) {
     margin-top: 20px;
-    /* flex-basis: calc((100% - 80px) / 3); */
     flex-basis: ${({ location }) =>
       location === "/planning" || location === "/awards"
         ? "calc((100% - 80px) / 4)"
