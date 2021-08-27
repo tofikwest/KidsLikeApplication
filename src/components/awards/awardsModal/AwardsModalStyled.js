@@ -69,6 +69,8 @@ const AwardsModalStyled = styled.div`
     padding: 130px 40px 50px 40px;
     width: 600px;
 
+    overflow-y: hidden;
+
     .catImg {
       top: -115px;
       width: 200px;
