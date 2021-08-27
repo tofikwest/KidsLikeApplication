@@ -16,7 +16,8 @@ const BalanceCounterStyled = styled.div`
     color: ${({ colors }) => colors.thirdTextColor};
   }
   .balanceCount {
-    margin-left: 10px;
+    margin-left: 5px;
+    padding-right: 5px;
 
     font-size: 14px;
     line-height: 1.2;
