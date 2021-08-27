@@ -20,7 +20,7 @@ export const getGiftsOperation = () => async (dispatch, getState) => {
 };
 
 export const buyGiftOperation =
-  (giftIds, openAwardsModal) => async (dispatch, getState) => {
+  (giftIds, openAwardsModal, setGiftIdsState) => async (dispatch, getState) => {
     try {
       dispatch(buyGiftsRequest());
       await buyGiftIds(giftIds).then((res) =>
@@ -30,5 +30,6 @@ export const buyGiftOperation =
     } catch (error) {
       dispatch(buyGiftsError(error.message));
       dispatch(toggleAwardsReset());
+      setGiftIdsState([]);
     }
   };

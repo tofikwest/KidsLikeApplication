@@ -58,7 +58,7 @@ const Awards = () => {
   };
 
   const onHandleClickConfirm = async () => {
-    dispatch(buyGiftOperation({ giftIds }, setOpenModal));
+    dispatch(buyGiftOperation({ giftIds }, setOpenModal, setGiftIdsState));
   };
 
   // ++++++++++++++++++++++++++++++++Logic giftsId+++++++++++++++++++++++++++++++++++++++++
