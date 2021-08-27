@@ -51,6 +51,7 @@ export const AuthContainer = styled.div`
     margin: 0 auto;
   }
   .user-label {
+    display: inline-block;
     margin-bottom: 10px;
     margin-top: 20px;
   }
@@ -80,6 +81,19 @@ export const AuthContainer = styled.div`
     transition: opacity 300ms linear;
     font-family: "Montserrat";
   }
+  .forAbsolutewrap {
+    position: relative;
+  }
+  .mistakeStyle {
+    position: absolute;
+    top: 75px;
+    color: red;
+  }
+  .mistakeStyle2 {
+    position: absolute;
+    top: 90px;
+    color: red;
+  }
   .accent-red {
     color: red;
   }
@@ -100,7 +114,7 @@ export const AuthContainer = styled.div`
     border: none;
     border-radius: 4px;
     box-shadow: offset 0px, 2px, rgba(0, 0, 0, 0.15);
-    margin-top: 23px;
+    margin-top: 35px;
     :not(:last-child) {
       margin-right: 10px;
     }

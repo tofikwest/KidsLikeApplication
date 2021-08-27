@@ -100,5 +100,6 @@
   "No": "No",
   "this is mandatory area": "this is mandatory area",
   "password must be at least 8 characters": "password must be at least 8 characters",
-  "invalid format": "invalid format"
+  "invalid format": "invalid format",
+  "password must contain a number": "password must contain a number"
 }
