@@ -27,8 +27,6 @@ const AwardsModal = ({ setOpenModal, giftIds }) => {
 
   // ++++++++++++++++++++++++++++++Filter awards selected++++++++++++++++++++++++++++++
 
-  console.log(giftIds.length);
-
   return (
     <AwardsModalStyled colors={colors} giftIds={giftIds}>
       <svg className="iconCloseAwards" onClick={setOpenModal}>

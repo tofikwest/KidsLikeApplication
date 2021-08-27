@@ -41,7 +41,6 @@ const PlanningPoints = ({ isMobile, isDesktop }) => {
   };
 
   const onSelectDate = (value) => {
-    console.log(`value`, value);
     dispatch(setSelectedDateId(value));
   };
 
