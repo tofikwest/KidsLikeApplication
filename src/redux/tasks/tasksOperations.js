@@ -23,7 +23,16 @@ export const createTaskOperation = (task) => async (dispatch, getState) => {
   try {
     dispatch(createTaskRequest());
     const res = await createNewTask(task);
-    dispatch(createTaskSuccess({ ...res.data }));
+
+    const newTask = {
+      _id: res.data.id,
+      days: res.data.days,
+      title: res.data.title,
+      reward: res.data.reward,
+      imageUrl: res.data.imageUrl,
+    };
+
+    dispatch(createTaskSuccess({ ...newTask }));
   } catch (error) {
     dispatch(createTaskError(error.message));
   }

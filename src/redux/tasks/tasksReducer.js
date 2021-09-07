@@ -29,7 +29,11 @@ const itemsReducer = createReducer([], {
   [setDaysTaskSuccess]: (state, { payload }) =>
     state.map((task) =>
       task._id === payload.updatedTask.id
-        ? { ...task, days: payload.updatedTask.days }
+        ? {
+            ...task,
+            days: payload.updatedTask.days,
+            _id: payload.updatedTask.id,
+          }
         : task
     ),
   [toggleTaskSuccess]: (state, { payload }) =>
