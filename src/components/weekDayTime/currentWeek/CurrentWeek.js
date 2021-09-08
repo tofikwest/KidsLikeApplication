@@ -14,7 +14,7 @@ const CurrentWeek = () => {
 
   const startOfTheWeek = useSelector(getStartOfTheWeek);
   const endOfTheWeek = useSelector(getEndOfTheWeek);
-  const start = startOfTheWeek && moment(startOfTheWeek).format("DD");
+  const start = startOfTheWeek && moment(startOfTheWeek).format("D");
   const end = endOfTheWeek && moment(endOfTheWeek).format("DD");
 
   function getThisMonth() {
